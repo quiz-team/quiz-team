@@ -1,1 +1,4 @@
-io.connect('http://localhost:9090');
+var socket = io.connect('http://localhost:9090');
+
+
+
