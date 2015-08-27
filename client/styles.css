@@ -1,0 +1,19 @@
+.indicator,
+.btn {
+  height: 100px;
+  width: 300px;
+  border: 1px solid black;
+  background-color: #3BB837;
+}
+
+.indicator {
+  background-color: #2C98B8;
+}
+
+.indicator--active {
+  background-color: #B85815;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
