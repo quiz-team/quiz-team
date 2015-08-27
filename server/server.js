@@ -7,9 +7,10 @@ var io = require('socket.io')(server)
 
 //Event for dealing with incoming socket connection.
 io.on('connection', function(socket) {
-  console.log("Connection happening");
+  console.log("Connection happening", socket.id);
   socket.on('button clicked', function(data){
-    console.log("Someone pressed a button!");
+    console.log("Someone pressed a button! ", data);
+    io.emit("friend click");
   })
 });
 
