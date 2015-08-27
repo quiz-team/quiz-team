@@ -1,23 +1,16 @@
-var express = require('express');
-var app = express();
+//App is defined in express.js, and contains all logic for
+//handling and processing requests.
+var app = require('./express.js');
 var http = require('http');
 var server = http.Server(app);
 var io = require('socket.io')(server)
 
+//Event for dealing with incoming socket connection.
 io.on('connection', function(socket) {
   console.log("Connection happening");
   socket.on('button clicked', function(data){
     console.log("Someone pressed a button!");
   })
 });
-
-
-//Routing stuff. TODO: Move to different file
-app.get('/', function(req, res) {
-  res.redirect('/index.html');
-});
-
-app.use(express.static('client'));
-//End routing stuff
 
 server.listen('9090');
