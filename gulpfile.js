@@ -15,9 +15,11 @@ var paths = {
     'client/**/*.js',
     'server/**/*.js'
   ],
+  // all the html
   html: [
     'client/**/*.html'
   ],
+  // css files
   styles: [
     'client/styles/*.css'
   ]
@@ -30,33 +32,34 @@ gulp.task('check-syntax', function() {
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-// Start server using nodemon
-gulp.task('serve', function() {
-  nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
+// Run check-syntax when any client or server files are modified
+gulp.task('watch', function() {
+  gulp.watch(paths.scripts, ['check-syntax']);
 });
 
 // Runs nodemon server, and watches for file changes. Also provides external ip
-gulp.task('start', ['serve'], function () {
+gulp.task('start', ['serve', 'watch'], function () {
+  // run browser-sync
   bs({
-    notify: false,            // turn off annoying browser-sync pop-up
-    injectChanges: true,      // reinject page changes to reloaded site
+    // turn off annoying browser-sync pop-up
+    notify: false,            
+    // reinject page changes to reloaded site      
+    injectChanges: true,
+    // files to watch for changes; these are the files that are injected
     files: [
       paths.scripts,
       paths.html,
       paths.styles
     ],
-    proxy: 'localhost:9090'   // proxy our node server to an external ip with browser-sync
+    // proxy our node server to an external ip with browser-sync
+    proxy: 'localhost:9090'   
   });
 });
 
-
-// Run check-syntax when any client or server files are modified
-gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['check-syntax']);
-  // Create LiveReload server
-  livereload.listen();
+// Start server using nodemon
+gulp.task('serve', function() {
+  nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
 });
-
 
 // This is the default gulp task (i.e. running gulp with no --options)
 gulp.task('default', ['start']);
