@@ -6,6 +6,9 @@ var io = require('socket.io')(server)
 
 io.on('connection', function(socket) {
   console.log("Connection happening");
+  socket.on('button clicked', function(data){
+    console.log("Someone pressed a button!");
+  })
 });
 
 
