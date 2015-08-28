@@ -12,9 +12,10 @@ $('.push-button').on('mouseup', function(event){
   socket.emit('button unclicked', {meatloaf: "unexpected"});
 });
 
-// when button is clicked by other users, briefly change color of top square
+// when button is clicked by other users, briefly change color of user square
 socket.on('friend click', function(data){
-  $('.indicator').addClass('indicator--active');
+  var playerName = data.username;
+  $('.indicator__square--' + playerName).addClass('indicator__square' + playerName + '--active');
 });
 
 socket.on('friend unclick', function(data){
