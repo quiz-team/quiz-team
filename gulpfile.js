@@ -3,7 +3,7 @@
 var gulp    = require('gulp');
 var jshint  = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
-var bs      = require('browser-sync')
+var bs      = require('browser-sync');
 var reload  = bs.reload;
 
 
@@ -37,6 +37,11 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['check-syntax']);
 });
 
+// Start server using nodemon
+gulp.task('serve', function() {
+  nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
+});
+
 // Runs nodemon server, and watches for file changes. Also provides external ip
 gulp.task('start', ['serve', 'watch'], function () {
   // run browser-sync
@@ -51,15 +56,11 @@ gulp.task('start', ['serve', 'watch'], function () {
       paths.html,
       paths.styles
     ],
-    // proxy our node server to an external ip with browser-sync
+    // proxy our node server to a local network ip with browser-sync
     proxy: 'localhost:9090'   
   });
 });
 
-// Start server using nodemon
-gulp.task('serve', function() {
-  nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
-});
 
 // This is the default gulp task (i.e. running gulp with no --options)
 gulp.task('default', ['start']);
