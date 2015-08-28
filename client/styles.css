@@ -1,4 +1,7 @@
-.indicator,
+.indicator__container{
+  width: 100%;
+}
+.indicator__square,
 .btn {
   height: 100px;
   width: 300px;
@@ -6,7 +9,8 @@
   background-color: #3BB837;
 }
 
-.indicator {
+.indicator__square{
+  display: inline-block;
   background-color: #2C98B8;
 }
 
@@ -16,4 +20,10 @@
 
 .btn:hover {
   cursor: pointer;
+}
+.allready__square{
+  height: 100px;
+  width: 300px;
+  border: 1px solid black;
+  background-color: red;
 }
