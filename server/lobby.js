@@ -5,9 +5,11 @@ module.exports = function() {
   //Add a player by a socket id number
   //Returns that player's number
   lobby.AddPlayer = function(id) {
-    for (var i = 0; i < players.length; i++) {
+    console.log("Player with id " + id + " joining");
+    for (var i = 0; i < lobby.players.length; i++) {
       if (lobby.players[i] === null) {
         lobby.players[i] = id;
+        console.log("Assigning player num " + i);
         return i;
       }
     }
@@ -31,7 +33,7 @@ module.exports = function() {
   }
 
   lobby.GetPlayers = function() {
-    return players;
+    return lobby.players;
   }
 
   return lobby;
