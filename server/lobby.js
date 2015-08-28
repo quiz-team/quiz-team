@@ -10,7 +10,7 @@ module.exports = function() {
       if (lobby.players[i] === null) {
         lobby.players[i] = id;
         console.log("Assigning player num " + i);
-        return i;
+        return i + 1;
       }
     }
     return null;
@@ -24,12 +24,12 @@ module.exports = function() {
       return null;
     }
     lobby.players[playerIndex] = null;
-    return playerIndex;
+    return playerIndex + 1;
   }
 
   //Get player number by socket id number
   lobby.GetPlayerNum = function(id) {
-    return lobby.players.indexOf(id);
+    return lobby.players.indexOf(id) + 1;
   }
 
   lobby.GetPlayers = function() {
