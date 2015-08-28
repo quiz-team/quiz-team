@@ -1,6 +1,10 @@
+
+/* Player indicator boxes */
+
 .indicator__container{
   width: 100%;
 }
+
 .indicator__square,
 .btn {
   height: 100px;
@@ -18,9 +22,27 @@
   background-color: #B85815;
 }
 
+.indicator__square--player1--active{
+  background-color: magenta;
+}
+.indicator__square--player2--active{
+  background-color: cyan;
+}
+.indicator__square--player3--active{
+  background-color: orange;
+}
+.indicator__square--player4--active{
+  background-color: yellow;
+}
+
+/* Push Button */
+
 .btn:hover {
   cursor: pointer;
 }
+
+/* Allready Indicator */
+
 .allready__square{
   height: 100px;
   width: 300px;
