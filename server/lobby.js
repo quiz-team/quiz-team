@@ -15,7 +15,7 @@ module.exports = function(roomname) {
       }
     }
     return null;
-  }
+  };
 
   //Remove a player by socket id number
   //Returns that player's number
@@ -26,16 +26,16 @@ module.exports = function(roomname) {
     }
     lobby.players[playerIndex] = null;
     return playerIndex + 1;
-  }
+  };
 
   //Get player number by socket id number
   lobby.GetPlayerNum = function(id) {
     return lobby.players.indexOf(id) + 1;
-  }
+  };
 
   lobby.GetPlayers = function() {
     return lobby.players;
-  }
+  };
 
   return lobby;
-}
+};
