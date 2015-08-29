@@ -7,6 +7,6 @@ angular.module('meatloaf.lobby', [])
 
   console.log($state.params);
 
-  $scope.lobby = $state.params.lobby.roomname;
+  $scope.lobby = $state.params.lobby;
 
 }]);
