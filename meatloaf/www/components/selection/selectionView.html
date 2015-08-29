@@ -1,5 +1,5 @@
 <ul class="list">
-  <li class="item" ng-repeat="lobby in lobbies" ng-click="joinLobby()">{{lobby.roomname}}</li>
+  <li class="item" ng-repeat="lobby in lobbies" ng-click="joinLobby(lobby.id)">{{lobby.roomname}}</li>
 </ul>
 
 <button class="button button-full button-positive" ng-click="createRoom()">Create Room</button>

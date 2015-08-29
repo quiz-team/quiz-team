@@ -2,14 +2,17 @@ angular.module('meatloaf.selection', [])
 
 .controller('selectionCtrl', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
   var socket = $rootScope.socket;
-  $scope.lobbies = [{roomname: "room 1"},{roomname: "room 2"},{roomname: "room 3"},{roomname: "room 4"} ];
+  $scope.lobbies;
   
   socket.emit('enteredSelectionRoom', null, function(lobbiesData){
+    console.log("recieved lobby data");
     $scope.lobbies = lobbiesData;
+    $scope.$apply();
   });
   
   socket.on('updateLobbies', function(lobbiesData){
     $scope.lobbies = lobbiesData;
+    $scope.$apply();
   });
 
   $scope.createRoom = function() {
