@@ -1,9 +1,5 @@
 <ul class="list">
-    <li class="item">1</li>
-    <li class="item">2</li>
-    <li class="item">3</li>
-    <li class="item">4</li>
-    <li class="item">5</li>
+  <li class="item" ng-repeat="lobby in lobbies" ng-click="joinLobby()">{{lobby.roomname}}</li>
 </ul>
 
 <button class="button button-full button-positive" ng-click="createRoom()">Create Room</button>
