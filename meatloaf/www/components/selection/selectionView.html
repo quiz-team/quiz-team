@@ -1,5 +1,8 @@
-<ul class="list">
-  <li class="item" ng-repeat="lobby in lobbies" ng-click="joinLobby(lobby.id)">{{lobby.roomname}}</li>
-</ul>
+<ion-content scroll="true">
+<ion-list class="list">
+  <ion-item class="item" ng-repeat="lobby in lobbies" on-tap="joinLobby(lobby.id)">{{lobby.roomname}}</ion-item>
+</ion-list>
 
-<button class="button button-full button-positive" ng-click="createRoom()">Create Room</button>
+<button class="button button-full button-positive" on-tap="createRoom()">Create Room</button>
+
+</ion-content>
