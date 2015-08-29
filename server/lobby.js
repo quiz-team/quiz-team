@@ -1,5 +1,6 @@
-module.exports = function() {
+module.exports = function(roomname) {
   var lobby = {};
+  lobby.roomname = roomname;
   lobby.players = [null, null, null, null];
 
   //Add a player by a socket id number
@@ -15,7 +16,7 @@ module.exports = function() {
     }
     return null;
   }
-  
+
   //Remove a player by socket id number
   //Returns that player's number
   lobby.RemovePlayer = function(id) {
