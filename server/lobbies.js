@@ -1,4 +1,5 @@
 var lobbyMaker = require('./lobby.js');
+var _und = require('underscore');
 
 module.exports = function() {
   var lobbies = {};
@@ -33,7 +34,9 @@ module.exports = function() {
   };
 
   lobbies.GetAllLobbies = function() {
-    return activeLobbies;
+    return _und.map(activeLobbies, function(item) {
+      return item;
+    });
   };
 
 
