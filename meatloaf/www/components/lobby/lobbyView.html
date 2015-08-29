@@ -1,4 +1,15 @@
+
 <div>{{lobby.roomname}}</div>
 <ul class="list">
-  <li class="item" ng-repeat="player in players">{{player.number}}</li>
+  <li class="item" ng-repeat="player in players" ng-class="{ready: player.ready}">{{player.number}}</li>
 </ul>
+
+<div class="button__container">
+  <div class="button button-full button-positive button__ready" on-touch="readyOn()" on-release="readyOff()">
+    READY
+  </div>
+
+  <div class="button button-full button-positive button__leave" on-tap="leaveLobby()">
+    Leave Lobby
+  </div>
+</div>
