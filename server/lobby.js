@@ -1,7 +1,10 @@
+var playerMaker = require('./player.js');
+var _und = require('underscore');
+
 module.exports = function(roomname) {
   var lobby = {};
   lobby.roomname = roomname;
-  lobby.players = [null, null, null, null];
+  lobby.players = [null,null,null,null];
 
   //Add a player by a socket id number
   //Returns that player's number
@@ -9,18 +12,27 @@ module.exports = function(roomname) {
     console.log("Player with id " + id + " joining");
     for (var i = 0; i < lobby.players.length; i++) {
       if (lobby.players[i] === null) {
-        lobby.players[i] = id;
-        console.log("Assigning player num " + i);
+         var newPlayer = playerMaker(id)
+         lobby.players[i] = newPlayer;
+         newPlayer.number = i+1
+        // console.log("Assigning player num " + i);
         return i + 1;
       }
     }
-    return null;
+    return null;   
   };
 
   //Remove a player by socket id number
   //Returns that player's number
   lobby.RemovePlayer = function(id) {
-    var playerIndex = lobby.players.indexOf(id);
+    var playerIndex = -1;
+    // get player index
+    _und.each(lobby.players, function(player, index) {
+      if (player.id === id) {
+        playerIndex = index;
+      }
+    });
+
     if (playerIndex === -1) {
       return null;
     }
@@ -30,7 +42,17 @@ module.exports = function(roomname) {
 
   //Get player number by socket id number
   lobby.GetPlayerNum = function(id) {
-    return lobby.players.indexOf(id) + 1;
+    var playerIndex = -1;
+    _und.each(lobby.players, function(player, index) {
+      if (player.id === id) {
+        playerIndex = index;
+      }
+    });
+    return playerIndex + 1;
+  };
+
+  lobby.GetPlayerById = function(id){
+    return lobby.players[lobby.GetPlayerNum(id)];
   };
 
   lobby.GetPlayers = function() {
