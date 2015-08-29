@@ -23,10 +23,27 @@ module.exports = function(server) {
     // create room
     socket.on('createRoom', function(data, callback) {
       console.log('trying to create room');
-      callback(lobbies.AddLobby());
+      var lobby = lobbies.AddLobby();
+
+      // update lobbies for all players
+      io.emit('updateLobbies', lobbies.GetAllLobbies());
+      // pass back lobby object
+      callback(lobby);
     });
 
     // join room
+    socket.on('joinRoom', function(lobbyid, callback) {
+      var lobby = lobbies.GetLobby(lobbyid);
+      lobby.AddPlayer(socket.id);
+      // pass back lobby object
+      callback(lobby);
+    });
+
+    // get initial list
+    socket.on('enteredSelectionRoom', function(data, callback) {
+      callback(lobbies.GetAllLobbies());
+      console.log('returning rooms', lobbies.GetAllLobbies());
+    });
   });
 
 };
