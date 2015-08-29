@@ -7,7 +7,8 @@ var app = angular.module('meatloaf', [
   'ionic',
   'ui.router',
   'meatloaf.selection',
-  'meatloaf.lobby'
+  'meatloaf.lobby',
+  'meatloaf.game'
 ]);
 
 app.run(function($ionicPlatform, $rootScope) {
@@ -31,16 +32,23 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   $stateProvider.state('selection', {
     url: '/selection',
     controller: 'selectionCtrl',
-    templateUrl: '../components/selection/selectionView.html'
+    templateUrl: 'components/selection/selectionView.html'
   })
 
   .state('lobby', {
     url: '/lobby',
     controller: 'lobbyCtrl',
-    templateUrl: '../components/lobby/lobbyView.html',
+    templateUrl: 'components/lobby/lobbyView.html',
     params: {
       'lobby': null
     }
+  })
+
+  .state('game', {
+    url: '/game',
+    controller: 'gameCtrl',
+    templateUrl: 'components/game/gameView.html'
+
   });
 
   $urlRouterProvider.otherwise('/selection');

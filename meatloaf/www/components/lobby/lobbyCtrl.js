@@ -21,6 +21,11 @@ angular.module('meatloaf.lobby', [])
     $scope.$apply();
   });
 
+  // Advances to the game state when a signal is received from the server.
+  socket.on('startGame', function(data) {
+    $state.go('game');
+  })
+
   // Notify server when user has left
   $scope.leaveLobby = function () {
     socket.emit('leaveLobby');
