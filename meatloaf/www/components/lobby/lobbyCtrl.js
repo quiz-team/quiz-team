@@ -10,7 +10,7 @@ angular.module('meatloaf.lobby', [])
 
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
-  socket.emit('enteredLobby', null, function (players){
+  socket.emit('enteredLobby', $scope.lobby.id, function (players){
     $scope.players = players;
   });
 
