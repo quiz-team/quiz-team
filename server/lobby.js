@@ -13,8 +13,8 @@ module.exports = function(roomname) {
     for (var i = 0; i < lobby.players.length; i++) {
       if (lobby.players[i] === null) {
          var newPlayer = playerMaker(id)
-         lobby.players[i] = newPlayer;
          newPlayer.number = i+1
+         lobby.players[i] = newPlayer;
         // console.log("Assigning player num " + i);
         return i + 1;
       }
@@ -28,7 +28,7 @@ module.exports = function(roomname) {
     var playerIndex = -1;
     // get player index
     _und.each(lobby.players, function(player, index) {
-      if (player.id === id) {
+      if (player && player.id === id) {
         playerIndex = index;
       }
     });
@@ -44,7 +44,7 @@ module.exports = function(roomname) {
   lobby.GetPlayerNum = function(id) {
     var playerIndex = -1;
     _und.each(lobby.players, function(player, index) {
-      if (player.id === id) {
+      if (player && player.id === id) {
         playerIndex = index;
       }
     });
@@ -52,7 +52,7 @@ module.exports = function(roomname) {
   };
 
   lobby.GetPlayerById = function(id){
-    return lobby.players[lobby.GetPlayerNum(id)];
+    return lobby.players[lobby.GetPlayerNum(id) - 1];
   };
 
   lobby.GetPlayers = function() {

@@ -10,7 +10,7 @@ angular.module('meatloaf.lobby', [])
 
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
-  socket.emit('enteredLobby', null, function (players){
+  socket.emit('enteredLobby', $scope.lobby.id, function (players){
     $scope.players = players;
   });
 
@@ -28,7 +28,7 @@ angular.module('meatloaf.lobby', [])
 
   // Notify server when user has left
   $scope.leaveLobby = function () {
-    socket.emit('leaveLobby');
+    socket.emit('leaveLobby', $scope.lobby.id);
     // Revisit this if transition animations become an issue
     $state.go('selection');
   };
@@ -37,14 +37,14 @@ angular.module('meatloaf.lobby', [])
   $scope.readyOn = function () {
     console.log("ready button ON");
     $scope.players[0].ready = true;
-    socket.emit('readyOn');
+    socket.emit('readyOn', $scope.lobby.id);
   };
 
   // Notify server that ready button has been released by user
   $scope.readyOff = function () {
     console.log("ready button OFF");
     $scope.players[0].ready = false;
-    socket.emit('readyOff');
+    socket.emit('readyOff', $scope.lobby.id);
   };
 
 }]);

@@ -75,10 +75,11 @@ module.exports = function(server) {
       // updates players when a player is ready and checks if all players are ready
       // if all players are ready, the gameStart event is triggered
       var lobby = lobbies.GetLobby(lobbyId);
+      console.log("SOCKET-ID", socket.id);
       lobby.GetPlayerById(socket.id).ready = true;
-      var allPlayers = lobby.getPlayers();
+      var allPlayers = lobby.GetPlayers();
       var allReady = _und.every(allPlayers, function(player){
-        return player.ready;
+        return player && player.ready;
       })
       if(allReady){
         io.emit('gameStart');
@@ -90,7 +91,7 @@ module.exports = function(server) {
       // updates players when a player is no longer ready
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = false;
-      io.to(lobbyId).emit('updatePlayers', lobby.getPlayers()) 
+      io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers()) 
     });
   });
 
