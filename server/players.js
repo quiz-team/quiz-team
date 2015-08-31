@@ -1,0 +1,1 @@
+module.exports = {}; // collection of player objects

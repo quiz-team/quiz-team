@@ -1,5 +1,6 @@
 var lobbies = require('./lobbies.js')();
 var _und = require('underscore');
+var players = require('./players.js');
 
 module.exports = function(server) {
   // var lobby = lobbyMaker();
@@ -29,7 +30,7 @@ module.exports = function(server) {
 
       // update lobbies for all players
       io.emit('updateLobbies', lobbies.GetAllLobbies());
-      socket.join(lobby.id);      
+      socket.join(lobby.id);
       // pass back lobby object
       callback(lobby);
     });
@@ -38,7 +39,7 @@ module.exports = function(server) {
     socket.on('joinRoom', function(lobbyid, callback) {
       var lobby = lobbies.GetLobby(lobbyid);
       lobby.AddPlayer(socket.id);
-      socket.join(lobby.id); 
+      socket.join(lobby.id);
       // pass back lobby object
       callback(lobby);
     });
@@ -60,14 +61,34 @@ module.exports = function(server) {
       // updates players when another player leaves the lobby
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.RemovePlayer(socket.id);
+      console.log("LOBBY", lobby);
       io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
+      // update lobbies for all players
+      if (lobby.GetPlayers().length === 0) {
+        lobbies.RemoveLobby(lobbyId);
+        console.log("LOBBY LEAVE", lobbies);
+        // update lobbies for all players
+        io.emit('updateLobbies', lobbies.GetAllLobbies());
+      }
     });
 
     // on disconnect, remove player from lobby
     socket.on('disconnect', function() {
-      // TODO handle remove player from lobby object on disconnect
-      // var lobby = lobbies.GetLobby(lobbyId);
-      // lobby.RemovePlayer(socket.id);
+      var player = players[socket.id];
+      // check if player exists (player is created when added to lobby)
+      if (player) {
+        var lobbyId = player.lobbyId;
+        var lobby = lobbies.GetLobby(lobbyId);
+        lobby.RemovePlayer(socket.id);
+        // update other players
+        io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
+        // update lobbies for all players
+        if (lobby.GetPlayers().length === 0) {
+          lobbies.RemoveLobby(lobbyId);
+          // update lobbies for all players
+          io.emit('updateLobbies', lobbies.GetAllLobbies());
+        }
+      }
     });
 
     // check ready
@@ -75,14 +96,15 @@ module.exports = function(server) {
       // updates players when a player is ready and checks if all players are ready
       // if all players are ready, the gameStart event is triggered
       var lobby = lobbies.GetLobby(lobbyId);
-      console.log("SOCKET-ID", socket.id);
       lobby.GetPlayerById(socket.id).ready = true;
       var allPlayers = lobby.GetPlayers();
+      console.log("allPlayers", allPlayers);
       var allReady = _und.every(allPlayers, function(player){
-        return player && player.ready;
-      })
+        return player.ready;
+      });
+
       if(allReady){
-        io.emit('gameStart');
+        io.emit('startGame');
       }
       io.to(lobbyId).emit('updatePlayers', allPlayers);
     });
@@ -91,7 +113,7 @@ module.exports = function(server) {
       // updates players when a player is no longer ready
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = false;
-      io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers()) 
+      io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
     });
   });
 

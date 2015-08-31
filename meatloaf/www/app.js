@@ -24,6 +24,7 @@ app.run(function($ionicPlatform, $rootScope) {
   });
 
   // open socket connection
+  // $rootScope.socket = io.connect('http://38819ac7.ngrok.io');
   $rootScope.socket = io.connect('http://localhost:9090');
 });
 
