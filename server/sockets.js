@@ -98,11 +98,13 @@ module.exports = function(server) {
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = true;
       var allPlayers = lobby.GetPlayers();
+      console.log("allPlayers", allPlayers);
       var allReady = _und.every(allPlayers, function(player){
-        return player && player.ready;
+        return player.ready;
       });
+
       if(allReady){
-        io.emit('gameStart');
+        io.emit('startGame');
       }
       io.to(lobbyId).emit('updatePlayers', allPlayers);
     });
