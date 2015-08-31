@@ -1,4 +1,5 @@
 var playerMaker = require('./player.js');
+var players = require('./players.js');
 var _und = require('underscore');
 
 module.exports = function(roomname) {
@@ -12,14 +13,16 @@ module.exports = function(roomname) {
     console.log("Player with id " + id + " joining");
     for (var i = 0; i < lobby.players.length; i++) {
       if (lobby.players[i] === null) {
-         var newPlayer = playerMaker(id)
-         newPlayer.number = i+1
+         var newPlayer = playerMaker(id);
+         newPlayer.number = i+1;
          lobby.players[i] = newPlayer;
+         newPlayer.lobbyId = lobby.id; // lobby.id assigned in from lobbies
+         players[id] = newPlayer;
         // console.log("Assigning player num " + i);
         return i + 1;
       }
     }
-    return null;   
+    return null;
   };
 
   //Remove a player by socket id number
@@ -36,6 +39,8 @@ module.exports = function(roomname) {
     if (playerIndex === -1) {
       return null;
     }
+    // remove player from room and players collection
+    delete players[id];
     lobby.players[playerIndex] = null;
     return playerIndex + 1;
   };

@@ -1,5 +1,6 @@
 var lobbies = require('./lobbies.js')();
 var _und = require('underscore');
+var players = require('./players.js');
 
 module.exports = function(server) {
   // var lobby = lobbyMaker();
@@ -29,7 +30,7 @@ module.exports = function(server) {
 
       // update lobbies for all players
       io.emit('updateLobbies', lobbies.GetAllLobbies());
-      socket.join(lobby.id);      
+      socket.join(lobby.id);
       // pass back lobby object
       callback(lobby);
     });
@@ -38,7 +39,7 @@ module.exports = function(server) {
     socket.on('joinRoom', function(lobbyid, callback) {
       var lobby = lobbies.GetLobby(lobbyid);
       lobby.AddPlayer(socket.id);
-      socket.join(lobby.id); 
+      socket.join(lobby.id);
       // pass back lobby object
       callback(lobby);
     });
@@ -66,8 +67,18 @@ module.exports = function(server) {
     // on disconnect, remove player from lobby
     socket.on('disconnect', function() {
       // TODO handle remove player from lobby object on disconnect
-      // var lobby = lobbies.GetLobby(lobbyId);
-      // lobby.RemovePlayer(socket.id);
+      var player = players[socket.id];
+      console.log('PLAYERS', players);
+      // check if player exists (player is created when added to lobby)
+      if (player) {
+        var lobbyId = player.lobbyId;
+        var lobby = lobbies.GetLobby(lobbyId);
+        lobby.RemovePlayer(socket.id);
+        // update other players
+        io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
+      }
+
+      console.log(lobby);
     });
 
     // check ready
@@ -80,7 +91,7 @@ module.exports = function(server) {
       var allPlayers = lobby.GetPlayers();
       var allReady = _und.every(allPlayers, function(player){
         return player && player.ready;
-      })
+      });
       if(allReady){
         io.emit('gameStart');
       }
@@ -91,7 +102,7 @@ module.exports = function(server) {
       // updates players when a player is no longer ready
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = false;
-      io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers()) 
+      io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
     });
   });
 
