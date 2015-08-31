@@ -17,9 +17,6 @@ module.exports = function(roomname) {
       // push returns length of array
       newPlayer.lobbyId = lobby.id; // lobby.id assigned in from lobbies
       lobby.players.push(newPlayer);
-      // var index = lobby.players.indexOf(newPlayer);
-      // console.log("add player, index", index);
-      // lobby.players[index].number = index + 1;
       // add player to players object
       players[id] = newPlayer;
       // console.log("Assigning player num " + i);
@@ -48,17 +45,6 @@ module.exports = function(roomname) {
     lobby.players.splice(playerIndex, 1);
     return playerIndex;
   };
-
-  //Get player number by socket id number
-  // lobby.GetPlayerNum = function(id) {
-  //   var playerIndex = -1;
-  //   _und.each(lobby.players, function(player, index) {
-  //     if (player && player.id === id) {
-  //       playerIndex = index;
-  //     }
-  //   });
-  //   return playerIndex + 1;
-  // };
 
   // takes a socked.id and returns player object
   lobby.GetPlayerById = function(id){
