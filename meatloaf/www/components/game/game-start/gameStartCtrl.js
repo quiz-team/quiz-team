@@ -1,34 +1,25 @@
 angular.module('meatloaf.game.start', [])
 
-.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', '$interval', 
-            function ($scope, $rootScope, $state, $interval) {
+.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', 'Timer',
+            function ($scope, $rootScope, $state, Timer) {
 
   var socket = $rootScope.socket;
   var refreshDisplayTime; // Reference to Angular setInterval process
   socket.emit('enteredGame');
 
-  $scope.startTime;   // Server-synced start time of round
-  $scope.duration;    // Duration of countdown until start of game
-  $scope.displayTime; // Current time displayed by timer on page 
+  $scope.timer = Timer; // Current time displayed by timer on page 
 
-  var calculateDisplayTime = function () {
-    // Calculate current display time based on server start time and duration
-    // Display zero if time on page exceeds calculated display time
-    $scope.displayTime = Math.max(0, Math.ceil((($scope.startTime + $scope.duration) - Date.now()) / 1000));
-  };
-
+  var timerData = {startTime: Date.now()-500, duration: 10000};
+  $scope.timer.syncTimerStart(timerData);
   // Receives timer data object from server which indicates start of round
   socket.on('startClock', function(timerData) {
-    $scope.startTime = timerData.startTime;
-    $scope.duration = timerData.duration;
-    // Calculate display time four times per second
-    refreshDisplayTime = $interval(calculateDisplayTime, 250);
+    $scope.timer.syncTimerStart(timerData);
   });
 
   // Navigate to gameRound page
   socket.on('startGame', function() {
     // Terminate refreshDisplayTime process
-    $interval.cancel(refreshDisplayTime);
+    $scope.timer.syncTimerStop();
     // Change state to gameRound-view
     $state.go('gameRound')
   });

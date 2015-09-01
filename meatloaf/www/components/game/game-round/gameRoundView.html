@@ -1,18 +1,18 @@
 <div class="container__round">
   <div class="container__question">
-    <h3> Question goes here? </h3>
+    <h3> {{ question.text }} </h3>
   </div>
 
   <div class="container__timer-bar"> 
-    (Timer bar goes here)
+    Timer bar goes here: {{ timer.displayTime }} 
   </div>
 
   <div class="container__answers">
     <div class="grid">
       <div class="grid__item answer" ng-repeat="answer in answers" 
            on-touch="selectAnswer(answer.id)" on-release="unselectAnswer(answer.id)"
-           ng-class="{ 'answer--locked' : lockedAnswer[answer.id]}">
-            <div class="text__answer">{{ answer.text }}</div>
+           ng-class="{ 'answer--locked' : isLockedAnswer(answer.id)}">
+           {{ answer.text }}
       </div>
     </div>
   </div>

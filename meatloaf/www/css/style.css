@@ -36,13 +36,7 @@
   width: 50%;
   background-color: white;
 }
-.text__answer {
-  display: flex;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  align-items: center;
-}
+
 .answer--locked {
   background-color: green;
 }
