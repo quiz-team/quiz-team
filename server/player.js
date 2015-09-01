@@ -4,6 +4,7 @@ module.exports = function(id){
   player.number= null;
   player.ready = false;
   player.lobbyId = null;
+  player.answers = [];
 
   return player;
 };
