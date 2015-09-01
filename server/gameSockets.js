@@ -5,6 +5,7 @@ var game = require('./game.js')();
 var timer = require('./timerController.js');
 
 module.exports = function(socket, io) {
+
   socket.on('enteredGame', function(data, callback) {
       console.log('entered game');
       game.addPlayer(data.id);
@@ -12,11 +13,24 @@ module.exports = function(socket, io) {
         return (game.players.indexOf(player) !== -1)
       }.bind(this));
       if (gameReady) {
-        io.to(game.id).emit('startClock', timer.preGameTimer());
-        game.startTimer(timer.preGameTimer(), function(){
-          io.to(game.id).emit('startGame')
-        })
+        // start game timer
+        var timerData = timer.preGameTimer();
+        io.to(game.id).emit('startClock', timerData);
+        game.startTimer(timerData, function() {
+          io.to(game.id).emit('startGame');
+        });
       };
     });
+  socket.on('enteredRound', function(){
+    var gameData;
+    var timerData = timer.roundTimer(20000);
+    io.to(game.id).emit('startRound', gameData);
+    game.startTimer(timerData, function() {
+      io.to(game.id).emit('endRound', function() {
+        
+      });
+    });
+
+  })
 
 }
