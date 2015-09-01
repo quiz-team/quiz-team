@@ -3,7 +3,7 @@
 var app = require('./express.js');
 var http = require('http');
 var server = http.Server(app);
-require('./sockets.js')(server);
+require('./mainSockets.js')(server);
 
 
 
