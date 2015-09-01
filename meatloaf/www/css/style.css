@@ -2,3 +2,7 @@
 .ready {
   background-color: green;
 }
+
+.answer--locked {
+  color: red;
+}
