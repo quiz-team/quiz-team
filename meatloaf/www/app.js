@@ -10,7 +10,7 @@ var app = angular.module('meatloaf', [
   'meatloaf.lobby',
   'meatloaf.game.start',
   'meatloaf.game.round',
-  'meatloaf.game.round-over',
+  'meatloaf.game.roundOver',
   'meatloaf.game.over'
 ]);
 
