@@ -25,6 +25,7 @@ angular.module('meatloaf.game.start', [])
     refreshDisplayTime = $interval(calculateDisplayTime, 250);
   });
 
+  // Navigate to gameRound page
   socket.on('startGame', function() {
     // Terminate refreshDisplayTime process
     $interval.cancel(refreshDisplayTime);

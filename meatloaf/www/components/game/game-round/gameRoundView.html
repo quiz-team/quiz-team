@@ -1,1 +1,15 @@
-<div>This is the game round view.</div>
+<div class="container__round">
+  <div class="container__question">
+  </div>
+
+  <div class="container__timer-bar">
+  </div>
+
+  <div class="container__answers">
+    <div class="grid">
+      <div class="grid__item answer" ng-repeat="answer in answers" 
+           on-touch="selectAnswer(answer.id)" on-release="unselectAnswer(answer.id)"
+           ng-class="{ 'answer--locked' : lockedAnswer[answer.id]}"> {{ answer.text }}</div>
+    </div>
+  </div>
+</div>
