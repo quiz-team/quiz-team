@@ -8,7 +8,10 @@ var app = angular.module('meatloaf', [
   'ui.router',
   'meatloaf.selection',
   'meatloaf.lobby',
-  'meatloaf.game'
+  'meatloaf.game.start',
+  'meatloaf.game.round',
+  'meatloaf.game.round-over',
+  'meatloaf.game.over'
 ]);
 
 app.run(function($ionicPlatform, $rootScope) {
@@ -24,8 +27,10 @@ app.run(function($ionicPlatform, $rootScope) {
   });
 
   // open socket connection
-  // $rootScope.socket = io.connect('http://38819ac7.ngrok.io');
+
   $rootScope.socket = io.connect('http://localhost:9090');
+  //debugger;
+  //$rootScope.socket = io.connect();
 });
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -45,12 +50,29 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     }
   })
 
-  .state('game', {
-    url: '/game',
-    controller: 'gameCtrl',
-    templateUrl: 'components/game/gameView.html'
+  .state('gameStart', {
+    url: '/gameStart',
+    controller: 'gameStartCtrl',
+    templateUrl: 'components/game/game-start/gameStartView.html'
+  })
 
-  });
+  .state('gameRound', {
+    url: '/gameRound',
+    controller: 'gameRoundCtrl',
+    templateUrl: 'components/game/game-round/gameRoundView.html'
+  })
+
+  .state('gameRoundOver', {
+    url: '/gameRoundOver',
+    controller: 'gameRoundOverCtrl',
+    templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
+  })
+
+  .state('gameOver', {
+    url: '/gameOver',
+    controller: 'gameOverCtrl',
+    templateUrl: 'components/game/game-over/gameOverView.html'
+  })
 
   $urlRouterProvider.otherwise('/selection');
 }]);
