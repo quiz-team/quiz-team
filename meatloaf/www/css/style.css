@@ -2,3 +2,47 @@
 .ready {
   background-color: green;
 }
+
+.container__answers {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: gray;
+}
+
+.container__question {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 18%;
+  background-color: gray;
+}
+
+.container__timer-bar {
+  height: 7%;
+  background-color: yellow;
+}
+
+.grid {
+  height: 100%;
+}
+
+.grid__item {
+  display: inline-block;
+  border: 1px solid black;
+  height: 33.33333333333%;
+  text-align: center;
+  width: 50%;
+  background-color: white;
+}
+.text__answer {
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.answer--locked {
+  background-color: green;
+}
