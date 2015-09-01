@@ -18,8 +18,8 @@ module.exports = function(socket, io){
     });
 
     // join room
-    socket.on('joinRoom', function(lobbyid, callback) {
-      var lobby = lobbies.GetLobby(lobbyid);
+    socket.on('joinRoom', function(lobbyId, callback) {
+      var lobby = lobbies.GetLobby(lobbyId);
       lobby.AddPlayer(socket.id);
       socket.join(lobby.id);
       // pass back lobby object

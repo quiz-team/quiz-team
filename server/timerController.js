@@ -9,6 +9,7 @@ module.exports = function() {
   };
 
   timer.roundTimer = function(duration) {
+    duration = duration || 20000;
     return {
       duration: duration,
       startTime: Date.now()
@@ -17,4 +18,4 @@ module.exports = function() {
 
 
   return timer;
-}
+};

@@ -1,8 +1,9 @@
 var playerMaker = require('./player.js');
 var players = require('./players.js');
-var round = require('./roundHelper.js')
-var timer = require('./timerController.js')
+var roundMaker = require('./round.js');
+var timer = require('./timerController.js');
 var _und = require('underscore');
+var gameData = require('./trivia.json');
 
 module.exports = function(lobby, numRounds) {
   var game = {};
@@ -12,21 +13,55 @@ module.exports = function(lobby, numRounds) {
   game.id = lobby.id;
   game.numRounds = numRounds || 6;
   game.roundNum = 1;
-  game.questions = round.loadQuestionData(numRounds);
+  game.rounds = {};
+  game.gameData = {};
 
+  game.loadGameData = function(numPlayers) {
+    // sets game.gameData
+  };
 
   game.addPlayer = function(player) {
     game.players.push(player);
-  }
+  };
+
   game.gameStart = function() {
     var questions = Array.slice.apply(game.questions);
     for (var i = 0; i < game.lobby.players.length; i++) {
-      game.lobby.players[i].answers = round.distributeAnswers(questions);
+      game.lobby.players[i].answers = roundMaker.distributeAnswers(questions);
     }
 
   };
 
+
+  game.distributeQuestions = function() {
+    // divide up game.questions to number of players
+  };
+
+  // create round and add player to round.players
+  game.createRound = function(socketId, roundData) {
+    var roundNum = game.roundNum;
+    if (!game.rounds.hasOwnProperty(roundNum)) {
+      game.rounds[roundNum] = roundMaker(roundData);
+    }
+
+
+    // add player to round.players
+    game.rounds[roundNum].players.push(socketId);
+  };
+
+  /** TODO
+   * Distributes game questions/answers for this round
+   * returns gameData
+  */
   game.roundStart = function() {
+
+  };
+
+  /** TODO
+   * Compares submitted answer
+   * returns 
+  */
+  game.roundEnd = function(answerData) {
 
   };
 
@@ -34,11 +69,8 @@ module.exports = function(lobby, numRounds) {
     setTimeout(function() {
       callback();
     }, timer.duration);
-  }
+  };
 
-  game.roundEnd = function() {
-
-  }
   game.redistribute = function() {
 
   };
