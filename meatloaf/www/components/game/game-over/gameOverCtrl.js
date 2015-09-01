@@ -4,11 +4,12 @@ angular.module('meatloaf.game.over', [])
             function ($scope, $rootScope, $state) {
 
   var socket = $rootScope.socket;
+  $scope.results;
 
   socket.emit('enteredGameOver');
 
-  socket.on('gameStats', function(stats) {
-    //TODO Do something with stats here.
+  socket.on('gameStats', function(gameData) {
+    $scope.results = gameData.stats;
   });
 
   socket.on('restartGame', function() {
@@ -19,6 +20,7 @@ angular.module('meatloaf.game.over', [])
   $scope.QuitGame = function() {
     //TODO handle quit game button press here
     socket.emit('quitGame');
+    $state.go('selection');
   };
 
   $scope.PlayAgain = function() {
