@@ -6,6 +6,7 @@
 var app = angular.module('meatloaf', [
   'ionic',
   'ui.router',
+  'meatloaf.services',
   'meatloaf.selection',
   'meatloaf.lobby',
   'meatloaf.game.start',
@@ -28,7 +29,8 @@ app.run(function($ionicPlatform, $rootScope) {
 
   // open socket connection
 
-  $rootScope.socket = io.connect('http://localhost:9090');
+  // $rootScope.socket = io.connect('http://localhost:9090');
+  $rootScope.socket = io.connect('http://195198d5.ngrok.io');
   //debugger;
   //$rootScope.socket = io.connect();
 });
