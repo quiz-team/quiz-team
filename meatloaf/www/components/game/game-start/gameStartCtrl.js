@@ -18,10 +18,7 @@ angular.module('meatloaf.game.start', [])
 
   // Navigate to gameRound page
   socket.on('startGame', function() {
-    // Terminate refreshDisplayTime process
-    $scope.timer.syncTimerStop();
-    // Change state to gameRound-view
-    $state.go('gameRound')
+    $state.go('gameRound');
   });
   
 }]);

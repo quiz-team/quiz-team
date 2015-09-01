@@ -40,3 +40,8 @@
 .answer--locked {
   background-color: green;
 }
+
+.button__quit {
+  width: 70%;
+  height: 200px;
+}
