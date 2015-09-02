@@ -20,12 +20,13 @@ module.exports = function(gameId, numRounds) {
     roundAnswers: []
   };
 
+  var nextId = 0;
   game.getId = function() {
-    var nextId = 0;
     return ++nextId;
   }
 
   game.loadGameData = function(numPlayers) {
+    shuffle(questionBank);
     var playerAnswers = [];
     var playerQuestions = [];
     for (var i = 0; i < numPlayers; i++) {
@@ -41,10 +42,12 @@ module.exports = function(gameId, numRounds) {
     //for each question in questionBank
     questionBank.forEach(function (questionAnswerPair, index) {
       //assign id to question
-      var question = questionAnswerPair.question;
+      var question = {};
+      question.text = questionAnswerPair.question;
       question.id = game.getId();
       //assign id to answer
-      var answer = questionAnswerPair.answer;
+      var answer = {}
+      answer.text = questionAnswerPair.answer;
       answer.id = game.getId();
       //store question->association in questionAnswers
       game.questionAnswerMap[question.id] = answer.id;
@@ -118,6 +121,7 @@ module.exports = function(gameId, numRounds) {
         // push answerId to roundAnswers, at the correct round
         game.roundAnswers[round].push(answerId);
       }
+      console.log("game.roundAnswers: ", game.roundAnswers);
     }
   }
 
@@ -131,19 +135,22 @@ module.exports = function(gameId, numRounds) {
     }, timer.duration);
   };
 
-  game.updateRoundScore = function(answerId){
+  game.updateRoundScore = function(answer){
     // given the current round, check if the answerId matches one of the expected answers
-    if(game.roundAnswer[game.roundNum].indexOf(answerId)!== -1){
+    if(game.roundAnswers[game.roundNum-1].indexOf(answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
+      // console.log("CORRECT ANSWER!")
       game.currentRoundResults.numCorrect++;
     }
-    game.currentRoundResults.answersSubmitted++;
-    if(game.currentRoundResults.answersSubmitted === game.numPlayers){
+    game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
+    if(game.currentRoundResults.answersSubmitted === game.players.length){
       game.allRoundResults.push(game.currentRoundResults);
+      console.log("ROUND RESULTS ", game.currentRoundResults);
     }
   }
 
   game.resetCurrentRound = function(){
+    console.log("RESETTING CURRENT ROUND");
     game.currentRoundResults = {
       answersSubmitted: 0,
       numCorrect: 0
