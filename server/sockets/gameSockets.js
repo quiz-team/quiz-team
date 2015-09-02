@@ -1,9 +1,9 @@
-var lobbies = require('./lobbies.js');
+var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
-var players = require('./players.js');
+var players = require('../collections/players.js');
 // var gameMaker = require('./game.js');
-var games = require('./games.js')();  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
-var timer = require('./timerController.js');
+var games = require('../collections/games.js')();  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
+var timer = require('../utils/timerController.js');
 
 module.exports = function(socket, io) {
 

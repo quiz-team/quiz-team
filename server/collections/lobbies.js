@@ -1,4 +1,4 @@
-var lobbyMaker = require('./lobby.js');
+var lobbyMaker = require('../models/lobby.js');
 var _und = require('underscore');
 
 var lobbies = {};

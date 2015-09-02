@@ -1,4 +1,4 @@
-var gameMaker = require('./game.js');
+var gameMaker = require('../models/game.js');
 
 module.exports = function() {
   var games = {};

@@ -1,6 +1,6 @@
-var lobbies = require('./lobbies.js');
+var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
-var players = require('./players.js');
+var players = require('../collections/players.js');
 
 module.exports = function(socket, io) {
 
