@@ -11,8 +11,13 @@ module.exports = function() {
       games.activeGames[gameId] = gameMaker();
       games.activeGames[gameId].loadGameData();
     }
-
     return games.activeGames[gameId];
+  };
+
+  games.DestroyGame = function(gameId) {
+    if (games.activeGames[gameId]) {
+      delete games.activeGames[gameId];
+    }
   };
 
   return games;

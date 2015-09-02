@@ -161,4 +161,4 @@ module.exports = function(lobby, numRounds) {
 
   return game;
 
-}
+};

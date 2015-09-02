@@ -2,24 +2,26 @@ var lobbies = require('./lobbies.js')();
 var _und = require('underscore');
 var players = require('./players.js');
 
-module.exports = function(socket, io){
-     
-     // create room
-    socket.on('createRoom', function(data, callback) {
-      console.log('trying to create room');
-      var lobby = lobbies.AddLobby();
-      lobby.AddPlayer(socket.id);
+module.exports = function(socket, io) {
 
-      // update lobbies for all players
-      io.emit('updateLobbies', lobbies.GetAllLobbies());
+  // create room
+  socket.on('createRoom', function(data, callback) {
+    console.log('trying to create room');
+    var lobby = lobbies.AddLobby();
+    lobby.AddPlayer(socket.id);
+
+    // join room
+    socket.on('joinRoom', function(lobbyId, callback) {
+      var lobby = lobbies.GetLobby(lobbyId);
+      lobby.AddPlayer(socket.id);
       socket.join(lobby.id);
       // pass back lobby object
       callback(lobby);
     });
 
     // join room
-    socket.on('joinRoom', function(lobbyId, callback) {
-      var lobby = lobbies.GetLobby(lobbyId);
+    socket.on('joinRoom', function(lobbyid, callback) {
+      var lobby = lobbies.GetLobby(lobbyid);
       lobby.AddPlayer(socket.id);
       socket.join(lobby.id);
       // pass back lobby object
@@ -32,14 +34,14 @@ module.exports = function(socket, io){
       console.log('returning rooms', lobbies.GetAllLobbies());
     });
 
-    socket.on('enteredLobby', function(lobbyId, callback){
+    socket.on('enteredLobby', function(lobbyId, callback) {
       // updates players when another player enters the lobby
       var lobby = lobbies.GetLobby(lobbyId);
       io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
       callback(lobby.GetPlayers());
     });
 
-    socket.on('leaveLobby', function(lobbyId){
+    socket.on('leaveLobby', function(lobbyId) {
       // updates players when another player leaves the lobby
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.RemovePlayer(socket.id);
@@ -74,27 +76,28 @@ module.exports = function(socket, io){
     });
 
     // check ready
-    socket.on('readyOn', function(lobbyId){
+    socket.on('readyOn', function(lobbyId) {
       // updates players when a player is ready and checks if all players are ready
       // if all players are ready, the gameStart event is triggered
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = true;
       var allPlayers = lobby.GetPlayers();
       console.log("allPlayers", allPlayers);
-      var allReady = _und.every(allPlayers, function(player){
+      var allReady = _und.every(allPlayers, function(player) {
         return player.ready;
       });
 
-      if(allReady){
+      if (allReady) {
         io.emit('startGame');
       }
       io.to(lobbyId).emit('updatePlayers', allPlayers);
     });
 
-    socket.on('readyOff', function(lobbyId){
+    socket.on('readyOff', function(lobbyId) {
       // updates players when a player is no longer ready
       var lobby = lobbies.GetLobby(lobbyId);
       lobby.GetPlayerById(socket.id).ready = false;
       io.to(lobbyId).emit('updatePlayers', lobby.GetPlayers());
     });
-}
+  });
+};
