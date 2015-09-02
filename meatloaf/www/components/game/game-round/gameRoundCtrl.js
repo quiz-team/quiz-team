@@ -6,10 +6,11 @@ angular.module('meatloaf.game.round', [])
   var socket = $rootScope.socket;
   // var myId = $rootScope.myId;
   var myId = socket.id;
-
   var selectAnswerTimeout;
-  socket.emit('enteredRound');
+
   console.log("EMITTING ENTERED ROUND!");
+  socket.emit('enteredRound');
+  
   $scope.timer = Timer;
   $scope.question;
   $scope.answers;
