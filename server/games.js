@@ -1,4 +1,4 @@
-var gameMaker = require('./game.js')();
+var gameMaker = require('./game.js');
 
 module.exports = function() {
   var games = {};
@@ -8,8 +8,7 @@ module.exports = function() {
   games.FindOrCreateGame = function(gameId) {
     // creates game if it does not exist
     if (!games.activeGames[gameId]) {
-      games.activeGames[gameId] = gameMaker();
-      games.activeGames[gameId].loadGameData();
+      games.activeGames[gameId] = gameMaker(gameId);
     }
     return games.activeGames[gameId];
   };

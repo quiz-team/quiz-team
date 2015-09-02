@@ -5,19 +5,19 @@ var timer = require('./timerController.js');
 var _und = require('underscore');
 var questionBank = require('./trivia.js').trivia;
 
-module.exports = function(lobby, numRounds) {
+module.exports = function(gameId, numRounds) {
 
   var game = {
-    points: 0,
-    lobby: lobby,
     players: [],
-    //id: lobby.id,
-    id: 5,  //TODO: THIS IS WRONG
+    id: gameId,
     numRounds: numRounds || 6,
-    roundNum: 1,
-    rounds: {},
+    roundNum: 0,
+    playersInView: [],
     gameData: {},
-    questionAnswers: {}
+    questionAnswerMap: {},
+    allRoundResults: [],
+    currentRoundResults: {},
+    roundAnswers: []
   };
 
   game.getId = function() {
@@ -26,9 +26,6 @@ module.exports = function(lobby, numRounds) {
   }
 
   game.loadGameData = function(numPlayers) {
-    //FILL THIS IN SOMEHOW:
-    var playerIds = [4, 76, 32, 109743];
-
     var playerAnswers = [];
     var playerQuestions = [];
     for (var i = 0; i < numPlayers; i++) {
@@ -39,7 +36,7 @@ module.exports = function(lobby, numRounds) {
     for (var i = 0; i < this.numRounds; i++) {
       roundQuestions.push([]);
     }
-
+    console.log("PLAYER ANSWERS: ", playerAnswers)
     // sets game.gameData
     //for each question in questionBank
     questionBank.forEach(function (questionAnswerPair, index) {
@@ -50,8 +47,9 @@ module.exports = function(lobby, numRounds) {
       var answer = questionAnswerPair.answer;
       answer.id = game.getId();
       //store question->association in questionAnswers
-      game.questionAnswers[question.id] = answer.id;
+      game.questionAnswerMap[question.id] = answer.id;
       //assign answer to a player in playerAnswers, rotating through players
+      console.log(index % numPlayers);
       playerAnswers[index % numPlayers].push(answer);
       //assign question to roundQuestions, filling up one round at a time.
       roundQuestions[Math.floor(index / numPlayers)].push(question);
@@ -71,12 +69,18 @@ module.exports = function(lobby, numRounds) {
       //shuffle player's answers
       shuffle(answers);
     })
+
+    // Need a comment for this
+    game.gameData.players = {};
     //do something with playerAnswers and playerQuestions
-    playerIds.forEach(function(playerId, index) {
-      game.gameData[playerId] = {};
-      game.gameData[playerId].answers = playerAnswers[index];
-      game.gameData[playerId].questions = playerQuestions[index];
+    game.players.forEach(function(playerId, index) {
+      game.gameData.players[playerId] = {};
+      game.gameData.players[playerId].answers = playerAnswers[index];
+      game.gameData.players[playerId].questions = playerQuestions[index];
     });
+
+    // load up a matrix of correct answers for each round
+    loadCorrectAnswers();
   };
 
   var shuffle = function(array) {
@@ -98,12 +102,27 @@ module.exports = function(lobby, numRounds) {
     return array;
   };
 
+  var loadCorrectAnswers = function() {
+    // this function should load all the correct answer
+    var players = game.gameData.players;
+    for (var round = 0; round < game.numRounds; round++){
+      // create an array in roundAnswers for each round
+      game.roundAnswers.push([]);
+      for (var playerId in players){
+        // find the question for a player
+        var question = players[playerId].questions[round];
+        // find id for question
+        var questionId = question.id;
+        // find answerId that matches questionId using the question-answer-map object
+        var answerId = game.questionAnswerMap[questionId];
+        // push answerId to roundAnswers, at the correct round
+        game.roundAnswers[round].push(answerId);
+      }
+    }
+  }
+
   game.addPlayer = function(player) {
     game.players.push(player);
-  };
-
-  game.gameStart = function() {
-
   };
 
   game.startTimer = function(timer, callback) {
@@ -112,7 +131,24 @@ module.exports = function(lobby, numRounds) {
     }, timer.duration);
   };
 
-  game.loadGameData(4);
+  game.updateRoundScore = function(answerId){
+    // given the current round, check if the answerId matches one of the expected answers
+    if(game.roundAnswer[game.roundNum].indexOf(answerId)!== -1){
+      // if yes increase the total correct in the currentRoundResults
+      game.currentRoundResults.numCorrect++;
+    }
+    game.currentRoundResults.answersSubmitted++;
+    if(game.currentRoundResults.answersSubmitted === game.numPlayers){
+      game.allRoundResults.push(game.currentRoundResults);
+    }
+  }
+
+  game.resetCurrentRound = function(){
+    game.currentRoundResults = {
+      answersSubmitted: 0,
+      numCorrect: 0
+    };
+  }
 
   return game;
 
