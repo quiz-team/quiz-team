@@ -31,7 +31,8 @@ module.exports = function(socket, io) {
     var gameId = players[socket.id].lobbyId;
     var game = games.FindOrCreateGame(gameId);
 
-    game.createRound(socket.id);
+    // TODO: REPLACE THIS
+    // game.createRound(socket.id);
 
     // if all players in round, emit start round with distributed q/a and start timer
     var roundReady = _und.every(game.players, function(player) {
