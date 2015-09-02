@@ -59,18 +59,21 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   })
 
   .state('gameRound', {
+    cache: false,
     url: '/gameRound',
     controller: 'gameRoundCtrl',
     templateUrl: 'components/game/game-round/gameRoundView.html'
   })
 
   .state('gameRoundOver', {
+    cache: false,
     url: '/gameRoundOver',
     controller: 'gameRoundOverCtrl',
     templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
   })
 
   .state('gameOver', {
+    cache: false,
     url: '/gameOver',
     controller: 'gameOverCtrl',
     templateUrl: 'components/game/game-over/gameOverView.html'

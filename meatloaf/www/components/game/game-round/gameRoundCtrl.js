@@ -9,23 +9,27 @@ angular.module('meatloaf.game.round', [])
 
   var selectAnswerTimeout;
   socket.emit('enteredRound');
+  console.log("EMITTING ENTERED ROUND!");
   $scope.timer = Timer;
   $scope.question;
   $scope.answers;
-
   $scope.lockedAnswer = {};
 
   socket.on('startRound', function (roundData) {
     //do something with Q&A data here.
+    console.log("ROUND DATA: ", roundData);
+    console.log("My ID ", myId);
     $scope.answers = roundData.players[myId].answers;
-    $scope.question = roundData.players[myId].question;
+    $scope.currentRound = roundData.currentRound;
+    $scope.question = roundData.players[myId].questions[$scope.currentRound-1];
     $scope.timer.syncTimerStart(roundData.timerData);
+    $scope.$apply();
   });
 
-  socket.on('endRound', function(data, callback){
+  socket.on('endRound', function(){
     $scope.timer.syncTimerStop();
-    callback($scope.lockedAnswer);
-    $state.go('gameRoundOver');
+    socket.emit('submitAnswer', $scope.lockedAnswer);
+    $state.go('gameRoundOver',  $state.params, {reload: true});
   });
 
   $scope.selectAnswer = function (answerId) {

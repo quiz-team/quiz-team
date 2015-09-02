@@ -5,19 +5,20 @@ angular.module('meatloaf.game.roundOver', [])
 
   var socket = $rootScope.socket;
   $scope.timer = Timer;
-  $scope.results;
+  $scope.numCorrect;
 
-  socket.emit('enteredResults');
+  socket.emit('enteredRoundOver');
 
-  socket.on('roundResults', function(roundData) {
+  socket.on('roundResults', function(roundResults) {
     //do something with results
-    $scope.results = roundData.results;
-    $scope.timer.syncTimerStart(roundData.timerData);
+    console.log("ROUND RESULTS", roundResults);
+    $scope.numCorrect = roundResults.numCorrect;
+    $scope.timer.syncTimerStart(roundResults.timerData);
   });
 
   socket.on('nextRound', function() {
     $scope.timer.syncTimerStop();
-    $state.go('gameRound');
+    $state.go('gameRound', $state.params, {reload: true});
   });
 
   socket.on('gameOver', function() {
