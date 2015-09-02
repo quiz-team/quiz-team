@@ -1,4 +1,4 @@
-var timer = require('./timerController.js');
+var timer = require('../utils/timerController.js');
 
 module.exports = function() {
   var round = {};

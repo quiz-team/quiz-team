@@ -1,5 +1,5 @@
 var playerMaker = require('./player.js');
-var players = require('./players.js');
+var players = require('../collections/players.js');
 var _und = require('underscore');
 
 module.exports = function(roomname) {

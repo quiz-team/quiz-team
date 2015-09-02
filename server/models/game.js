@@ -1,9 +1,9 @@
 var playerMaker = require('./player.js');
-var players = require('./players.js');
+var players = require('../collections/players.js');
 var roundMaker = require('./round.js');
-var timer = require('./timerController.js');
+var timer = require('../utils/timerController.js');
 var _und = require('underscore');
-var questionBank = require('./trivia.js').trivia;
+var questionBank = require('../trivia.js').trivia;
 
 module.exports = function(gameId, numRounds) {
 
@@ -26,7 +26,8 @@ module.exports = function(gameId, numRounds) {
   }
 
   game.loadGameData = function(numPlayers) {
-    shuffle(questionBank);
+    var questionSet = questionBank.sets[Math.floor(Math.random() * questionBank.sets.length)].questions;
+    shuffle(questionSet);
     var playerAnswers = [];
     var playerQuestions = [];
     for (var i = 0; i < numPlayers; i++) {
@@ -40,7 +41,7 @@ module.exports = function(gameId, numRounds) {
     console.log("PLAYER ANSWERS: ", playerAnswers)
     // sets game.gameData
     //for each question in questionBank
-    questionBank.forEach(function (questionAnswerPair, index) {
+    questionSet.forEach(function (questionAnswerPair, index) {
       //assign id to question
       var question = {};
       question.text = questionAnswerPair.question;
