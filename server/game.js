@@ -6,18 +6,19 @@ var _und = require('underscore');
 var questionBank = require('./trivia.js').trivia;
 
 module.exports = function(lobby, numRounds) {
-  var game = {};
-  game.points = 0;
-  game.lobby = lobby;
-  game.players = [];
-  //game.id = lobby.id;
-  //TODO: THIS IS WRONG:
-  game.id = 5;
-  game.numRounds = numRounds || 6;
-  game.roundNum = 1;
-  game.rounds = {};
-  game.gameData = {};
-  game.questionAnswers = {};
+
+  var game = {
+    points: 0,
+    lobby: lobby,
+    players: [],
+    //id: lobby.id,
+    id: 5,  //TODO: THIS IS WRONG
+    numRounds: numRounds || 6,
+    roundNum: 1,
+    rounds: {},
+    gameData: {},
+    questionAnswers: {}
+  };
 
   game.getId = function() {
     var nextId = 0;
@@ -76,7 +77,6 @@ module.exports = function(lobby, numRounds) {
       game.gameData[playerId].answers = playerAnswers[index];
       game.gameData[playerId].questions = playerQuestions[index];
     });
-    console.log(game.gameData);
   };
 
   var shuffle = function(array) {
@@ -96,50 +96,13 @@ module.exports = function(lobby, numRounds) {
     }
 
     return array;
-  }
+  };
 
   game.addPlayer = function(player) {
     game.players.push(player);
   };
 
   game.gameStart = function() {
-    var questions = Array.slice.apply(game.questions);
-    for (var i = 0; i < game.lobby.players.length; i++) {
-      game.lobby.players[i].answers = roundMaker.distributeAnswers(questions);
-    }
-
-  };
-
-
-  game.distributeQuestions = function() {
-    // divide up game.questions to number of players
-  };
-
-  // create round and add player to round.players
-  game.createRound = function(socketId, roundData) {
-    var roundNum = game.roundNum;
-    if (!game.rounds.hasOwnProperty(roundNum)) {
-      game.rounds[roundNum] = roundMaker(roundData);
-    }
-
-
-    // add player to round.players
-    game.rounds[roundNum].players.push(socketId);
-  };
-
-  /** TODO
-   * Distributes game questions/answers for this round
-   * returns gameData
-  */
-  game.roundStart = function() {
-
-  };
-
-  /** TODO
-   * Compares submitted answer
-   * returns 
-  */
-  game.roundEnd = function(answerData) {
 
   };
 
@@ -147,14 +110,6 @@ module.exports = function(lobby, numRounds) {
     setTimeout(function() {
       callback();
     }, timer.duration);
-  };
-
-  game.redistribute = function() {
-
-  };
-
-  game.gameEnd = function() {
-
   };
 
   game.loadGameData(4);
