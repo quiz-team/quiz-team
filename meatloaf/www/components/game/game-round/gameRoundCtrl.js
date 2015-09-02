@@ -17,9 +17,9 @@ angular.module('meatloaf.game.round', [])
 
   socket.on('startRound', function (roundData) {
     //do something with Q&A data here.
-    $scope.answers = roundData[myId].answers;
-    $scope.question = roundData[myId].question;
-    $scope.timer.syncTimerStart(roundData.timeData);
+    $scope.answers = roundData.players[myId].answers;
+    $scope.question = roundData.players[myId].question;
+    $scope.timer.syncTimerStart(roundData.timerData);
   });
 
   socket.on('endRound', function(data, callback){
