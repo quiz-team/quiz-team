@@ -1,3 +1,4 @@
+module.exports.trivia = 
 [
   {
     "question": "Friday I'm in Love",
@@ -119,4 +120,4 @@
     "answer": "They Might Be Giants",
     "category": "90s Music"
   }
-]
+];
