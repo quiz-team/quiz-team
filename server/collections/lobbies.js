@@ -24,7 +24,7 @@ var generateLobbyName = function () {
   return lobbyName;
 };
 
-lobbies.AddLobby = function() {
+lobbies.addLobby = function() {
   var roomname = generateLobbyName();
   var newLobby = lobbyMaker(roomname);
   nextId++;
@@ -34,15 +34,15 @@ lobbies.AddLobby = function() {
   return newLobby;
 };
 
-lobbies.GetLobby = function(id) {
+lobbies.getLobby = function(id) {
   return activeLobbies[id];
 };
 
-lobbies.RemoveLobby = function(id) {
+lobbies.removeLobby = function(id) {
   delete activeLobbies[id];
 };
 
-lobbies.GetAllLobbies = function() {
+lobbies.getAllLobbies = function() {
   return _und.map(activeLobbies, function(item) {
     return item;
   });

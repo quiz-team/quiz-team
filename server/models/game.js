@@ -5,13 +5,13 @@ var timer = require('../utils/timerController.js');
 var _und = require('underscore');
 var questionBank = require('../trivia.js').trivia;
 
-module.exports = function(gameId, numRounds) {
+module.exports = function(gameId) {
 
   var game = {
     players: [],
     id: gameId,
-    numRounds: numRounds || 6,
-    roundNum: 0,
+    numRounds: 6,
+    roundNum: 1,
     playersInView: [],
     gameData: {},
     questionAnswerMap: {},
@@ -23,11 +23,17 @@ module.exports = function(gameId, numRounds) {
   var nextId = 0;
   game.getId = function() {
     return ++nextId;
-  }
+  };
 
   game.loadGameData = function(numPlayers) {
-    var questionSet = questionBank.sets[Math.floor(Math.random() * questionBank.sets.length)].questions;
+    var triviaSet = questionBank.sets[Math.floor(Math.random() * questionBank.sets.length)];
+    var questionSet = triviaSet.questions;
     shuffle(questionSet);
+
+    game.gameData.title = triviaSet.title;
+    game.gameData.description = triviaSet.description;
+
+    questionSet = questionSet.splice(0,numPlayers*6);
     var playerAnswers = [];
     var playerQuestions = [];
     for (var i = 0; i < numPlayers; i++) {
@@ -38,7 +44,7 @@ module.exports = function(gameId, numRounds) {
     for (var i = 0; i < this.numRounds; i++) {
       roundQuestions.push([]);
     }
-    console.log("PLAYER ANSWERS: ", playerAnswers)
+    console.log("PLAYER ANSWERS: ", playerAnswers);
     // sets game.gameData
     //for each question in questionBank
     questionSet.forEach(function (questionAnswerPair, index) {
@@ -126,8 +132,14 @@ module.exports = function(gameId, numRounds) {
     }
   }
 
-  game.addPlayer = function(player) {
-    game.players.push(player);
+  game.addPlayer = function(playerId) {
+    game.players.push(playerId);
+  };
+
+  game.loadPlayers = function(players) {
+    players.forEach(function(player) {
+      game.players.push(player.id);
+    });
   };
 
   game.startTimer = function(timer, callback) {
@@ -147,7 +159,7 @@ module.exports = function(gameId, numRounds) {
     if(game.currentRoundResults.answersSubmitted === game.players.length){
       game.allRoundResults.push(game.currentRoundResults);
     }
-  }
+  };
 
   game.resetCurrentRound = function(){
     console.log("RESETTING CURRENT ROUND");
@@ -155,7 +167,11 @@ module.exports = function(gameId, numRounds) {
       answersSubmitted: 0,
       numCorrect: 0
     };
-  }
+  };
+
+  game.resetPlayersInView = function() {
+    this.playersInView = [];
+  };
 
   return game;
 

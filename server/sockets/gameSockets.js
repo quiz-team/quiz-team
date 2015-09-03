@@ -2,89 +2,51 @@ var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
 var players = require('../collections/players.js');
 // var gameMaker = require('./game.js');
-var games = require('../collections/games.js')();  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
+var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
 var timer = require('../utils/timerController.js');
 
+// Constants
+var ROUND_TIMER = 6000;
+var ROUND_OVER_TIMER = 3000;
+var PRE_GAME_TIMER = 5000;
+
+var everyoneInView = function(game, socket){
+  game.playersInView.push(socket.id);
+  // return true if all expected players are in the view
+  return _und.every(game.players, function(playerId) {
+    return (game.playersInView.indexOf(playerId) !== -1);
+  }.bind(this));
+};
+
 module.exports = function(socket, io) {
-  
-
+  var game;
   socket.on('enteredGame', function() {
-    var lobbyId = players[socket.id].lobbyId;
-    // create a new game with lobby Id
-    var game = games.FindOrCreateGame(lobbyId);
-
-
-    //find the lobby with lobbyId
-    var lobby = lobbies.GetLobby(lobbyId);
-    console.log("THIS IS THE LOBBY ID: ", lobbyId);
-    var lobbyPlayers = lobby.GetPlayers();
-    // console.log(lobbyPlayers);
-
-    game.addPlayer(socket.id);
-
-    var gameReady = _und.every(lobbyPlayers, function(player) {
-      return (game.players.indexOf(player.id) !== -1);
-    }.bind(this));
-
-    // console.log("GAME READY? ", gameReady);
-
-    if (gameReady) {
-
-      // console.log("GAME READY ON SOCKET: ", socket.id);
-
-      // load up game data given number of players in game
-      game.loadGameData(game.players.length);
-
+    game = games.findGame(socket);
+    if (everyoneInView(game, socket)) {
       // start game timer
-      var timerData = timer.setTimer(10000);
+      var timerData = timer.setTimer(PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
+        game.resetPlayersInView();
         io.to(game.id).emit('startGame');
       });
     }
   });
 
   socket.on('enteredRound', function() {
-    // console.log("PLAYER ENTERED ROUND: ", socket.id);
-    var gameId = players[socket.id].lobbyId;
-
-    // Find the appropriate game for the player
-    var game = games.FindOrCreateGame(gameId);
-    game.playersInView.push(socket.id);
-
-    // TODO: REPLACE THIS
-    // game.createRound(socket.id);
-
-    // console.log("game.players ", game.players);
-    // console.log("game.playersInView ", game.playersInView);
-
-    // if all players in round, emit start round with distributed q/a and start timer
-    var viewReady = _und.every(game.players, function(playerId) {
-      return (game.playersInView.indexOf(playerId) !== -1);
-    }.bind(this));
-
-    if (viewReady) {
-      // increase the round number on the game
-
-      console.log("READY TO SEND OUT ROUND DATA");
-      game.roundNum++;
-
-      // reset/set up the currentRoundResults object
+    if (everyoneInView(game, socket)) {
+      
       game.resetCurrentRound();
+      var roundData = {};
+      roundData.timerData = timer.setTimer(ROUND_TIMER);
+      roundData.roundNum = game.roundNum;
 
-      var timerData = timer.setTimer(20000);
-
-      game.gameData.timerData = timerData;
-      game.gameData.currentRound = game.roundNum;
-
-      // console.log("GAME DATA ", game.gameData);
-
-      io.to(game.id).emit('startRound', game.gameData);
+      io.to(game.id).emit('startRound', roundData);
       // start the round timer
-      game.startTimer(timerData, function() {
+      game.startTimer(roundData.timerData, function() {
         // expect answer data from each player
         io.to(game.id).emit('endRound');
-        game.playersInView =[];
+        game.resetPlayersInView();
       });
     }
   });
@@ -92,53 +54,35 @@ module.exports = function(socket, io) {
   // SET UP FOR LATER
   socket.on('submitAnswer', function(answerId){
     // console.log("PLAYER SUBMITTED AN ANSWER");
-    var game = games.FindOrCreateGame(players[socket.id].lobbyId);
+    var game = games.findGame(socket);
     game.updateRoundScore(answerId);
   });
 
   socket.on('enteredRoundOver', function() {
-    // console.log("ENTERED END OF ROUND VIEW: ", socket.id);
-    // THIS SHOULD BE EXTRACTED OUT INTO A FUNCTION
-    var gameId = players[socket.id].lobbyId;
+    if(everyoneInView(game, socket)){
+      game.roundNum++;
 
-    // Find the appropriate game for the player
-    var game = games.FindOrCreateGame(gameId);
-    game.playersInView.push(socket.id);
-    // console.log("game.players: ", game.players)
-    // console.log("game.playersInView: ", game.playersInView)
-
-    // if all players in round, emit start round with distributed q/a and start timer
-    var viewReady = _und.every(game.players, function(playerId) {
-      return (game.playersInView.indexOf(playerId) !== -1);
-    }.bind(this));
-    // Wait for all the players to enter the view
-    // send out the game.roundResults of the round
-    // after a timer, send them on to the next round, or the game over screen
-    if(viewReady){
-      console.log("EVERYONE IN END OF ROUND VIEW")
-      // EXTRACT THIS POTENTIALLY
-      var timerData = timer.setTimer(10000);
-
+      var timerData = timer.setTimer(ROUND_OVER_TIMER);
       game.currentRoundResults.timerData = timerData;
-      console.log("ABOUT TO EMIT, CURRENT RESULTS ARE ", game.currentRoundResults);
+
       io.to(game.id).emit('roundResults', game.currentRoundResults);
 
       game.startTimer(timerData, function() {
-        if (game.roundNum === game.numRounds) {
+        if (game.roundNum > game.numRounds) {
           io.to(game.id).emit('gameOver');
         } else {
-          io.to(game.id).emit('nextRound');
+          io.to(game.id).emit('nextRound', game.roundNum);
         }
-        game.playersInView =[];
+        game.resetPlayersInView();
       });
     }
   });
 
   socket.on('enteredGameOver', function() {
     var gameId = players[socket.id].lobbyId;
-    var game = games.FindOrCreateGame(gameId);
+    var game = games.findGame(socket);
     io.to(game.id).emit('gameStats', game.gameData);
-    games.DestroyGame(gameId);
+    games.destroyGame(gameId);
   });
 
   socket.on('playAgain', function() {
