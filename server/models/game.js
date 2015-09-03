@@ -146,7 +146,6 @@ module.exports = function(gameId, numRounds) {
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
       game.allRoundResults.push(game.currentRoundResults);
-      console.log("ROUND RESULTS ", game.currentRoundResults);
     }
   }
 

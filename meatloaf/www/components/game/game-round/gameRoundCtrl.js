@@ -15,7 +15,7 @@ angular.module('meatloaf.game.round', [])
   $scope.answers;
   $scope.lockedAnswer = {};
 
-  socket.on('startRound', function (roundData) {
+  socket.once('startRound', function (roundData) {
     //do something with Q&A data here.
     console.log("ROUND DATA: ", roundData);
     console.log("My ID ", myId);
@@ -26,7 +26,7 @@ angular.module('meatloaf.game.round', [])
     $scope.$apply();
   });
 
-  socket.on('endRound', function(){
+  socket.once('endRound', function(){
     $scope.timer.syncTimerStop();
     socket.emit('submitAnswer', $scope.lockedAnswer);
     $state.go('gameRoundOver',  $state.params, {reload: true});
