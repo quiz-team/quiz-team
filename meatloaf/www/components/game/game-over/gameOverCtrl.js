@@ -8,11 +8,11 @@ angular.module('meatloaf.game.over', [])
 
   socket.emit('enteredGameOver');
 
-  socket.on('gameStats', function(gameData) {
+  socket.once('gameStats', function(gameData) {
     $scope.results = gameData.stats;
   });
 
-  socket.on('restartGame', function() {
+  socket.once('restartGame', function() {
     //TODO Handle restart game signal from server.
     $state.go('gameStart');
   })

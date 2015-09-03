@@ -6,17 +6,13 @@ var games = require('../collections/games.js')();  // CHANGE THIS TO AN OBJECT I
 var timer = require('../utils/timerController.js');
 
 module.exports = function(socket, io) {
+  
 
   socket.on('enteredGame', function() {
     var lobbyId = players[socket.id].lobbyId;
     // create a new game with lobby Id
     var game = games.FindOrCreateGame(lobbyId);
 
-    // SET UP FOR LATER
-    socket.on('submitAnswer', function(answerId){
-      // console.log("PLAYER SUBMITTED AN ANSWER");
-      game.updateRoundScore(answerId);
-    })
 
     //find the lobby with lobbyId
     var lobby = lobbies.GetLobby(lobbyId);
@@ -93,6 +89,13 @@ module.exports = function(socket, io) {
     }
   });
 
+  // SET UP FOR LATER
+  socket.on('submitAnswer', function(answerId){
+    // console.log("PLAYER SUBMITTED AN ANSWER");
+    var game = games.FindOrCreateGame(players[socket.id].lobbyId);
+    game.updateRoundScore(answerId);
+  });
+
   socket.on('enteredRoundOver', function() {
     // console.log("ENTERED END OF ROUND VIEW: ", socket.id);
     // THIS SHOULD BE EXTRACTED OUT INTO A FUNCTION
@@ -117,7 +120,7 @@ module.exports = function(socket, io) {
       var timerData = timer.setTimer(10000);
 
       game.currentRoundResults.timerData = timerData;
-
+      console.log("ABOUT TO EMIT, CURRENT RESULTS ARE ", game.currentRoundResults);
       io.to(game.id).emit('roundResults', game.currentRoundResults);
 
       game.startTimer(timerData, function() {
