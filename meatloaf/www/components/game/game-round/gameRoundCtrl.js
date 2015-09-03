@@ -1,9 +1,8 @@
 angular.module('meatloaf.game.round', [])
 
-.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer',
-            function ($scope, $rootScope, $state, $timeout, Timer) {
+.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket',
+            function ($scope, $rootScope, $state, $timeout, Timer, socket) {
 
-  var socket = $rootScope.socket;
   var myId = socket.id;
   var selectAnswerTimeout;
 
@@ -23,7 +22,6 @@ angular.module('meatloaf.game.round', [])
     $scope.currentRound = roundData.currentRound;
     $scope.question = roundData.players[myId].questions[$scope.currentRound-1];
     $scope.timer.syncTimerStart(roundData.timerData);
-    $scope.$apply();
   });
 
   socket.once('endRound', function(){

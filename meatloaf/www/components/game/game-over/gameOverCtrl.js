@@ -1,9 +1,8 @@
 angular.module('meatloaf.game.over', [])
 
-.controller('gameOverCtrl', ['$scope', '$rootScope', '$state', 
-            function ($scope, $rootScope, $state) {
+.controller('gameOverCtrl', ['$scope', '$rootScope', '$state', 'socket',
+            function ($scope, $rootScope, $state, socket) {
 
-  var socket = $rootScope.socket;
   $scope.results;
 
   socket.emit('enteredGameOver');

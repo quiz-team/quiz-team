@@ -1,9 +1,7 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state',
-            function ($scope, $rootScope, $state) {
-
-  var socket = $rootScope.socket;
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket',
+            function ($scope, $rootScope, $state, socket) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [{number: 1, ready: false}, {number: 2, ready: false}];
@@ -18,7 +16,7 @@ angular.module('meatloaf.lobby', [])
   //  callback is passed array of objects with player ID and button state
   socket.on('updatePlayers', function (players) {
     $scope.players = players;
-    $scope.$apply();
+    // $scope.$apply();
   });
 
   // Advances to the game state when a signal is received from the server.

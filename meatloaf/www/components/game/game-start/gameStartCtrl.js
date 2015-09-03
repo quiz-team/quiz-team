@@ -1,9 +1,8 @@
 angular.module('meatloaf.game.start', [])
 
-.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', 'Timer',
-            function ($scope, $rootScope, $state, Timer) {
+.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket',
+            function ($scope, $rootScope, $state, Timer, socket) {
 
-  var socket = $rootScope.socket;
   var refreshDisplayTime; // Reference to Angular setInterval process
   socket.emit('enteredGame');
 

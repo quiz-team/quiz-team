@@ -1,9 +1,8 @@
 angular.module('meatloaf.game.roundOver', [])
 
-.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer',
-            function ($scope, $rootScope, $state, Timer) {
+.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket',
+            function ($scope, $rootScope, $state, Timer, socket) {
 
-  var socket = $rootScope.socket;
   $scope.timer = Timer;
   $scope.numCorrect;
 

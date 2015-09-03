@@ -26,3 +26,38 @@ angular.module('meatloaf.services', [])
   return timerObj;
   
 }])
+
+.factory('socket', ['$rootScope', function ($rootScope) {
+  var socket = io.connect('http://44f61333.ngrok.io');
+  // var socket = io.connect('http://localhost:9090');
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {  
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      });
+    },
+
+    once: function (eventName, callback) {
+      socket.once(eventName, function () {  
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    }
+  };
+}]);
