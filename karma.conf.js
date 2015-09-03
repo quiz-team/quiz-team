@@ -2,6 +2,7 @@
 // Generated on Mon Jun 30 2014 19:35:20 GMT-0700 (PDT)
 
 module.exports = function(config) {
+  'use strict';
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,20 +16,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      // angular source
-      'meatloaf/www/lib/angular/angular.js',
-      'meatloaf/www/lib/ionic/js/ionic.bundle.js',
-      'meatloaf/www/lib/angular-animate/angular-animate.js',
-      'meatloaf/www/lib/angular-ui-router/release/angular-ui-router.js',
-      'meatloaf/www/lib/angular-sanitize/angular-sanitize.js',
-      'meatloaf/www/lib/ui-router/release/angular-ui-router.js',
-
-      // our app code
-      'meatloaf/www/**/*.js',
-
       // our spec files
-      // 'node_modules/expect.js/index.js',
-      'specs/client/selectionControllerSpec.js'
+      'specs/client/*.js',
+
+      // // angular source
+      // 'meatloaf/www/lib/angular/angular.js',
+      // 'meatloaf/www/lib/ionic/js/ionic.bundle.js',
+      // 'meatloaf/www/lib/angular-animate/angular-animate.js',
+      // 'meatloaf/www/lib/angular-ui-router/release/angular-ui-router.js',
+      // 'meatloaf/www/lib/angular-sanitize/angular-sanitize.js',
+      // 'meatloaf/www/lib/ui-router/release/angular-ui-router.js',
+
+      // // 'node_modules/expect.js/index.js',
+      // // our app code
+      // 'meatloaf/www/**/*.js'
     ],
 
 
