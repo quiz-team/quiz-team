@@ -1,23 +1,29 @@
 var gameMaker = require('../models/game.js');
+var players = require('../collections/players.js');
 
-module.exports = function() {
-  var games = {};
+module.exports = {
 
-  games.activeGames = {};
+  activeGames: {},
 
-  games.FindOrCreateGame = function(gameId) {
+  createGame: function(gameId, players) {
     // creates game if it does not exist
-    if (!games.activeGames[gameId]) {
-      games.activeGames[gameId] = gameMaker(gameId);
-    }
-    return games.activeGames[gameId];
-  };
+    if (!this.activeGames[gameId]) {
+      this.activeGames[gameId] = gameMaker(gameId);
+      this.activeGames[gameId].loadPlayers(players);
+      this.activeGames[gameId].loadGameData(players.length);
 
-  games.DestroyGame = function(gameId) {
-    if (games.activeGames[gameId]) {
-      delete games.activeGames[gameId];
     }
-  };
+    return this.activeGames[gameId];
+  },
 
-  return games;
+  findGame: function(socket) {
+    var gameId = players[socket.id].lobbyId;
+    return this.activeGames[gameId];
+  },
+
+  destroyGame: function(gameId) {
+    if (this.activeGames[gameId]) {
+      delete this.activeGames[gameId];
+    }
+  }
 };

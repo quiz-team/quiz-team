@@ -1,12 +1,14 @@
 angular.module('meatloaf.game.start', [])
 
-.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket',
-            function ($scope, $rootScope, $state, Timer, socket) {
+.controller('gameStartCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket', 'trivia',
+            function ($scope, $rootScope, $state, Timer, socket, trivia) {
 
   var refreshDisplayTime; // Reference to Angular setInterval process
   socket.emit('enteredGame');
 
   $scope.timer = Timer; // Current time displayed by timer on page 
+  $scope.title = trivia.title;
+  $scope.description = trivia.description;
 
   // var timerData = {startTime: Date.now()-500, duration: 10000};
   // $scope.timer.syncTimerStart(timerData);

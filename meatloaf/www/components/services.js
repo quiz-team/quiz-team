@@ -65,4 +65,38 @@ angular.module('meatloaf.services', [])
       });
     }
   };
+}])
+
+.factory('trivia', ['socket', function(socket) {
+  var triviaData = {};
+
+  return {
+
+    title: null,
+
+    description: null,
+
+    currentQuestion: null,
+
+    roundNum: 1,
+
+    updateRound: function(roundNum) {
+      this.roundNum = roundNum;
+      this.currentQuestion = triviaData.questions[roundNum-1];
+    },
+
+    setData: function(gameData) {
+      // basic data, fill out later
+      // trivia data is only for current user
+      triviaData = gameData.players[socket.getId()];
+      this.title = gameData.title;
+      this.description = gameData.description;
+    },
+
+    getAnswers: function() {
+      return triviaData.answers;
+    }
+
+  };
+
 }]);

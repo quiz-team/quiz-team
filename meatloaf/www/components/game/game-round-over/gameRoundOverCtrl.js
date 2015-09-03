@@ -1,7 +1,7 @@
 angular.module('meatloaf.game.roundOver', [])
 
-.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket',
-            function ($scope, $rootScope, $state, Timer, socket) {
+.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket', 'trivia',
+            function ($scope, $rootScope, $state, Timer, socket, trivia) {
 
   $scope.timer = Timer;
   $scope.numCorrect;
@@ -15,8 +15,9 @@ angular.module('meatloaf.game.roundOver', [])
     $scope.timer.syncTimerStart(roundResults.timerData);
   });
 
-  socket.once('nextRound', function() {
+  socket.once('nextRound', function(roundNum) {
     $scope.timer.syncTimerStop();
+    trivia.updateRound(roundNum);
     $state.go('gameRound', $state.params, {reload: true});
   });
 

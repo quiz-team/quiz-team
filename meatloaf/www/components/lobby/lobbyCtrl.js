@@ -1,7 +1,7 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket',
-            function ($scope, $rootScope, $state, socket) {
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia',
+            function ($scope, $rootScope, $state, socket, trivia) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [{number: 1, ready: false}, {number: 2, ready: false}];
@@ -20,7 +20,9 @@ angular.module('meatloaf.lobby', [])
   });
 
   // Advances to the game state when a signal is received from the server.
-  socket.on('startGame', function(data) {
+  socket.on('goToStartScreen', function(triviaData) {
+    trivia.setData(triviaData);
+    trivia.updateRound(1);
     $state.go('gameStart');
   });
 

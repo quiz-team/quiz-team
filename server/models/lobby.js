@@ -10,7 +10,7 @@ module.exports = function(roomname) {
 
   //Add a player by a socket id number
   //Returns that player's number
-  lobby.AddPlayer = function(id) {
+  lobby.addPlayer = function(id) {
     console.log("Player with id " + id + " joining");
     if (lobby.players.length < maxPlayers) {
       var newPlayer = playerMaker(id);
@@ -28,7 +28,7 @@ module.exports = function(roomname) {
 
   //Remove a player by socket id number
   //Returns that player's number
-  lobby.RemovePlayer = function(id) {
+  lobby.removePlayer = function(id) {
     var playerIndex = -1;
     // get player index
     _und.each(lobby.players, function(player, index) {
@@ -47,7 +47,7 @@ module.exports = function(roomname) {
   };
 
   // takes a socked.id and returns player object
-  lobby.GetPlayerById = function(id){
+  lobby.getPlayerById = function(id){
     var result;
     _und.each(lobby.players, function(player, index) {
       if (player.id === id) {
@@ -57,7 +57,7 @@ module.exports = function(roomname) {
     return result;
   };
 
-  lobby.GetPlayers = function() {
+  lobby.getPlayers = function() {
     return lobby.players;
   };
 
