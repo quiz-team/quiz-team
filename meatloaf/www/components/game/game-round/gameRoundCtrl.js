@@ -3,7 +3,7 @@ angular.module('meatloaf.game.round', [])
 .controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket',
             function ($scope, $rootScope, $state, $timeout, Timer, socket) {
 
-  var myId = socket.id;
+  var myId = socket.getId();
   var selectAnswerTimeout;
 
   console.log("EMITTING ENTERED ROUND!");

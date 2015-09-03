@@ -28,34 +28,39 @@ angular.module('meatloaf.services', [])
 }])
 
 .factory('socket', ['$rootScope', function ($rootScope) {
-  var socket = io.connect('http://44f61333.ngrok.io');
-  // var socket = io.connect('http://localhost:9090');
+  // var socket = io.connect('http://44f61333.ngrok.io');
+  var socketio = io.connect('http://localhost:9090');
   return {
+
+    getId: function() {
+      return socketio.id;
+    },
+
     on: function (eventName, callback) {
-      socket.on(eventName, function () {  
+      socketio.on(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
-          callback.apply(socket, args);
+          callback.apply(socketio, args);
         });
       });
     },
 
     emit: function (eventName, data, callback) {
-      socket.emit(eventName, data, function () {
+      socketio.emit(eventName, data, function () {
         var args = arguments;
         $rootScope.$apply(function () {
           if (callback) {
-            callback.apply(socket, args);
+            callback.apply(socketio, args);
           }
         });
       });
     },
 
     once: function (eventName, callback) {
-      socket.once(eventName, function () {  
+      socketio.once(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
-          callback.apply(socket, args);
+          callback.apply(socketio, args);
         });
       });
     }

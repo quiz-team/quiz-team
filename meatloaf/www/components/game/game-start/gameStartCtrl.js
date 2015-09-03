@@ -8,8 +8,9 @@ angular.module('meatloaf.game.start', [])
 
   $scope.timer = Timer; // Current time displayed by timer on page 
 
-  var timerData = {startTime: Date.now()-500, duration: 10000};
-  $scope.timer.syncTimerStart(timerData);
+  // var timerData = {startTime: Date.now()-500, duration: 10000};
+  // $scope.timer.syncTimerStart(timerData);
+
   // Receives timer data object from server which indicates start of round
   socket.once('startClock', function(timerData) {
     $scope.timer.syncTimerStart(timerData);
