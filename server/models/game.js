@@ -28,6 +28,7 @@ module.exports = function(gameId, numRounds) {
   game.loadGameData = function(numPlayers) {
     var questionSet = questionBank.sets[Math.floor(Math.random() * questionBank.sets.length)].questions;
     shuffle(questionSet);
+    questionSet = questionSet.splice(0,numPlayers*6);
     var playerAnswers = [];
     var playerQuestions = [];
     for (var i = 0; i < numPlayers; i++) {
@@ -38,7 +39,7 @@ module.exports = function(gameId, numRounds) {
     for (var i = 0; i < this.numRounds; i++) {
       roundQuestions.push([]);
     }
-    console.log("PLAYER ANSWERS: ", playerAnswers)
+    console.log("PLAYER ANSWERS: ", playerAnswers);
     // sets game.gameData
     //for each question in questionBank
     questionSet.forEach(function (questionAnswerPair, index) {
