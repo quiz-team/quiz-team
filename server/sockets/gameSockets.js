@@ -10,6 +10,11 @@ var ROUND_TIMER = 6000;
 var ROUND_OVER_TIMER = 3000;
 var PRE_GAME_TIMER = 5000;
 
+// testing timers
+// var ROUND_TIMER = 2000;
+// var ROUND_OVER_TIMER = 1000;
+// var PRE_GAME_TIMER = 200;
+
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.id);
   // return true if all expected players are in the view
@@ -81,7 +86,8 @@ module.exports = function(socket, io) {
   socket.on('enteredGameOver', function() {
     var gameId = players[socket.id].lobbyId;
     var game = games.findGame(socket);
-    io.to(game.id).emit('gameStats', game.gameData);
+    game.getGameResults();
+    io.to(game.id).emit('gameStats', game.gameData.stats);
     games.destroyGame(gameId);
   });
 

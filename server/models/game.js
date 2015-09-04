@@ -13,7 +13,15 @@ module.exports = function(gameId) {
     numRounds: 6,
     roundNum: 1,
     playersInView: [],
-    gameData: {},
+    gameData: {
+      title: '',
+      description: '',
+      players: {},
+      stats: {
+        allRoundResults: [],
+        gameEndTotal: 0
+      }
+    },
     questionAnswerMap: {},
     allRoundResults: [],
     currentRoundResults: {},
@@ -157,7 +165,7 @@ module.exports = function(gameId) {
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
-      game.allRoundResults.push(game.currentRoundResults);
+      game.gameData.stats.allRoundResults.push(game.currentRoundResults);
     }
   };
 
@@ -167,6 +175,17 @@ module.exports = function(gameId) {
       answersSubmitted: 0,
       numCorrect: 0
     };
+  };
+
+  /**
+   * sets property on game with end of game results
+   */
+  game.getGameResults = function() {
+    game.gameData.stats.gameEndTotal = game.gameData.stats.allRoundResults
+      .reduce(function(total, current) {
+        total += current.numCorrect;
+        return total;
+      }, 0);
   };
 
   game.resetPlayersInView = function() {

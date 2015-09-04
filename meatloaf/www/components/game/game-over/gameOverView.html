@@ -1,3 +1,8 @@
 <div>This is the game over view.</div>
-<div>Score: {{ results.teamScore }}</div>
-<div class="button__quit" ng-click="QuitGame()">Quit</div>
+
+<ul>
+  <li ng-repeat="roundResults in stats.allRoundResults track by $index">Round {{$index + 1}}: {{ roundResults.numCorrect }} Correct</li>
+</ul>
+<div>Score: {{ stats.gameEndTotal }}</div>
+<div class="button button-full button-balanced button__play-again" ng-click="playAgain()">Play Again</div>
+<div class="button button-full button-assertive button__quit" ng-click="quitGame()">Quit</div>
