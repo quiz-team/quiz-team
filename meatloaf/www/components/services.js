@@ -29,43 +29,48 @@ angular.module('meatloaf.services', [])
 
 .factory('socket', ['$rootScope', function ($rootScope) {
   // var socket = io.connect('http://44f61333.ngrok.io');
-  var socketio = io.connect('http://localhost:9090');
+  var playerSocket;
   return {
 
+    setupSocket: function() {
+      playerSocket = io.connect('http://fba4f7ef.ngrok.io');
+    },
+
     getId: function() {
-      return socketio.id;
+      return playerSocket.id;
     },
 
     on: function (eventName, callback) {
-      socketio.on(eventName, function () {  
+      playerSocket.on(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
-          callback.apply(socketio, args);
+          callback.apply(playerSocket, args);
         });
       });
     },
 
     emit: function (eventName, data, callback) {
-      socketio.emit(eventName, data, function () {
+      playerSocket.emit(eventName, data, function () {
         var args = arguments;
         $rootScope.$apply(function () {
           if (callback) {
-            callback.apply(socketio, args);
+            callback.apply(playerSocket, args);
           }
         });
       });
     },
 
     once: function (eventName, callback) {
-      socketio.once(eventName, function () {  
+      playerSocket.once(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
-          callback.apply(socketio, args);
+          callback.apply(playerSocket, args);
         });
       });
     }
   };
 }])
+
 
 .factory('trivia', ['socket', function(socket) {
   var triviaData = {};
