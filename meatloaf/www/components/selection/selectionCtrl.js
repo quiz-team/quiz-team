@@ -11,12 +11,11 @@ angular.module('meatloaf.selection', [])
     $scope.lobbies = lobbiesData;
     // $scope.$apply();
   });
-  
+
   socket.on('updateLobbies', function(lobbiesData){
     $scope.lobbies = lobbiesData;
     // $scope.$apply();
   });
-
   $scope.createRoom = function() {
     socket.emit('createRoom', null, function(lobby) {
       $state.go('lobby', {lobby: lobby});

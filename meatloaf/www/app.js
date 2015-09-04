@@ -15,7 +15,7 @@ var app = angular.module('meatloaf', [
   'meatloaf.game.over'
 ]);
 
-app.run(function($ionicPlatform, $rootScope) {
+app.run(function($ionicPlatform, $rootScope, socket) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -26,6 +26,8 @@ app.run(function($ionicPlatform, $rootScope) {
       StatusBar.styleDefault();
     }
   });
+
+  socket.setupSocket();
 
   // open socket connection
 
