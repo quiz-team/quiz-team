@@ -37,16 +37,18 @@ app.run(function($ionicPlatform, $rootScope, socket) {
   //$rootScope.socket = io.connect();
 });
 
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
+  function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider.state('selection', {
-    url: '/selection',
+    // url: '/selection',
+    url: '/',
     controller: 'selectionCtrl',
     templateUrl: 'components/selection/selectionView.html'
   })
 
   .state('lobby', {
-    url: '/lobby',
+    // url: '/lobby',
     controller: 'lobbyCtrl',
     templateUrl: 'components/lobby/lobbyView.html',
     params: {
@@ -55,31 +57,34 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   })
 
   .state('gameStart', {
-    url: '/gameStart',
+    // url: '/gameStart',
     controller: 'gameStartCtrl',
     templateUrl: 'components/game/game-start/gameStartView.html'
   })
 
   .state('gameRound', {
     cache: false,
-    url: '/gameRound',
+    // url: '/gameRound',
     controller: 'gameRoundCtrl',
     templateUrl: 'components/game/game-round/gameRoundView.html'
   })
 
   .state('gameRoundOver', {
     cache: false,
-    url: '/gameRoundOver',
+    // url: '/gameRoundOver',
     controller: 'gameRoundOverCtrl',
     templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
   })
 
   .state('gameOver', {
     cache: false,
-    url: '/gameOver',
+    // url: '/gameOver',
     controller: 'gameOverCtrl',
     templateUrl: 'components/game/game-over/gameOverView.html'
-  })
+  });
 
-  $urlRouterProvider.otherwise('/selection');
+  // removes hash from url
+  $locationProvider.html5Mode(true);
+
+  $urlRouterProvider.otherwise('/');
 }]);
