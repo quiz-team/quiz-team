@@ -13,7 +13,12 @@ module.exports = function(gameId) {
     numRounds: 6,
     roundNum: 1,
     playersInView: [],
-    gameData: {},
+    gameData: {
+      stats: {
+        allRoundResults: [],
+        gameEndTotal: 0
+      }
+    },
     questionAnswerMap: {},
     allRoundResults: [],
     currentRoundResults: {},
@@ -167,6 +172,19 @@ module.exports = function(gameId) {
       answersSubmitted: 0,
       numCorrect: 0
     };
+  };
+
+  /**
+   * sets property on game with end of game results
+   */
+  game.getGameResults = function() {
+    game.gameData.stats.allRoundResults = game.allRoundResults;
+    game.gameData.stats.gameEndTotal = game.gameData.stats.allRoundResults
+      .reduce(function(total, current) {
+        total += current.numCorrect;
+        return total;
+      }, 0);
+
   };
 
   game.resetPlayersInView = function() {
