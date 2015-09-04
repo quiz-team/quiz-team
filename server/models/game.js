@@ -14,6 +14,9 @@ module.exports = function(gameId) {
     roundNum: 1,
     playersInView: [],
     gameData: {
+      title: '',
+      description: '',
+      players: {},
       stats: {
         allRoundResults: [],
         gameEndTotal: 0
@@ -162,7 +165,7 @@ module.exports = function(gameId) {
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
-      game.allRoundResults.push(game.currentRoundResults);
+      game.gameData.stats.allRoundResults.push(game.currentRoundResults);
     }
   };
 
@@ -178,13 +181,11 @@ module.exports = function(gameId) {
    * sets property on game with end of game results
    */
   game.getGameResults = function() {
-    game.gameData.stats.allRoundResults = game.allRoundResults;
     game.gameData.stats.gameEndTotal = game.gameData.stats.allRoundResults
       .reduce(function(total, current) {
         total += current.numCorrect;
         return total;
       }, 0);
-
   };
 
   game.resetPlayersInView = function() {
