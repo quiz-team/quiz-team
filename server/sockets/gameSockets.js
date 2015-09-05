@@ -6,9 +6,9 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-var ROUND_TIMER = 6000;
-var ROUND_OVER_TIMER = 3000;
-var PRE_GAME_TIMER = 5000;
+var ROUND_TIMER = 500;
+var ROUND_OVER_TIMER = 500;
+var PRE_GAME_TIMER = 2000;
 
 // testing timers
 // var ROUND_TIMER = 2000;
@@ -88,7 +88,7 @@ module.exports = function(socket, io) {
     var game = games.findGame(socket);
     game.getGameResults();
     io.to(game.id).emit('gameStats', game.gameData.stats);
-    games.destroyGame(gameId);
+
   });
 
   socket.on('playAgain', function() {
@@ -98,7 +98,15 @@ module.exports = function(socket, io) {
 
   socket.on('quitGame', function() {
     var gameId = players[socket.id].lobbyId;
-    lobbies.GetLobby(gameId).RemovePlayer(socket.id);
+    var lobby = lobbies.getLobby(gameId);
+    lobby.removePlayer(socket.id);
+    if (lobby.getPlayers().length === 0) {
+      console.log("LOBBY BEING REMOVED BECAUSE PLAYERS IS 0");
+      lobbies.removeLobby(gameId);
+      // console.log("LOBBY LEAVE", lobbies);
+      // update lobbies for all players
+      io.emit('updateLobbies', lobbies.getAllLobbies());
+    } 
   });
 
   // on disconnect, remove player from game

@@ -15,13 +15,7 @@ angular.module('meatloaf.game.round', [])
   $scope.lockedAnswer = {};
 
   socket.once('startRound', function (roundData) {
-    //do something with Q&A data here.
-    console.log("ROUND DATA: ", roundData);
-    console.log("My ID ", myId);
-    // $scope.answers = roundData.players[myId].answers;
-    // $scope.currentRound = roundData.currentRound;
-    // trivia.updateRound(roundData.currentRound);
-    // $scope.question = roundData.players[myId].questions[$scope.currentRound-1];
+
     $scope.timer.syncTimerStart(roundData.timerData);
   });
 
@@ -32,9 +26,10 @@ angular.module('meatloaf.game.round', [])
   });
 
   $scope.selectAnswer = function (answerId) {
-    selectAnswerTimeout = $timeout(function(){
-      lockAnswer(answerId);
-    }, 1000);
+    // selectAnswerTimeout = $timeout(function(){
+    //   lockAnswer(answerId);
+    // }, 1000);
+    lockAnswer(answerId);
   };
 
   $scope.unselectAnswer = function (answerId) {

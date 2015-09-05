@@ -42,6 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
   $stateProvider.state('selection', {
     // url: '/selection',
+    cache: false,
     url: '/',
     controller: 'selectionCtrl',
     templateUrl: 'components/selection/selectionView.html'
@@ -49,6 +50,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
   .state('lobby', {
     // url: '/lobby',
+    cache: false,
     controller: 'lobbyCtrl',
     templateUrl: 'components/lobby/lobbyView.html',
     params: {
@@ -58,6 +60,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
   .state('gameStart', {
     // url: '/gameStart',
+    cache: false,
     controller: 'gameStartCtrl',
     templateUrl: 'components/game/game-start/gameStartView.html'
   })
