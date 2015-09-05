@@ -7,12 +7,12 @@ module.exports = {
 
   createGame: function(gameId, players) {
     // creates game if it does not exist
-    if (!this.activeGames[gameId]) {
+    // if (!this.activeGames[gameId]) {
       this.activeGames[gameId] = gameMaker(gameId);
       this.activeGames[gameId].loadPlayers(players);
       this.activeGames[gameId].loadGameData(players.length);
 
-    }
+    // }
     return this.activeGames[gameId];
   },
 

@@ -158,6 +158,8 @@ module.exports = function(gameId) {
 
   game.updateRoundScore = function(answer){
     // given the current round, check if the answerId matches one of the expected answers
+    console.log("ANSWER FROM PLAYER: ", answer);
+
     if(game.roundAnswers[game.roundNum-1].indexOf(answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       // console.log("CORRECT ANSWER!")
@@ -166,6 +168,7 @@ module.exports = function(gameId) {
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
       game.gameData.stats.allRoundResults.push(game.currentRoundResults);
+      console.log("ALL CORRECT ANSWERS FROM ROUND: ", game.roundAnswers[game.roundNum-1]);
     }
   };
 

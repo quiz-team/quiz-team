@@ -6,7 +6,6 @@ angular.module('meatloaf.game.round', [])
   var myId = socket.getId();
   var selectAnswerTimeout;
 
-  console.log("EMITTING ENTERED ROUND!");
   socket.emit('enteredRound');
   
   $scope.timer = Timer;
@@ -14,15 +13,15 @@ angular.module('meatloaf.game.round', [])
   $scope.answers = trivia.getAnswers();
   $scope.lockedAnswer = {};
 
-  socket.once('startRound', function (roundData) {
-
+  socket.on('startRound', function (roundData) {
     $scope.timer.syncTimerStart(roundData.timerData);
   });
 
-  socket.once('endRound', function(){
+  socket.on('endRound', function(){
     $scope.timer.syncTimerStop();
     socket.emit('submitAnswer', $scope.lockedAnswer);
-    $state.go('gameRoundOver',  $state.params, {reload: true});
+    // console.log('gameRoundCtrl>>>>>>>>>>END ROUND');
+    $state.go('gameRoundOver', $state.params, {reload: true});
   });
 
   $scope.selectAnswer = function (answerId) {

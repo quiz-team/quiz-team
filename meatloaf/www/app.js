@@ -35,6 +35,19 @@ app.run(function($ionicPlatform, $rootScope, socket) {
   // $rootScope.socket = io.connect('http://44f61333.ngrok.io');
   //debugger;
   //$rootScope.socket = io.connect();
+
+  // THIS IS FOR DEBUGGING
+  $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
+    // this seems hacky... 
+    // fixes bug where on 2nd game, round and round over controller code is ran twice
+    // if (toState.name === fromState.name) {
+    //   evt.preventDefault();
+    // }
+    // console.log('coming from: ', fromState.name, ' state');
+    // console.log('going to     ', toState.name, ' state');
+
+
+  });
 });
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
@@ -59,8 +72,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
   })
 
   .state('gameStart', {
-    // url: '/gameStart',
     cache: false,
+    // url: '/gameStart',
     controller: 'gameStartCtrl',
     templateUrl: 'components/game/game-start/gameStartView.html'
   })
