@@ -33,7 +33,7 @@ angular.module('meatloaf.services', [])
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://7245aadc.ngrok.io');
+      playerSocket = io.connect('http://195198d5.ngrok.io');
     },
 
     getId: function() {
