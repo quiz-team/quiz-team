@@ -1,19 +1,30 @@
 var expect = require('chai').expect;
+var _ = require('underscore');
 var games = require('../../server/collections/games.js');
 var lobbies = require('../../server/collections/lobbies.js');
 
-xdescribe("server/collections/games.js", function() {
+describe("server/collections/games.js", function() {
   describe('Game creation and Finding a game', function() {
+    beforeEach(function() {
+      var all = games.activeGames;
+      _.each(all, function(ind) {
+        games.destroyGame(ind.id);
+      })
+    })
     it('Should create a new game if one is not already available for a specific lobby', function() {
-      expect(false).to.be.true;
+      games.createGame(1, [{}, {}]);
+      expect(games.activeGames[1]).to.be.an.instanceof(Object);
     });
     it('Should should find the specific game created for the lobby, if one has been created', function() {
-      expect(false).to.be.true;
+      games.createGame(1, [{}, {}]);
+      expect(games.findGame(1)).to.be.an.instanceof(Object);
     });
   });
   describe('Delete an ended game', function() {
     it('Should delete a game when the game is over', function() {
-      expect(false).to.be.true;
+      games.createGame(1, [{}, {}]);
+      games.destroyGame(1);
+      expect(games.activeGames[1]).to.be.undefined;
     });
   });
 });
