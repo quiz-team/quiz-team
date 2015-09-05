@@ -6,9 +6,9 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-var ROUND_TIMER = 500;
-var ROUND_OVER_TIMER = 500;
-var PRE_GAME_TIMER = 2000;
+var ROUND_TIMER = 12000;
+var ROUND_OVER_TIMER = 3000;
+var PRE_GAME_TIMER = 3000;
 
 // testing timers
 // var ROUND_TIMER = 2000;
