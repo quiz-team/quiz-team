@@ -1,8 +1,19 @@
+<<<<<<< HEAD
+/* Empty. Add your own CSS if you like */
+.body {
+  font-family: "Lato", sans-serif;
+}
+
+.ready {
+  background-color: green;
+}
+=======
 /* ////////////////////////////////////////////////////
 // 
 //  Overall Setup
 // 
 //////////////////////////////////////////////////// */
+>>>>>>> Set up some css framework
 
 html {
   box-sizing: border-box;
@@ -23,7 +34,7 @@ html {
 
 .grid__item {
   display: inline-block;
-  /*border: 1px solid black;*/
+  border: 1px solid black;
   height: 33.33333333333%;
   text-align: center;
   width: 50%;
@@ -124,11 +135,14 @@ progress[value] {
 .answer {
   display: inline-block;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid red;
+  border-radius: 4px;
   text-align: center;
-  width: 100%;
-  height: 100%;
-  background-color: white;
+  width: 75%;
+  height: 75%;
+  top: 12.5%;
+  background-color: blue;
+  -vendor-animation-duration: .3s;
 }
 
 .answer--locked {
@@ -148,8 +162,8 @@ progress[value] {
 // 
 //////////////////////////////////////////////////// */
 
-/*.button__quit {
+.button__quit {
   width: 70%;
   height: 200px;
-}*/
+}
 
