@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
+.body {
+  font-family: "Lato", sans-serif;
+}
+
 .ready {
   background-color: green;
 }

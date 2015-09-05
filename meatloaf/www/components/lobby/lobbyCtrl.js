@@ -14,13 +14,13 @@ angular.module('meatloaf.lobby', [])
 
   // Updates player data on client-side
   //  callback is passed array of objects with player ID and button state
-  socket.on('updatePlayers', function (players) {
+  socket.once('updatePlayers', function (players) {
     $scope.players = players;
     // $scope.$apply();
   });
 
   // Advances to the game state when a signal is received from the server.
-  socket.on('goToStartScreen', function(triviaData) {
+  socket.once('goToStartScreen', function(triviaData) {
     trivia.setData(triviaData);
     trivia.updateRound(1);
     $state.go('gameStart');

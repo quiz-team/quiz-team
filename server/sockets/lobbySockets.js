@@ -7,7 +7,6 @@ module.exports = function(socket, io) {
 
   // create room
   socket.on('createRoom', function(data, callback) {
-    console.log('trying to create room');
     var lobby = lobbies.addLobby();
     lobby.addPlayer(socket.id);
     // update lobbies for all players

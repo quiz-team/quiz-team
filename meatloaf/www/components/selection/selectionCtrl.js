@@ -18,6 +18,7 @@ angular.module('meatloaf.selection', [])
   });
   $scope.createRoom = function() {
     socket.emit('createRoom', null, function(lobby) {
+      console.log("ABOUT TO ENTER LOBBY AFTER CREATING IT. ID IS ", lobby.id);
       $state.go('lobby', {lobby: lobby});
     });
   };
