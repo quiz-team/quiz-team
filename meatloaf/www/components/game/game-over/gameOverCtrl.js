@@ -7,14 +7,14 @@ angular.module('meatloaf.game.over', [])
 
   socket.emit('enteredGameOver');
 
-  socket.once('gameStats', function(gameDataStats) {
+  socket.on('gameStats', function(gameDataStats) {
     $scope.stats = gameDataStats;
     console.log('GAME OVER STATS', gameDataStats);
   });
 
-  socket.once('restartGame', function() {
-    //TODO Handle restart game signal from server.
-    $state.go('gameStart');
+  socket.on('restartGame', function(lobby) {
+    // navigate back to the game lobby
+    $state.go('lobby', {lobby: lobby}, {reload: true});
   });
 
   $scope.quitGame = function() {

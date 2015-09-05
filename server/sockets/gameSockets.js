@@ -6,14 +6,14 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-var ROUND_TIMER = 20000;
-var ROUND_OVER_TIMER = 5000;
+var ROUND_TIMER = 10000;
+var ROUND_OVER_TIMER = 3000;
 var PRE_GAME_TIMER = 8000;
 
 // testing timers
 // var ROUND_TIMER = 2000;
 // var ROUND_OVER_TIMER = 1000;
-// var PRE_GAME_TIMER = 200;
+// var PRE_GAME_TIMER = 4000;
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.id);
@@ -27,6 +27,7 @@ module.exports = function(socket, io) {
   var game;
   socket.on('enteredGame', function() {
     game = games.findGame(socket);
+    console.log('THIS IS THE GAME', game);
     if (everyoneInView(game, socket)) {
       // start game timer
       var timerData = timer.setTimer(PRE_GAME_TIMER);
@@ -34,6 +35,7 @@ module.exports = function(socket, io) {
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
         io.to(game.id).emit('startGame');
+        console.log('EMIT START GAME');
       });
     }
   });
@@ -46,6 +48,7 @@ module.exports = function(socket, io) {
       roundData.timerData = timer.setTimer(ROUND_TIMER);
       roundData.roundNum = game.roundNum;
 
+      console.log('emit: startRound: socket.id', socket.id);
       io.to(game.id).emit('startRound', roundData);
       // start the round timer
       game.startTimer(roundData.timerData, function() {
@@ -65,17 +68,19 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRoundOver', function() {
     if(everyoneInView(game, socket)){
+      console.log("EVERYONE IN ROUND OVER");
       game.roundNum++;
 
       var timerData = timer.setTimer(ROUND_OVER_TIMER);
       game.currentRoundResults.timerData = timerData;
-
+      console.log("EMITTING ROUND RESULTS")
       io.to(game.id).emit('roundResults', game.currentRoundResults);
 
       game.startTimer(timerData, function() {
         if (game.roundNum > game.numRounds) {
           io.to(game.id).emit('gameOver');
         } else {
+          console.log("TELLING EVERYONE TO GO TO NEXT GAME");
           io.to(game.id).emit('nextRound', game.roundNum);
         }
         game.resetPlayersInView();
@@ -91,9 +96,11 @@ module.exports = function(socket, io) {
 
   });
 
+  // play again using the same lobbyId
   socket.on('playAgain', function() {
     var gameId = players[socket.id].lobbyId;
-    io.to(gameId).emit('restartGame');
+    var lobby = lobbies.getLobby(gameId);
+    io.to(socket.id).emit('restartGame', lobby);
   });
 
   socket.on('quitGame', function() {

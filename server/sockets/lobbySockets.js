@@ -34,6 +34,7 @@ module.exports = function(socket, io) {
   socket.on('enteredLobby', function(lobbyId, callback) {
     // updates players when another player enters the lobby
     var lobby = lobbies.getLobby(lobbyId);
+    console.log("player has entered the lobby: ", socket.id);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     callback(lobby.getPlayers());
   });
@@ -45,8 +46,10 @@ module.exports = function(socket, io) {
     // console.log("LOBBY", lobby);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     // update lobbies for all players
+    console.log("on:leaveLobby", lobby);
     if (lobby.getPlayers().length === 0) {
       lobbies.removeLobby(lobbyId);
+      console.log('no more players, lobby removed');
       // console.log("LOBBY LEAVE", lobbies);
       // update lobbies for all players
       io.emit('updateLobbies', lobbies.getAllLobbies());
@@ -85,6 +88,7 @@ module.exports = function(socket, io) {
     });
 
     if (allReady) {
+      console.log('all players are ready!', allPlayers);
       // create a new game with lobby Id
       var game = games.createGame(lobbyId, allPlayers);
       io.emit('goToStartScreen', game.gameData);

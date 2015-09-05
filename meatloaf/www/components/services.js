@@ -33,7 +33,8 @@ angular.module('meatloaf.services', [])
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://3f88ad7d.ngrok.io');
+      playerSocket = io.connect('http://9921df44.ngrok.io');
+      // playerSocket = io.connect('http://localhost:9090');
     },
 
     getId: function() {
@@ -41,6 +42,11 @@ angular.module('meatloaf.services', [])
     },
 
     on: function (eventName, callback) {
+      // if (!!playerSocket._callbacks[eventName]) {
+      //   return;
+      // }
+      // remove listener to refresh callback
+      playerSocket.removeListener(eventName);
       playerSocket.on(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
@@ -61,6 +67,10 @@ angular.module('meatloaf.services', [])
     },
 
     once: function (eventName, callback) {
+      // if (!!playerSocket._callbacks[eventName]) {
+      //   return;
+      // }
+
       playerSocket.once(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
