@@ -101,4 +101,18 @@ module.exports = function(socket, io) {
     lobbies.GetLobby(gameId).RemovePlayer(socket.id);
   });
 
+  // on disconnect, remove player from game
+  socket.on('disconnect', function() {
+    // check if player exists (player is created when added to lobby)
+    console.log("Player Disconnected: ", socket.id);
+    if (game) {
+      console.log("Game of player found")
+      var playerIndex = game.players.indexOf(socket.id);
+      if(playerIndex !== -1){
+        game.players.splice(playerIndex,1);
+        console.log("Player found in game and spliced out: ", game.players);
+      }
+    }
+  });
+
 };
