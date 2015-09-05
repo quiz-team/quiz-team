@@ -6,9 +6,9 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-var ROUND_TIMER = 10000;
+var ROUND_TIMER = 8000;
 var ROUND_OVER_TIMER = 3000;
-var PRE_GAME_TIMER = 8000;
+var PRE_GAME_TIMER = 3000;
 
 // testing timers
 // var ROUND_TIMER = 2000;
@@ -107,6 +107,7 @@ module.exports = function(socket, io) {
     var gameId = players[socket.id].lobbyId;
     var lobby = lobbies.getLobby(gameId);
     lobby.removePlayer(socket.id);
+    io.to(lobby.id).emit('updatePlayers', lobby.getPlayers());
     if (lobby.getPlayers().length === 0) {
       console.log("LOBBY BEING REMOVED BECAUSE PLAYERS IS 0");
       lobbies.removeLobby(gameId);
