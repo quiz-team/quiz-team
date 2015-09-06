@@ -1,8 +1,25 @@
-<div>This is the game over view.</div>
-
+<div class="game-over__header">Game Over</div>
+<div class="game-over__score">Score: {{ stats.gameEndTotal }}</div>
+<!--
 <ul>
   <li ng-repeat="roundResults in stats.allRoundResults track by $index">Round {{$index + 1}}: {{ roundResults.numCorrect }} Correct</li>
 </ul>
-<div>Score: {{ stats.gameEndTotal }}</div>
+-->
+<div class="game-over__score-table">
+  <table>
+    <tr><td></td><td ng-style="getTableHeader(0)">P1</td>
+        <td ng-style="getTableHeader(1)">P2</td>
+        <td ng-style="getTableHeader(2)">P3</td>
+        <td ng-style="getTableHeader(3)">P4</td>
+      </tr>
+    <tr ng-repeat="round in stats.allRoundResults track by $index">
+      <td>{{$index + 1}}</td>
+      <td ng-repeat="score in round track by $index" ng-style="getTableStyle($index, $parent.$index)">
+        <i class="icon ion-checkmark chart-correct" ng-show="score"></i>
+        <i class="icon ion-close chart-incorrect" ng-show="!score"></i>
+      </td>
+    </tr>
+  </table>
+</div>
 <div class="button button-full button-balanced button__play-again" ng-click="playAgain()">Play Again</div>
 <div class="button button-full button-assertive button__quit" ng-click="quitGame()">Quit</div>

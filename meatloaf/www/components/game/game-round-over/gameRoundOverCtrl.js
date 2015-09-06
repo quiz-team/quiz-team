@@ -5,6 +5,10 @@ angular.module('meatloaf.game.roundOver', [])
 
   $scope.timer = Timer;
   $scope.numCorrect;
+  $scope.ownQuestionCorrect = "correct";
+  $scope.question = "I'd Do Anything for Love (But I Won't Do That)";
+  $scope.answer = "Meatloaf";
+  $scope.total = "3/4"
 
   socket.emit('enteredRoundOver');
 

@@ -13,7 +13,12 @@ angular.module('meatloaf.game.round', [])
   $scope.answers = trivia.getAnswers();
   $scope.lockedAnswer = {};
 
-  socket.on('startRound', function (roundData) {
+
+  //Constants:
+  $scope.smallTextCutoff = 18;
+
+  socket.once('startRound', function (roundData) {
+
     $scope.timer.syncTimerStart(roundData.timerData);
   });
 
