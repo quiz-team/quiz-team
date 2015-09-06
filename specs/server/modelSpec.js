@@ -1,8 +1,9 @@
 var expect = require('chai').expect;
 var lobbyMaker = require('../../server/models/lobby.js')();
+var gameMaker = require('../../server/models/game.js')();
 var lobbies = require('../../server/collections/lobbies.js');
 
-xdescribe('server/models/game.js', function() {
+describe('server/models/game.js', function() {
   describe('Helper functions', function() {
     it('Should generate unique ids for each question', function() {
       expect(false).to.be.true;
@@ -16,7 +17,8 @@ xdescribe('server/models/game.js', function() {
   });
   describe('Players', function() {
     it('Should add a players to the game', function() {
-      expect(false).to.be.true;
+      gameMaker.addPlayer(1);
+      expect(gameMaker.players.length).to.equal(1);
     });
   });
   describe('Rounds', function() {
@@ -29,7 +31,7 @@ xdescribe('server/models/game.js', function() {
   });
   describe('Game Data', function() {
     it('Should create game data', function() {
-      expect(false).to.be.true;
+      gameMaker.loadGameData(1);
     });
     it('Should create create timer Data', function() {
       expect(false).to.be.true;
