@@ -4,135 +4,137 @@ module.exports.trivia = {
     "description": " How many current NFL coaches can you name? At the start of the 2015 season ",
     "difficulty": -1,
     "questions": [{
-      "answer": "Patriots",
+      "answer": "Bill Belichick",
       "category": "NFL Coaches Quiz",
-      "question": "2000"
+      "question": "2000 - Patriots"
     }, {
-      "answer": "Ravens",
+      "answer": "John Harbaugh",
       "category": "NFL Coaches Quiz",
-      "question": "2008"
+      "question": "2008 - Ravens"
     }, {
-      "answer": "Seahawks",
+      "answer": "Pete Carroll",
       "category": "NFL Coaches Quiz",
-      "question": "2010"
+      "question": "2010 - Seahawks"
     }, {
-      "answer": "Bills",
+      "answer": "Rex Ryan",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Bills"
     }, {
-      "answer": "Giants",
+      "answer": "Tom Coughlin",
       "category": "NFL Coaches Quiz",
-      "question": "2004"
+      "question": "2004 - Giants"
     }, {
-      "answer": "Buccaneers",
+      "answer": "Lovie Smith",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2014 - Buccaneers"
     }, {
-      "answer": "Steelers",
+      "answer": "Mike Tomlin",
       "category": "NFL Coaches Quiz",
-      "question": "2007"
+      "question": "2007 - Steelers"
     }, {
-      "answer": "Saints",
+      "answer": "Sean Payton",
       "category": "NFL Coaches Quiz",
-      "question": "2006"
+      "question": "2006 - Saints"
     }, {
-      "answer": "Eagles",
+      "answer": "Chip Kelly",
       "category": "NFL Coaches Quiz",
-      "question": "2013"
+      "question": "2013 - Eagles"
     }, {
-      "answer": "Cowboys",
+      "answer": "Jason Garrett",
       "category": "NFL Coaches Quiz",
-      "question": "2010"
+      "question": "2010 - Cowboys"
     }, {
-      "answer": "Chiefs",
+      "answer": "Andy Reid",
       "category": "NFL Coaches Quiz",
-      "question": "2013"
+      "question": "2013 - Chiefs"
     }, {
-      "answer": "Packers",
+      "answer": "Mike McCarthy",
       "category": "NFL Coaches Quiz",
-      "question": "2006"
+      "question": "2006 - Packers"
     }, {
-      "answer": "Bengals",
+      "answer": "Marvin Lewis",
       "category": "NFL Coaches Quiz",
-      "question": "2003"
+      "question": "2003 - Bengals"
     }, {
-      "answer": "Rams",
+      "answer": "Jay Gruden",
       "category": "NFL Coaches Quiz",
-      "question": "2012"
+      "question": "2014 - Redskins"
     }, {
-      "answer": "Redskins",
+      "answer": "Jeff Fisher",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2012 - Rams"
     }, {
-      "answer": "Bears",
+      "answer": "John Fox",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Bears"
     }, {
-      "answer": "Panthers",
+      "answer": "Ron Rivera",
       "category": "NFL Coaches Quiz",
-      "question": "2011"
+      "question": "2011 - Panthers"
     }, {
-      "answer": "Colts",
+      "answer": "Chuck Pagano",
       "category": "NFL Coaches Quiz",
-      "question": "2012"
+      "question": "2012 - Colts"
     }, {
-      "answer": "Cardinals",
+      "answer": "Bruce Arians",
       "category": "NFL Coaches Quiz",
-      "question": "2013"
+      "question": "2013 - Cardinals"
     }, {
-      "answer": "Broncos",
+      "answer": "Gary Kubiak",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Broncos"
     }, {
-      "answer": "Texans",
+      "answer": "Bill O'Brien",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2014 - Texans"
     }, {
-      "answer": "Raiders",
+      "answer": "Jack Del Rio",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Raiders"
     }, {
-      "answer": "Titans",
+      "answer": "Ken Whisenhunt",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2014 - Titans"
     }, {
-      "answer": "Dolphins",
+      "answer": "Jim Caldwell",
       "category": "NFL Coaches Quiz",
-      "question": "2012"
+      "question": "2014 - Lions"
     }, {
-      "answer": "Lions",
+      "answer": "Joe Philbin ",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2012 - Dolphins"
     }, {
-      "answer": "Browns",
+      "answer": "Mike Pettine",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2014 - Browns"
     }, {
-      "answer": "49ers",
+      "answer": "Jim Tomsula",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - 49ers"
     }, {
-      "answer": "Jets",
+      "answer": "Todd Bowles",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Jets"
     }, {
-      "answer": "Vikings",
+      "answer": "Mike Zimmer",
       "category": "NFL Coaches Quiz",
-      "question": "2014"
+      "question": "2014 - Vikings"
     }, {
-      "answer": "Chargers",
+      "answer": "Mike McCoy",
       "category": "NFL Coaches Quiz",
-      "question": "2013"
+      "question": "2013 - Chargers"
     }, {
-      "answer": "Jaguars",
+      "answer": "Gus Bradley",
       "category": "NFL Coaches Quiz",
-      "question": "2013"
+      "question": "2013 - Jaguars"
     }, {
-      "answer": "Falcons",
+      "answer": "Dan Quinn",
       "category": "NFL Coaches Quiz",
-      "question": "2015"
+      "question": "2015 - Falcons"
     }],
-    "title": "NFL Coaches Quiz"
+    "quizLength": 32,
+    "title": "NFL Coaches Quiz",
+    "url": "http://www.jetpunk.com/quizzes/nfl-coaches-quiz.php"
   }, {
     "categories": [],
     "description": " Name the authors of the famous books listed below. ",
@@ -234,109 +236,113 @@ module.exports.trivia = {
       "category": "Who Wrote That Book Quiz",
       "question": "Gravity's Rainbow"
     }],
-    "title": "Who Wrote That Book Quiz"
+    "quizLength": 24,
+    "title": "Who Wrote That Book Quiz",
+    "url": "http://www.jetpunk.com/quizzes/who-wrote-that-book-quiz.php"
   }, {
     "categories": [],
     "description": " Name the former spouses of these celebrities. ",
     "difficulty": -1,
     "questions": [{
-      "answer": "2000-2005",
+      "answer": "Brad Pitt",
       "category": "Former Spouses Quiz",
-      "question": "Jennifer Aniston"
+      "question": "Jennifer Aniston - 2000-2005"
     }, {
-      "answer": "1990-2001",
+      "answer": "Nicole Kidman",
       "category": "Former Spouses Quiz",
-      "question": "Tom Cruise"
+      "question": "Tom Cruise - 1990-2001"
     }, {
-      "answer": "2006-2012",
+      "answer": "Ashton Kutcher",
       "category": "Former Spouses Quiz",
-      "question": "Tom Cruise"
+      "question": "Demi Moore - 2005-2013"
     }, {
-      "answer": "2005-2013",
+      "answer": "Katie Holmes",
       "category": "Former Spouses Quiz",
-      "question": "Demi Moore"
+      "question": "Tom Cruise - 2006-2012"
     }, {
-      "answer": "1987-2000",
+      "answer": "Bruce Willis",
       "category": "Former Spouses Quiz",
-      "question": "Demi Moore"
+      "question": "Demi Moore - 1987-2000"
     }, {
-      "answer": "2000-2003",
+      "answer": "Angelina Jolie",
       "category": "Former Spouses Quiz",
-      "question": "Billy Bob Thornton"
+      "question": "Billy Bob Thornton - 2000-2003"
     }, {
-      "answer": "1994-1996",
+      "answer": "Lisa Marie Presley",
       "category": "Former Spouses Quiz",
-      "question": "Michael Jackson"
+      "question": "Michael Jackson - 1994-1996"
     }, {
-      "answer": "2002-2006",
+      "answer": "Jessica Simpson",
       "category": "Former Spouses Quiz",
-      "question": "Nick Lachey"
+      "question": "Nick Lachey - 2002-2006"
     }, {
-      "answer": "1985-1989",
+      "answer": "Madonna",
       "category": "Former Spouses Quiz",
-      "question": "Sean Penn"
+      "question": "Sean Penn - 1985-1989"
     }, {
-      "answer": "2004-2007",
+      "answer": "Kevin Federline",
       "category": "Former Spouses Quiz",
-      "question": "Britney Spears"
+      "question": "Britney Spears - 2004-2007"
     }, {
-      "answer": "2000-2008",
+      "answer": "Guy Ritchie",
       "category": "Former Spouses Quiz",
-      "question": "Madonna"
+      "question": "Madonna - 2000-2008"
     }, {
-      "answer": "1995-1998",
+      "answer": "Tommy Lee",
       "category": "Former Spouses Quiz",
-      "question": "Pamela Anderson"
+      "question": "Pamela Anderson - 1995-1998"
     }, {
-      "answer": "1999-2007",
+      "answer": "Reese Witherspoon",
       "category": "Former Spouses Quiz",
-      "question": "Ryan Phillippe"
+      "question": "Ryan Phillippe - 1999-2007"
     }, {
-      "answer": "2002-2008",
+      "answer": "Paul McCartney",
       "category": "Former Spouses Quiz",
-      "question": "Heather Mills"
+      "question": "Heather Mills - 2002-2008"
     }, {
-      "answer": "1964-1974 1975-1976",
+      "answer": "Richard Burton",
       "category": "Former Spouses Quiz",
-      "question": "Elizabeth Taylor"
+      "question": "Elizabeth Taylor - 1964-1974 1975-1976"
     }, {
-      "answer": "1954",
+      "answer": "Joe DiMaggio",
       "category": "Former Spouses Quiz",
-      "question": "Marilyn Monroe"
+      "question": "Marilyn Monroe - 1954"
     }, {
-      "answer": "2005-2010",
+      "answer": "Sandra Bullock",
       "category": "Former Spouses Quiz",
-      "question": "Jesse James"
+      "question": "Jesse James - 2005-2010"
     }, {
-      "answer": "2001-2002",
+      "answer": "Drew Barrymore",
       "category": "Former Spouses Quiz",
-      "question": "Tom Green"
+      "question": "Tom Green - 2001-2002"
     }, {
-      "answer": "1993-2002",
+      "answer": "Kim Basinger",
       "category": "Former Spouses Quiz",
-      "question": "Alec Baldwin"
+      "question": "Alec Baldwin - 1993-2002"
     }, {
-      "answer": "1991-2001",
+      "answer": "Jane Fonda",
       "category": "Former Spouses Quiz",
-      "question": "Ted Turner"
+      "question": "Ted Turner - 1991-2001"
     }, {
-      "answer": "1988-1993",
+      "answer": "Burt Reynolds",
       "category": "Former Spouses Quiz",
-      "question": "Loni Anderson"
+      "question": "Loni Anderson - 1988-1993"
     }, {
-      "answer": "1993-1995",
+      "answer": "Lyle Lovett",
       "category": "Former Spouses Quiz",
-      "question": "Julia Roberts"
+      "question": "Julia Roberts - 1993-1995"
     }, {
-      "answer": "1956-1961",
+      "answer": "Arthur Miller",
       "category": "Former Spouses Quiz",
-      "question": "Marilyn Monroe"
+      "question": "Marilyn Monroe - 1956-1961"
     }, {
-      "answer": "1997-1999",
+      "answer": "James Cameron",
       "category": "Former Spouses Quiz",
-      "question": "Linda Hamilton"
+      "question": "Linda Hamilton - 1997-1999"
     }],
-    "title": "Former Spouses Quiz"
+    "quizLength": 24,
+    "title": "Former Spouses Quiz",
+    "url": "http://www.jetpunk.com/quizzes/former-spouses-quiz.php"
   }, {
     "categories": [],
     "description": " Some answers require you to have read the books so watch out! Quiz by Amburr - Jun 15, 2015 ",
@@ -346,17 +352,17 @@ module.exports.trivia = {
       "category": "Basic Harry Potter Quiz",
       "question": "What school does Harry Potter attend?"
     }, {
-      "answer": "Albus&nbsp;Dumbledore",
+      "answer": "Albus Dumbledore",
       "category": "Basic Harry Potter Quiz",
       "question": "Who is the headmaster of the school Harry attends?"
-    }, {
-      "answer": "Lord&nbsp;Voldemort",
-      "category": "Basic Harry Potter Quiz",
-      "question": "Who is Harry Potters greatest enemy?"
     }, {
       "answer": "Ron Weasley",
       "category": "Basic Harry Potter Quiz",
       "question": "Who is Harry Potters closest friend (male)?"
+    }, {
+      "answer": "Lord Voldemort",
+      "category": "Basic Harry Potter Quiz",
+      "question": "Who is Harry Potters greatest enemy?"
     }, {
       "answer": "Hermione Granger",
       "category": "Basic Harry Potter Quiz",
@@ -366,7 +372,7 @@ module.exports.trivia = {
       "category": "Basic Harry Potter Quiz",
       "question": "What game, using flying broomsticks, is played by wizards?"
     }, {
-      "answer": "Severus&nbsp;Snape",
+      "answer": "Severus Snape",
       "category": "Basic Harry Potter Quiz",
       "question": "What teacher, despised by many, teaches potions?"
     }, {
@@ -374,65 +380,65 @@ module.exports.trivia = {
       "category": "Basic Harry Potter Quiz",
       "question": "And what type of animal is it?"
     }, {
-      "answer": "United Kingdom",
+      "answer": "Hagrid",
       "category": "Basic Harry Potter Quiz",
-      "question": "In what country are the books set?"
+      "question": "Who tells Harry that he is, in fact, a wizard?"
     }, {
       "answer": "J.K. Rowling",
       "category": "Basic Harry Potter Quiz",
       "question": "Who wrote the Harry Potter series?"
     }, {
-      "answer": "Hagrid",
+      "answer": "United Kingdom",
       "category": "Basic Harry Potter Quiz",
-      "question": "Who tells Harry that he is, in fact, a wizard?"
+      "question": "In what country are the books set?"
     }, {
       "answer": "9 3/4",
       "category": "Basic Harry Potter Quiz",
       "question": "What platform does the train to the school depart from?"
     }, {
-      "answer": "House elf",
-      "category": "Basic Harry Potter Quiz",
-      "question": "What type of creature is Dobby?"
-    }, {
       "answer": "Slytherin",
       "category": "Basic Harry Potter Quiz",
       "question": "What house is Draco Malfoy a part of?"
+    }, {
+      "answer": "House elf",
+      "category": "Basic Harry Potter Quiz",
+      "question": "What type of creature is Dobby?"
     }, {
       "answer": "Azkaban",
       "category": "Basic Harry Potter Quiz",
       "question": "What prison does Sirius Black escape from?"
     }, {
-      "answer": "Lily Potter",
-      "category": "Basic Harry Potter Quiz",
-      "question": "What is Harry's mothers name?"
-    }, {
       "answer": "Seeker",
       "category": "Basic Harry Potter Quiz",
       "question": "In this game, what is Harry Potter's position?"
+    }, {
+      "answer": "Lily Potter",
+      "category": "Basic Harry Potter Quiz",
+      "question": "What is Harry's mothers name?"
     }, {
       "answer": "Ravenclaw",
       "category": "Basic Harry Potter Quiz",
       "question": "What house has the house colour of blue?"
     }, {
-      "answer": "Hedwig",
-      "category": "Basic Harry Potter Quiz",
-      "question": "What is the name of Harry's pet?"
-    }, {
       "answer": "Fred",
       "category": "Basic Harry Potter Quiz",
       "question": "Who is George Weasley's twin?"
+    }, {
+      "answer": "Hedwig",
+      "category": "Basic Harry Potter Quiz",
+      "question": "What is the name of Harry's pet?"
     }, {
       "answer": "Horcruxes",
       "category": "Basic Harry Potter Quiz",
       "question": "What are Tom Riddle's diary and Rowena Ravenclaw's diadem?"
     }, {
-      "answer": "Cedric Diggory",
-      "category": "Basic Harry Potter Quiz",
-      "question": "Who dies during the Triwizard Tornament?"
-    }, {
       "answer": "Basilisk",
       "category": "Basic Harry Potter Quiz",
       "question": "What creature, from the Chamber of Secrets, paralyzes and kills students in Harry's second year?"
+    }, {
+      "answer": "Cedric Diggory",
+      "category": "Basic Harry Potter Quiz",
+      "question": "Who dies during the Triwizard Tornament?"
     }, {
       "answer": "Dementor",
       "category": "Basic Harry Potter Quiz",
@@ -462,7 +468,9 @@ module.exports.trivia = {
       "category": "Basic Harry Potter Quiz",
       "question": "What ball does the school hold?"
     }],
-    "title": "Basic Harry Potter Quiz"
+    "quizLength": 30,
+    "title": "Basic Harry Potter Quiz",
+    "url": "http://www.jetpunk.com/user-quizzes/26045/basic-harry-potter-quiz"
   }, {
     "categories": [],
     "description": " Name as many U.S. Presidents as you can! Parties: Democratic, Republican, Whig, Democratic-Republican, Federalist, Independent ",
@@ -472,10 +480,6 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1789-1797"
     }, {
-      "answer": "Barack Obama",
-      "category": "US Presidents Quiz",
-      "question": "2009-"
-    }, {
       "answer": "George H.W. Bush",
       "category": "US Presidents Quiz",
       "question": "1989-1993"
@@ -483,6 +487,10 @@ module.exports.trivia = {
       "answer": "George W. Bush",
       "category": "US Presidents Quiz",
       "question": "2001-2009"
+    }, {
+      "answer": "Barack Obama",
+      "category": "US Presidents Quiz",
+      "question": "2009-"
     }, {
       "answer": "Bill Clinton",
       "category": "US Presidents Quiz",
@@ -492,25 +500,25 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1861-1865"
     }, {
-      "answer": "Franklin D. Roosevelt",
-      "category": "US Presidents Quiz",
-      "question": "1933-1945"
-    }, {
       "answer": "John F. Kennedy",
       "category": "US Presidents Quiz",
       "question": "1961-1963"
+    }, {
+      "answer": "Franklin D. Roosevelt",
+      "category": "US Presidents Quiz",
+      "question": "1933-1945"
     }, {
       "answer": "Theodore Roosevelt",
       "category": "US Presidents Quiz",
       "question": "1901-1909"
     }, {
-      "answer": "Ronald Reagan",
-      "category": "US Presidents Quiz",
-      "question": "1981-1989"
-    }, {
       "answer": "Richard Nixon",
       "category": "US Presidents Quiz",
       "question": "1969-1974"
+    }, {
+      "answer": "Ronald Reagan",
+      "category": "US Presidents Quiz",
+      "question": "1981-1989"
     }, {
       "answer": "John Adams",
       "category": "US Presidents Quiz",
@@ -528,13 +536,13 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1963-1969"
     }, {
-      "answer": "Jimmy Carter",
-      "category": "US Presidents Quiz",
-      "question": "1977-1981"
-    }, {
       "answer": "Andrew Johnson",
       "category": "US Presidents Quiz",
       "question": "1865-1869"
+    }, {
+      "answer": "Jimmy Carter",
+      "category": "US Presidents Quiz",
+      "question": "1977-1981"
     }, {
       "answer": "Dwight D. Eisenhower",
       "category": "US Presidents Quiz",
@@ -544,13 +552,13 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1974-1977"
     }, {
-      "answer": "Harry Truman",
-      "category": "US Presidents Quiz",
-      "question": "1945-1953"
-    }, {
       "answer": "Andrew Jackson",
       "category": "US Presidents Quiz",
       "question": "1829-1837"
+    }, {
+      "answer": "Harry Truman",
+      "category": "US Presidents Quiz",
+      "question": "1945-1953"
     }, {
       "answer": "Herbert Hoover",
       "category": "US Presidents Quiz",
@@ -560,13 +568,13 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1869-1877"
     }, {
-      "answer": "Woodrow Wilson",
-      "category": "US Presidents Quiz",
-      "question": "1913-1921"
-    }, {
       "answer": "James Madison",
       "category": "US Presidents Quiz",
       "question": "1809-1817"
+    }, {
+      "answer": "Woodrow Wilson",
+      "category": "US Presidents Quiz",
+      "question": "1913-1921"
     }, {
       "answer": "William Taft",
       "category": "US Presidents Quiz",
@@ -576,33 +584,33 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1817-1825"
     }, {
-      "answer": "Calvin Coolidge",
-      "category": "US Presidents Quiz",
-      "question": "1923-1929"
-    }, {
       "answer": "William Henry Harrison",
       "category": "US Presidents Quiz",
       "question": "1841"
     }, {
-      "answer": "Benjamin Harrison",
+      "answer": "Calvin Coolidge",
       "category": "US Presidents Quiz",
-      "question": "1889-1893"
+      "question": "1923-1929"
     }, {
       "answer": "James K. Polk",
       "category": "US Presidents Quiz",
       "question": "1845-1849"
     }, {
+      "answer": "Benjamin Harrison",
+      "category": "US Presidents Quiz",
+      "question": "1889-1893"
+    }, {
       "answer": "Grover Cleveland",
       "category": "US Presidents Quiz",
       "question": "1885-1889, 1893-189"
     }, {
-      "answer": "James Garfield",
-      "category": "US Presidents Quiz",
-      "question": "1881"
-    }, {
       "answer": "William McKinley",
       "category": "US Presidents Quiz",
       "question": "1897-1901"
+    }, {
+      "answer": "James Garfield",
+      "category": "US Presidents Quiz",
+      "question": "1881"
     }, {
       "answer": "John Tyler",
       "category": "US Presidents Quiz",
@@ -616,13 +624,13 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1837-1841"
     }, {
-      "answer": "Millard Fillmore",
-      "category": "US Presidents Quiz",
-      "question": "1850-1853"
-    }, {
       "answer": "James Buchanan",
       "category": "US Presidents Quiz",
       "question": "1857-1861"
+    }, {
+      "answer": "Millard Fillmore",
+      "category": "US Presidents Quiz",
+      "question": "1850-1853"
     }, {
       "answer": "Warren Harding",
       "category": "US Presidents Quiz",
@@ -640,7 +648,9 @@ module.exports.trivia = {
       "category": "US Presidents Quiz",
       "question": "1881-1885"
     }],
-    "title": "US Presidents Quiz"
+    "quizLength": 43,
+    "title": "US Presidents Quiz",
+    "url": "http://www.jetpunk.com/quizzes/name-us-presidents.php"
   }, {
     "categories": [],
     "description": " Try to guess capital cities of all the countries in Europe. ",
@@ -666,13 +676,13 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Greece"
     }, {
-      "answer": "Dublin",
-      "category": "Europe Capitals Quiz",
-      "question": "Ireland"
-    }, {
       "answer": "Madrid",
       "category": "Europe Capitals Quiz",
       "question": "Spain"
+    }, {
+      "answer": "Dublin",
+      "category": "Europe Capitals Quiz",
+      "question": "Ireland"
     }, {
       "answer": "Moscow",
       "category": "Europe Capitals Quiz",
@@ -698,21 +708,17 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Vatican City"
     }, {
-      "answer": "Copenhagen",
-      "category": "Europe Capitals Quiz",
-      "question": "Denmark"
-    }, {
       "answer": "Lisbon",
       "category": "Europe Capitals Quiz",
       "question": "Portugal"
     }, {
+      "answer": "Copenhagen",
+      "category": "Europe Capitals Quiz",
+      "question": "Denmark"
+    }, {
       "answer": "Prague",
       "category": "Europe Capitals Quiz",
       "question": "Czech Republic"
-    }, {
-      "answer": "Helsinki",
-      "category": "Europe Capitals Quiz",
-      "question": "Finland"
     }, {
       "answer": "Budapest",
       "category": "Europe Capitals Quiz",
@@ -722,9 +728,9 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Poland"
     }, {
-      "answer": "Stockholm",
+      "answer": "Helsinki",
       "category": "Europe Capitals Quiz",
-      "question": "Sweden"
+      "question": "Finland"
     }, {
       "answer": "Luxembourg",
       "category": "Europe Capitals Quiz",
@@ -734,21 +740,25 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Monaco"
     }, {
-      "answer": "Bern",
+      "answer": "Stockholm",
       "category": "Europe Capitals Quiz",
-      "question": "Switzerland"
+      "question": "Sweden"
     }, {
       "answer": "Kiev",
       "category": "Europe Capitals Quiz",
       "question": "Ukraine"
     }, {
-      "answer": "Reykjavík",
+      "answer": "Bern",
       "category": "Europe Capitals Quiz",
-      "question": "Iceland"
+      "question": "Switzerland"
     }, {
       "answer": "San Marino",
       "category": "Europe Capitals Quiz",
       "question": "San Marino"
+    }, {
+      "answer": "Reykjavík",
+      "category": "Europe Capitals Quiz",
+      "question": "Iceland"
     }, {
       "answer": "Sofia",
       "category": "Europe Capitals Quiz",
@@ -766,25 +776,25 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Croatia"
     }, {
-      "answer": "Tallinn",
-      "category": "Europe Capitals Quiz",
-      "question": "Estonia"
-    }, {
       "answer": "Riga",
       "category": "Europe Capitals Quiz",
       "question": "Latvia"
+    }, {
+      "answer": "Tallinn",
+      "category": "Europe Capitals Quiz",
+      "question": "Estonia"
     }, {
       "answer": "Sarajevo",
       "category": "Europe Capitals Quiz",
       "question": "Bosnia and Herzegovina"
     }, {
-      "answer": "Tirana",
-      "category": "Europe Capitals Quiz",
-      "question": "Albania"
-    }, {
       "answer": "Belgrade",
       "category": "Europe Capitals Quiz",
       "question": "Serbia"
+    }, {
+      "answer": "Tirana",
+      "category": "Europe Capitals Quiz",
+      "question": "Albania"
     }, {
       "answer": "Bratislava",
       "category": "Europe Capitals Quiz",
@@ -802,13 +812,13 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Lithuania"
     }, {
-      "answer": "Skopje",
-      "category": "Europe Capitals Quiz",
-      "question": "Macedonia"
-    }, {
       "answer": "Ljubljana",
       "category": "Europe Capitals Quiz",
       "question": "Slovenia"
+    }, {
+      "answer": "Skopje",
+      "category": "Europe Capitals Quiz",
+      "question": "Macedonia"
     }, {
       "answer": "Vaduz",
       "category": "Europe Capitals Quiz",
@@ -826,7 +836,9 @@ module.exports.trivia = {
       "category": "Europe Capitals Quiz",
       "question": "Montenegro"
     }],
-    "title": "Europe Capitals Quiz"
+    "quizLength": 45,
+    "title": "Europe Capitals Quiz",
+    "url": "http://www.jetpunk.com/quizzes/european-capitals-quiz.php"
   }, {
     "categories": [],
     "description": " How many state capital cities can you name? ",
@@ -836,13 +848,13 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "California"
     }, {
-      "answer": "Honolulu",
-      "category": "US State Capitals Quiz",
-      "question": "Hawaii"
-    }, {
       "answer": "Denver",
       "category": "US State Capitals Quiz",
       "question": "Colorado"
+    }, {
+      "answer": "Honolulu",
+      "category": "US State Capitals Quiz",
+      "question": "Hawaii"
     }, {
       "answer": "Phoenix",
       "category": "US State Capitals Quiz",
@@ -872,13 +884,13 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "Arkansas"
     }, {
-      "answer": "Albany",
-      "category": "US State Capitals Quiz",
-      "question": "New York"
-    }, {
       "answer": "Indianapolis",
       "category": "US State Capitals Quiz",
       "question": "Indiana"
+    }, {
+      "answer": "Albany",
+      "category": "US State Capitals Quiz",
+      "question": "New York"
     }, {
       "answer": "Boise",
       "category": "US State Capitals Quiz",
@@ -888,13 +900,13 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "Oklahoma"
     }, {
-      "answer": "Salt Lake City",
-      "category": "US State Capitals Quiz",
-      "question": "Utah"
-    }, {
       "answer": "Baton Rouge",
       "category": "US State Capitals Quiz",
       "question": "Louisiana"
+    }, {
+      "answer": "Salt Lake City",
+      "category": "US State Capitals Quiz",
+      "question": "Utah"
     }, {
       "answer": "Dover",
       "category": "US State Capitals Quiz",
@@ -908,21 +920,21 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "Illinois"
     }, {
-      "answer": "Nashville",
-      "category": "US State Capitals Quiz",
-      "question": "Tennessee"
-    }, {
       "answer": "Jackson",
       "category": "US State Capitals Quiz",
       "question": "Mississippi"
     }, {
-      "answer": "Hartford",
-      "category": "US State Capitals Quiz",
-      "question": "Connecticut"
-    }, {
       "answer": "Columbus",
       "category": "US State Capitals Quiz",
       "question": "Ohio"
+    }, {
+      "answer": "Nashville",
+      "category": "US State Capitals Quiz",
+      "question": "Tennessee"
+    }, {
+      "answer": "Hartford",
+      "category": "US State Capitals Quiz",
+      "question": "Connecticut"
     }, {
       "answer": "Des Moines",
       "category": "US State Capitals Quiz",
@@ -936,6 +948,10 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "New Mexico"
     }, {
+      "answer": "Topeka",
+      "category": "US State Capitals Quiz",
+      "question": "Kansas"
+    }, {
       "answer": "Saint Paul",
       "category": "US State Capitals Quiz",
       "question": "Minnesota"
@@ -944,21 +960,13 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "Montana"
     }, {
-      "answer": "Topeka",
-      "category": "US State Capitals Quiz",
-      "question": "Kansas"
-    }, {
-      "answer": "Augusta",
-      "category": "US State Capitals Quiz",
-      "question": "Maine"
-    }, {
       "answer": "Salem",
       "category": "US State Capitals Quiz",
       "question": "Oregon"
     }, {
-      "answer": "Annapolis",
+      "answer": "Augusta",
       "category": "US State Capitals Quiz",
-      "question": "Maryland"
+      "question": "Maine"
     }, {
       "answer": "Trenton",
       "category": "US State Capitals Quiz",
@@ -968,6 +976,14 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "Kentucky"
     }, {
+      "answer": "Annapolis",
+      "category": "US State Capitals Quiz",
+      "question": "Maryland"
+    }, {
+      "answer": "Olympia",
+      "category": "US State Capitals Quiz",
+      "question": "Washington"
+    }, {
       "answer": "Lansing",
       "category": "US State Capitals Quiz",
       "question": "Michigan"
@@ -975,10 +991,6 @@ module.exports.trivia = {
       "answer": "Raleigh",
       "category": "US State Capitals Quiz",
       "question": "North Carolina"
-    }, {
-      "answer": "Olympia",
-      "category": "US State Capitals Quiz",
-      "question": "Washington"
     }, {
       "answer": "Lincoln",
       "category": "US State Capitals Quiz",
@@ -1032,7 +1044,9 @@ module.exports.trivia = {
       "category": "US State Capitals Quiz",
       "question": "New Hampshire"
     }],
-    "title": "US State Capitals Quiz"
+    "quizLength": 50,
+    "title": "US State Capitals Quiz",
+    "url": "http://www.jetpunk.com/quizzes/name-state-capitals.php"
   }, {
     "categories": [],
     "description": " Were you paying attention in history class? Name these famous historical figures! That everyone should know, according to me :) ",
@@ -1056,11 +1070,11 @@ module.exports.trivia = {
     }, {
       "answer": "Leonardo da Vinci",
       "category": "40 Historical People Quiz *",
-      "question": "<i>Mona Lisa</i> painter"
+      "question": "Mona Lisa painter"
     }, {
       "answer": "William Shakespeare",
       "category": "40 Historical People Quiz *",
-      "question": "Wrote <i>Hamlet</i>"
+      "question": "Wrote Hamlet"
     }, {
       "answer": "Christopher Columbus",
       "category": "40 Historical People Quiz *",
@@ -1120,7 +1134,7 @@ module.exports.trivia = {
     }, {
       "answer": "Homer",
       "category": "40 Historical People Quiz *",
-      "question": "Supposedly wrote <i>The Iliad</i>"
+      "question": "Supposedly wrote The Iliad"
     }, {
       "answer": "Joan of Arc",
       "category": "40 Historical People Quiz *",
@@ -1132,7 +1146,7 @@ module.exports.trivia = {
     }, {
       "answer": "Ludwig van Beethoven",
       "category": "40 Historical People Quiz *",
-      "question": "<i>Moonlight Sonata</i> composer"
+      "question": "Moonlight Sonata composer"
     }, {
       "answer": "Alexander the Great",
       "category": "40 Historical People Quiz *",
@@ -1148,23 +1162,23 @@ module.exports.trivia = {
     }, {
       "answer": "Charles Dickens",
       "category": "40 Historical People Quiz *",
-      "question": "Wrote <i>Great Expectations</i>"
+      "question": "Wrote Great Expectations"
     }, {
       "answer": "Jane Austen",
       "category": "40 Historical People Quiz *",
-      "question": "Wrote <i>Pride and Prejudice</i>"
+      "question": "Wrote Pride and Prejudice"
     }, {
       "answer": "Mark Twain",
       "category": "40 Historical People Quiz *",
       "question": "Creator of Huckleberry Finn"
     }, {
-      "answer": "Helen Keller",
-      "category": "40 Historical People Quiz *",
-      "question": "First deaf and blind college graduate"
-    }, {
       "answer": "Mao Zedong",
       "category": "40 Historical People Quiz *",
       "question": "His \"Great Leap Forward\" killed over 30 million"
+    }, {
+      "answer": "Helen Keller",
+      "category": "40 Historical People Quiz *",
+      "question": "First deaf and blind college graduate"
     }, {
       "answer": "Amelia Earhart",
       "category": "40 Historical People Quiz *",
@@ -1196,9 +1210,11 @@ module.exports.trivia = {
     }, {
       "answer": "Laozi",
       "category": "40 Historical People Quiz *",
-      "question": "<i>Tao te Ching</i> author"
+      "question": "Tao te Ching author"
     }],
-    "title": "40 Historical People Quiz *"
+    "quizLength": 40,
+    "title": "40 Historical People Quiz *",
+    "url": "http://www.jetpunk.com/quizzes/40-historical-people-everyone-should-know-quiz"
   }, {
     "categories": [],
     "description": " We give you a governor - past or present. Name the state they governed. Answer must correspond to highlighted box Some states used more than once ",
@@ -1312,7 +1328,9 @@ module.exports.trivia = {
       "category": "States by Governor Quiz",
       "question": "Jon Huntsman"
     }],
-    "title": "States by Governor Quiz"
+    "quizLength": 27,
+    "title": "States by Governor Quiz",
+    "url": "http://www.jetpunk.com/quizzes/states-by-governor-quiz.php"
   }, {
     "categories": [],
     "description": " Try to guess capital cities of all the countries in Asia. ",
@@ -1510,7 +1528,9 @@ module.exports.trivia = {
       "category": "Asia Capitals Quiz",
       "question": "Sri Lanka"
     }],
-    "title": "Asia Capitals Quiz"
+    "quizLength": 48,
+    "title": "Asia Capitals Quiz",
+    "url": "http://www.jetpunk.com/quizzes/asian-capitals-quiz.php"
   }, {
     "categories": [],
     "description": " Below you will see several famous animals, real or fictional. Guess what type of animal they are. Answer must correspond to highlighted box ",
@@ -1586,7 +1606,7 @@ module.exports.trivia = {
     }, {
       "answer": "Skunk",
       "category": "Famous Animals Quiz",
-      "question": "Pepé&nbsp;Le Pew"
+      "question": "Pepé Le Pew"
     }, {
       "answer": "Owl",
       "category": "Famous Animals Quiz",
@@ -1612,169 +1632,173 @@ module.exports.trivia = {
       "category": "Famous Animals Quiz",
       "question": "Koko"
     }],
-    "title": "Famous Animals Quiz"
+    "quizLength": 24,
+    "title": "Famous Animals Quiz",
+    "url": "http://www.jetpunk.com/quizzes/famous-animals-quiz.php"
   }, {
     "categories": [],
     "description": " Guess the Greek and Roman names of the gods who were sometimes listed among the Olympians. According to Wikipedia Ganymede was also a cupbearer to the gods, but never considered an Olympian ",
     "difficulty": -1,
     "questions": [{
-      "answer": "Greek",
+      "answer": "Zeus",
       "category": "Olympian Gods Quiz",
-      "question": "King of the Gods"
+      "question": "King of the Gods - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Hades",
       "category": "Olympian Gods Quiz",
-      "question": "God of the Underworld"
+      "question": "God of the Underworld - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Poseidon",
       "category": "Olympian Gods Quiz",
-      "question": "Lord of the Seas"
+      "question": "Lord of the Seas - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Hera",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Wisdom"
+      "question": "Queen of the Gods - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Athena",
       "category": "Olympian Gods Quiz",
-      "question": "Queen of the Gods"
+      "question": "Goddess of Wisdom - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Aphrodite",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Love &amp; Beauty"
+      "question": "Goddess of Love & Beauty - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Mars",
       "category": "Olympian Gods Quiz",
-      "question": "King of the Gods"
+      "question": "God of War - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Jupiter",
       "category": "Olympian Gods Quiz",
-      "question": "God of War"
+      "question": "King of the Gods - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Neptune",
       "category": "Olympian Gods Quiz",
-      "question": "Lord of the Seas"
+      "question": "Lord of the Seas - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Venus",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Love &amp; Beauty"
+      "question": "Goddess of Love & Beauty - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Hermes",
       "category": "Olympian Gods Quiz",
-      "question": "Messenger of the Gods"
+      "question": "Messenger of the Gods - Greek"
     }, {
-      "answer": "Both",
+      "answer": "Apollo",
       "category": "Olympian Gods Quiz",
-      "question": "God of Light"
+      "question": "God of Light - Both"
     }, {
-      "answer": "Greek",
+      "answer": "Ares",
       "category": "Olympian Gods Quiz",
-      "question": "God of War"
+      "question": "God of War - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Hercules",
       "category": "Olympian Gods Quiz",
-      "question": "Greatest of Greek Heroes"
+      "question": "Greatest of Greek Heroes - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Mercury",
       "category": "Olympian Gods Quiz",
-      "question": "Messenger of the Gods"
+      "question": "Messenger of the Gods - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Pluto",
       "category": "Olympian Gods Quiz",
-      "question": "God of the Underworld"
+      "question": "God of the Underworld - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Artemis",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of the Hunt"
+      "question": "Goddess of the Hunt - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Dionysus",
       "category": "Olympian Gods Quiz",
-      "question": "God of Wine"
+      "question": "God of Wine - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Cupid",
       "category": "Olympian Gods Quiz",
-      "question": "God of Love"
+      "question": "God of Love - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Persephone",
       "category": "Olympian Gods Quiz",
-      "question": "Queen of the Underworld"
+      "question": "Queen of the Underworld - Greek"
     }, {
-      "answer": "Greek",
+      "answer": "Hephaestus",
       "category": "Olympian Gods Quiz",
-      "question": "Craftsman of the Gods"
+      "question": "Craftsman of the Gods - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Bacchus",
       "category": "Olympian Gods Quiz",
-      "question": "God of Wine"
+      "question": "God of Wine - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Eros",
       "category": "Olympian Gods Quiz",
-      "question": "God of Love"
+      "question": "God of Love - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Diana",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of the Hunt"
+      "question": "Goddess of the Hunt - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Heracles",
       "category": "Olympian Gods Quiz",
-      "question": "Greatest of Greek Heroes"
+      "question": "Greatest of Greek Heroes - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Juno",
       "category": "Olympian Gods Quiz",
-      "question": "Queen of the Gods"
+      "question": "Queen of the Gods - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Demeter",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Fertility"
+      "question": "Goddess of Fertility - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Minerva",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Wisdom"
+      "question": "Goddess of Wisdom - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Pan",
       "category": "Olympian Gods Quiz",
-      "question": "God of the Wild"
+      "question": "God of the Wild - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Vulcan",
       "category": "Olympian Gods Quiz",
-      "question": "Craftsman of the Gods"
+      "question": "Craftsman of the Gods - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Hestia",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of the Hearth"
+      "question": "Goddess of the Hearth - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Ceres",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of Fertility"
+      "question": "Goddess of Fertility - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Vesta",
       "category": "Olympian Gods Quiz",
-      "question": "Goddess of the Hearth"
+      "question": "Goddess of the Hearth - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Asclepius",
       "category": "Olympian Gods Quiz",
-      "question": "God of Medicine"
+      "question": "God of Medicine - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Proserpina",
       "category": "Olympian Gods Quiz",
-      "question": "Queen of the Underworld"
+      "question": "Queen of the Underworld - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Faunus",
       "category": "Olympian Gods Quiz",
-      "question": "God of Medicine"
+      "question": "God of the Wild - Roman"
     }, {
-      "answer": "Greek",
+      "answer": "Vejovis",
       "category": "Olympian Gods Quiz",
-      "question": "Cupbearer of the Gods"
+      "question": "God of Medicine - Roman"
     }, {
-      "answer": "Roman",
+      "answer": "Hebe",
       "category": "Olympian Gods Quiz",
-      "question": "God of the Wild"
+      "question": "Cupbearer of the Gods - Greek"
     }, {
-      "answer": "Roman",
+      "answer": "Juventas",
       "category": "Olympian Gods Quiz",
-      "question": "Cupbearer of the Gods"
+      "question": "Cupbearer of the Gods - Roman"
     }],
-    "title": "Olympian Gods Quiz"
+    "quizLength": 39,
+    "title": "Olympian Gods Quiz",
+    "url": "http://www.jetpunk.com/quizzes/name-the-olympian-gods.php"
   }, {
     "categories": [],
     "description": " Name the sports that these athletes excelled at. Each sport is used only once ",
@@ -1900,7 +1924,9 @@ module.exports.trivia = {
       "category": "Sports by Athlete Quiz",
       "question": "David Belle"
     }],
-    "title": "Sports by Athlete Quiz"
+    "quizLength": 30,
+    "title": "Sports by Athlete Quiz",
+    "url": "http://www.jetpunk.com/quizzes/sports-by-athlete-quiz.php"
   }, {
     "categories": [],
     "description": " Guess the countries that these notable people are/were from. Guess the modern day country, even if it didn't exist when the person was alive Answer must correspond to highlighted box ",
@@ -2002,7 +2028,9 @@ module.exports.trivia = {
       "category": "Which Country are They From",
       "question": "Charo"
     }],
-    "title": "Which Country are They From"
+    "quizLength": 24,
+    "title": "Which Country are They From",
+    "url": "http://www.jetpunk.com/quizzes/which-country-are-they-from-quiz.php"
   }, {
     "categories": [],
     "description": " Guess the first names of these Harry Potter characters. Source for all names: harrypotter.wikia.com Quiz by helen62442 - Jun 19, 2014 ",
@@ -2084,15 +2112,15 @@ module.exports.trivia = {
       "category": "Ultimate Harry Potter Name Game",
       "question": "Dursley"
     }, {
-      "answer": "Molly",
-      "category": "Ultimate Harry Potter Name Game",
-      "question": "Weasley"
-    }, {
       "answer": "Cedric",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Diggory"
     }, {
       "answer": "Bill",
+      "category": "Ultimate Harry Potter Name Game",
+      "question": "Weasley"
+    }, {
+      "answer": "Molly",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Weasley"
     }, {
@@ -2300,13 +2328,13 @@ module.exports.trivia = {
       "category": "Ultimate Harry Potter Name Game",
       "question": "Jordan"
     }, {
-      "answer": "Ludovic",
-      "category": "Ultimate Harry Potter Name Game",
-      "question": "Bagman"
-    }, {
       "answer": "Stanley",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Shunpike"
+    }, {
+      "answer": "Ludovic",
+      "category": "Ultimate Harry Potter Name Game",
+      "question": "Bagman"
     }, {
       "answer": "Millicent",
       "category": "Ultimate Harry Potter Name Game",
@@ -2472,6 +2500,10 @@ module.exports.trivia = {
       "category": "Ultimate Harry Potter Name Game",
       "question": "Dawlish"
     }, {
+      "answer": "Piers",
+      "category": "Ultimate Harry Potter Name Game",
+      "question": "Polkiss"
+    }, {
       "answer": "Quirinus",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Quirrell"
@@ -2479,10 +2511,6 @@ module.exports.trivia = {
       "answer": "Morfin",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Gaunt"
-    }, {
-      "answer": "Piers",
-      "category": "Ultimate Harry Potter Name Game",
-      "question": "Polkiss"
     }, {
       "answer": "Zacharias",
       "category": "Ultimate Harry Potter Name Game",
@@ -2512,13 +2540,17 @@ module.exports.trivia = {
       "category": "Ultimate Harry Potter Name Game",
       "question": "Vance"
     }, {
+      "answer": "Hepzibah",
+      "category": "Ultimate Harry Potter Name Game",
+      "question": "Smith"
+    }, {
       "answer": "Jimmy",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Peakes"
     }, {
-      "answer": "Hepzibah",
+      "answer": "Walden",
       "category": "Ultimate Harry Potter Name Game",
-      "question": "Smith"
+      "question": "Macnair"
     }, {
       "answer": "Aurora",
       "category": "Ultimate Harry Potter Name Game",
@@ -2535,10 +2567,6 @@ module.exports.trivia = {
       "answer": "Andrew",
       "category": "Ultimate Harry Potter Name Game",
       "question": "Kirke"
-    }, {
-      "answer": "Walden",
-      "category": "Ultimate Harry Potter Name Game",
-      "question": "Macnair"
     }, {
       "answer": "Demelza",
       "category": "Ultimate Harry Potter Name Game",
@@ -2568,7 +2596,9 @@ module.exports.trivia = {
       "category": "Ultimate Harry Potter Name Game",
       "question": "Vector"
     }],
-    "title": "Ultimate Harry Potter Name Game"
+    "quizLength": 140,
+    "title": "Ultimate Harry Potter Name Game",
+    "url": "http://www.jetpunk.com/user-quizzes/23997/harry-potter-name-game"
   }, {
     "categories": [],
     "description": " Name the cartoons that featured these famous villains. ",
@@ -2658,9 +2688,9 @@ module.exports.trivia = {
       "category": "Cartoon Villains Quiz",
       "question": "Dr. Claw"
     }, {
-      "answer": "Rocky &amp; Bullwinkle",
+      "answer": "Rocky & Bullwinkle",
       "category": "Cartoon Villains Quiz",
-      "question": "Boris &amp; Natasha"
+      "question": "Boris & Natasha"
     }, {
       "answer": "ThunderCats",
       "category": "Cartoon Villains Quiz",
@@ -2670,7 +2700,9 @@ module.exports.trivia = {
       "category": "Cartoon Villains Quiz",
       "question": "Negaduck"
     }],
-    "title": "Cartoon Villains Quiz"
+    "quizLength": 24,
+    "title": "Cartoon Villains Quiz",
+    "url": "http://www.jetpunk.com/quizzes/cartoon-villains-quiz.php"
   }, {
     "categories": [],
     "description": " Translate these British words into their American equivalents. This quiz does NOT suggest that all British people use these words 100% of the time ",
@@ -2784,7 +2816,9 @@ module.exports.trivia = {
       "category": "British Words Quiz",
       "question": "Zebra Crossing"
     }],
-    "title": "British Words Quiz"
+    "quizLength": 27,
+    "title": "British Words Quiz",
+    "url": "http://www.jetpunk.com/quizzes/british-words-quiz.php"
   }, {
     "categories": [],
     "description": " Name these popular characters from science fiction television and movies. Quiz idea: KungFuMasterBlaster ",
@@ -2846,13 +2880,13 @@ module.exports.trivia = {
       "category": "Sci-Fi Characters",
       "question": "He traveled in a TARDIS"
     }, {
-      "answer": "Biff Tannen",
-      "category": "Sci-Fi Characters",
-      "question": "\"Back to the Future\" bully"
-    }, {
       "answer": "Starbuck",
       "category": "Sci-Fi Characters",
       "question": "\"Battlestar Galactica\" pilot or coffee shop"
+    }, {
+      "answer": "Biff Tannen",
+      "category": "Sci-Fi Characters",
+      "question": "\"Back to the Future\" bully"
     }, {
       "answer": "Han Solo",
       "category": "Sci-Fi Characters",
@@ -2894,117 +2928,121 @@ module.exports.trivia = {
       "category": "Sci-Fi Characters",
       "question": "\"Planet of the Apes\" doctor who must keep humans in check"
     }],
-    "title": "Sci-Fi Characters"
+    "quizLength": 26,
+    "title": "Sci-Fi Characters",
+    "url": "http://www.jetpunk.com/quizzes/science-fiction-characters"
   }, {
     "categories": [],
     "description": " Guess these religion-themed answers from A to Z All answers are a single word For the purpose of this quiz, \"religion\", \"ideology\", and \"spirituality\" are interchangeable Quiz by buck1017 - Feb 04, 2014 ",
     "difficulty": -1,
     "questions": [{
-      "answer": "First woman",
+      "answer": "Eve",
       "category": "Religion A to Z",
-      "question": "E"
+      "question": "E - First woman"
     }, {
-      "answer": "Slew Goliath",
+      "answer": "David",
       "category": "Religion A to Z",
-      "question": "D"
+      "question": "D - Slew Goliath"
     }, {
-      "answer": "The Christian Messiah",
+      "answer": "Jesus",
       "category": "Religion A to Z",
-      "question": "J"
+      "question": "J - The Christian Messiah"
     }, {
-      "answer": "Famous ark builder &amp; flood survivor",
+      "answer": "Noah",
       "category": "Religion A to Z",
-      "question": "N"
+      "question": "N - Famous ark builder & flood survivor"
     }, {
-      "answer": "Pope following Benedict XVI",
+      "answer": "Francis",
       "category": "Religion A to Z",
-      "question": "F"
+      "question": "F - Pope following Benedict XVI"
     }, {
-      "answer": "Holy book of Islam",
+      "answer": "Qur'an",
       "category": "Religion A to Z",
-      "question": "Q"
+      "question": "Q - Holy book of Islam"
     }, {
-      "answer": "Siddhārtha Gautama",
+      "answer": "Buddha",
       "category": "Religion A to Z",
-      "question": "B"
+      "question": "B - Siddhārtha Gautama"
     }, {
-      "answer": "Second son of Abraham",
+      "answer": "Isaac",
       "category": "Religion A to Z",
-      "question": "I"
+      "question": "I - Second son of Abraham"
     }, {
-      "answer": "Hindu meditation with poses",
+      "answer": "Yoga",
       "category": "Religion A to Z",
-      "question": "Y"
+      "question": "Y - Hindu meditation with poses"
     }, {
-      "answer": "Christians who followed Luther",
+      "answer": "Protestants",
       "category": "Religion A to Z",
-      "question": "P"
+      "question": "P - Christians who followed Luther"
     }, {
-      "answer": "Jamaican born ideology",
+      "answer": "Rastafarianism",
       "category": "Religion A to Z",
-      "question": "R"
+      "question": "R - Jamaican born ideology"
     }, {
-      "answer": "First five books of the Jewish Bible",
+      "answer": "Torah",
       "category": "Religion A to Z",
-      "question": "T"
+      "question": "T - First five books of the Jewish Bible"
     }, {
-      "answer": "His wife became a pillar of salt",
+      "answer": "Lot",
       "category": "Religion A to Z",
-      "question": "L"
+      "question": "L - His wife became a pillar of salt"
     }, {
-      "answer": "Blue four-armed Hindu God",
+      "answer": "Vishnu",
       "category": "Religion A to Z",
-      "question": "V"
+      "question": "V - Blue four-armed Hindu God"
     }, {
-      "answer": "Older brother of Moses",
+      "answer": "Aaron",
       "category": "Religion A to Z",
-      "question": "A"
+      "question": "A - Older brother of Moses"
     }, {
-      "answer": "The land God promised the Israelites",
+      "answer": "Canaan",
       "category": "Religion A to Z",
-      "question": "C"
+      "question": "C - The land God promised the Israelites"
     }, {
-      "answer": "Muslim pilgrimage",
+      "answer": "Hajj",
       "category": "Religion A to Z",
-      "question": "H"
+      "question": "H - Muslim pilgrimage"
     }, {
-      "answer": "Indigenous religion of Japan",
+      "answer": "Shinto",
       "category": "Religion A to Z",
-      "question": "S"
+      "question": "S - Indigenous religion of Japan"
     }, {
-      "answer": "The Holy Land - synonymous with Jerusalem",
+      "answer": "Zion",
       "category": "Religion A to Z",
-      "question": "Z"
+      "question": "Z - The Holy Land - synonymous with Jerusalem"
     }, {
-      "answer": "Modern pagan religion symbolized by a pentagram",
+      "answer": "Wicca",
       "category": "Religion A to Z",
-      "question": "W"
+      "question": "W - Modern pagan religion symbolized by a pentagram"
     }, {
-      "answer": "Hotel room Bible distributor",
+      "answer": "Gideons",
       "category": "Religion A to Z",
-      "question": "G"
+      "question": "G - Hotel room Bible distributor"
     }, {
-      "answer": "Mosque tower from which the call to prayer is made",
+      "answer": "Minaret",
       "category": "Religion A to Z",
-      "question": "M"
+      "question": "M - Mosque tower from which the call to prayer is made"
     }, {
-      "answer": "Cube-shaped building in Mecca; Islam's most holy site",
+      "answer": "Kaaba",
       "category": "Religion A to Z",
-      "question": "K"
+      "question": "K - Cube-shaped building in Mecca; Islam's most holy site"
     }, {
-      "answer": "Birthplace of Abraham",
+      "answer": "Ur",
       "category": "Religion A to Z",
-      "question": "U"
+      "question": "U - Birthplace of Abraham"
     }, {
-      "answer": "Shortest book of the Hebrew Bible",
+      "answer": "Obadiah",
       "category": "Religion A to Z",
-      "question": "O"
+      "question": "O - Shortest book of the Hebrew Bible"
     }, {
-      "answer": "Taoist term for an enlightened person",
+      "answer": "Xian",
       "category": "Religion A to Z",
-      "question": "X"
+      "question": "X - Taoist term for an enlightened person"
     }],
-    "title": "Religion A to Z"
+    "quizLength": 26,
+    "title": "Religion A to Z",
+    "url": "http://www.jetpunk.com/user-quizzes/33027/religion-a-to-z"
   }, {
     "categories": [],
     "description": " Guess the American cities that have these nicknames. ",
@@ -3106,7 +3144,9 @@ module.exports.trivia = {
       "category": "U.S. City Nicknames Quiz",
       "question": "The World's Playground"
     }],
-    "title": "U.S. City Nicknames Quiz"
+    "quizLength": 24,
+    "title": "U.S. City Nicknames Quiz",
+    "url": "http://www.jetpunk.com/quizzes/city-nicknames-quiz.php"
   }, {
     "categories": [],
     "description": " Name the 24 countries that receive the most international visitors. For the year 2014 According to the UN's World Tourism Organization ",
@@ -3208,109 +3248,113 @@ module.exports.trivia = {
       "category": "Countries with Most Tourists Quiz",
       "question": "12.7 mil"
     }],
-    "title": "Countries with Most Tourists Quiz"
+    "quizLength": 24,
+    "title": "Countries with Most Tourists Quiz",
+    "url": "http://www.jetpunk.com/quizzes/countries-with-most-tourists-quiz.php"
   }, {
     "categories": [],
     "description": " Name the musical acts who performed these hits from the 2000's. Spotify user? This quiz is also a playlist ",
     "difficulty": -1,
     "questions": [{
-      "answer": "Poker Face",
+      "answer": "Lady Gaga",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Poker Face"
     }, {
-      "answer": "Single Ladies (Put a Ring on It)",
+      "answer": "Beyoncé Knowles",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Single Ladies (Put a Ring on It)"
     }, {
-      "answer": "SexyBack",
+      "answer": "Justin Timberlake",
       "category": "Who Did That 2000's Song",
-      "question": "2006"
+      "question": "2006 - SexyBack"
     }, {
-      "answer": "American Idiot",
+      "answer": "Green Day",
       "category": "Who Did That 2000's Song",
-      "question": "2004"
+      "question": "2004 - American Idiot"
     }, {
-      "answer": "Rehab",
+      "answer": "Amy Winehouse",
       "category": "Who Did That 2000's Song",
-      "question": "2006"
+      "question": "2006 - Rehab"
     }, {
-      "answer": "Sk8er Boi",
+      "answer": "Avril Lavigne",
       "category": "Who Did That 2000's Song",
-      "question": "2002"
+      "question": "2002 - Sk8er Boi"
     }, {
-      "answer": "Hollaback Girl",
+      "answer": "Gwen Stefani",
       "category": "Who Did That 2000's Song",
-      "question": "2005"
+      "question": "2005 - Hollaback Girl"
     }, {
-      "answer": "Since U Been Gone",
+      "answer": "Kelly Clarkson",
       "category": "Who Did That 2000's Song",
-      "question": "2004"
+      "question": "2004 - Since U Been Gone"
     }, {
-      "answer": "Hey-Ya!",
+      "answer": "Outkast",
       "category": "Who Did That 2000's Song",
-      "question": "2003"
+      "question": "2003 - Hey-Ya!"
     }, {
-      "answer": "Gold Digger",
+      "answer": "Kanye West",
       "category": "Who Did That 2000's Song",
-      "question": "2005"
+      "question": "2005 - Gold Digger"
     }, {
-      "answer": "99 Problems",
+      "answer": "Jay-Z",
       "category": "Who Did That 2000's Song",
-      "question": "2004"
+      "question": "2004 - 99 Problems"
     }, {
-      "answer": "Stan",
+      "answer": "Eminem",
       "category": "Who Did That 2000's Song",
-      "question": "2000"
+      "question": "2000 - Stan"
     }, {
-      "answer": "Yellow",
+      "answer": "Coldplay",
       "category": "Who Did That 2000's Song",
-      "question": "2000"
+      "question": "2000 - Yellow"
     }, {
-      "answer": "Love Story",
+      "answer": "Taylor Swift",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Love Story"
     }, {
-      "answer": "Beautiful Day",
+      "answer": "U2",
       "category": "Who Did That 2000's Song",
-      "question": "2000"
+      "question": "2000 - Beautiful Day"
     }, {
-      "answer": "It Wasn't Me",
+      "answer": "Shaggy",
       "category": "Who Did That 2000's Song",
-      "question": "2001"
+      "question": "2001 - It Wasn't Me"
     }, {
-      "answer": "Sex on Fire",
+      "answer": "Kings of Leon",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Sex on Fire"
     }, {
-      "answer": "Chasing Pavements",
+      "answer": "Adele",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Chasing Pavements"
     }, {
-      "answer": "Feel Good Inc.",
+      "answer": "Gorillaz",
       "category": "Who Did That 2000's Song",
-      "question": "2005"
+      "question": "2005 - Feel Good Inc."
     }, {
-      "answer": "Paper Planes",
+      "answer": "M.I.A.",
       "category": "Who Did That 2000's Song",
-      "question": "2008"
+      "question": "2008 - Paper Planes"
     }, {
-      "answer": "Your Body is a Wonderland",
+      "answer": "John Mayer",
       "category": "Who Did That 2000's Song",
-      "question": "2002"
+      "question": "2002 - Your Body is a Wonderland"
     }, {
-      "answer": "Take Me Out",
+      "answer": "Franz Ferdinand",
       "category": "Who Did That 2000's Song",
-      "question": "2004"
+      "question": "2004 - Take Me Out"
     }, {
-      "answer": "Fell in Love with a Girl",
+      "answer": "The White Stripes",
       "category": "Who Did That 2000's Song",
-      "question": "2002"
+      "question": "2002 - Fell in Love with a Girl"
     }, {
-      "answer": "Last Nite",
+      "answer": "The Strokes",
       "category": "Who Did That 2000's Song",
-      "question": "2001"
+      "question": "2001 - Last Nite"
     }],
-    "title": "Who Did That 2000's Song"
+    "quizLength": 24,
+    "title": "Who Did That 2000's Song",
+    "url": "http://www.jetpunk.com/quizzes/who-did-that-2000s-song-quiz.php"
   }, {
     "categories": [],
     "description": " For each selected landmark, name the country in which it is located. Quiz by Kquilikquiit - Apr 06, 2015 ",
@@ -3460,7 +3504,9 @@ module.exports.trivia = {
       "category": "Landmarks of Countries Quiz #2",
       "question": "Mulu Caves"
     }],
-    "title": "Landmarks of Countries Quiz #2"
+    "quizLength": 36,
+    "title": "Landmarks of Countries Quiz #2",
+    "url": "http://www.jetpunk.com/user-quizzes/24769/landmarks-of-countries-2"
   }, {
     "categories": [],
     "description": " These are the top 100 movie quotes of all time, according to the American Film Institute.Name the movies they appeared in. Quiz by Rachel24601 - Dec 26, 2012 ",
@@ -3866,6 +3912,8 @@ module.exports.trivia = {
       "category": "Top 100 Movie Quotes",
       "question": "Who's on first"
     }],
-    "title": "Top 100 Movie Quotes"
+    "quizLength": 100,
+    "title": "Top 100 Movie Quotes",
+    "url": "http://www.jetpunk.com/user-quizzes/13441/top-100-movie-quotes"
   }]
 }
