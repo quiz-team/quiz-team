@@ -46,7 +46,6 @@ module.exports = function(socket, io) {
     // console.log("LOBBY", lobby);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     // update lobbies for all players
-    console.log("on:leaveLobby", lobby);
     if (lobby.getPlayers().length === 0) {
       lobbies.removeLobby(lobbyId);
       console.log('no more players, lobby removed');
@@ -91,7 +90,7 @@ module.exports = function(socket, io) {
       console.log('all players are ready!', allPlayers);
       // create a new game with lobby Id
       var game = games.createGame(lobbyId, allPlayers);
-      io.emit('goToStartScreen', game.gameData);
+      io.to(lobbyId).emit('goToStartScreen', game.gameData);
     }
     io.to(lobbyId).emit('updatePlayers', allPlayers);
   });
