@@ -27,15 +27,15 @@ module.exports = function(socket, io) {
   var game;
   socket.on('enteredGame', function() {
     game = games.findGame(socket);
-    console.log('THIS IS THE GAME', game);
     if (everyoneInView(game, socket)) {
+      console.log("everyone in view, GAME.ID: ", game.id, " on socket ", socket.id);
       // start game timer
       var timerData = timer.setTimer(PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
+        console.log("emitting start game with: ", game.id, " on socket ", socket.id);
         io.to(game.id).emit('startGame');
-        console.log('EMIT START GAME');
       });
     }
   });
@@ -48,7 +48,6 @@ module.exports = function(socket, io) {
       roundData.timerData = timer.setTimer(ROUND_TIMER);
       roundData.roundNum = game.roundNum;
 
-      console.log('emit: startRound: socket.id', socket.id);
       io.to(game.id).emit('startRound', roundData);
       // start the round timer
       game.startTimer(roundData.timerData, function() {
@@ -68,7 +67,7 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRoundOver', function() {
     if(everyoneInView(game, socket)){
-      console.log("EVERYONE IN ROUND OVER");
+
       game.roundNum++;
 
       var timerData = timer.setTimer(ROUND_OVER_TIMER);

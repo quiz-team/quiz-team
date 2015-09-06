@@ -52,7 +52,6 @@ module.exports = function(gameId) {
     for (var i = 0; i < this.numRounds; i++) {
       roundQuestions.push([]);
     }
-    console.log("PLAYER ANSWERS: ", playerAnswers);
     // sets game.gameData
     //for each question in questionBank
     questionSet.forEach(function (questionAnswerPair, index) {
@@ -136,7 +135,6 @@ module.exports = function(gameId) {
         // push answerId to roundAnswers, at the correct round
         game.roundAnswers[round].push(answerId);
       }
-      console.log("game.roundAnswers: ", game.roundAnswers);
     }
   }
 
@@ -158,7 +156,6 @@ module.exports = function(gameId) {
 
   game.updateRoundScore = function(answer){
     // given the current round, check if the answerId matches one of the expected answers
-    console.log("ANSWER FROM PLAYER: ", answer);
 
     if(game.roundAnswers[game.roundNum-1].indexOf(answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
@@ -168,7 +165,6 @@ module.exports = function(gameId) {
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
       game.gameData.stats.allRoundResults.push(game.currentRoundResults);
-      console.log("ALL CORRECT ANSWERS FROM ROUND: ", game.roundAnswers[game.roundNum-1]);
     }
   };
 
