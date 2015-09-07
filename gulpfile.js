@@ -37,6 +37,8 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['check-syntax']);
 });
 
+gulp.task('build', []);
+
 // Start server using nodemon
 gulp.task('serve', function() {
   nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});

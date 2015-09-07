@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "0.12"
+  - "0.11"
+  - "0.10"
+# Use the following to let gulp handle build/testing
+before_script:
+  - npm install -g gulp
+script: gulp build
