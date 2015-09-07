@@ -33,7 +33,7 @@ angular.module('meatloaf.services', [])
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://9921df44.ngrok.io');
+      playerSocket = io.connect('http://3f88ad7d.ngrok.io');
       // playerSocket = io.connect('http://localhost:9090');
     },
 

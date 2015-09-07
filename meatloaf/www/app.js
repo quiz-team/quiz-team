@@ -53,51 +53,57 @@ app.run(function($ionicPlatform, $rootScope, socket) {
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
   function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-  $stateProvider.state('selection', {
-    // url: '/selection',
-    cache: false,
-    url: '/',
-    controller: 'selectionCtrl',
-    templateUrl: 'components/selection/selectionView.html'
-  })
+  $stateProvider
+    .state('selection', {
+      // url: '/selection',
+      cache: false,
+      url: '/',
+      controller: 'selectionCtrl',
+      templateUrl: 'components/selection/selectionView.html'
+    })
 
-  .state('lobby', {
-    // url: '/lobby',
-    cache: false,
-    controller: 'lobbyCtrl',
-    templateUrl: 'components/lobby/lobbyView.html',
-    params: {
-      'lobby': null
-    }
-  })
+    .state('loading', {
+      // url: '/selection',
+      templateUrl: 'components/loading/loading.html'
+    })
 
-  .state('gameStart', {
-    cache: false,
-    // url: '/gameStart',
-    controller: 'gameStartCtrl',
-    templateUrl: 'components/game/game-start/gameStartView.html'
-  })
+    .state('lobby', {
+      // url: '/lobby',
+      cache: false,
+      controller: 'lobbyCtrl',
+      templateUrl: 'components/lobby/lobbyView.html',
+      params: {
+        'lobby': null
+      }
+    })
 
-  .state('gameRound', {
-    cache: false,
-    // url: '/gameRound',
-    controller: 'gameRoundCtrl',
-    templateUrl: 'components/game/game-round/gameRoundView.html'
-  })
+    .state('gameStart', {
+      cache: false,
+      // url: '/gameStart',
+      controller: 'gameStartCtrl',
+      templateUrl: 'components/game/game-start/gameStartView.html'
+    })
 
-  .state('gameRoundOver', {
-    cache: false,
-    // url: '/gameRoundOver',
-    controller: 'gameRoundOverCtrl',
-    templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
-  })
+    .state('gameRound', {
+      cache: false,
+      // url: '/gameRound',
+      controller: 'gameRoundCtrl',
+      templateUrl: 'components/game/game-round/gameRoundView.html'
+    })
 
-  .state('gameOver', {
-    cache: false,
-    // url: '/gameOver',
-    controller: 'gameOverCtrl',
-    templateUrl: 'components/game/game-over/gameOverView.html'
-  });
+    .state('gameRoundOver', {
+      cache: false,
+      // url: '/gameRoundOver',
+      controller: 'gameRoundOverCtrl',
+      templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
+    })
+
+    .state('gameOver', {
+      cache: false,
+      // url: '/gameOver',
+      controller: 'gameOverCtrl',
+      templateUrl: 'components/game/game-over/gameOverView.html'
+    });
 
   // removes hash from url
   $locationProvider.html5Mode(true);

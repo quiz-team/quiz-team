@@ -4,7 +4,7 @@ angular.module('meatloaf.lobby', [])
             function ($scope, $rootScope, $state, socket, trivia) {
 
   $scope.lobby = $state.params.lobby;
-  $scope.players = [{number: 1, ready: false}, {number: 2, ready: false}];
+  $scope.players = [];
   console.log("ENTERING LOBBY STATE");
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
@@ -36,13 +36,21 @@ angular.module('meatloaf.lobby', [])
 
   // Notify server that ready button is being pressed by user
   $scope.readyOn = function () {
-    console.log("ready button ON");
+    $scope.players.forEach(function(player){
+      if(player.id === socket.getId()){
+        player.ready=true;
+      }
+    })
     socket.emit('readyOn', $scope.lobby.id);
   };
 
   // Notify server that ready button has been released by user
   $scope.readyOff = function () {
-    console.log("ready button OFF");
+    $scope.players.forEach(function(player){
+      if(player.id === socket.getId()){
+        player.ready=false;
+      }
+    })
     socket.emit('readyOff', $scope.lobby.id);
   };
 
