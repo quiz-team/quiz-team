@@ -11,7 +11,7 @@ module.exports = function(roomname) {
   //Add a player by a socket id number
   //Returns that player's number
   lobby.addPlayer = function(id) {
-    console.log("Player with id " + id + " joining");
+    console.log(' | Add player: ' + id + ' to lobby: ', lobby.roomname);
     if (lobby.players.length < maxPlayers) {
       var newPlayer = playerMaker(id);
       // push returns length of array
@@ -40,6 +40,8 @@ module.exports = function(roomname) {
     if (playerIndex === -1) {
       return null;
     }
+
+    console.log(' | Remove player:', id, ' from lobby: ', lobby.roomname);
     // remove player from room and players collection
     delete players[id];
     lobby.players.splice(playerIndex, 1);

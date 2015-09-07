@@ -28,13 +28,11 @@ module.exports = function(socket, io) {
   // get initial list
   socket.on('enteredSelectionRoom', function(data, callback) {
     callback(lobbies.getAllLobbies());
-    // console.log('returning rooms', lobbies.getAllLobbies());
   });
 
   socket.on('enteredLobby', function(lobbyId, callback) {
     // updates players when another player enters the lobby
     var lobby = lobbies.getLobby(lobbyId);
-    console.log("player has entered the lobby: ", socket.id);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     callback(lobby.getPlayers());
   });
@@ -43,12 +41,11 @@ module.exports = function(socket, io) {
     // updates players when another player leaves the lobby
     var lobby = lobbies.getLobby(lobbyId);
     lobby.removePlayer(socket.id);
-    // console.log("LOBBY", lobby);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     // update lobbies for all players
     if (lobby.getPlayers().length === 0) {
       lobbies.removeLobby(lobbyId);
-      console.log('no more players, lobby removed');
+      console.log(' | Remove lobby:', lobby.roomname);
       // console.log("LOBBY LEAVE", lobbies);
       // update lobbies for all players
       io.emit('updateLobbies', lobbies.getAllLobbies());
