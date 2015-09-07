@@ -17,7 +17,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // our spec files
-      'specs/client/*.js'
+      // 'specs/client/*.js'
+      'specs/server/*.js'
 
       // // angular source
       // 'meatloaf/www/lib/angular/angular.js',
