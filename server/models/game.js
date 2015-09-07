@@ -3,7 +3,8 @@ var players = require('../collections/players.js');
 var roundMaker = require('./round.js');
 var timer = require('../utils/timerController.js');
 var _und = require('underscore');
-var questionBank = require('../trivia.js').trivia;
+// var questionBank = require('../trivia.js').trivia;
+var QuestionBank = require('../database/config.js');
 
 module.exports = function(gameId) {
 
@@ -33,71 +34,76 @@ module.exports = function(gameId) {
     return ++nextId;
   };
 
-  game.loadGameData = function(numPlayers) {
-    var triviaSet = questionBank.sets[Math.floor(Math.random() * questionBank.sets.length)];
-    var questionSet = triviaSet.questions;
-    shuffle(questionSet);
+  game.loadGameData = function(numPlayers, callback) {
+    console.log("load game data");
+    QuestionBank.findRandom().limit(1).exec()
+    .then(function(triviaSet) {
+      triviaSet = triviaSet[0];
+      var questionSet = triviaSet.questions;
+      shuffle(questionSet);
 
-    game.gameData.title = triviaSet.title;
-    game.gameData.description = triviaSet.description;
+      game.gameData.title = triviaSet.title;
+      game.gameData.description = triviaSet.description;
 
-    questionSet = questionSet.splice(0,numPlayers*6);
-    var playerAnswers = [];
-    var playerQuestions = [];
-    for (var i = 0; i < numPlayers; i++) {
-      playerAnswers.push([]);
-      playerQuestions.push([]);
-    }
-    var roundQuestions = [];
-    for (var i = 0; i < this.numRounds; i++) {
-      roundQuestions.push([]);
-    }
-    // sets game.gameData
-    //for each question in questionBank
-    questionSet.forEach(function (questionAnswerPair, index) {
-      //assign id to question
-      var question = {};
-      question.text = questionAnswerPair.question;
-      question.id = game.getId();
-      //assign id to answer
-      var answer = {}
-      answer.text = questionAnswerPair.answer;
-      answer.id = game.getId();
-      //store question->association in questionAnswers
-      game.questionAnswerMap[question.id] = answer.id;
-      //assign answer to a player in playerAnswers, rotating through players
-      console.log(index % numPlayers);
-      playerAnswers[index % numPlayers].push(answer);
-      //assign question to roundQuestions, filling up one round at a time.
-      roundQuestions[Math.floor(index / numPlayers)].push(question);
-    });
+      questionSet = questionSet.splice(0,numPlayers*6);
+      var playerAnswers = [];
+      var playerQuestions = [];
+      for (var i = 0; i < numPlayers; i++) {
+        playerAnswers.push([]);
+        playerQuestions.push([]);
+      }
+      var roundQuestions = [];
+      for (var i = 0; i < game.numRounds; i++) {
+        roundQuestions.push([]);
+      }
+      // sets game.gameData
+      //for each question in questionBank
       
-    //for each round in roundQuestions
-    roundQuestions.forEach(function(round) {
-      //shuffle round
-      shuffle(round);
-      //assign one question per round to player in playerQuestions
-      round.forEach(function(question, index) {
-        playerQuestions[index].push(question);
+      _und.each(questionSet, function (questionAnswerPair, index) {
+        //assign id to question
+        var question = {};
+        question.text = questionAnswerPair.question;
+        question.id = game.getId();
+        //assign id to answer
+        var answer = {}
+        answer.text = questionAnswerPair.answer;
+        answer.id = game.getId();
+        //store question->association in questionAnswers
+        game.questionAnswerMap[question.id] = answer.id;
+        //assign answer to a player in playerAnswers, rotating through players
+        playerAnswers[index % numPlayers].push(answer);
+        //assign question to roundQuestions, filling up one round at a time.
+        roundQuestions[Math.floor(index / numPlayers)].push(question);
       });
-    });
-    //for each player in playerAnswers
-    playerAnswers.forEach(function(answers) {
-      //shuffle player's answers
-      shuffle(answers);
-    })
+        
+      //for each round in roundQuestions
+      roundQuestions.forEach(function(round) {
+        //shuffle round
+        shuffle(round);
+        //assign one question per round to player in playerQuestions
+        round.forEach(function(question, index) {
+          playerQuestions[index].push(question);
+        });
+      });
+      //for each player in playerAnswers
+      playerAnswers.forEach(function(answers) {
+        //shuffle player's answers
+        shuffle(answers);
+      });
 
-    // Need a comment for this
-    game.gameData.players = {};
-    //do something with playerAnswers and playerQuestions
-    game.players.forEach(function(playerId, index) {
-      game.gameData.players[playerId] = {};
-      game.gameData.players[playerId].answers = playerAnswers[index];
-      game.gameData.players[playerId].questions = playerQuestions[index];
-    });
+      // Need a comment for this
+      game.gameData.players = {};
+      //do something with playerAnswers and playerQuestions
+      game.players.forEach(function(playerId, index) {
+        game.gameData.players[playerId] = {};
+        game.gameData.players[playerId].answers = playerAnswers[index];
+        game.gameData.players[playerId].questions = playerQuestions[index];
+      });
 
-    // load up a matrix of correct answers for each round
-    loadCorrectAnswers();
+      // load up a matrix of correct answers for each round
+      loadCorrectAnswers();
+      callback();
+    });
   };
 
   var shuffle = function(array) {

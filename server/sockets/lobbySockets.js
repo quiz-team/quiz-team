@@ -89,8 +89,9 @@ module.exports = function(socket, io) {
     if (allReady) {
       console.log('all players are ready!', allPlayers);
       // create a new game with lobby Id
-      var game = games.createGame(lobbyId, allPlayers);
-      io.to(lobbyId).emit('goToStartScreen', game.gameData);
+      games.createGame(lobbyId, allPlayers, function(game) {
+        io.to(lobbyId).emit('goToStartScreen', game.gameData);
+      });
     }
     io.to(lobbyId).emit('updatePlayers', allPlayers);
   });
