@@ -13,7 +13,8 @@ var paths = {
   // client-side .js files
   scripts: [
     'client/**/*.js',
-    'server/**/*.js'
+    'server/**/*.js',
+    '!server/trivia.js'
   ],
   // all the html
   html: [

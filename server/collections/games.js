@@ -5,15 +5,14 @@ module.exports = {
 
   activeGames: {},
 
-  createGame: function(gameId, players) {
-    // creates game if it does not exist
-    // if (!this.activeGames[gameId]) {
-      this.activeGames[gameId] = gameMaker(gameId);
-      this.activeGames[gameId].loadPlayers(players);
-      this.activeGames[gameId].loadGameData(players.length);
-
-    // }
-    return this.activeGames[gameId];
+  createGame: function(gameId, players, callback) {
+    // creates game
+    this.activeGames[gameId] = gameMaker(gameId);
+    this.activeGames[gameId].loadPlayers(players);
+    this.activeGames[gameId].loadGameData(players.length, function() {
+      console.log('game data has loaded');
+      callback(this.activeGames[gameId]);
+    }.bind(this));
   },
 
   findGame: function(socket) {
