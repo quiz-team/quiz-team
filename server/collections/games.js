@@ -16,7 +16,7 @@ module.exports = {
   },
 
   findGame: function(socket) {
-    var gameId = players[socket.id].lobbyId;
+    var gameId = players[socket.playerId].lobbyId;
     return this.activeGames[gameId];
   },
 

@@ -1,7 +1,7 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia',
-            function ($scope, $rootScope, $state, socket, trivia) {
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session',
+            function ($scope, $rootScope, $state, socket, trivia, session) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [];
@@ -39,25 +39,21 @@ angular.module('meatloaf.lobby', [])
   // Notify server that ready button is being pressed by user
   $scope.readyOn = function () {
     $scope.players.forEach(function(player){
-      if(player.id === socket.getId()){
+      if(player.id === session.getId()){
         player.ready=true;
       }
-    })
+    });
     socket.emit('readyOn', $scope.lobby.id);
   };
 
   // Notify server that ready button has been released by user
   $scope.readyOff = function () {
     $scope.players.forEach(function(player){
-      if(player.id === socket.getId()){
+      if(player.id === session.getId()){
         player.ready=false;
       }
-    })
+    });
     socket.emit('readyOff', $scope.lobby.id);
   };
-
-  var filter = function(players){
-    // return _.filter(players, function(player){player.id !== socket.getId()});
-  }
 
 }]);

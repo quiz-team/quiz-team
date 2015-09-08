@@ -174,10 +174,10 @@ module.exports = function(gameId) {
     if(game.gameData.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       game.currentRoundResults.numCorrect++;
-      game.currentRoundResults.scoreByPlayer[socket.id] = 1;
+      game.currentRoundResults.scoreByPlayer[socket.playerId] = 1;
     } else {
       //handle incorrect submission:
-      game.currentRoundResults.scoreByPlayer[socket.id] = 0;
+      game.currentRoundResults.scoreByPlayer[socket.playerId] = 0;
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){

@@ -20,21 +20,19 @@ module.exports = function(roomname) {
   /**
    * Adds a player to the lobby.
    * @memberOf Lobby
-   * @param {string} id The socket ID of a player
+   * @param {string} playerId The ID of a player
    * @returns {number|null} Player's position number in lobby.
    */
-  lobby.addPlayer = function(id) {
+  lobby.addPlayer = function(playerId) {
     if (lobby.players.length < maxPlayers) {
-      console.log(' | Add player: ' + id + ' to lobby: ', lobby.roomname);
-      var newPlayer = playerMaker(id);
+      console.log(' | Add player: ' + playerId + ' to lobby: ', lobby.roomname);
+      var player = players[playerId];
       // push returns length of array
-      newPlayer.lobbyId = lobby.id; // lobby.id assigned in from lobbies
-      lobby.players.push(newPlayer);
+      player.lobbyId = lobby.id; // lobby.id assigned in from lobbies
+      lobby.players.push(player);
       if (lobby.players.length === maxPlayers) {
         lobby.full = true;
       }
-      // add player to players object
-      players[id] = newPlayer;
       // console.log("Assigning player num " + i);
       // return index of pushed player
       return lobby.players.length - 1;
@@ -47,15 +45,16 @@ module.exports = function(roomname) {
   /**
    * Removes a player to the lobby.
    * @memberOf Lobby
-   * @param {string} id The socket ID of a player
+   * @param {string} playerId The ID of a player
    * @returns {number|null} Player's position index if found.
    */
-  lobby.removePlayer = function(id) {
+  lobby.removePlayer = function(playerId) {
     var playerIndex = -1;
     // get player index
     _und.each(lobby.players, function(player, index) {
-      if (player.id === id) {
+      if (player.id === playerId) {
         playerIndex = index;
+        player.lobbyId = null;
       }
     });
 
@@ -63,9 +62,8 @@ module.exports = function(roomname) {
       return null;
     }
 
-    console.log(' | Remove player:', id, ' from lobby: ', lobby.roomname);
+    console.log(' | Remove player:', playerId, ' from lobby: ', lobby.roomname);
     // remove player from room and players collection
-    delete players[id];
     lobby.players.splice(playerIndex, 1);
     lobby.full = false;
     
@@ -75,13 +73,14 @@ module.exports = function(roomname) {
   /**
    * Gets a player in the lobby by id.
    * @memberOf Lobby
-   * @param {string} id The socket ID of a player
+   * @param {string} playerId The ID of a player
    * @returns {Player} 
    */
-  lobby.getPlayerById = function(id){
+  // takes a socked.id and returns player object
+  lobby.getPlayerById = function(playerId){
     var result;
     _und.each(lobby.players, function(player, index) {
-      if (player.id === id) {
+      if (player.id === playerId) {
         result = player;
       }
     });
