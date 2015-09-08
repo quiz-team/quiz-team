@@ -1,6 +1,8 @@
 <div class="container__round">
   <div class="container__question">
-    <h3> {{ question.text }} </h3>
+    <p class="container__question__text" ng-class="{
+    'container__question__text--sm' : question.text.length > questionTextCutoff }"> 
+    {{ question.text }} </p>
   </div>
 
   <div class="container__timer-bar"> 
@@ -9,9 +11,12 @@
 
   <div class="container__answers">
     <div class="grid">
-      <div class="grid__item" ng-repeat="answer in answers">
-        <div class="answer" on-touch="selectAnswer(answer.id)" on-release="unselectAnswer(answer.id)"
-           ng-class="{ 'answer--locked' : isLockedAnswer(answer.id)}">
+      <div class="grid__item" ng-repeat="answer in answers" on-touch="selectAnswer(answer.id)" ng-class="{'answer--locked' : isLockedAnswer(answer.id)}">
+        <div class="answer" on-release="unselectAnswer(answer.id)"
+           ng-class="{ 
+           'answer--locked' : isLockedAnswer(answer.id),
+           'answer--sm' : answer.text.length > smallTextCutoff 
+           }">
            {{ answer.text }}
         </div>
       </div>

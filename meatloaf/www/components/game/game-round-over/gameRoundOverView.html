@@ -1,3 +1,10 @@
-<div> END OF ROUND </div>
-<div>Correct: {{ numCorrect }}</div>
+<div class="round-over__header"> Round Over </div>
+<div class="round-over__status round-over__status--correct" ng-show="ownQuestionCorrect === 'correct'"><i class="icon ion-checkmark icon-correct"></i></div>
+<div class="round-over__status round-over__status--incorrect" ng-show="ownQuestionCorrect === 'incorrect'"><i class="icon ion-close icon-incorrect"></i></div>
+
+<div class="round-over__label">Question:</div>
+<div class="round-over__question">{{ question }}</div>
+<div class="round-over__label">Correct Answer:</div>
+<div class="round-over__answer">{{ answer }}</div>
+<div class="round-over__total">{{ total }}</div>
 <div> {{ timer.displayTime }} </div>

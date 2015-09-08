@@ -13,13 +13,18 @@ angular.module('meatloaf.game.round', [])
   $scope.answers = trivia.getAnswers();
   $scope.lockedAnswer = {};
 
-  socket.on('startRound', function (roundData) {
+
+  //Constants:
+  $scope.smallTextCutoff = 18;
+
+  socket.once('startRound', function (roundData) {
+
     $scope.timer.syncTimerStart(roundData.timerData);
   });
 
   socket.on('endRound', function(){
     $scope.timer.syncTimerStop();
-    socket.emit('submitAnswer', $scope.lockedAnswer);
+    socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
     // console.log('gameRoundCtrl>>>>>>>>>>END ROUND');
     $state.go('gameRoundOver', $state.params, {reload: true});
   });

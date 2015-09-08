@@ -5,6 +5,10 @@ angular.module('meatloaf.game.roundOver', [])
 
   $scope.timer = Timer;
   $scope.numCorrect;
+  $scope.ownQuestionCorrect = "correct";
+  $scope.question = "I'd Do Anything for Love (But I Won't Do That)";
+  $scope.answer = "Meatloaf";
+  $scope.total = "3/4"
 
   socket.emit('enteredRoundOver');
 
@@ -13,6 +17,10 @@ angular.module('meatloaf.game.roundOver', [])
     console.log("ROUND RESULTS", roundResults);
     $scope.numCorrect = roundResults.numCorrect;
     $scope.timer.syncTimerStart(roundResults.timerData);
+    $scope.ownQuestionCorrect = roundResults.scoreByPlayer[socket] ? "correct" : "incorrect";
+    $scope.question = trivia.currentQuestion.text;
+    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[socket]).text;
+    $scope.total = $scope.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
   });
 
   socket.on('nextRound', function(roundNum) {

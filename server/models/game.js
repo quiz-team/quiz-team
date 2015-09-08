@@ -160,13 +160,18 @@ module.exports = function(gameId) {
     }, timer.duration);
   };
 
-  game.updateRoundScore = function(answer){
+  game.updateRoundScore = function(answerObj, socket){
     // given the current round, check if the answerId matches one of the expected answers
+    game.currentRoundResults.correctAnswers[socket] = game.questionAnswerMap[answerObj.question.id];
 
-    if(game.roundAnswers[game.roundNum-1].indexOf(answer.id)!== -1){
+    if(game.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       // console.log("CORRECT ANSWER!")
       game.currentRoundResults.numCorrect++;
+      game.currentRoundResults.scoreByPlayer[socket] = 1;
+    } else {
+      //handle incorrect submission:
+      game.currentRoundResults.scoreByPlayer[socket] = 0;
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
@@ -178,7 +183,9 @@ module.exports = function(gameId) {
     console.log("RESETTING CURRENT ROUND");
     game.currentRoundResults = {
       answersSubmitted: 0,
-      numCorrect: 0
+      numCorrect: 0,
+      scoreByPlayer: {},
+      correctAnswers: {}
     };
   };
 

@@ -33,10 +33,8 @@ angular.module('meatloaf.services', [])
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://e6eb5a9d.ngrok.io');
-      // playerSocket = io.connect('http://localhost:9090');
-      // playerSocket = io.connect('http://9921df44.ngrok.io');
-      // playerSocket = io.connect('http://localhost:9090');
+
+      playerSocket = io.connect('http://18a200c5.ngrok.io');
     },
 
     getId: function() {
@@ -112,6 +110,13 @@ angular.module('meatloaf.services', [])
 
     getAnswers: function() {
       return triviaData.answers;
+    },
+    getAnswer: function(id) {
+      for (var i = 0; i < triviaData.answers.length; i++) {
+        if ( triviaData.answers[i].id === id) {
+          return triviaData.answers[i];
+        }
+      }
     }
 
   };
