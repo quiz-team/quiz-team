@@ -17,6 +17,10 @@ angular.module('meatloaf.game.roundOver', [])
     console.log("ROUND RESULTS", roundResults);
     $scope.numCorrect = roundResults.numCorrect;
     $scope.timer.syncTimerStart(roundResults.timerData);
+    $scope.ownQuestionCorrect = roundResults.scoreByPlayer[socket] ? "correct" : "incorrect";
+    $scope.question = trivia.currentQuestion.text;
+    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[socket]).text;
+    $scope.total = $scope.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
   });
 
   socket.on('nextRound', function(roundNum) {

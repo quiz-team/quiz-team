@@ -59,10 +59,10 @@ module.exports = function(socket, io) {
   });
 
   // SET UP FOR LATER
-  socket.on('submitAnswer', function(answerId){
+  socket.on('submitAnswer', function(answerObj){
     // console.log("PLAYER SUBMITTED AN ANSWER");
     var game = games.findGame(socket);
-    game.updateRoundScore(answerId);
+    game.updateRoundScore(answerObj, socket);
   });
 
   socket.on('enteredRoundOver', function() {

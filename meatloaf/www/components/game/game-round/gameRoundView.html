@@ -11,10 +11,10 @@
 
   <div class="container__answers">
     <div class="grid">
-      <div class="grid__item" ng-repeat="answer in answers">
-        <div class="answer" on-touch="selectAnswer(answer.id)" on-release="unselectAnswer(answer.id)"
+      <div class="grid__item" ng-repeat="answer in answers" on-touch="selectAnswer(answer.id)" ng-class="{'answer--locked' : isLockedAnswer(answer.id)}">
+        <div class="answer" on-release="unselectAnswer(answer.id)"
            ng-class="{ 
-           'answer--locked' : isLockedAnswer(answer.id), 
+           'answer--locked' : isLockedAnswer(answer.id),
            'answer--sm' : answer.text.length > smallTextCutoff 
            }">
            {{ answer.text }}
