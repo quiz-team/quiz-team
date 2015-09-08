@@ -5,13 +5,13 @@ var lobbies = require('../../server/collections/lobbies.js');
 
 describe('server/models/game.js', function() {
   describe('Helper functions', function() {
-    it('Should generate unique ids for each question', function() {
+    xit('Should generate unique ids for each question', function() {
       expect(false).to.be.true;
     });
-    it('Should shuffle the question data', function() {
+    xit('Should shuffle the question data', function() {
       expect(false).to.be.true;
     });
-    it('Should load correct answers for each round', function() {
+    xit('Should load correct answers for each round', function() {
       expect(false).to.be.true;
     });
   });
@@ -22,10 +22,10 @@ describe('server/models/game.js', function() {
     });
   });
   describe('Rounds', function() {
-    it('Should update round score at the end of a round', function() {
+    xit('Should update round score at the end of a round', function() {
       expect(false).to.be.true;
     });
-    it('Should reset the current round after a round has ended', function() {
+    xit('Should reset the current round after a round has ended', function() {
       expect(false).to.be.true;
     })
   });
@@ -33,7 +33,7 @@ describe('server/models/game.js', function() {
     it('Should create game data', function() {
       gameMaker.loadGameData(1);
     });
-    it('Should create create timer Data', function() {
+    xit('Should create create timer Data', function() {
       expect(false).to.be.true;
     });
   });
@@ -75,16 +75,16 @@ describe('server/models/lobby.js', function() {
 xdescribe('server/models/players.js', function() {
   describe('Player attributes', function() {
     // fill this out more
-    it('Should have a number', function() {
+    xit('Should have a number', function() {
       expect(false).to.be.true;
     });
-    it('should have a lobbyId', function() {
+    xit('should have a lobbyId', function() {
       expect(false).to.be.true;
     });
-    it('should have a list of answers', function() {
+    xit('should have a list of answers', function() {
       expect(false).to.be.true;
     });
-    it('should have an id', function() {
+    xit('should have an id', function() {
       expect(false).to.be.true;
     });
   });
