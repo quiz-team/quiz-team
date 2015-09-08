@@ -99,24 +99,25 @@ angular.module('meatloaf.services', [])
 
     updateRound: function(roundNum) {
       this.roundNum = roundNum;
-      this.currentQuestion = triviaData.questions[roundNum-1];
+      this.currentQuestion = triviaData.players[socket.getId()].questions[roundNum-1];
     },
 
     setData: function(gameData) {
       // basic data, fill out later
       // trivia data is only for current user
-      triviaData = gameData.players[socket.getId()];
+      triviaData = gameData;
       this.title = gameData.title;
       this.description = gameData.description;
     },
-
-    getAnswers: function() {
-      return triviaData.answers;
+    
+    getPlayerAnswers: function() {
+      return triviaData.players[socket.getId()].answers;
     },
     getAnswer: function(id) {
-      for (var i = 0; i < triviaData.answers.length; i++) {
-        if ( triviaData.answers[i].id === id) {
-          return triviaData.answers[i];
+      var answers = triviaData.roundAnswerObjects[this.roundNum-1];
+      for (var i = 0; i < answers.length; i++) {
+        if ( answers[i].id === id) {
+          return answers[i];
         }
       }
     }

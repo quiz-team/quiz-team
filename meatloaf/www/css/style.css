@@ -190,8 +190,8 @@ progress[value] {
   display: block;
   font-color: white;
   margin: 0 auto;
-  width: 47vw;
-  height: 47vw;
+  width: 35vw;
+  height: 35vw;
   text-align: center;
 }
 
@@ -204,7 +204,7 @@ progress[value] {
 }
 
 .icon-status {
-  font-size: 45vw;
+  font-size: 34vw;
   color: white;
 }
 
@@ -241,7 +241,8 @@ progress[value] {
 .round-over__total {
   text-align: center;
   padding: 30px;
-  font-size: 70px;
+  padding-bottom: 60px;
+  font-size: 100px;
   font-family: "raleway";
   font-weight: 600;
 }
