@@ -4,6 +4,7 @@
   "description": "MVP",
   "main": "server/server.js",
   "dependencies": {
+    "bluebird": "^2.9.34",
     "express": "^4.13.3",
     "fs": "0.0.2",
     "mongodb": "^2.0.42",
