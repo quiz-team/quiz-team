@@ -3,25 +3,35 @@ var players = require('../collections/players.js');
 var _und = require('underscore');
 
 module.exports = function(roomname) {
-  var lobby = {};
-  var maxPlayers = 6;
-  lobby.roomname = roomname;
-  lobby.players = [];
+
+  var maxPlayers = 2;
+  
+  var lobby = {
+    roomname: roomname,
+    players: [],
+    full: false,
+    inGame: false
+  };
 
   //Add a player by a socket id number
   //Returns that player's number
   lobby.addPlayer = function(id) {
-    console.log(' | Add player: ' + id + ' to lobby: ', lobby.roomname);
     if (lobby.players.length < maxPlayers) {
+      console.log(' | Add player: ' + id + ' to lobby: ', lobby.roomname);
       var newPlayer = playerMaker(id);
       // push returns length of array
       newPlayer.lobbyId = lobby.id; // lobby.id assigned in from lobbies
       lobby.players.push(newPlayer);
+      if (lobby.players.length === maxPlayers) {
+        lobby.full = true;
+      }
       // add player to players object
       players[id] = newPlayer;
       // console.log("Assigning player num " + i);
       // return index of pushed player
       return lobby.players.length - 1;
+    } else {
+      console.log(' | Lobby full. Cannot join:', lobby.roomname);
     }
     return null;
   };
@@ -45,6 +55,8 @@ module.exports = function(roomname) {
     // remove player from room and players collection
     delete players[id];
     lobby.players.splice(playerIndex, 1);
+    lobby.full = false;
+    
     return playerIndex;
   };
 

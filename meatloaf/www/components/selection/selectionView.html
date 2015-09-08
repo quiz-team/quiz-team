@@ -1,6 +1,9 @@
 <ion-content scroll="true">
 <ion-list class="list">
-  <ion-item class="item" ng-repeat="lobby in lobbies" on-tap="joinLobby(lobby.id)">{{lobby.roomname}}</ion-item>
+  <ion-item class="item" ng-repeat="lobby in lobbies | orderBy: ['full','inGame']" 
+            on-tap="lobby.full || joinLobby(lobby.id)" ng-class="{full: lobby.full}">
+            {{lobby.roomname}} {{lobby.inGame ? '- In-game' : lobby.full ? '- Full' : '' }}
+  </ion-item>
 </ion-list>
 
 <button class="button button-full button-positive" on-tap="createRoom()">Create Room</button>

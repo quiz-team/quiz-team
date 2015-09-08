@@ -1,15 +1,24 @@
 
 <div>{{lobby.roomname}}</div>
 <ul class="list">
-  <li class="item" ng-repeat="player in players track by $index" ng-class="{ready: player.ready}">Player {{$index + 1}}</li>
+  <li class="item" ng-repeat="player in players track by $index" 
+      ng-class="{ready: player.ready}">
+    Player {{$index + 1}}
+  </li>
 </ul>
 
 <div class="button__container">
-  <div class="button button-full button-positive button__ready" on-touch="readyOn()" on-release="readyOff()">
+  
+  <p>Hold READY when all players have joined the lobby.</p>
+  
+  <div class="button button-full button-positive button__ready" 
+       on-touch="readyOn()" on-release="readyOff()">
+    <!-- {{lobby.players.length < 2 ? 'Waiting for another player...' : 'READY'}} -->
     READY
   </div>
 
-  <div class="button button-full button-positive button__leave" on-tap="leaveLobby()">
+  <div class="button button-full button-positive button__leave" 
+       on-tap="leaveLobby()">
     Leave Lobby
   </div>
 </div>
