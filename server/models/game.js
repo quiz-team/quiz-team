@@ -162,10 +162,8 @@ module.exports = function(gameId) {
   game.updateRoundScore = function(answerObj, socket){
     // given the current round, check if the answerId matches one of the expected answers
     game.currentRoundResults.correctAnswers[socket] = game.questionAnswerMap[answerObj.question.id];
-
     if(game.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
-      // console.log("CORRECT ANSWER!")
       game.currentRoundResults.numCorrect++;
       game.currentRoundResults.scoreByPlayer[socket.id] = 1;
     } else {
@@ -179,7 +177,6 @@ module.exports = function(gameId) {
   };
 
   game.resetCurrentRound = function(){
-    console.log("RESETTING CURRENT ROUND");
     game.currentRoundResults = {
       answersSubmitted: 0,
       numCorrect: 0,

@@ -50,7 +50,8 @@ module.exports = function(socket, io) {
       lobbies.removeLobby(lobbyId);
       console.log(' | Remove lobby:', lobby.roomname);
     }
-
+    // Remove player from socket room
+    socket.leave(lobby.id);
     // update lobbies for all players
     io.emit('updateLobbies', lobbies.getAllLobbies());
   });
@@ -96,13 +97,13 @@ module.exports = function(socket, io) {
       lobby.inGame = true;
       io.emit('updateLobbies', lobbies.getAllLobbies());
     }
-    io.to(lobbyId).emit('updatePlayers', allPlayers);
+    socket.broadcast.to(lobbyId).emit('updatePlayers', allPlayers);
   });
 
   socket.on('readyOff', function(lobbyId) {
     // updates players when a player is no longer ready
     var lobby = lobbies.getLobby(lobbyId);
     lobby.getPlayerById(socket.id).ready = false;
-    io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
+    socket.broadcast.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
   });
 };

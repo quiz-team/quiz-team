@@ -6,14 +6,14 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-// var ROUND_TIMER = 20000;
-// var ROUND_OVER_TIMER = 5000;
-// var PRE_GAME_TIMER = 8000;
+var ROUND_TIMER = 12000;
+var ROUND_OVER_TIMER = 5000;
+var PRE_GAME_TIMER = 5000;
 
 // testing timers
-var ROUND_TIMER = 2000;
-var ROUND_OVER_TIMER = 1000;
-var PRE_GAME_TIMER = 4000;
+// var ROUND_TIMER = 2000;
+// var ROUND_OVER_TIMER = 1000;
+// var PRE_GAME_TIMER = 4000;
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.id);
@@ -34,7 +34,7 @@ module.exports = function(socket, io) {
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
-        console.log("emitting start game with: ", game.id, " on socket ", socket.id);
+        console.log("emitting start game, gameId: ", game.id, " on socket ", socket.id);
         io.to(game.id).emit('startGame');
       });
     }
@@ -115,6 +115,8 @@ module.exports = function(socket, io) {
       console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
       lobbies.removeLobby(gameId);
     } 
+    // Remove player from socket room
+    socket.leave(lobby.id);
     // update lobbies for all players
     io.emit('updateLobbies', lobbies.getAllLobbies());
   });
