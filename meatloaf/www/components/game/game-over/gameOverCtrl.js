@@ -3,18 +3,16 @@ angular.module('meatloaf.game.over', [])
 .controller('gameOverCtrl', ['$scope', '$rootScope', '$state', 'socket',
             function ($scope, $rootScope, $state, socket) {
 
-  $scope.stats = {};
-  //Temporary data:
-  $scope.stats = {gameEndTotal: 14, allRoundResults: [[0, 0, 1, 1],[1, 1, 0, 0],[0, 0, 0, 1],[1, 1, 1, 1],[0, 1, 0, 0],[1, 0, 1, 1]]};
-
-
-
+  $scope.results = {};
+  $scope.players = [];
 
   socket.emit('enteredGameOver');
 
   socket.on('gameStats', function(gameDataStats) {
-    //$scope.stats = gameDataStats;
-    //$scope.stats = gameDataStats;
+    $scope.results = gameDataStats.allRoundResults;
+    $scope.players = gameDataStats.players;
+    $scope.player = socket.getId();
+    console.log("PLAYER ID: ", $scope.player);
     console.log('GAME OVER STATS', gameDataStats);
   });
 

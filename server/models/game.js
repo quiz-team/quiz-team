@@ -168,10 +168,10 @@ module.exports = function(gameId) {
       // if yes increase the total correct in the currentRoundResults
       // console.log("CORRECT ANSWER!")
       game.currentRoundResults.numCorrect++;
-      game.currentRoundResults.scoreByPlayer[socket] = 1;
+      game.currentRoundResults.scoreByPlayer[socket.id] = 1;
     } else {
       //handle incorrect submission:
-      game.currentRoundResults.scoreByPlayer[socket] = 0;
+      game.currentRoundResults.scoreByPlayer[socket.id] = 0;
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){
@@ -198,6 +198,7 @@ module.exports = function(gameId) {
         total += current.numCorrect;
         return total;
       }, 0);
+    game.gameData.stats.players = game.players;
   };
 
   game.resetPlayersInView = function() {
