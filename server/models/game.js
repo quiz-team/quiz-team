@@ -58,7 +58,6 @@ module.exports = function(gameId) {
       }
       // sets game.gameData
       //for each question in questionBank
-      
       _und.each(questionSet, function (questionAnswerPair, index) {
         //assign id to question
         var question = {};

@@ -3,6 +3,7 @@
 var gulp    = require('gulp');
 var jshint  = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
+var mocha   = require('gulp-mocha');
 var bs      = require('browser-sync');
 var reload  = bs.reload;
 
@@ -23,7 +24,13 @@ var paths = {
   // css files
   styles: [
     'client/styles/*.css'
-  ]
+  ],
+  //tests
+  tests: {
+    server: [
+    'specs/server/**/*.js'
+    ]
+  }
 };
 
 // Check syntax for every javascript file in client and server folders
@@ -38,7 +45,12 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['check-syntax']);
 });
 
-gulp.task('build', []);
+gulp.task('test', function() {
+  return gulp.src(paths.tests.server, {read: false})
+    .pipe(mocha({reporter: 'min'}));
+});
+
+gulp.task('build', ['check-syntax', 'test']);
 
 // Start server using nodemon
 gulp.task('serve', function() {

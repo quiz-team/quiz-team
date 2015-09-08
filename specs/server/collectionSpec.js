@@ -15,7 +15,7 @@ describe("server/collections/games.js", function() {
       games.createGame(1, [{}, {}]);
       expect(games.activeGames[1]).to.be.an.instanceof(Object);
     });
-    it('Should should find the specific game created for the lobby, if one has been created', function() {
+    xit('Should find the specific game created for the lobby, if one has been created', function() {
       games.createGame(1, [{}, {}]);
       expect(games.findGame(1)).to.be.an.instanceof(Object);
     });

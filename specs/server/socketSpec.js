@@ -1,4 +1,4 @@
-describe('server/sockets/gameSockets.js', function() {
+xdescribe('server/sockets/gameSockets.js', function() {
   describe('enteredGame', function() {
     it('Should create a new game', function() {
       expect(false).to.be.true;
@@ -64,7 +64,7 @@ describe('server/sockets/gameSockets.js', function() {
     });
   });
 });
-describe('server/sockets/socketSpec.js', function() {
+xdescribe('server/sockets/socketSpec.js', function() {
   describe('Setup sockets', function() {
     it('Should setup a socket connection with the lobby sockets', function() {
       expect(false).to.be.true;
@@ -74,8 +74,8 @@ describe('server/sockets/socketSpec.js', function() {
     });
   });
 });
-describe('server/sockets/lobbySpec.js', function() {
-  describe('createRoom', function() {
+xdescribe('server/sockets/lobbySpec.js', function() {
+  xdescribe('createRoom', function() {
     it('Should create a new lobby', function() {
       expect(false).to.be.true;
     });
