@@ -6,14 +6,14 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-var ROUND_TIMER = 20000;
-var ROUND_OVER_TIMER = 5000;
-var PRE_GAME_TIMER = 8000;
+// var ROUND_TIMER = 20000;
+// var ROUND_OVER_TIMER = 5000;
+// var PRE_GAME_TIMER = 8000;
 
 // testing timers
-// var ROUND_TIMER = 2000;
-// var ROUND_OVER_TIMER = 1000;
-// var PRE_GAME_TIMER = 4000;
+var ROUND_TIMER = 2000;
+var ROUND_OVER_TIMER = 1000;
+var PRE_GAME_TIMER = 4000;
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.id);
@@ -89,10 +89,14 @@ module.exports = function(socket, io) {
 
   socket.on('enteredGameOver', function() {
     var gameId = players[socket.id].lobbyId;
+    var lobby = lobbies.getLobby(gameId);
     var game = games.findGame(socket);
     game.getGameResults();
+    // Signal to others that game is over
+    lobby.inGame = false;
+    // Update status of lobby across all lobbies
+    io.emit('updateLobbies', lobbies.getAllLobbies());
     io.to(game.id).emit('gameStats', game.gameData.stats);
-
   });
 
   // play again using the same lobbyId
@@ -108,24 +112,23 @@ module.exports = function(socket, io) {
     lobby.removePlayer(socket.id);
     io.to(lobby.id).emit('updatePlayers', lobby.getPlayers());
     if (lobby.getPlayers().length === 0) {
-      console.log("LOBBY BEING REMOVED BECAUSE PLAYERS IS 0");
+      console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
       lobbies.removeLobby(gameId);
-      // console.log("LOBBY LEAVE", lobbies);
-      // update lobbies for all players
-      io.emit('updateLobbies', lobbies.getAllLobbies());
     } 
+    // update lobbies for all players
+    io.emit('updateLobbies', lobbies.getAllLobbies());
   });
 
   // on disconnect, remove player from game
   socket.on('disconnect', function() {
     // check if player exists (player is created when added to lobby)
-    console.log("Player Disconnected: ", socket.id);
+    console.log(' | Player disconnected: ', socket.id);
     if (game) {
-      console.log("Game of player found")
+      console.log(' | Game of disconnected player found')
       var playerIndex = game.players.indexOf(socket.id);
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
-        console.log("Player found in game and spliced out: ", game.players);
+        console.log(' | Player removed from game: ', game.players);
       }
     }
   });
