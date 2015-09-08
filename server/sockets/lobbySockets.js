@@ -96,13 +96,13 @@ module.exports = function(socket, io) {
       lobby.inGame = true;
       io.emit('updateLobbies', lobbies.getAllLobbies());
     }
-    socket.broadcast.to(lobbyId).emit('updatePlayers', allPlayers);
+    io.to(lobbyId).emit('updatePlayers', allPlayers);
   });
 
   socket.on('readyOff', function(lobbyId) {
     // updates players when a player is no longer ready
     var lobby = lobbies.getLobby(lobbyId);
     lobby.getPlayerById(socket.id).ready = false;
-    socket.broadcast.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
+    io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
   });
 };
