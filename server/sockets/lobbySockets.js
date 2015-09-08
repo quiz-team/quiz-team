@@ -50,7 +50,8 @@ module.exports = function(socket, io) {
       lobbies.removeLobby(lobbyId);
       console.log(' | Remove lobby:', lobby.roomname);
     }
-
+    // Remove player from socket room
+    socket.leave(lobby.id);
     // update lobbies for all players
     io.emit('updateLobbies', lobbies.getAllLobbies());
   });

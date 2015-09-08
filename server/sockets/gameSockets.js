@@ -34,7 +34,7 @@ module.exports = function(socket, io) {
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
-        console.log("emitting start game with: ", game.id, " on socket ", socket.id);
+        console.log("emitting start game, gameId: ", game.id, " on socket ", socket.id);
         io.to(game.id).emit('startGame');
       });
     }
@@ -115,6 +115,8 @@ module.exports = function(socket, io) {
       console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
       lobbies.removeLobby(gameId);
     } 
+    // Remove player from socket room
+    socket.leave(lobby.id);
     // update lobbies for all players
     io.emit('updateLobbies', lobbies.getAllLobbies());
   });
