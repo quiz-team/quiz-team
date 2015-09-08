@@ -2,10 +2,14 @@ var playerMaker = require('./player.js');
 var players = require('../collections/players.js');
 var _und = require('underscore');
 
+/**
+ * @constructor Lobby
+ * @param  {string} roomname
+ */
 module.exports = function(roomname) {
 
   var maxPlayers = 2;
-  
+
   var lobby = {
     roomname: roomname,
     players: [],
@@ -13,8 +17,12 @@ module.exports = function(roomname) {
     inGame: false
   };
 
-  //Add a player by a socket id number
-  //Returns that player's number
+  /**
+   * Adds a player to the lobby.
+   * @memberOf Lobby
+   * @param {string} id The socket ID of a player
+   * @returns {number|null} Player's position number in lobby.
+   */
   lobby.addPlayer = function(id) {
     if (lobby.players.length < maxPlayers) {
       console.log(' | Add player: ' + id + ' to lobby: ', lobby.roomname);
@@ -36,8 +44,12 @@ module.exports = function(roomname) {
     return null;
   };
 
-  //Remove a player by socket id number
-  //Returns that player's number
+  /**
+   * Removes a player to the lobby.
+   * @memberOf Lobby
+   * @param {string} id The socket ID of a player
+   * @returns {number|null} Player's position index if found.
+   */
   lobby.removePlayer = function(id) {
     var playerIndex = -1;
     // get player index
@@ -60,7 +72,12 @@ module.exports = function(roomname) {
     return playerIndex;
   };
 
-  // takes a socked.id and returns player object
+  /**
+   * Gets a player in the lobby by id.
+   * @memberOf Lobby
+   * @param {string} id The socket ID of a player
+   * @returns {Player} 
+   */
   lobby.getPlayerById = function(id){
     var result;
     _und.each(lobby.players, function(player, index) {
@@ -71,6 +88,11 @@ module.exports = function(roomname) {
     return result;
   };
 
+  /**
+   * Gets list of players in the lobby
+   * @memberOf Lobby
+   * @returns {Array.<Player>} 
+   */
   lobby.getPlayers = function() {
     return lobby.players;
   };
