@@ -15,6 +15,7 @@ angular.module('meatloaf.lobby', [])
   // Updates player data on client-side
   //  callback is passed array of objects with player ID and button state
   socket.on('updatePlayers', function (players) {
+    // players = filter(players);
     $scope.players = players;
     // $scope.$apply();
   });
@@ -53,5 +54,9 @@ angular.module('meatloaf.lobby', [])
     })
     socket.emit('readyOff', $scope.lobby.id);
   };
+
+  var filter = function(players){
+    // return _.filter(players, function(player){player.id !== socket.getId()});
+  }
 
 }]);
