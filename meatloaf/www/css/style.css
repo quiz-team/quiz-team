@@ -203,13 +203,8 @@ progress[value] {
   background-color: #F44336;
 }
 
-.icon-correct {
-  font-size: 150px;
-  color: white;
-}
-
-.icon-incorrect {
-  font-size: 150px;
+.icon-status {
+  font-size: 45vw;
   color: white;
 }
 

@@ -5,7 +5,7 @@ var games = require('../collections/games.js');
 
 module.exports = function(socket, io) {
 
-  var MIN_PLAYERS = 2;
+  var MIN_PLAYERS = 1;
 
   // create room
   socket.on('createRoom', function(data, callback) {
