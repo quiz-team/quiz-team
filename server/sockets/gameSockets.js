@@ -6,14 +6,14 @@ var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INS
 var timer = require('../utils/timerController.js');
 
 // Constants
-// var ROUND_TIMER = 20000;
-// var ROUND_OVER_TIMER = 5000;
-// var PRE_GAME_TIMER = 8000;
+var ROUND_TIMER = 12000;
+var ROUND_OVER_TIMER = 5000;
+var PRE_GAME_TIMER = 5000;
 
 // testing timers
-var ROUND_TIMER = 2000;
-var ROUND_OVER_TIMER = 1000;
-var PRE_GAME_TIMER = 4000;
+// var ROUND_TIMER = 2000;
+// var ROUND_OVER_TIMER = 1000;
+// var PRE_GAME_TIMER = 4000;
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.id);
