@@ -14,13 +14,12 @@ angular.module('meatloaf.game.roundOver', [])
 
   socket.on('roundResults', function(roundResults) {
     //do something with results
-    console.log("ROUND RESULTS", roundResults);
     $scope.numCorrect = roundResults.numCorrect;
     $scope.timer.syncTimerStart(roundResults.timerData);
     $scope.ownQuestionCorrect = roundResults.scoreByPlayer[socket.getId()] ? "correct" : "incorrect";
     $scope.question = trivia.currentQuestion.text;
-    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[socket]).text;
-    $scope.total = $scope.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
+    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[socket.getId()]).text;
+    $scope.total = roundResults.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
   });
 
   socket.on('nextRound', function(roundNum) {

@@ -10,7 +10,7 @@ angular.module('meatloaf.game.round', [])
   
   $scope.timer = Timer;
   $scope.question = trivia.currentQuestion;
-  $scope.answers = trivia.getAnswers();
+  $scope.answers = trivia.getPlayerAnswers();
   $scope.lockedAnswer = {};
 
 
