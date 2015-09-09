@@ -28,7 +28,6 @@ angular.module('meatloaf.services', [])
 }])
 
 .factory('socket', ['$rootScope', 'session', function ($rootScope, session) {
-  // var socket = io.connect('http://44f61333.ngrok.io');
   var playerSocket;
   return {
 
@@ -41,7 +40,8 @@ angular.module('meatloaf.services', [])
       var sessionId = session.getId();
       console.log('sessionId: ', sessionId);
       // playerSocket = io.connect('http://18a200c5.ngrok.io');
-      playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
+      playerSocket = io.connect('http://83439fcd.ngrok.io', { query: 'sessionId=' + sessionId});
+      // playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
     },
 
     getId: function() {
@@ -89,7 +89,7 @@ angular.module('meatloaf.services', [])
 }])
 
 
-.factory('trivia', ['socket', function(socket) {
+.factory('trivia', ['session', function(session) {
   var triviaData = {};
 
   return {
@@ -104,7 +104,7 @@ angular.module('meatloaf.services', [])
 
     updateRound: function(roundNum) {
       this.roundNum = roundNum;
-      this.currentQuestion = triviaData.players[socket.getId()].questions[roundNum-1];
+      this.currentQuestion = triviaData.players[session.getId()].questions[roundNum-1];
     },
 
     setData: function(gameData) {
@@ -116,7 +116,7 @@ angular.module('meatloaf.services', [])
     },
     
     getPlayerAnswers: function() {
-      return triviaData.players[socket.getId()].answers;
+      return triviaData.players[session.getId()].answers;
     },
     getAnswer: function(id) {
       console.log("TriviaData is ", triviaData);

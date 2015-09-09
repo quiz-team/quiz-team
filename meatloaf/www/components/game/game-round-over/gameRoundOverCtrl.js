@@ -1,7 +1,7 @@
 angular.module('meatloaf.game.roundOver', [])
 
-.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket', 'trivia',
-            function ($scope, $rootScope, $state, Timer, socket, trivia) {
+.controller('gameRoundOverCtrl', ['$scope', '$rootScope', '$state', 'Timer', 'socket', 'trivia', 'session',
+            function ($scope, $rootScope, $state, Timer, socket, trivia, session) {
 
   $scope.timer = Timer;
   $scope.numCorrect;
@@ -16,9 +16,9 @@ angular.module('meatloaf.game.roundOver', [])
     //do something with results
     $scope.numCorrect = roundResults.numCorrect;
     $scope.timer.syncTimerStart(roundResults.timerData);
-    $scope.ownQuestionCorrect = roundResults.scoreByPlayer[socket.getId()] ? "correct" : "incorrect";
+    $scope.ownQuestionCorrect = roundResults.scoreByPlayer[session.getId()] ? "correct" : "incorrect";
     $scope.question = trivia.currentQuestion.text;
-    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[socket.getId()]).text;
+    $scope.answer = trivia.getAnswer(roundResults.correctAnswers[session.getId()]).text;
     $scope.total = roundResults.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
   });
 
