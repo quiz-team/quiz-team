@@ -1,3 +1,6 @@
+// load env 
+require('dotenv').load();
+
 //App is defined in express.js, and contains all logic for
 //handling and processing requests.
 var app = require('./express.js');

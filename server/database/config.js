@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var random = require('mongoose-random');
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(process.env.MONGO_URL);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
