@@ -1,4 +1,5 @@
 .env
+.clientConfig.json
 node_modules/
 
 # ionic

@@ -13,10 +13,6 @@ var addStream = require('add-stream');
 var concat = require('gulp-concat');
 var gulpNgConfig = require('gulp-ng-config');
 
-// need a slight delay to reload browsers
-// connected to browser-sync after restarting nodemon
-// var BROWSER_SYNC_RELOAD_DELAY = 500;
-
 // the paths to our app files
 var paths = {
   // client-side .js files
@@ -63,9 +59,10 @@ gulp.task('build', ['check-syntax', 'test']);
 
 // dynamic variables for angular
 function makeConfig() {
-  return gulp.src('clientConfig.json')
+  return gulp.src('.clientConfig.json')
     .pipe(gulpNgConfig('meatloaf.config', {
-      environment: process.env.NODE_ENV
+      // default environment to local
+      environment: process.env.CLIENT_ENV || 'local'
     }));
 }
 
@@ -79,36 +76,10 @@ gulp.task('config', function() {
 
 // Start server using nodemon
 gulp.task('serve', ['config'], function() {
-  console.log(process.env.NODE_ENV);
   return nodemon({
     script: './server/server.js',
     ignore: 'node_modules/**/*.js'
   });
-  // .on('restart', function onRestart() {
-  //   //slight delay before reloading connected browsers
-  //   setTimeout(function reload() {
-  //     bs.reload();
-  //   }, BROWSER_SYNC_RELOAD_DELAY);
-  // });
-});
-
-// Runs nodemon server, and watches for file changes. Also provides external ip
-gulp.task('start', ['serve', 'watch'], function () {
-  // // run browser-sync
-  // bs.init({
-  //   // turn off annoying browser-sync pop-up
-  //   notify: false,            
-  //   // reinject page changes to reloaded site      
-  //   // injectChanges: true,
-  //   // files to watch for changes; these are the files that are injected
-  //   files: [
-  //     paths.scripts,
-  //     paths.html,
-  //     paths.styles
-  //   ],
-  //   // proxy our node server to a local network ip with browser-sync
-  //   proxy: 'localhost:9090'   
-  // });
 });
 
 
