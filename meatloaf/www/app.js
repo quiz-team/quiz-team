@@ -12,7 +12,8 @@ var app = angular.module('meatloaf', [
   'meatloaf.game.start',
   'meatloaf.game.round',
   'meatloaf.game.roundOver',
-  'meatloaf.game.over'
+  'meatloaf.game.over',
+  'meatloaf.config'
 ]);
 
 app.run(function($ionicPlatform, $rootScope, socket) {

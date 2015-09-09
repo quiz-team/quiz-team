@@ -1,0 +1,19 @@
+{
+  "local": {
+    "EnvironmentConfig": {
+      "serverUrl": "http://localhost:9090"
+    }
+  },
+
+  "ngrok": {
+    "EnvironmentConfig": {
+      "serverUrl": "http://xxxxxx.ngrok.io/"
+    }
+  },
+
+  "production": {
+    "EnvironmentConfig": {
+      "serverUrl": ""
+    }
+  }
+}

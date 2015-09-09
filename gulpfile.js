@@ -1,3 +1,6 @@
+// load env
+require('dotenv').load();
+
 // Gulp depencies
 // ---------------------------------------
 var gulp    = require('gulp');
@@ -6,6 +9,9 @@ var nodemon = require('gulp-nodemon');
 var mocha   = require('gulp-mocha');
 var bs      = require('browser-sync');
 var reload  = bs.reload;
+var addStream = require('add-stream');
+var concat = require('gulp-concat');
+var gulpNgConfig = require('gulp-ng-config');
 
 // need a slight delay to reload browsers
 // connected to browser-sync after restarting nodemon
@@ -55,12 +61,29 @@ gulp.task('test', function() {
 
 gulp.task('build', ['check-syntax', 'test']);
 
+// dynamic variables for angular
+function makeConfig() {
+  return gulp.src('clientConfig.json')
+    .pipe(gulpNgConfig('meatloaf.config', {
+      environment: process.env.NODE_ENV
+    }));
+}
+
+gulp.task('config', function() {
+  // concats the client app with config
+  gulp.src('meatloaf/www/app.js')
+    .pipe(addStream.obj(makeConfig())) // makeConfig is defined a few code blocks up
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('meatloaf/www/dist'));
+});
+
 // Start server using nodemon
-gulp.task('serve', function() {
+gulp.task('serve', ['config'], function() {
+  console.log(process.env.NODE_ENV);
   return nodemon({
     script: './server/server.js',
     ignore: 'node_modules/**/*.js'
-  })
+  });
   // .on('restart', function onRestart() {
   //   //slight delay before reloading connected browsers
   //   setTimeout(function reload() {
