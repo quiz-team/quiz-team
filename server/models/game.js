@@ -169,15 +169,15 @@ module.exports = function(gameId) {
   game.updateRoundScore = function(answerObj, socket){
     // given the current round, check if the answerId matches one of the expected answers
 
-    game.currentRoundResults.correctAnswers[socket.id] = game.questionAnswerMap[answerObj.question.id];
+    game.currentRoundResults.correctAnswers[socket.playerId] = game.questionAnswerMap[answerObj.question.id];
 
     if(game.gameData.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       game.currentRoundResults.numCorrect++;
-      game.currentRoundResults.scoreByPlayer[socket.id] = 1;
+      game.currentRoundResults.scoreByPlayer[socket.playerId] = 1;
     } else {
       //handle incorrect submission:
-      game.currentRoundResults.scoreByPlayer[socket.id] = 0;
+      game.currentRoundResults.scoreByPlayer[socket.playerId] = 0;
     }
     game.currentRoundResults.answersSubmitted++; // THIS WILL NOT RUN IF ANSWER NTO SUBMITTED
     if(game.currentRoundResults.answersSubmitted === game.players.length){

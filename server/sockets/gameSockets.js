@@ -16,7 +16,7 @@ var PRE_GAME_TIMER = 5000;
 // var PRE_GAME_TIMER = 4000;
 
 var everyoneInView = function(game, socket){
-  game.playersInView.push(socket.id);
+  game.playersInView.push(socket.playerId);
   // return true if all expected players are in the view
   return _und.every(game.players, function(playerId) {
     return (game.playersInView.indexOf(playerId) !== -1);
@@ -28,13 +28,13 @@ module.exports = function(socket, io) {
   socket.on('enteredGame', function() {
     game = games.findGame(socket);
     if (everyoneInView(game, socket)) {
-      console.log("everyone in view, GAME.ID: ", game.id, " on socket ", socket.id);
+      console.log("everyone in view, GAME.ID: ", game.id);
       // start game timer
       var timerData = timer.setTimer(PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
-        console.log("emitting start game, gameId: ", game.id, " on socket ", socket.id);
+        console.log("emitting start game with: ", game.id);
         io.to(game.id).emit('startGame');
       });
     }
@@ -88,7 +88,7 @@ module.exports = function(socket, io) {
   });
 
   socket.on('enteredGameOver', function() {
-    var gameId = players[socket.id].lobbyId;
+    var gameId = players[socket.playerId].lobbyId;
     var lobby = lobbies.getLobby(gameId);
     var game = games.findGame(socket);
     game.getGameResults();
@@ -101,15 +101,15 @@ module.exports = function(socket, io) {
 
   // play again using the same lobbyId
   socket.on('playAgain', function() {
-    var gameId = players[socket.id].lobbyId;
+    var gameId = players[socket.playerId].lobbyId;
     var lobby = lobbies.getLobby(gameId);
     io.to(socket.id).emit('restartGame', lobby);
   });
 
   socket.on('quitGame', function() {
-    var gameId = players[socket.id].lobbyId;
+    var gameId = players[socket.playerId].lobbyId;
     var lobby = lobbies.getLobby(gameId);
-    lobby.removePlayer(socket.id);
+    lobby.removePlayer(socket.playerId);
     io.to(lobby.id).emit('updatePlayers', lobby.getPlayers());
     if (lobby.getPlayers().length === 0) {
       console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
@@ -124,10 +124,10 @@ module.exports = function(socket, io) {
   // on disconnect, remove player from game
   socket.on('disconnect', function() {
     // check if player exists (player is created when added to lobby)
-    console.log(' | Player disconnected: ', socket.id);
+    console.log(' | Player disconnected: ', socket.playerId);
     if (game) {
       console.log(' | Game of disconnected player found')
-      var playerIndex = game.players.indexOf(socket.id);
+      var playerIndex = game.players.indexOf(socket.playerId);
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
         console.log(' | Player removed from game: ', game.players);

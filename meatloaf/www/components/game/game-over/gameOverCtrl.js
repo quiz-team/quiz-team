@@ -11,8 +11,6 @@ angular.module('meatloaf.game.over', [])
   socket.on('gameStats', function(gameDataStats) {
     $scope.results = gameDataStats.allRoundResults;
     $scope.players = gameDataStats.players;
-    $scope.player = socket.getId();
-    console.log("PLAYER ID: ", $scope.player);
     console.log('GAME OVER STATS', gameDataStats);
   });
 

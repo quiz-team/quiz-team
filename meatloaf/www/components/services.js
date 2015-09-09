@@ -4,7 +4,7 @@ angular.module('meatloaf.services', [])
   var timerObj = {}; 
 
   var startTime;
-  timerObj.duration;
+  // timerObj.duration;
   var timeRemaining;
   var refreshDisplayTime;
 
@@ -27,16 +27,21 @@ angular.module('meatloaf.services', [])
   
 }])
 
-.factory('socket', ['$rootScope', function ($rootScope) {
-  // var socket = io.connect('http://44f61333.ngrok.io');
+.factory('socket', ['$rootScope', 'session', function ($rootScope, session) {
   var playerSocket;
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://18a200c5.ngrok.io');
-      // playerSocket = io.connect('http://localhost:9090');
-      // playerSocket = io.connect('http://9921df44.ngrok.io');
-      // playerSocket = io.connect('http://localhost:9090');
+      // create session if none
+      if (!session.getId()) {
+        session.setId();
+      }
+
+      var sessionId = session.getId();
+      console.log('sessionId: ', sessionId);
+      // playerSocket = io.connect('http://18a200c5.ngrok.io');
+      playerSocket = io.connect('http://83439fcd.ngrok.io', { query: 'sessionId=' + sessionId});
+      // playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
     },
 
     getId: function() {
@@ -84,7 +89,7 @@ angular.module('meatloaf.services', [])
 }])
 
 
-.factory('trivia', ['socket', function(socket) {
+.factory('trivia', ['session', function(session) {
   var triviaData = {};
 
   return {
@@ -99,7 +104,7 @@ angular.module('meatloaf.services', [])
 
     updateRound: function(roundNum) {
       this.roundNum = roundNum;
-      this.currentQuestion = triviaData.players[socket.getId()].questions[roundNum-1];
+      this.currentQuestion = triviaData.players[session.getId()].questions[roundNum-1];
     },
 
     setData: function(gameData) {
@@ -111,7 +116,7 @@ angular.module('meatloaf.services', [])
     },
     
     getPlayerAnswers: function() {
-      return triviaData.players[socket.getId()].answers;
+      return triviaData.players[session.getId()].answers;
     },
     getAnswer: function(id) {
       console.log("TriviaData is ", triviaData);
@@ -124,5 +129,30 @@ angular.module('meatloaf.services', [])
     }
 
   };
+}])
 
+.factory('session', ['$window', function($window) {
+
+  var makeId = function() {
+      var text = '';
+      var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for( var i=0; i < 16; i++ ) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+  };
+
+  var getId = function() {
+    return $window.localStorage.getItem('sessionId');
+  };
+
+  var setId = function() {
+    var sessionId = makeId();
+    return $window.localStorage.setItem('sessionId', sessionId);
+  };
+
+  return {
+    getId: getId,
+    setId: setId
+  };
 }]);

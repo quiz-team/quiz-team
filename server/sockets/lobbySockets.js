@@ -10,7 +10,7 @@ module.exports = function(socket, io) {
   // create room
   socket.on('createRoom', function(data, callback) {
     var lobby = lobbies.addLobby();
-    lobby.addPlayer(socket.id);
+    lobby.addPlayer(socket.playerId);
     // update lobbies for all players
     io.emit('updateLobbies', lobbies.getAllLobbies());
     socket.join(lobby.id);
@@ -21,7 +21,7 @@ module.exports = function(socket, io) {
   // join room
   socket.on('joinRoom', function(lobbyid, callback) {
     var lobby = lobbies.getLobby(lobbyid);
-    lobby.addPlayer(socket.id);
+    lobby.addPlayer(socket.playerId);
     io.emit('updateLobbies', lobbies.getAllLobbies());
     socket.join(lobby.id);
     // pass back lobby object
@@ -43,7 +43,7 @@ module.exports = function(socket, io) {
   socket.on('leaveLobby', function(lobbyId) {
     // updates players when another player leaves the lobby
     var lobby = lobbies.getLobby(lobbyId);
-    lobby.removePlayer(socket.id);
+    lobby.removePlayer(socket.playerId);
     io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
     // update lobbies for all players
     if (lobby.getPlayers().length === 0) {
@@ -58,12 +58,12 @@ module.exports = function(socket, io) {
 
   // on disconnect, remove player from lobby
   socket.on('disconnect', function() {
-    var player = players[socket.id];
-    // check if player exists (player is created when added to lobby)
-    if (player) {
+    var player = players[socket.playerId];
+    // check if player exists
+    if (player && player.lobbyId) {
       var lobbyId = player.lobbyId;
       var lobby = lobbies.getLobby(lobbyId);
-      lobby.removePlayer(socket.id);
+      lobby.removePlayer(socket.playerId);
       // update other players
       io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
       // update lobbies for all players
@@ -80,7 +80,7 @@ module.exports = function(socket, io) {
     // updates players when a player is ready and checks if all players are ready
     // if all players are ready, the gameStart event is triggered
     var lobby = lobbies.getLobby(lobbyId);
-    lobby.getPlayerById(socket.id).ready = true;
+    lobby.getPlayerById(socket.playerId).ready = true;
     var allPlayers = lobby.getPlayers();
     var allReady = _und.every(allPlayers, function(player) {
       return player.ready;
@@ -103,7 +103,7 @@ module.exports = function(socket, io) {
   socket.on('readyOff', function(lobbyId) {
     // updates players when a player is no longer ready
     var lobby = lobbies.getLobby(lobbyId);
-    lobby.getPlayerById(socket.id).ready = false;
+    lobby.getPlayerById(socket.playerId).ready = false;
     socket.broadcast.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
   });
 };
