@@ -4,16 +4,7 @@ var players = require('../collections/players.js');
 // var gameMaker = require('./game.js');
 var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
 var timer = require('../utils/timerController.js');
-
-// Constants
-var ROUND_TIMER = 12000;
-var ROUND_OVER_TIMER = 5000;
-var PRE_GAME_TIMER = 5000;
-
-// testing timers
-// var ROUND_TIMER = 2000;
-// var ROUND_OVER_TIMER = 1000;
-// var PRE_GAME_TIMER = 4000;
+var config = require('../utils/gameConfig');
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.playerId);
@@ -30,7 +21,7 @@ module.exports = function(socket, io) {
     if (everyoneInView(game, socket)) {
       console.log("everyone in view, GAME.ID: ", game.id);
       // start game timer
-      var timerData = timer.setTimer(PRE_GAME_TIMER);
+      var timerData = timer.setTimer(config.PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
@@ -45,7 +36,7 @@ module.exports = function(socket, io) {
       
       game.resetCurrentRound();
       var roundData = {};
-      roundData.timerData = timer.setTimer(ROUND_TIMER);
+      roundData.timerData = timer.setTimer(config.ROUND_TIMER);
       roundData.roundNum = game.roundNum;
 
       io.to(game.id).emit('startRound', roundData);
@@ -70,7 +61,7 @@ module.exports = function(socket, io) {
 
       game.roundNum++;
 
-      var timerData = timer.setTimer(ROUND_OVER_TIMER);
+      var timerData = timer.setTimer(config.ROUND_OVER_TIMER);
       game.currentRoundResults.timerData = timerData;
       console.log("EMITTING ROUND RESULTS")
       io.to(game.id).emit('roundResults', game.currentRoundResults);

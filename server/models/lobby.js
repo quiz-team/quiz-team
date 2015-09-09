@@ -1,14 +1,13 @@
 var playerMaker = require('./player.js');
 var players = require('../collections/players.js');
 var _und = require('underscore');
+var config = require('../utils/gameConfig');
 
 /**
  * @constructor Lobby
  * @param  {string} roomname
  */
 module.exports = function(roomname) {
-
-  var maxPlayers = 2;
 
   var lobby = {
     roomname: roomname,
@@ -24,13 +23,13 @@ module.exports = function(roomname) {
    * @returns {number|null} Player's position number in lobby.
    */
   lobby.addPlayer = function(playerId) {
-    if (lobby.players.length < maxPlayers) {
+    if (lobby.players.length < config.MAX_PLAYERS) {
       console.log(' | Add player: ' + playerId + ' to lobby: ', lobby.roomname);
       var player = players[playerId];
       // push returns length of array
       player.lobbyId = lobby.id; // lobby.id assigned in from lobbies
       lobby.players.push(player);
-      if (lobby.players.length === maxPlayers) {
+      if (lobby.players.length === config.MAX_PLAYERS) {
         lobby.full = true;
       }
       // console.log("Assigning player num " + i);
