@@ -40,7 +40,7 @@ angular.module('meatloaf.services', [])
       var sessionId = session.getId();
       console.log('sessionId: ', sessionId);
       // playerSocket = io.connect('http://18a200c5.ngrok.io');
-      playerSocket = io.connect('http://83439fcd.ngrok.io', { query: 'sessionId=' + sessionId});
+      playerSocket = io.connect('http://6a4ec773.ngrok.io', { query: 'sessionId=' + sessionId});
       // playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
     },
 
@@ -126,6 +126,26 @@ angular.module('meatloaf.services', [])
           return answers[i];
         }
       }
+    },
+
+    getCorrectQnA: function() {
+      //for each of the player's answers
+      var questionAnswerPair = {};
+      triviaData.roundAnswerObjects[this.roundNum-1].forEach(function(roundAnswer) {
+        var myAnswers = triviaData.players[session.getId()].answers;
+        myAnswers.forEach(function(myAnswer) {
+          if (myAnswer.id === roundAnswer.id) {
+            questionAnswerPair.answer = myAnswer;
+            questionAnswerPair.question = triviaData.answerQuestionObjectsMap[myAnswer.id];
+            return;
+          }
+        })
+        //for each question this round
+
+          //if answer matches question
+            //return answer and question
+      });
+      return questionAnswerPair;
     }
 
   };

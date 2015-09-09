@@ -20,10 +20,12 @@ module.exports = function(gameId) {
       players: {},
       roundAnswers: [],
       roundAnswerObjects: [],
+      roundQuestions: [],
       stats: {
         allRoundResults: [],
         gameEndTotal: 0
-      }
+      },
+      answerQuestionObjectsMap: {}
     },
     questionAnswerMap: {},
     questionAnswerObjectsMap: {},
@@ -72,6 +74,7 @@ module.exports = function(gameId) {
         //store question->association in questionAnswers
         game.questionAnswerMap[question.id] = answer.id;
         game.questionAnswerObjectsMap[question.id] = answer;
+        game.gameData.answerQuestionObjectsMap[answer.id] = question;
         //assign answer to a player in playerAnswers, rotating through players
         playerAnswers[index % numPlayers].push(answer);
         //assign question to roundQuestions, filling up one round at a time.
@@ -101,6 +104,8 @@ module.exports = function(gameId) {
         game.gameData.players[playerId].answers = playerAnswers[index];
         game.gameData.players[playerId].questions = playerQuestions[index];
       });
+
+      game.gameData.roundQuestions = roundQuestions;
 
       // load up a matrix of correct answers for each round
       loadCorrectAnswers();
