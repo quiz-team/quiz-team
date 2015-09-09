@@ -9,5 +9,11 @@
     "EnvironmentConfig": {
       "serverUrl": "http://xxxxxx.ngrok.io/"
     }
+  },
+
+  "production": {
+    "EnvironmentConfig": {
+      "serverUrl": ""
+    }
   }
 }

@@ -62,7 +62,7 @@ function makeConfig() {
   return gulp.src('.clientConfig.json')
     .pipe(gulpNgConfig('meatloaf.config', {
       // default environment to local
-      environment: process.env.CLIENT_ENV || 'local'
+      environment: process.env.NODE_ENV || 'local'
     }));
 }
 
