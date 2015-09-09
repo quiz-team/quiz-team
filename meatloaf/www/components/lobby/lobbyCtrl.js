@@ -22,6 +22,7 @@ angular.module('meatloaf.lobby', [])
 
   // Advances to the game state when a signal is received from the server.
   socket.on('goToStartScreen', function(triviaData) {
+    console.log("RECEIVING TRIVIA DATA: ", triviaData);
     trivia.setData(triviaData);
     trivia.updateRound(1);
     $scope.readyOff();

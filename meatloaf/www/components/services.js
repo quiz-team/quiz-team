@@ -33,7 +33,7 @@ angular.module('meatloaf.services', [])
   return {
 
     setupSocket: function() {
-      playerSocket = io.connect('http://3f88ad7d.ngrok.io');
+      playerSocket = io.connect('http://18a200c5.ngrok.io');
       // playerSocket = io.connect('http://localhost:9090');
       // playerSocket = io.connect('http://9921df44.ngrok.io');
       // playerSocket = io.connect('http://localhost:9090');
@@ -114,6 +114,7 @@ angular.module('meatloaf.services', [])
       return triviaData.players[socket.getId()].answers;
     },
     getAnswer: function(id) {
+      console.log("TriviaData is ", triviaData);
       var answers = triviaData.roundAnswerObjects[this.roundNum-1];
       for (var i = 0; i < answers.length; i++) {
         if ( answers[i].id === id) {
