@@ -8,6 +8,6 @@ var http = require('http');
 var server = http.Server(app);
 require('./sockets/mainSockets.js')(server);
 
+var port = process.env.PORT || 9090;
 
-
-server.listen('9090');
+server.listen(port);
