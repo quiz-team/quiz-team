@@ -4,13 +4,11 @@
   "description": "MVP",
   "main": "server/server.js",
   "dependencies": {
-    "add-stream": "^1.0.0",
     "bluebird": "^2.9.34",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "fs": "0.0.2",
     "gulp-concat": "^2.6.0",
-    "gulp-ng-config": "^1.2.1",
     "mongodb": "^2.0.42",
     "mongoose": "^4.1.5",
     "mongoose-random": "^0.1.1",

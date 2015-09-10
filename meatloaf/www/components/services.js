@@ -27,8 +27,8 @@ angular.module('meatloaf.services', [])
   
 }])
 
-.factory('socket', ['$rootScope', 'session', 'EnvironmentConfig',
-  function ($rootScope, session, EnvironmentConfig) {
+.factory('socket', ['$rootScope', 'session',
+  function ($rootScope, session) {
   var playerSocket;
   return {
 
@@ -40,7 +40,7 @@ angular.module('meatloaf.services', [])
 
       var sessionId = session.getId();
       console.log('sessionId: ', sessionId);
-      playerSocket = io.connect(EnvironmentConfig.serverUrl, { query: 'sessionId=' + sessionId});
+      playerSocket = io.connect({ query: 'sessionId=' + sessionId});
     },
 
     getId: function() {

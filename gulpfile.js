@@ -9,9 +9,7 @@ var nodemon = require('gulp-nodemon');
 var mocha   = require('gulp-mocha');
 var bs      = require('browser-sync');
 var reload  = bs.reload;
-var addStream = require('add-stream');
 var concat = require('gulp-concat');
-var gulpNgConfig = require('gulp-ng-config');
 
 // the paths to our app files
 var paths = {
@@ -57,25 +55,8 @@ gulp.task('test', function() {
 
 gulp.task('build', ['check-syntax', 'test']);
 
-// dynamic variables for angular
-function makeConfig() {
-  return gulp.src('.clientConfig.json')
-    .pipe(gulpNgConfig('meatloaf.config', {
-      // default environment to local
-      environment: process.env.NODE_ENV || 'local'
-    }));
-}
-
-gulp.task('config', function() {
-  // concats the client app with config
-  gulp.src('meatloaf/www/app.js')
-    .pipe(addStream.obj(makeConfig())) // makeConfig is defined a few code blocks up
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('meatloaf/www/dist'));
-});
-
 // Start server using nodemon
-gulp.task('serve', ['config'], function() {
+gulp.task('serve', function() {
   return nodemon({
     script: './server/server.js',
     ignore: 'node_modules/**/*.js'
