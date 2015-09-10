@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var random = require('mongoose-random');
 
 var url = process.env.MONGO_URL || 
-          'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/quizTeam';
+          'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/test';
 mongoose.connect(url);
 
 var db = mongoose.connection;
