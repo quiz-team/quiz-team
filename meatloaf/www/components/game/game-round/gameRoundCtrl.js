@@ -24,14 +24,10 @@ angular.module('meatloaf.game.round', [])
   socket.on('endRound', function(){
     $scope.timer.syncTimerStop();
     socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
-    // console.log('gameRoundCtrl>>>>>>>>>>END ROUND');
     $state.go('gameRoundOver', $state.params, {reload: true});
   });
 
   $scope.selectAnswer = function (answerId) {
-    // selectAnswerTimeout = $timeout(function(){
-    //   lockAnswer(answerId);
-    // }, 1000);
     lockAnswer(answerId);
   };
 

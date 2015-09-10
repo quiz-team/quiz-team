@@ -48,9 +48,6 @@ angular.module('meatloaf.services', [])
     },
 
     on: function (eventName, callback) {
-      // if (!!playerSocket._callbacks[eventName]) {
-      //   return;
-      // }
       // remove listener to refresh callback
       playerSocket.removeListener(eventName);
       playerSocket.on(eventName, function () {  
@@ -73,10 +70,6 @@ angular.module('meatloaf.services', [])
     },
 
     once: function (eventName, callback) {
-      // if (!!playerSocket._callbacks[eventName]) {
-      //   return;
-      // }
-
       playerSocket.once(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
@@ -135,18 +128,14 @@ angular.module('meatloaf.services', [])
         myAnswers.forEach(function(myAnswer) {
           if (myAnswer.id === roundAnswer.id) {
             questionAnswerPair.answer = myAnswer;
-            questionAnswerPair.question = triviaData.answerQuestionObjectsMap[myAnswer.id];
+            questionAnswerPair.question = triviaData.answerMap[myAnswer.id];
+
             return;
           }
         })
-        //for each question this round
-
-          //if answer matches question
-            //return answer and question
       });
       return questionAnswerPair;
     }
-
   };
 }])
 
