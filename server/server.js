@@ -11,3 +11,5 @@ require('./sockets/mainSockets.js')(server);
 var port = process.env.PORT || 9090;
 
 server.listen(port);
+
+module.exports = server;
