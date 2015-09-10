@@ -9,6 +9,7 @@ A browser-based trivia game for mobile device users.
 3. [Requirements](#requirements)
 4. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
+    2. [Setting Up Environment](#setting-up-environment)
 5. [Roadmap](#roadmap)
 
 ## Team
@@ -34,6 +35,16 @@ Refer to `package.json` and `bower.json`.
 
 1. `npm install`
 2. `bower install`
+
+### Setting Up Environment  
+In the root folder of the project:
+
+```sh
+cp .env.example .env
+```
+
+Open the .env file and fill out the environment variables for development as needed.
+
 
 ### Roadmap
 
