@@ -9,8 +9,8 @@
     <tr ng-repeat="round in results track by $index">
       <td>{{$index + 1}}</td>
       <td ng-repeat="player in players" ng-style="getTableStyle($index, $parent.$index)">
-        <i class="icon ion-checkmark chart-correct" ng-show="round.scoreByPlayer[player]"></i>
-        <i class="icon ion-close chart-incorrect" ng-show="!round.scoreByPlayer[player]"></i>
+        <i class="icon ion-checkmark chart-correct" ng-show="round.scoreByPlayer[player.id]"></i>
+        <i class="icon ion-close chart-incorrect" ng-show="!round.scoreByPlayer[player.id]"></i>
       </td>
     </tr>
   </table>

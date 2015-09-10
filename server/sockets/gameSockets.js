@@ -9,8 +9,8 @@ var config = require('../utils/gameConfig');
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.playerId);
   // return true if all expected players are in the view
-  return _und.every(game.players, function(playerId) {
-    return (game.playersInView.indexOf(playerId) !== -1);
+  return _und.every(game.players, function(player) {
+    return (game.playersInView.indexOf(player.id) !== -1);
   }.bind(this));
 };
 
@@ -118,7 +118,12 @@ module.exports = function(socket, io) {
     console.log(' | Player disconnected: ', socket.playerId);
     if (game) {
       console.log(' | Game of disconnected player found')
-      var playerIndex = game.players.indexOf(socket.playerId);
+      var playerIndex = -1;
+      game.players.forEach(function(player, index){
+        if (player.id === socket.playerId){
+          playerIndex = index;
+        }
+      })
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
         console.log(' | Player removed from game: ', game.players);

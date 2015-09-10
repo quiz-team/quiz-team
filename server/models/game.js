@@ -40,9 +40,16 @@ module.exports = function(gameId) {
 
   game.loadGameData = function(numPlayers, callback) {
     console.log("load game data");
-    QuestionBank.findRandom().limit(1).exec()
+    console.log("PLAYERS: ", game.players);
+    var filter = noRepeats(game.players);
+    console.log("FILTER: ", filter);
+    QuestionBank.findRandom(filter).limit(1).exec()
     .then(function(triviaSet) {
       triviaSet = triviaSet[0];
+
+      // mark quiz played on all players in game
+      markQuizPlayed(triviaSet, game.players);
+
       var questionSet = triviaSet.questions;
       shuffle(questionSet);
 
@@ -99,10 +106,10 @@ module.exports = function(gameId) {
       // Need a comment for this
       game.gameData.players = {};
       //do something with playerAnswers and playerQuestions
-      game.players.forEach(function(playerId, index) {
-        game.gameData.players[playerId] = {};
-        game.gameData.players[playerId].answers = playerAnswers[index];
-        game.gameData.players[playerId].questions = playerQuestions[index];
+      game.players.forEach(function(player, index) {
+        game.gameData.players[player.id] = {};
+        game.gameData.players[player.id].answers = playerAnswers[index];
+        game.gameData.players[player.id].questions = playerQuestions[index];
       });
 
       game.gameData.roundQuestions = roundQuestions;
@@ -112,6 +119,30 @@ module.exports = function(gameId) {
       callback();
     });
   };
+
+  var markQuizPlayed = function(triviaSet, players){
+    players.forEach(function(player){
+      player.savePlayedQuiz(triviaSet._id);
+    })
+    console.log("PLAYERS", players);
+  }
+
+  var noRepeats = function(players){
+    var alreadyPlayed = [];
+    players.forEach(function(player){
+      player.recentlyPlayedQuizzes.forEach(function(quizId){
+        if (alreadyPlayed.indexOf(quizId) === -1){
+          alreadyPlayed.push(quizId);
+        }
+      });
+    });
+    var filter = {
+      _id: {
+        $nin: alreadyPlayed
+      }
+    }
+    return filter;
+  }
 
   var shuffle = function(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -155,13 +186,9 @@ module.exports = function(gameId) {
     console.log("EXITING LOADCORRECTANSWERS");
   }
 
-  game.addPlayer = function(playerId) {
-    game.players.push(playerId);
-  };
-
   game.loadPlayers = function(players) {
     players.forEach(function(player) {
-      game.players.push(player.id);
+      game.players.push(player);
     });
   };
 
