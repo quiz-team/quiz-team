@@ -2,10 +2,9 @@ var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
 var players = require('../collections/players.js');
 var games = require('../collections/games.js');
+var config = require('../utils/gameConfig');
 
 module.exports = function(socket, io) {
-
-  var MIN_PLAYERS = 1;
 
   // create room
   socket.on('createRoom', function(data, callback) {
@@ -86,7 +85,7 @@ module.exports = function(socket, io) {
       return player.ready;
     });
 
-    if (allReady && allPlayers.length >= MIN_PLAYERS) {
+    if (allReady && allPlayers.length >= config.MIN_PLAYERS) {
       console.log('all players are ready!', allPlayers);
 
       // create a new game with lobby Id
