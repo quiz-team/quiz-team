@@ -1,7 +1,6 @@
 var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
 var players = require('../collections/players.js');
-// var gameMaker = require('./game.js');
 var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
 var timer = require('../utils/timerController.js');
 var config = require('../utils/gameConfig');
@@ -51,7 +50,6 @@ module.exports = function(socket, io) {
 
   // SET UP FOR LATER
   socket.on('submitAnswer', function(answerObj){
-    // console.log("PLAYER SUBMITTED AN ANSWER");
     var game = games.findGame(socket);
     game.updateRoundScore(answerObj, socket);
   });

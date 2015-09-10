@@ -3,7 +3,6 @@ var players = require('../collections/players.js');
 var roundMaker = require('./round.js');
 var timer = require('../utils/timerController.js');
 var _und = require('underscore');
-// var questionBank = require('../trivia.js').trivia;
 var QuestionBank = require('../database/config.js');
 
 module.exports = function(gameId) {
@@ -25,10 +24,8 @@ module.exports = function(gameId) {
         allRoundResults: [],
         gameEndTotal: 0
       },
-      answerQuestionObjectsMap: {}
+      answerMap: {}
     },
-    questionAnswerMap: {},
-    questionAnswerObjectsMap: {},
     allRoundResults: [],
     currentRoundResults: {}
   };
@@ -79,9 +76,8 @@ module.exports = function(gameId) {
         answer.text = questionAnswerPair.answer;
         answer.id = game.getId();
         //store question->association in questionAnswers
-        game.questionAnswerMap[question.id] = answer.id;
-        game.questionAnswerObjectsMap[question.id] = answer;
-        game.gameData.answerQuestionObjectsMap[answer.id] = question;
+        game.gameData.answerMap[question.id] = answer;
+        game.gameData.answerMap[answer.id] = question;
         //assign answer to a player in playerAnswers, rotating through players
         playerAnswers[index % numPlayers].push(answer);
         //assign question to roundQuestions, filling up one round at a time.
@@ -177,7 +173,7 @@ module.exports = function(gameId) {
         // find id for question
         var questionId = question.id;
         // find answerId that matches questionId using the question-answer-map object
-        var answer = game.questionAnswerObjectsMap[questionId];
+        var answer = game.gameData.answerMap[questionId];
         // push answerId to roundAnswers, at the correct round
         game.gameData.roundAnswers[round].push(answer.id);
         game.gameData.roundAnswerObjects[round].push(answer);
@@ -200,9 +196,6 @@ module.exports = function(gameId) {
 
   game.updateRoundScore = function(answerObj, socket){
     // given the current round, check if the answerId matches one of the expected answers
-
-    game.currentRoundResults.correctAnswers[socket.playerId] = game.questionAnswerMap[answerObj.question.id];
-
     if(game.gameData.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       game.currentRoundResults.numCorrect++;
@@ -222,7 +215,6 @@ module.exports = function(gameId) {
       answersSubmitted: 0,
       numCorrect: 0,
       scoreByPlayer: {},
-      correctAnswers: {}
     };
   };
 
