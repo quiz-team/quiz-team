@@ -18,9 +18,18 @@ module.exports = function(sessionId){
   player.number= null;
   player.ready = false;
   player.lobbyId = null;
+  player.recentlyPlayedQuizzes = [];
+
 
   player.setSocket = function(socket) {
     player.socketId = socket.id;
+  };
+
+  player.savePlayedQuiz = function(quizId){
+    if (this.recentlyPlayedQuizzes.length === 3){
+      this.recentlyPlayedQuizzes.shift();
+    }
+    this.recentlyPlayedQuizzes.push(quizId);
   };
 
   return player;
