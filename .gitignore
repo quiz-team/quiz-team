@@ -1,4 +1,9 @@
+.env
+.clientConfig.json
 node_modules/
 
 # ionic
 meatloaf/www/lib/
+
+#build/dist
+meatloaf/www/dist

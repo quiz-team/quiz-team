@@ -27,7 +27,8 @@ angular.module('meatloaf.services', [])
   
 }])
 
-.factory('socket', ['$rootScope', 'session', function ($rootScope, session) {
+.factory('socket', ['$rootScope', 'session',
+  function ($rootScope, session) {
   var playerSocket;
   return {
 
@@ -39,9 +40,7 @@ angular.module('meatloaf.services', [])
 
       var sessionId = session.getId();
       console.log('sessionId: ', sessionId);
-      // playerSocket = io.connect('http://18a200c5.ngrok.io');
-      playerSocket = io.connect('http://6a4ec773.ngrok.io', { query: 'sessionId=' + sessionId});
-      // playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
+      playerSocket = io.connect({ query: 'sessionId=' + sessionId});
     },
 
     getId: function() {

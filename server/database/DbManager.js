@@ -1,3 +1,6 @@
+// load env 
+require('dotenv').load();
+
 var fs = require('fs');
 var QuestionSet = require('./config.js');
 var _und = require('underscore');
