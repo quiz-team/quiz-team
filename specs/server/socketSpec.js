@@ -16,10 +16,10 @@ describe('Socket Tests', function() {
         sessionId: testId
       };
   var client;
-
+ 
   beforeEach(function(done) {
     //start server
-    server = require('../../server/server');
+    server = require('../../server/server').listen(9090);
     client = io.connect('http://localhost:9090', options);
 
     done();
@@ -27,11 +27,25 @@ describe('Socket Tests', function() {
 
   afterEach(function(done) {
     //close mongo connections
-    mongoose.disconnect();
-    client.disconnect();
-    done();
+    mongoose.disconnect(function() {
+      client.disconnect();
+      server.close(function() {
+        done();
+      });
+    });
   });
 
+  after(function(done){
+    mongoose.disconnect(function() {
+      console.log('All Mongo Connections disconnected');
+      client.disconnect();
+      server.close(function() {
+        console.log('close connections to server');
+        done();
+      });
+      // console.log('>>>>>>>>>>', client);
+    });
+  });
   // it('echoes message', function(done) {
   //   var client = io.connect('http://localhost:9090', options);
 

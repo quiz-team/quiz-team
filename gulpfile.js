@@ -32,6 +32,7 @@ var paths = {
   //tests
   tests: {
     server: [
+    // 'specs/server/socketSpec.js'
     'specs/server/**/*.js'
     ]
   }
@@ -64,7 +65,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.style, ['sass']);
 });
 
-gulp.task('test', function() {
+gulp.task('test', function(done) {
   return gulp.src(paths.tests.server, {read: false})
     .pipe(mocha({reporter: 'min'}));
 });
