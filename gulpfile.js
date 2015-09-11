@@ -7,9 +7,9 @@ var gulp    = require('gulp');
 var jshint  = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
 var mocha   = require('gulp-mocha');
-var bs      = require('browser-sync');
+var bs      = require('browser-sync'); // Delete this from npm
 var sass    = require('gulp-sass');
-var reload  = bs.reload;
+var reload  = bs.reload;    // Delete this from npm
 var concat = require('gulp-concat');
 
 // the paths to our app files
@@ -25,9 +25,9 @@ var paths = {
   html: [
     'meatloaf/www/**/*.html'
   ],
-  // css files
-  styles: [
-    'meatloaf/www/styles/*.css'
+  // scss files
+  style: [
+    'meatloaf/www/style/scss/**/*.scss'
   ],
   //tests
   tests: {
@@ -61,7 +61,7 @@ gulp.task('sass', function(done) {
 
 // Run check-syntax when any client or server files are modified
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['check-syntax']);
+  gulp.watch(paths.style, ['sass']);
 });
 
 gulp.task('test', function() {
@@ -69,7 +69,7 @@ gulp.task('test', function() {
     .pipe(mocha({reporter: 'min'}));
 });
 
-gulp.task('build', ['check-syntax', 'test']);
+gulp.task('build', ['check-syntax', 'sass']);
 
 // Start server using nodemon
 gulp.task('serve', function() {

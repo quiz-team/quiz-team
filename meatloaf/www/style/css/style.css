@@ -9,17 +9,6 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
-/*
-green - #4CAF50;
-
-blue - #4C98C6
-
-purple - #9648BC
-
-red - #BC5E44
-
-yellow - #C6B25C
- */
 /* ////////////////////////////////////////////////////
 // 
 //  Buttons
@@ -28,20 +17,25 @@ yellow - #C6B25C
 .btn {
   border: 0;
   outline: none;
-  color: #ffffff;
+  color: #666666;
   font-size: 20px;
   padding: 20px 20px 20px 20px;
   text-decoration: none;
   text-align: center;
   border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   width: 85%; }
 
 .btn:hover {
   text-decoration: none; }
 
 .btn--green {
-  background-color: #4CAF50; }
+  background-color: #CFD8DC; }
+
+.button__circle {
+  position: absolute;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  bottom: 2%;
+  right: 5%; }
 
 /* ////////////////////////////////////////////////////
 // 
@@ -78,18 +72,36 @@ yellow - #C6B25C
   height: 15vh;
   font-family: 'raleway', sans-serif;
   font-weight: 600;
-  font-size: 6vh;
   margin: 0 auto; }
+
+.button__circle {
+  position: absolute;
+  bottom: 4%;
+  right: 5%;
+  height: 12vh;
+  width: 12vh;
+  font-size: 6vh;
+  padding: 3vh;
+  text-align: center;
+  border-radius: 100px;
+  background-color: #BC5E44;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .container__card--selection {
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   width: 85%;
   margin: 0 auto;
-  margin-top: 10px; }
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'raleway', sans-serif;
+  font-size: 4vh;
+  font-weight: 400;
+  padding: 20px; }
 
 .background--yellow {
-  background-color: #C6B25C; }
+  background-color: #4CAF50; }
 
 /* ////////////////////////////////////////////////////
 // 
@@ -346,7 +358,7 @@ progress[value] {
   background-color: #BC5E44; }
 
 .splash--yellow {
-  background-color: #C6B25C; }
+  background-color: #B0BEC5; }
 
 .container__splash {
   position: relative;
@@ -498,20 +510,21 @@ progress[value] {
   animation-duration: .1s;
   animation-delay: .8s;
   animation-fill-mode: forwards; }
-
-.container__card h1 {
-  text-align: center;
-  font-family: 'raleway', sans-serif;
-  font-weight: 400;
-  color: #616161; }
-
-.container__card p {
-  margin-top: 30px;
-  text-align: center;
-  font-family: 'raleway', sans-serif;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 40px; }
+  .container__card h1 {
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: #616161;
+    font-size: 8vmin;
+    line-height: 8vmin; }
+  .container__card p {
+    margin-top: 3vh;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: #666666;
+    font-size: 5vmin;
+    line-height: 6vmin; }
 
 .container__card--full {
   /* position: absolute */
@@ -523,7 +536,7 @@ progress[value] {
   margin: 0 auto;
   font-family: 'raleway', sans-serif;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 8vmin;
   text-align: center;
   color: #E8F5E9;
   top: 85vh;
