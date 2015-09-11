@@ -5,8 +5,11 @@
     {{ question.text }} </p>
   </div>
 
-  <div class="container__timer-bar"> 
-      <progress value="{{ timer.timeRemaining }}" max="{{timer.duration / 1000}}"></progress>
+  <div class="container__timer-bar">
+     <div class="meter">
+      <span style="width: {{timer.timerPercentage}}%"><span></span></span>
+     </div>
+      <!-- <progress value="{{ timer.timeRemaining }}" max="{{timer.duration / 1000}}"></progress> -->
   </div>
 
   <div class="container__answers">
@@ -22,5 +25,33 @@
       </div>
     </div>
   </div>
+
+  <modal-dialog show='modalShown' width='80%' height='80%'>
+    <div class="round-over__header"> Round Over </div>
+    <div class="round-over__total">{{ total }}</div>
+    <div class="round-over__status round-over__status--correct" 
+      ng-show="ownAnswerCorrect === 'correct'">
+      <i class="icon ion-checkmark icon-status"></i>
+    </div>
+    <div class="round-over__status round-over__status--incorrect" 
+      ng-show="ownAnswerCorrect === 'incorrect'">
+      <i class="icon ion-close icon-status"></i>
+    </div>
+
+    <div class="round-over__label">The Correct Answer:</div>
+    <div class="round-over__answer">{{ correctAnswer }}</div>
+    <div class="round-over__label">Which Answers the Question:</div>
+    <div class="round-over__question">{{ correctQuestion }}</div>
+    <div> {{ timer.displayTime }} </div>
+  </modal-dialog>
+  
 </div>
 
+
+<!-- 
+<script id="results-modal.html" type="text/ng-template">
+  <ion-modal-view class="modal__results" style="width: 50%; height: 50%; top: 5%; left: 5%; right: 5%; bottom: 5%;">
+    <h1>THIS IS A MODAL</h1>
+  </ion-modal-view>
+</script>
+-->

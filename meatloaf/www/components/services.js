@@ -6,17 +6,20 @@ angular.module('meatloaf.services', [])
   var startTime;
   // timerObj.duration;
   var timeRemaining;
+  var timerPercentage;
   var refreshDisplayTime;
 
   timerObj.syncTimerStart = function(timerData){
     // Calculate display time four times per second
     startTime = timerData.startTime;
     timerObj.duration = timerData.duration;
-    refreshDisplayTime = $interval(calculateTimeRemaining, 250);
+    refreshDisplayTime = $interval(calculateTimeRemaining, 16);
   };
 
   var calculateTimeRemaining = function(){
     timerObj.timeRemaining = (startTime + timerObj.duration - Date.now()) / 1000;
+    timerObj.timerPercentage = timerObj.timeRemaining / (timerObj.duration/1000) * 100;
+    // console.log("Timer Percentage: ", timerObj.timerPercentage);
     timerObj.displayTime = Math.max(0, Math.ceil(timerObj.timeRemaining));
   };
 

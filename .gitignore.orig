@@ -7,5 +7,9 @@ meatloaf/www/lib/
 
 #build/dist
 meatloaf/www/dist
+<<<<<<< HEAD
 meatloaf/www/style/css
+=======
+
 examples/
+>>>>>>> (feat) Added modal with animation, changes to timer bar
