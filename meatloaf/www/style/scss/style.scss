@@ -1,0 +1,44 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Overall Setup
+// 
+//////////////////////////////////////////////////// */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+green - #4CAF50;
+
+blue - #4C98C6
+
+purple - #9648BC
+
+red - #BC5E44
+
+yellow - #C6B25C
+ */
+
+$green: #4CAF50;
+$green--verylight: #E8F5E9; 
+$blue: #4C98C6;
+$purple: #9648BC;
+$red: #BC5E44;
+$yellow: #C6B25C;
+$text--gray: #616161; 
+
+@import 'components/buttons';
+@import 'components/grid';
+
+@import 'partials/selection';
+@import 'partials/lobby';
+@import 'partials/pregame';
+@import 'partials/gameround';
+@import 'partials/roundover';
+@import 'partials/gameover';
+@import 'partials/splash';
+

@@ -1,0 +1,26 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Buttons
+// 
+//////////////////////////////////////////////////// */
+
+.btn {
+  border: 0;
+  outline: none;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 20px 20px 20px 20px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 85%;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--green {
+  background-color: #4CAF50;
+}

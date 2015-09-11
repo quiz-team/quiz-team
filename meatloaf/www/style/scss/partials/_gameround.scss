@@ -1,0 +1,95 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Question
+// 
+//////////////////////////////////////////////////// */
+
+.container__question {
+  position: relative;
+  width: 100%;
+  height: 18%;
+  background-color: gray;
+}
+
+.container__question__text {
+  text-align: center;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.container__question__text--sm {
+  font-size: 26px;
+  line-height: 26px;
+}
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Timer
+// 
+//////////////////////////////////////////////////// */
+
+.container__timer-bar {
+  height: 7%;
+  position: relative;
+  background: #555;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress {
+  margin: 0 auto;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Answers
+// 
+//////////////////////////////////////////////////// */
+
+.container__answers {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: gray;
+}
+
+.answer {
+  display: inline-block;
+  position: relative;
+  /*border: 1px solid black;*/
+  text-align: center;
+  vertical-align: middle;
+  margin: 10px;
+  margin-top: 35px;
+  background-color: white;
+  font-size: 24px;
+  line-height: 30px;
+  font-family: "raleway", sans-serif;
+  font-weight: 500;
+}
+
+.answer--sm {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.answer--locked {
+  background-color: #4CAF50;
+}
