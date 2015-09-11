@@ -1,0 +1,37 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Game Over View
+// 
+//////////////////////////////////////////////////// */
+.game-over__header {
+  text-align: center;
+  padding: 30px;
+  font-size: 36px;
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
+}
+
+.game-over__score {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 40px;
+  font-family: "raleway", sans-serif;
+  font-weight: 600;
+}
+
+.game-over__score-table td {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.chart-incorrect {
+  font-size: 30px;
+  color: #F44336;
+}
+
+.chart-correct {
+  font-size: 30px;
+  color: #4CAF50;
+}

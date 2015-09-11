@@ -3,13 +3,11 @@
 //  Overall Setup
 // 
 //////////////////////////////////////////////////// */
-
 html {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
+
 *, *:before, *:after {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 /*
 green - #4CAF50;
@@ -22,33 +20,11 @@ red - #BC5E44
 
 yellow - #C6B25C
  */
-
-/* ////////////////////////////////////////////////////
-// 
-//  Grid Setup
-// 
-//////////////////////////////////////////////////// */
-
-.grid {
-  height: 100%;
-}
-
-.grid__item {
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid black;
-  height: 33.33333333333%;
-  text-align: center;
-  width: 50%;
-  background-color: white;
-}
-
 /* ////////////////////////////////////////////////////
 // 
 //  Buttons
 // 
 //////////////////////////////////////////////////// */
-
 .btn {
   border: 0;
   outline: none;
@@ -58,33 +34,44 @@ yellow - #C6B25C
   text-decoration: none;
   text-align: center;
   border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  width: 85%;
-}
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 85%; }
 
 .btn:hover {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 .btn--green {
-  background-color: #4CAF50;
-}
+  background-color: #4CAF50; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Grid Setup
+// 
+//////////////////////////////////////////////////// */
+.grid {
+  height: 100%; }
+
+.grid__item {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid black;
+  height: 33.33333333333%;
+  text-align: center;
+  width: 50%;
+  background-color: white; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Selection View
 // 
 //////////////////////////////////////////////////// */
-
 .full {
-  color: gray;
-}
+  color: gray; }
 
 .selection__list {
   display: block;
   min-height: 80%;
-  width: 100%;
-}
+  width: 100%; }
 
 .selection__button {
   display: block;
@@ -92,49 +79,39 @@ yellow - #C6B25C
   font-family: 'raleway', sans-serif;
   font-weight: 600;
   font-size: 6vh;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .container__card--selection {
   border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   width: 85%;
   margin: 0 auto;
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 .background--yellow {
-  background-color: #C6B25C;
-}
-
-
+  background-color: #C6B25C; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Lobby View
 // 
 //////////////////////////////////////////////////// */
-
 .ready {
-  background-color: #4CAF50;
-}
+  background-color: #4CAF50; }
 
 .lobby__list {
   height: 66%;
-  width: 100%;
-}
+  width: 100%; }
 
 .button__container {
   display: block;
-  height: 30vh;
-}
+  height: 30vh; }
 
 .lobby__instruction {
   font-size: 4vw;
   font-family: 'raleway', sans-serif;
   font-weight: 400;
-  text-align: center;
-}
+  text-align: center; }
 
 .lobby__button {
   width: 100%;
@@ -142,20 +119,16 @@ yellow - #C6B25C
   font-family: 'raleway', sans-serif;
   font-weight: 600;
   font-size: 6vh;
-  padding: 1.25vh;
-}
+  padding: 1.25vh; }
 
 .button__leave {
-  font-weight: 400;
-}
-
+  font-weight: 400; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Pre-Game View
 // 
 //////////////////////////////////////////////////// */
-
 .trivia__description {
   padding-top: 30px;
   padding-right: 30px;
@@ -163,8 +136,7 @@ yellow - #C6B25C
   text-align: center;
   font-size: 20px;
   font-family: "raleway", sans-serif;
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .trivia__title {
   padding-top: 50px;
@@ -172,22 +144,18 @@ yellow - #C6B25C
   font-size: 30px;
   line-height: 30px;
   font-family: "raleway", sans-serif;
-  font-weight: 600;
-}
-
+  font-weight: 600; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Game Round View - Question
 // 
 //////////////////////////////////////////////////// */
-
 .container__question {
   position: relative;
   width: 100%;
   height: 18%;
-  background-color: gray;
-}
+  background-color: gray; }
 
 .container__question__text {
   text-align: center;
@@ -196,57 +164,48 @@ yellow - #C6B25C
   font-size: 30px;
   line-height: 30px;
   padding: 10px;
-  padding-top: 20px;
-}
+  padding-top: 20px; }
 
 .container__question__text--sm {
   font-size: 26px;
-  line-height: 26px;
-}
+  line-height: 26px; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Game Round View - Timer
 // 
 //////////////////////////////////////////////////// */
-
 .container__timer-bar {
   height: 7%;
   position: relative;
-  background: #555;
-}
+  background: #555; }
 
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
 
 progress {
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 progress[value] {
   /* Reset the default appearance */
   -webkit-appearance: none;
-   appearance: none;
+  appearance: none;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Game Round View - Answers
 // 
 //////////////////////////////////////////////////// */
-
 .container__answers {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 75%;
-  background-color: gray;
-}
+  background-color: gray; }
 
 .answer {
   display: inline-block;
@@ -260,17 +219,14 @@ progress[value] {
   font-size: 24px;
   line-height: 30px;
   font-family: "raleway", sans-serif;
-  font-weight: 500;
-}
+  font-weight: 500; }
 
 .answer--sm {
   font-size: 20px;
-  line-height: 24px;
-}
+  line-height: 24px; }
 
 .answer--locked {
-  background-color: #4CAF50;
-}
+  background-color: #4CAF50; }
 
 /* ////////////////////////////////////////////////////
 // 
@@ -282,8 +238,7 @@ progress[value] {
   padding: 30px;
   font-size: 36px;
   font-family: "raleway", sans-serif;
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .round-over__status {
   display: block;
@@ -291,21 +246,17 @@ progress[value] {
   margin: 0 auto;
   width: 35vw;
   height: 35vw;
-  text-align: center;
-}
+  text-align: center; }
 
 .round-over__status--correct {
-  background-color: #4CAF50;
-}
+  background-color: #4CAF50; }
 
 .round-over__status--incorrect {
-  background-color: #F44336;
-}
+  background-color: #F44336; }
 
 .icon-status {
   font-size: 34vw;
-  color: white;
-}
+  color: white; }
 
 .round-over__label {
   text-align: center;
@@ -313,29 +264,25 @@ progress[value] {
   font-size: 20px;
   font-family: "raleway";
   font-weight: 400;
-  color: gray;
-}
+  color: gray; }
 
 .round-over__question {
   text-align: center;
   padding-right: 30px;
-  padding-left: 30px; 
+  padding-left: 30px;
   font-size: 26px;
   line-height: 26px;
   font-family: "raleway";
-  font-weight: 400;
-
-}
+  font-weight: 400; }
 
 .round-over__answer {
   text-align: center;
   padding-right: 30px;
-  padding-left: 30px; 
+  padding-left: 30px;
   font-size: 26px;
   line-height: 26px;
   font-family: "raleway";
-  font-weight: 600;
-}
+  font-weight: 600; }
 
 .round-over__total {
   text-align: center;
@@ -343,8 +290,8 @@ progress[value] {
   padding-bottom: 60px;
   font-size: 100px;
   font-family: "raleway";
-  font-weight: 600;
-}
+  font-weight: 600; }
+
 /* ////////////////////////////////////////////////////
 // 
 //  Game Over View
@@ -355,184 +302,146 @@ progress[value] {
   padding: 30px;
   font-size: 36px;
   font-family: "raleway", sans-serif;
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .game-over__score {
   text-align: center;
   padding-bottom: 30px;
   font-size: 40px;
   font-family: "raleway", sans-serif;
-  font-weight: 600;
-}
+  font-weight: 600; }
 
 .game-over__score-table td {
   width: 50px;
   height: 40px;
   text-align: center;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 .chart-incorrect {
   font-size: 30px;
-  color: #F44336;
-}
+  color: #F44336; }
 
 .chart-correct {
   font-size: 30px;
-  color: #4CAF50;
-}
+  color: #4CAF50; }
 
 /* ////////////////////////////////////////////////////
 // 
 //  Splash View
 // 
 //////////////////////////////////////////////////// */
-
 .splash {
-  position: relative;
-}
+  position: relative; }
 
 .splash--green {
-  background-color: #4CAF50;
-}
+  background-color: #4CAF50; }
 
 .splash--blue {
-  background-color: #4C98C6;
-}
+  background-color: #4C98C6; }
 
 .splash--purple {
-  background-color: #9648BC;
-}
+  background-color: #9648BC; }
 
 .splash--red {
-  background-color: #BC5E44;
-}
+  background-color: #BC5E44; }
 
 .splash--yellow {
-  background-color: #C6B25C;
-}
+  background-color: #C6B25C; }
 
 .container__splash {
   position: relative;
   top: 10%;
   width: 90%;
   margin: 0 auto;
-
   -moz-animation-name: liftLogo;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-out;
   -moz-animation-duration: 0.2s;
   -moz-animation-delay: 0.5s;
-
   -webkit-animation-name: liftLogo;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-duration: 0.2s;
   -webkit-animation-delay: 0.5s;
-
   animation-name: liftLogo;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-duration: 0.2s;
-  animation-delay: 0.5s;
-}
+  animation-delay: 0.5s; }
 
 @-moz-keyframes liftLogo {
-    0% {
-        -moz-transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        -moz-transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
+  0% {
+    -moz-transform: translateY(30%);
+    font-size: 30vmin;
+    line-height: 30vmin; }
+  100% {
+    -moz-transform: translateY(-20%);
+    font-size: 24vmin;
+    line-height: 24vmin; } }
+
 @-webkit-keyframes liftLogo {
-    0% {
-        -webkit-transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        -webkit-transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
+  0% {
+    -webkit-transform: translateY(30%);
+    font-size: 30vmin;
+    line-height: 30vmin; }
+  100% {
+    -webkit-transform: translateY(-20%);
+    font-size: 24vmin;
+    line-height: 24vmin; } }
+
 @keyframes liftLogo {
-    0% {
-        transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
+  0% {
+    transform: translateY(30%);
+    font-size: 30vmin;
+    line-height: 30vmin; }
+  100% {
+    transform: translateY(-20%);
+    font-size: 24vmin;
+    line-height: 24vmin; } }
 
 @-moz-keyframes fadeInCard {
-    0% {
-       -moz-transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        -moz-transform: translateY(0);
-        opacity: 1;
-    }
-}
-@-webkit-keyframes fadeInCard {
-    0% {
-        -webkit-transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fadeInCard {
-    0% {
-        transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+  0% {
+    -moz-transform: translateX(5%);
+    opacity: 0; }
+  100% {
+    -moz-transform: translateY(0);
+    opacity: 1; } }
 
+@-webkit-keyframes fadeInCard {
+  0% {
+    -webkit-transform: translateX(5%);
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeInCard {
+  0% {
+    transform: translateX(5%);
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 @-moz-keyframes fadeInText {
-    0% {
-        opacity: 0;
-        -moz-transform: translateX(5%);
-    }
-    100% {
-        opacity: 1;
-    }
-}
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(5%); }
+  100% {
+    opacity: 1; } }
+
 @-webkit-keyframes fadeInText {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateX(5%);
-    }
-    100% {
-        opacity: 1;
-    }
-}
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(5%); }
+  100% {
+    opacity: 1; } }
+
 @keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateX(5%);
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(5%); }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
 
 .text__splash,
 .text__splash__top,
@@ -545,25 +454,20 @@ progress[value] {
   font-family: "raleway", sans-serif;
   font-weight: 200;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
 .text__splash__top {
-  /*text-align: left;*/
-}
+  /*text-align: left;*/ }
 
 .text__splash__bottom {
   /*text-align: right;*/
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .slider-pager-page.active {
-  color: white;
-}
+  color: white; }
 
 .slider-pager .slider-pager-page {
-  color: white;
-}
+  color: white; }
 
 .container__card {
   position: absolute;
@@ -574,37 +478,32 @@ progress[value] {
   width: 80%;
   height: 40%;
   border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   opacity: 0;
-
   -moz-animation-name: fadeInCard;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-out;
   -moz-animation-duration: .1s;
   -moz-animation-delay: .8s;
   -moz-animation-fill-mode: forwards;
-
   -webkit-animation-name: fadeInCard;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-duration: .1s;
   -webkit-animation-delay: .8s;
   -webkit-animation-fill-mode: forwards;
-
   animation-name: fadeInCard;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-duration: .1s;
   animation-delay: .8s;
-  animation-fill-mode: forwards;
-}
+  animation-fill-mode: forwards; }
 
 .container__card h1 {
   text-align: center;
   font-family: 'raleway', sans-serif;
   font-weight: 400;
-  color: #616161;
-}
+  color: #616161; }
 
 .container__card p {
   margin-top: 30px;
@@ -612,14 +511,12 @@ progress[value] {
   font-family: 'raleway', sans-serif;
   font-weight: 400;
   font-size: 24px;
-  line-height: 40px;
-}
+  line-height: 40px; }
 
 .container__card--full {
   /* position: absolute */
   height: 85%;
-  top: 5%;
-}
+  top: 5%; }
 
 .container__swipe-text {
   position: absolute;
@@ -632,27 +529,21 @@ progress[value] {
   top: 85vh;
   width: 100vw;
   opacity: 0;
-
-   -moz-animation-name: fadeInText;
+  -moz-animation-name: fadeInText;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-out;
   -moz-animation-duration: .1s;
   -moz-animation-delay: 1s;
   -moz-animation-fill-mode: forwards;
-
   -webkit-animation-name: fadeInText;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-duration: .1s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: forwards;
-
   animation-name: fadeInText;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-duration: .1s;
   animation-delay: 1s;
-  animation-fill-mode: forwards;
-
-}
-
+  animation-fill-mode: forwards; }

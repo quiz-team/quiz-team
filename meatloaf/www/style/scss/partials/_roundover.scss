@@ -1,0 +1,73 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Between Rounds View
+// 
+//////////////////////////////////////////////////// */
+.round-over__header {
+  text-align: center;
+  padding: 30px;
+  font-size: 36px;
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
+}
+
+.round-over__status {
+  display: block;
+  font-color: white;
+  margin: 0 auto;
+  width: 35vw;
+  height: 35vw;
+  text-align: center;
+}
+
+.round-over__status--correct {
+  background-color: #4CAF50;
+}
+
+.round-over__status--incorrect {
+  background-color: #F44336;
+}
+
+.icon-status {
+  font-size: 34vw;
+  color: white;
+}
+
+.round-over__label {
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "raleway";
+  font-weight: 400;
+  color: gray;
+}
+
+.round-over__question {
+  text-align: center;
+  padding-right: 30px;
+  padding-left: 30px; 
+  font-size: 26px;
+  line-height: 26px;
+  font-family: "raleway";
+  font-weight: 400;
+
+}
+
+.round-over__answer {
+  text-align: center;
+  padding-right: 30px;
+  padding-left: 30px; 
+  font-size: 26px;
+  line-height: 26px;
+  font-family: "raleway";
+  font-weight: 600;
+}
+
+.round-over__total {
+  text-align: center;
+  padding: 30px;
+  padding-bottom: 60px;
+  font-size: 100px;
+  font-family: "raleway";
+  font-weight: 600;
+}

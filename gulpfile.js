@@ -8,6 +8,7 @@ var jshint  = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
 var mocha   = require('gulp-mocha');
 var bs      = require('browser-sync');
+var sass    = require('gulp-sass');
 var reload  = bs.reload;
 var concat = require('gulp-concat');
 
@@ -41,6 +42,21 @@ gulp.task('check-syntax', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'));
+});
+
+// Precompile scss files into css
+gulp.task('sass', function(done) {
+  gulp.src('./meatloaf/www/style/scss/*.scss')
+    .pipe(sass({
+      errLogToConsole: true
+    }))
+    .pipe(gulp.dest('./meatloaf/www/style/css/'))
+    // .pipe(minifyCss({
+    //   keepSpecialComments: 0
+    // }))
+    // .pipe(rename({ extname: '.min.css' }))
+    // .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
 });
 
 // Run check-syntax when any client or server files are modified
