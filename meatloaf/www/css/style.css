@@ -329,9 +329,110 @@ progress[value] {
   color: #4CAF50;
 }
 
-/*.button__quit {
-  width: 70%;
-  height: 200px;
-}*/
+/* ////////////////////////////////////////////////////
+// 
+//  Splash View
+// 
+//////////////////////////////////////////////////// */
 
+.splash {
+  position: absolute;
+  background-color: #4CAF50;
+}
+
+.container__splash {
+  position: relative;
+  top: 10%;
+  width: 90%;
+  margin: 0 auto;
+
+  -moz-animation-name: liftLogo;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-delay: 0.5s;
+
+  -webkit-animation-name: liftLogo;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.2s;
+  -webkit-animation-delay: 0.5s;
+
+  animation-name: liftLogo;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.2s;
+  animation-delay: 0.5s;
+}
+
+@-moz-keyframes liftLogo {
+    0% {
+        -moz-transform: translateY(30%);
+    }
+    100% {
+        -moz-transform: translateY(-10%);
+    }
+}
+@-webkit-keyframes liftLogo {
+    0% {
+        -webkit-transform: translateY(30%);
+    }
+    100% {
+        -webkit-transform: translateY(-10%);
+    }
+}
+@keyframes liftLogo {
+    0% {
+        transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
+    }
+    100% {
+        transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
+    }
+}
+
+.text__splash,
+.text__splash__top,
+.text__splash__bottom {
+  display: block;
+  text-align: center;
+  /*line-height: 30vmin;*/
+  /*font-size: 30vmin;*/
+  font-family: "raleway", sans-serif;
+  font-weight: 200;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.text__splash__top {
+  /*text-align: left;*/
+}
+
+.text__splash__bottom {
+  /*text-align: right;*/
+  font-weight: 400;
+}
+
+.slider-pager-page.active {
+  color: white;
+}
+
+.slider-pager .slider-pager-page {
+  color: white;
+}
+
+.container__card {
+  padding: 20px;
+  position: absolute;
+  background-color: #C8E6C9;
+  top: 35vh;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
