@@ -368,17 +368,25 @@ progress[value] {
 @-moz-keyframes liftLogo {
     0% {
         -moz-transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
     }
     100% {
-        -moz-transform: translateY(-10%);
+        -moz-transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
     }
 }
 @-webkit-keyframes liftLogo {
     0% {
         -webkit-transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
     }
     100% {
-        -webkit-transform: translateY(-10%);
+        -webkit-transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
     }
 }
 @keyframes liftLogo {
@@ -394,6 +402,65 @@ progress[value] {
     }
 }
 
+@-moz-keyframes fadeInCard {
+    0% {
+       -moz-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        -moz-transform: translateY(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInCard {
+    0% {
+        -webkit-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInCard {
+    0% {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@-moz-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -moz-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .text__splash,
 .text__splash__top,
 .text__splash__bottom {
@@ -401,6 +468,7 @@ progress[value] {
   text-align: center;
   /*line-height: 30vmin;*/
   /*font-size: 30vmin;*/
+  color: #E8F5E9;
   font-family: "raleway", sans-serif;
   font-weight: 200;
   color: white;
@@ -427,12 +495,85 @@ progress[value] {
 .container__card {
   padding: 20px;
   position: absolute;
-  background-color: #C8E6C9;
-  top: 35vh;
+  background-color: #E8F5E9;
+  top: 38vh;
   left: 10%;
   width: 80%;
   height: 40%;
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  opacity: 0;
+
+  -moz-animation-name: fadeInCard;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: .8s;
+  -moz-animation-fill-mode: forwards;
+
+  -webkit-animation-name: fadeInCard;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: .8s;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: fadeInCard;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: .1s;
+  animation-delay: .8s;
+  animation-fill-mode: forwards;
+}
+
+.container__card h1 {
+  text-align: center;
+  font-family: 'raleway', sans-serif;
+  font-weight: 400;
+  color: #616161;
+}
+
+.container__card p {
+  margin-top: 30px;
+  text-align: center;
+  font-family: 'raleway', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.container__swipe-text {
+  position: absolute;
+  margin: 0 auto;
+  font-family: 'raleway', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: center;
+  color: #E8F5E9;
+  top: 85vh;
+  width: 100vw;
+  opacity: 0;
+
+   -moz-animation-name: fadeInText;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: 1s;
+  -moz-animation-fill-mode: forwards;
+
+  -webkit-animation-name: fadeInText;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: fadeInText;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: .1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+
 }
 
