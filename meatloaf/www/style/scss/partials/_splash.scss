@@ -160,7 +160,7 @@
   font-family: "raleway", sans-serif;
   font-weight: 200;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-shadow: $drop-shadow-1;
 }
 
 .text__splash__top {
@@ -189,7 +189,7 @@
   width: 80%;
   height: 40%;
   border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: $drop-shadow-1;
   opacity: 0;
 
   -moz-animation-name: fadeInCard;
@@ -212,23 +212,30 @@
   animation-duration: .1s;
   animation-delay: .8s;
   animation-fill-mode: forwards;
+  
+  h1 {
+    $fontSize: 8vmin;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: $text--gray;
+    font-size: $fontSize;
+    line-height: $fontSize;
+  }
+  
+  p {
+    $fontSize: 5vmin;
+    margin-top: 3vh;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: $text--darkgray;
+    font-size: $fontSize;
+    line-height: $fontSize + 1vmin;
+  }
 }
 
-.container__card h1 {
-  text-align: center;
-  font-family: 'raleway', sans-serif;
-  font-weight: 400;
-  color: $text--gray;
-}
 
-.container__card p {
-  margin-top: 30px;
-  text-align: center;
-  font-family: 'raleway', sans-serif;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 40px;
-}
 
 .container__card--full {
   /* position: absolute */
@@ -241,7 +248,7 @@
   margin: 0 auto;
   font-family: 'raleway', sans-serif;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 8vmin;
   text-align: center;
   color: $green--verylight;
   top: 85vh;
