@@ -15,15 +15,24 @@ html {
 $green: #4CAF50;
 $green--verylight: #E8F5E9; 
 $blue: #4C98C6;
+$blue--verylight: #E3F2FD; 
 $purple: #9648BC;
+$purple--verylight: #EDE7F6; 
 $red: #BC5E44;
-$yellow: #B0BEC5;
+$red--verylight: #FFEBEE; 
+$yellow: #FFC107;
+$yellow--verylight: #FFFDE7;
+$text-lightgrey: #B0BEC5;
 $text--gray: #616161; 
 $text--darkgray: #666666;
+
+$font--default:  "raleway", sans-serif;
 
 $drop-shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 $drop-shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 $drop-shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+$player-list: (1 $red--verylight $red) (2 $yellow--verylight $yellow) (3 $blue--verylight $blue) (4 $purple--verylight $purple);
 
 @import 'components/buttons';
 @import 'components/grid';

@@ -10,7 +10,7 @@
   padding-left: 30px;
   text-align: center;
   font-size: 20px;
-  font-family: "raleway", sans-serif;
+  font-family: $font--default;
   font-weight: 400;
 }
 
@@ -19,6 +19,6 @@
   text-align: center;
   font-size: 30px;
   line-height: 30px;
-  font-family: "raleway", sans-serif;
+  font-family: $font--default;
   font-weight: 600;
 }

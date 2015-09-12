@@ -74,6 +74,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     })
 
     .state('lobby', {
+      // url: '/',
       cache: false,
       controller: 'lobbyCtrl',
       templateUrl: 'components/lobby/lobbyView.html',

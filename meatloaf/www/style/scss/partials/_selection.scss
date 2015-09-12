@@ -17,7 +17,7 @@
 .selection__button {
   display: block;
   height: 15vh;
-  font-family: 'raleway', sans-serif;
+  font-family: $font--default;
   font-weight: 600;
   margin: 0 auto;
 }
@@ -44,7 +44,7 @@
   margin: 0 auto;
   margin-top: 10px;
   text-align: center;
-  font-family: 'raleway', sans-serif;
+  font-family: $font--default;
   font-size: 4vh;
   font-weight: 400;
   padding: 20px;

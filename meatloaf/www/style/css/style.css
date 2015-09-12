@@ -70,7 +70,7 @@ html {
 .selection__button {
   display: block;
   height: 15vh;
-  font-family: 'raleway', sans-serif;
+  font-family: "raleway", sans-serif;
   font-weight: 600;
   margin: 0 auto; }
 
@@ -95,7 +95,7 @@ html {
   margin: 0 auto;
   margin-top: 10px;
   text-align: center;
-  font-family: 'raleway', sans-serif;
+  font-family: "raleway", sans-serif;
   font-size: 4vh;
   font-weight: 400;
   padding: 20px; }
@@ -108,30 +108,125 @@ html {
 //  Lobby View
 // 
 //////////////////////////////////////////////////// */
-.ready {
-  background-color: #4CAF50; }
+.lobby__container {
+  background-color: #B0BEC5; }
 
 .lobby__list {
   height: 66%;
   width: 100%; }
 
+.lobby__header {
+  height: 8vh;
+  font-family: "raleway", sans-serif;
+  padding-top: 1.5vh;
+  text-align: center; }
+  .lobby__header .lobby__button--back {
+    position: absolute;
+    z-index: 10;
+    left: 4vw;
+    font-size: 4vh;
+    line-height: 5vh;
+    font-weight: 600;
+    color: #666666; }
+  .lobby__header h1 {
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: #666666; }
+
+.lobby__players {
+  position: absolute;
+  height: 40vh;
+  width: 80vw;
+  top: 20vh;
+  left: 10vw; }
+  .lobby__players .lobby__player--1 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #FFEBEE;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--1.ready {
+    background-color: #BC5E44; }
+  .lobby__players .lobby__player--2 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #FFFDE7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--2.ready {
+    background-color: #FFC107; }
+  .lobby__players .lobby__player--3 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #E3F2FD;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--3.ready {
+    background-color: #4C98C6; }
+  .lobby__players .lobby__player--4 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #EDE7F6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--4.ready {
+    background-color: #9648BC; }
+
 .button__container {
+  position: fixed;
+  bottom: 0;
   display: block;
-  height: 30vh; }
+  height: 20vh;
+  width: 100vw; }
 
 .lobby__instruction {
   font-size: 4vw;
-  font-family: 'raleway', sans-serif;
+  font-family: "raleway", sans-serif;
   font-weight: 400;
   text-align: center; }
 
 .lobby__button {
-  width: 100%;
+  color: #FFF;
+  position: absolute;
+  left: 10vw;
+  width: 80vw;
   height: 10vh;
-  font-family: 'raleway', sans-serif;
+  font-family: "raleway", sans-serif;
   font-weight: 600;
   font-size: 6vh;
-  padding: 1.25vh; }
+  line-height: 10vh;
+  text-align: center;
+  background-color: #BC5E44;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .button__leave {
   font-weight: 400; }
@@ -358,7 +453,7 @@ progress[value] {
   background-color: #BC5E44; }
 
 .splash--yellow {
-  background-color: #B0BEC5; }
+  background-color: #FFC107; }
 
 .container__splash {
   position: relative;
