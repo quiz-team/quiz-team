@@ -32,6 +32,7 @@ var paths = {
   //tests
   tests: {
     server: [
+    // 'specs/server/socketSpec.js'
     'specs/server/**/*.js'
     ]
   }
