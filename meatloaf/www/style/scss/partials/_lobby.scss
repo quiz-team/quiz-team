@@ -63,11 +63,13 @@
       width: 0.45 * $width;
       background-color: $color-light;
       box-shadow: $drop-shadow-1;
-      transition: background-color 0.2s;
+      transition: 0.2s;
 
     }
     .lobby__player--#{$num}.ready {
       background-color: $color-ready;
+      transform: translateY(-1vh);
+      box-shadow: $drop-shadow-2;
     }
   }
 }
@@ -104,6 +106,13 @@
   text-align: center;
   background-color: $red;
   box-shadow: $drop-shadow-2;
+  transition: 0.2s;
+  
+}
+
+.lobby__button--ready {
+  transform: translateY(0.6vh);
+  box-shadow: $drop-shadow-1;
 }
 
 .button__leave {
