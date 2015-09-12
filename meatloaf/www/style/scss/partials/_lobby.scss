@@ -3,6 +3,10 @@
 //  Lobby View
 // 
 //////////////////////////////////////////////////// */
+ 
+.lobby__container {
+  background-color: $text-lightgrey;
+}
 
 .ready {
   background-color: #4CAF50;
@@ -13,25 +17,92 @@
   width: 100%;
 }
 
+.lobby__header {
+  height: 8vh;
+  font-family: $font--default;
+  padding-top: 1.5vh;
+  text-align: center;
+
+  .lobby__button--back {
+    position: absolute;
+    z-index: 10;
+    left: 4vw;
+    font-size: 4vh;
+    line-height: 5vh;
+    font-weight: 600;
+    color: $text--darkgray;
+  }
+  h1 {
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: $text--darkgray;
+  }
+  
+}
+
+
+.lobby__players {
+  $width: 80vw;
+  $height: 40vh;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: 20vh;
+  left: (100vw - $width) / 2;
+
+  @each $player in $player-list {
+    $num: nth($player, 1);
+    $color: nth($player, 2);
+    .lobby__player--#{$num} {
+      color: #fff;
+      display: inline-block;
+      text-align: center;
+      text-shadow: $drop-shadow-1;
+      line-height: 0.45 * $height;
+      font-size: $height/3;
+      margin: 0.025*$height 0.025*$width;
+      height: 0.45 * $height;
+      width: 0.45 * $width;
+      background-color: $color;
+      box-shadow: $drop-shadow-1;
+    }
+  }
+
+}
+
+
+
+
 .button__container {
+  position: fixed;
+  bottom: 0;
   display: block;
-  height: 30vh;
+  height: 20vh;
+  width: 100vw;
 }
 
 .lobby__instruction {
   font-size: 4vw;
-  font-family: 'raleway', sans-serif;
+  font-family: $font--default;
   font-weight: 400;
   text-align: center;
 }
 
 .lobby__button {
-  width: 100%;
-  height: 10vh;
-  font-family: 'raleway', sans-serif;
+  $height: 10vh;
+  color: #FFF;
+  position: absolute;
+  left: 10vw;
+  width: 80vw;
+  height: $height;
+  font-family: $font--default;
   font-weight: 600;
   font-size: 6vh;
-  padding: 1.25vh;
+  line-height: $height;
+  text-align: center;
+  background-color: $red;
+  box-shadow: $drop-shadow-2;
 }
 
 .button__leave {
