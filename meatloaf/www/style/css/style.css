@@ -48,11 +48,10 @@ html {
 .grid__item {
   display: inline-block;
   vertical-align: top;
-  border: 1px solid black;
   height: 33.33333333333%;
   text-align: center;
   width: 50%;
-  background-color: white; }
+  background-color: #9648BC; }
 
 /* ////////////////////////////////////////////////////
 // 
@@ -287,20 +286,91 @@ html {
   position: relative;
   background: #555; }
 
-progress[value]::-webkit-progress-bar {
-  background-color: #eee;
-  border-radius: 2px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+.meter {
+  height: 100%;
+  /* Can be anything */
+  position: relative;
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); }
 
-progress {
-  margin: 0 auto; }
+@-webkit-keyframes colorChange {
+  0% {
+    background-color: #2bc253; }
+  45% {
+    background-color: #2bc253; }
+  70% {
+    background-color: #f1a165; }
+  100% {
+    background-color: red; } }
 
-progress[value] {
-  /* Reset the default appearance */
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 100%; }
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #2bc253;
+  background-image: -webkit-linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
+  background-image: linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden; }
+
+.timer-color-change {
+  -webkit-animation-name: colorChange;
+  animation-name: colorChange;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s; }
+
+.meter > span:after, .animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  z-index: 1;
+  background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+  animation: move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden; }
+
+@keyframes move {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -50px -50px; } }
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -50px -50px; } }
+
+.meter > span:after, .animate > span > span {
+  -webkit-animation: move 2s linear infinite;
+  animation: move 2s linear infinite; }
+
+@-webkit-keyframes expandWidth {
+  0% {
+    width: 0; }
+  100% {
+    width: auto; } }
+
+@keyframes expandWidth {
+  0% {
+    width: 0; }
+  100% {
+    width: auto; } }
 
 /* ////////////////////////////////////////////////////
 // 
@@ -312,19 +382,59 @@ progress[value] {
   bottom: 0;
   width: 100%;
   height: 75%;
-  background-color: gray; }
+  background-color: #BC5E44; }
 
-.answer {
-  display: inline-block;
+.answer-grid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: #BC5E44;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 5px 10px; }
+
+.answer-button__container {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  height: 33.3333%;
+  padding: 5px 0; }
+
+.answer-button__container:nth-child(2n - 1) {
+  padding-right: 5px; }
+
+.answer-button__container:nth-child(2n) {
+  padding-left: 5px; }
+
+.answer-button {
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: .1s;
+          transition: .1s; }
+
+.answer-button--pressed {
+  -webkit-transform: translate(0, 2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a2ed89), color-stop(100%, #6bba70));
+  /* Chrome,Safari4+ */ }
+
+.answer-text {
+  display: block;
   position: relative;
-  /*border: 1px solid black;*/
+  top: 50%;
   text-align: center;
-  vertical-align: middle;
-  margin: 10px;
-  margin-top: 35px;
-  background-color: white;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   font-size: 24px;
-  line-height: 30px;
   font-family: "raleway", sans-serif;
   font-weight: 500; }
 
@@ -337,13 +447,118 @@ progress[value] {
 
 /* ////////////////////////////////////////////////////
 // 
-//  Between Rounds View
+//  Modal Body
 // 
 //////////////////////////////////////////////////// */
-.round-over__header {
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.6; }
+
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index: 10000;
+  position: absolute;
+  width: 50%;
+  /* Default */
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000; }
+
+.ng-modal-dialog-content {
+  padding: 10px;
+  text-align: left; }
+
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif'; }
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fade-in {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: .2s;
+  animation-duration: .2s; }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.fade-out {
+  opacity: 1;
+  /* make things invisible upon start */
+  -webkit-animation: fadeOut ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  animation: fadeOut ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: .35s;
+  animation-duration: .35s; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Modal Content
+// 
+//////////////////////////////////////////////////// */
+.round-over__team-score {
+  margin-top: .4vh;
   text-align: center;
-  padding: 30px;
-  font-size: 36px;
+  padding: 2vh;
+  padding-bottom: .5vh;
+  font-size: 4.5vh;
+  font-family: "raleway", sans-serif;
+  font-weight: 400; }
+
+.round-over__user-results {
+  text-align: center;
+  padding: 2.8vh;
+  font-size: 4.5vh;
   font-family: "raleway", sans-serif;
   font-weight: 400; }
 
@@ -351,8 +566,8 @@ progress[value] {
   display: block;
   font-color: white;
   margin: 0 auto;
-  width: 35vw;
-  height: 35vw;
+  width: 19.7vh;
+  height: 19.7vh;
   text-align: center; }
 
 .round-over__status--correct {
@@ -362,40 +577,41 @@ progress[value] {
   background-color: #F44336; }
 
 .icon-status {
-  font-size: 34vw;
+  font-size: 19.1vh;
   color: white; }
 
 .round-over__label {
   text-align: center;
-  padding: 10px;
-  font-size: 20px;
+  padding: 1.7vh;
+  font-size: 3vh;
   font-family: "raleway";
   font-weight: 400;
   color: gray; }
 
 .round-over__question {
   text-align: center;
-  padding-right: 30px;
-  padding-left: 30px;
-  font-size: 26px;
-  line-height: 26px;
+  padding-right: 2.8vh;
+  padding-left: 2.8vh;
+  padding-bottom: 3vh;
+  font-size: 3.4vh;
+  line-height: 3.4vh;
   font-family: "raleway";
   font-weight: 400; }
 
 .round-over__answer {
   text-align: center;
-  padding-right: 30px;
-  padding-left: 30px;
-  font-size: 26px;
-  line-height: 26px;
+  padding-right: 2.8vh;
+  padding-left: 2.8vh;
+  font-size: 3.4vh;
+  line-height: 3.4vh;
   font-family: "raleway";
-  font-weight: 600; }
+  font-weight: 400; }
 
 .round-over__total {
   text-align: center;
-  padding: 30px;
-  padding-bottom: 60px;
-  font-size: 100px;
+  padding: 2.8vh;
+  padding-bottom: 1vh;
+  font-size: 6vh;
   font-family: "raleway";
   font-weight: 600; }
 
@@ -470,21 +686,16 @@ progress[value] {
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-duration: 0.2s;
   -webkit-animation-delay: 0.5s;
-  animation-name: liftLogo;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: 0.2s;
-  animation-delay: 0.5s; }
-
-@-moz-keyframes liftLogo {
-  0% {
-    -moz-transform: translateY(30%);
-    font-size: 30vmin;
-    line-height: 30vmin; }
-  100% {
-    -moz-transform: translateY(-20%);
-    font-size: 24vmin;
-    line-height: 24vmin; } }
+  -webkit-animation-name: liftLogo;
+          animation-name: liftLogo;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s; }
 
 @-webkit-keyframes liftLogo {
   0% {
@@ -498,21 +709,15 @@ progress[value] {
 
 @keyframes liftLogo {
   0% {
-    transform: translateY(30%);
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
     font-size: 30vmin;
     line-height: 30vmin; }
   100% {
-    transform: translateY(-20%);
+    -webkit-transform: translateY(-20%);
+            transform: translateY(-20%);
     font-size: 24vmin;
     line-height: 24vmin; } }
-
-@-moz-keyframes fadeInCard {
-  0% {
-    -moz-transform: translateX(5%);
-    opacity: 0; }
-  100% {
-    -moz-transform: translateY(0);
-    opacity: 1; } }
 
 @-webkit-keyframes fadeInCard {
   0% {
@@ -523,15 +728,9 @@ progress[value] {
 
 @keyframes fadeInCard {
   0% {
-    transform: translateX(5%);
+    -webkit-transform: translateX(5%);
+            transform: translateX(5%);
     opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@-moz-keyframes fadeInText {
-  0% {
-    opacity: 0;
-    -moz-transform: translateX(5%); }
   100% {
     opacity: 1; } }
 
@@ -545,9 +744,11 @@ progress[value] {
 @keyframes fadeInText {
   0% {
     opacity: 0;
-    transform: translateX(5%); }
+    -webkit-transform: translateX(5%);
+            transform: translateX(5%); }
   100% {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
     opacity: 1; } }
 
 .text__splash,
@@ -599,12 +800,18 @@ progress[value] {
   -webkit-animation-duration: .1s;
   -webkit-animation-delay: .8s;
   -webkit-animation-fill-mode: forwards;
-  animation-name: fadeInCard;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: .1s;
-  animation-delay: .8s;
-  animation-fill-mode: forwards; }
+  -webkit-animation-name: fadeInCard;
+          animation-name: fadeInCard;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+          animation-duration: .1s;
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
   .container__card h1 {
     text-align: center;
     font-family: 'raleway', sans-serif;
@@ -649,9 +856,15 @@ progress[value] {
   -webkit-animation-duration: .1s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: forwards;
-  animation-name: fadeInText;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: .1s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards; }
+  -webkit-animation-name: fadeInText;
+          animation-name: fadeInText;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+          animation-duration: .1s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }

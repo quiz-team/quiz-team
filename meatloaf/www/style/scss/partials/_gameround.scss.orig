@@ -187,8 +187,12 @@
   text-align: center;
   transform: translateY(-50%);
   font-size: 24px;
+<<<<<<< HEAD
   line-height: 30px;
+  font-family: $font--default;
+=======
   font-family: "raleway", sans-serif;
+>>>>>>> (style) aligned and animated buttons
   font-weight: 500;
 }
 

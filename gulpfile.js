@@ -3,14 +3,15 @@ require('dotenv').load();
 
 // Gulp depencies
 // ---------------------------------------
-var gulp    = require('gulp');
-var jshint  = require('gulp-jshint');
-var nodemon = require('gulp-nodemon');
-var mocha   = require('gulp-mocha');
-var bs      = require('browser-sync'); // Delete this from npm
-var sass    = require('gulp-sass');
-var reload  = bs.reload;    // Delete this from npm
-var concat = require('gulp-concat');
+var gulp          = require('gulp');
+var autoprefixer  = require('gulp-autoprefixer');
+var jshint        = require('gulp-jshint');
+var nodemon       = require('gulp-nodemon');
+var mocha         = require('gulp-mocha');
+var bs            = require('browser-sync'); // Delete this from npm
+var sass          = require('gulp-sass');
+var reload        = bs.reload;    // Delete this from npm
+var concat        = require('gulp-concat');
 
 // the paths to our app files
 var paths = {
@@ -51,6 +52,7 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./meatloaf/www/style/css/'))
     // .pipe(minifyCss({
     //   keepSpecialComments: 0

@@ -36,12 +36,11 @@ $player-list: (1 $red--verylight $red) (2 $yellow--verylight $yellow) (3 $blue--
 
 @import 'components/buttons';
 @import 'components/grid';
-
 @import 'partials/selection';
 @import 'partials/lobby';
 @import 'partials/pregame';
 @import 'partials/gameround';
-@import 'partials/roundover';
+@import 'partials/results-modal';
 @import 'partials/gameover';
 @import 'partials/splash';
 
