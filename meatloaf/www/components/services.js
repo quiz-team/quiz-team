@@ -18,7 +18,7 @@ angular.module('meatloaf.services', [])
 
   var calculateTimeRemaining = function(){
     timerObj.timeRemaining = (startTime + timerObj.duration - Date.now()) / 1000;
-    timerObj.timerPercentage = timerObj.timeRemaining / (timerObj.duration/1000) * 100;
+    timerObj.timerPercentage = Math.max((timerObj.timeRemaining / (timerObj.duration/1000) * 100) , 0);;
     // console.log("Timer Percentage: ", timerObj.timerPercentage);
     timerObj.displayTime = Math.max(0, Math.ceil(timerObj.timeRemaining));
   };

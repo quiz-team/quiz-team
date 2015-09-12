@@ -7,7 +7,7 @@
 
   <div class="container__timer-bar">
      <div class="meter">
-      <span style="width: {{timer.timerPercentage}}%"><span></span></span>
+      <span class='timer-bar' style="width: {{timer.timerPercentage}}% "><span></span></span>
      </div>
       <!-- <progress value="{{ timer.timeRemaining }}" max="{{timer.duration / 1000}}"></progress> -->
   </div>
@@ -26,9 +26,10 @@
     </div>
   </div>
 
-  <modal-dialog show='modalShown' width='80%' height='80%'>
-    <div class="round-over__header"> Round Over </div>
+  <modal-dialog class='results-modal' show='modalShown'width="80%">
+    <div class="round-over__team-score"> Team Score </div>
     <div class="round-over__total">{{ total }}</div>
+    <div class="round-over__user-results"> Your Results </div>
     <div class="round-over__status round-over__status--correct" 
       ng-show="ownAnswerCorrect === 'correct'">
       <i class="icon ion-checkmark icon-status"></i>
@@ -42,9 +43,8 @@
     <div class="round-over__answer">{{ correctAnswer }}</div>
     <div class="round-over__label">Which Answers the Question:</div>
     <div class="round-over__question">{{ correctQuestion }}</div>
-    <div> {{ timer.displayTime }} </div>
   </modal-dialog>
-  
+
 </div>
 
 

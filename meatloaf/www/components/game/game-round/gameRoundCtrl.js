@@ -18,12 +18,14 @@ angular.module('meatloaf.game.round', [])
 
   socket.on('startRound', function (roundData) {
     $scope.timer.syncTimerStart(roundData.timerData);
+    $('.timer-bar').addClass('timer-color-change');
     $scope.question = trivia.currentQuestion;
     $scope.lockedAnswer = {};
   });
 
   socket.on('endRound', function(){
     $scope.timer.syncTimerStop();
+    $('.timer-bar').removeClass('timer-color-change');
     socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
     setTimeout(function(){socket.emit('enteredRoundOver')},500);
   });
@@ -70,10 +72,17 @@ angular.module('meatloaf.game.round', [])
     $scope.correctAnswer = questionAnswerPair.answer.text;
     $scope.total = roundResults.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
 
+    $('.ng-modal').removeClass('fade-out')
+    $('.ng-modal').addClass('fade-in')
     $scope.toggleModal()
 
+
     setTimeout(function(){
-      $scope.toggleModal()
+      $('.ng-modal').removeClass('fade-in')
+      $('.ng-modal').addClass('fade-out')
+      setTimeout(function(){
+        $scope.toggleModal()
+      },300);
       if (trivia.roundNum < 6){
         trivia.updateRound(trivia.roundNum + 1);
         socket.emit('enteredRound');
