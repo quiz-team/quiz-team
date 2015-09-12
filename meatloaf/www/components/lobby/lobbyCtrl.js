@@ -1,7 +1,7 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session',
-            function ($scope, $rootScope, $state, socket, trivia, session) {
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session', '$ionicViewSwitcher', '$timeout',
+            function ($scope, $rootScope, $state, socket, trivia, session, $ionicViewSwitcher, $timeout) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [];
@@ -33,6 +33,7 @@ angular.module('meatloaf.lobby', [])
   $scope.leaveLobby = function () {
     socket.emit('leaveLobby', $scope.lobby.id);
     // Revisit this if transition animations become an issue
+    $ionicViewSwitcher.nextDirection('back');
     $state.go('selection');
   };
 
@@ -43,7 +44,9 @@ angular.module('meatloaf.lobby', [])
         player.ready=true;
       }
     });
-    socket.emit('readyOn', $scope.lobby.id);
+    $timeout(function() {
+      socket.emit('readyOn', $scope.lobby.id);
+    }, 200);
   };
 
   // Notify server that ready button has been released by user

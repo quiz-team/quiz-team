@@ -8,10 +8,6 @@
   background-color: $text-lightgrey;
 }
 
-.ready {
-  background-color: #4CAF50;
-}
-
 .lobby__list {
   height: 66%;
   width: 100%;
@@ -53,7 +49,8 @@
 
   @each $player in $player-list {
     $num: nth($player, 1);
-    $color: nth($player, 2);
+    $color-light: nth($player, 2);
+    $color-ready: nth($player, 3);
     .lobby__player--#{$num} {
       color: #fff;
       display: inline-block;
@@ -64,11 +61,15 @@
       margin: 0.025*$height 0.025*$width;
       height: 0.45 * $height;
       width: 0.45 * $width;
-      background-color: $color;
+      background-color: $color-light;
       box-shadow: $drop-shadow-1;
+      transition: background-color 0.2s;
+
+    }
+    .lobby__player--#{$num}.ready {
+      background-color: $color-ready;
     }
   }
-
 }
 
 

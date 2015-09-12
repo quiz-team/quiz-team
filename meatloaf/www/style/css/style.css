@@ -111,9 +111,6 @@ html {
 .lobby__container {
   background-color: #B0BEC5; }
 
-.ready {
-  background-color: #4CAF50; }
-
 .lobby__list {
   height: 66%;
   width: 100%; }
@@ -154,7 +151,10 @@ html {
     height: 18vh;
     width: 36vw;
     background-color: #FFEBEE;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--1.ready {
+    background-color: #BC5E44; }
   .lobby__players .lobby__player--2 {
     color: #fff;
     display: inline-block;
@@ -166,7 +166,10 @@ html {
     height: 18vh;
     width: 36vw;
     background-color: #FFFDE7;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--2.ready {
+    background-color: #FFC107; }
   .lobby__players .lobby__player--3 {
     color: #fff;
     display: inline-block;
@@ -178,7 +181,10 @@ html {
     height: 18vh;
     width: 36vw;
     background-color: #E3F2FD;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--3.ready {
+    background-color: #4C98C6; }
   .lobby__players .lobby__player--4 {
     color: #fff;
     display: inline-block;
@@ -190,7 +196,10 @@ html {
     height: 18vh;
     width: 36vw;
     background-color: #EDE7F6;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--4.ready {
+    background-color: #9648BC; }
 
 .button__container {
   position: fixed;
@@ -444,7 +453,7 @@ progress[value] {
   background-color: #BC5E44; }
 
 .splash--yellow {
-  background-color: #B0BEC5; }
+  background-color: #FFC107; }
 
 .container__splash {
   position: relative;
