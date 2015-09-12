@@ -57,14 +57,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
   $stateProvider
     .state('splash', {
       cache: false,
-      // url: '/',
+      url: '/',
       controller: 'splashCtrl',
       templateUrl: 'components/splash/splashView.html'
     })
 
     .state('selection', {
       cache: false,
-      url: '/',
+      // url: '/',
       controller: 'selectionCtrl',
       templateUrl: 'components/selection/selectionView.html'
     })
