@@ -1,7 +1,7 @@
 angular.module('meatloaf.game.round', [])
 
-.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket', 'trivia', 'session',
-            function ($scope, $rootScope, $state, $timeout, Timer, socket, trivia, session) {
+.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket', 'trivia', 'session', 'playerNum',
+            function ($scope, $rootScope, $state, $timeout, Timer, socket, trivia, session, playerNum) {
               
   var selectAnswerTimeout;
 
@@ -11,6 +11,8 @@ angular.module('meatloaf.game.round', [])
   $scope.question = trivia.currentQuestion;
   $scope.answers = trivia.getPlayerAnswers();
   $scope.lockedAnswer = {};
+  $scope.playerName;
+  $scope.playerNum = playerNum.num;
 
 
   //Constants:

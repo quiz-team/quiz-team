@@ -15,7 +15,7 @@ angular.module('meatloaf.directives', [])
         scope.dialogStyle.height = attrs.height;
       scope.hideModal = function() {
         scope.show = false;
-      };s
+      };
     },
     template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay''></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
   };
