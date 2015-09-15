@@ -167,18 +167,7 @@
   padding-left: 5px;
 }
 
-.answer-button {
-  height: 100%;
-  background-color: #fff;
-  box-shadow: $drop-shadow-2;
-  transition: .1s;
-}
 
-.answer-button--pressed {
-  -webkit-transform: translate(0, 2px);
-  box-shadow: $drop-shadow-1;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ed89), color-stop(100%,#6bba70)); /* Chrome,Safari4+ */
-}
 
 .answer-text {
   display: block;
@@ -200,3 +189,31 @@
 .answer--locked {
   background-color: $green;
 }
+
+
+@each $player in $player-list {
+  $num: nth($player, 1);
+  $color: nth($player, 2);
+  $lightcolor: nth($player, 3);
+  $verylightcolor: nth($player, 4);
+
+  .player-color--#{$num} {
+    background-color: $color;
+  }
+  
+  .answer-button--#{$num} {
+    height: 100%;
+    background-color: $verylightcolor;
+    box-shadow: $drop-shadow-2;
+    transition: .1s;
+  }
+
+  .answer-button--pressed--#{$num} {
+    -webkit-transform: translate(0, 2px);
+    box-shadow: $drop-shadow-1;
+    background-color: $lightcolor;
+  }
+}
+
+//temp
+

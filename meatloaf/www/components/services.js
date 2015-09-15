@@ -166,4 +166,8 @@ angular.module('meatloaf.services', [])
     getId: getId,
     setId: setId
   };
+}])
+
+.factory('playerNum', [function() {
+  return {num: null};
 }]);

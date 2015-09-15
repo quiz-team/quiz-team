@@ -1,7 +1,7 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session', '$ionicViewSwitcher', '$timeout',
-            function ($scope, $rootScope, $state, socket, trivia, session, $ionicViewSwitcher, $timeout) {
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session', '$ionicViewSwitcher', '$timeout', 'playerNum',
+            function ($scope, $rootScope, $state, socket, trivia, session, $ionicViewSwitcher, $timeout, playerNum) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [];
@@ -26,6 +26,13 @@ angular.module('meatloaf.lobby', [])
     console.log("RECEIVING TRIVIA DATA: ", triviaData);
     trivia.setData(triviaData);
     trivia.updateRound(1);
+    // Finalize player number
+    $scope.players.forEach(function(player, index){
+      if(player.id === session.getId()){
+        playerNum.num = index + 1;
+      }
+    });
+
     $scope.readyOff();
     $state.go('gameStart');
   });
