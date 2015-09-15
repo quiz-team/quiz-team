@@ -65,6 +65,8 @@ module.exports = function(socket, io) {
       lobby.removePlayer(socket.playerId);
       // update other players
       io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
+      // remove socket from socket room
+      socket.leave(lobbyId);
       // update lobbies for all players
       if (lobby.getPlayers().length === 0) {
         lobbies.removeLobby(lobbyId);
