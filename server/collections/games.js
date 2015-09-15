@@ -6,11 +6,9 @@ module.exports = {
   activeGames: {},
 
   createGame: function(gameId, players, callback) {
-    // creates game
     this.activeGames[gameId] = gameMaker(gameId);
     this.activeGames[gameId].loadPlayers(players);
     this.activeGames[gameId].loadGameData(players.length, function() {
-      console.log('game data has loaded');
       callback(this.activeGames[gameId]);
     }.bind(this));
   },

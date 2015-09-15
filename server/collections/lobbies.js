@@ -26,11 +26,9 @@ var generateLobbyName = function () {
 
 lobbies.addLobby = function() {
   var roomname = generateLobbyName();
-  var newLobby = lobbyMaker(roomname);
-  nextId++;
-  newLobby.id = nextId;
+  nextId = nextId + 1;
+  var newLobby = lobbyMaker(roomname, nextId);
   activeLobbies[nextId] = newLobby;
-
   return newLobby;
 };
 

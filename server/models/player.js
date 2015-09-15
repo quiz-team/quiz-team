@@ -12,14 +12,14 @@
    * @property {number} lobbyId - ID of lobby that player belongs to.
    */
 module.exports = function(sessionId){
-  var player = {};
-  player.id = sessionId;
-  player.socketId = null;
-  player.number= null;
-  player.ready = false;
-  player.lobbyId = null;
-  player.recentlyPlayedQuizzes = [];
-
+  var player = {
+    id: sessionId,
+    socketId: null,
+    number: null,
+    ready: false,
+    lobbyId: null,
+    recentlyPlayedQuizzes: []
+  };
 
   player.setSocket = function(socket) {
     player.socketId = socket.id;
