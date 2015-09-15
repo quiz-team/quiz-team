@@ -69,10 +69,10 @@ gulp.task('watch', function() {
 
 gulp.task('test', function() {
   return gulp.src(paths.tests.server, {read: false})
-    .pipe(mocha({reporter: 'min'}));
+    .pipe(mocha({reporter: 'spec'}));
 });
 
-gulp.task('build', ['check-syntax', 'sass']);
+gulp.task('build', ['check-syntax', 'test']);
 
 // Start server using nodemon
 gulp.task('serve', function() {
