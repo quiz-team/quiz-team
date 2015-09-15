@@ -1,27 +1,41 @@
+// remember to use 'done' for async testing
+
 var expect = require('chai').expect;
 var should = require('chai').should();
 var io = require('socket.io-client');
 var mongoose = require('mongoose');
 
+var lobbies = require('../../server/collections/lobbies.js');
 var games = require('../../server/collections/games.js');
 var players = require('../../server/collections/players.js');
 var playerMaker = require('../../server/models/player.js');
 
 describe('Socket Tests', function() {
-  var testId = 'test';
+  var testId = 'playerTestSessionId';
   var server,
       options = {
         transports: ['websocket'],
         'force new connection': true,
-        sessionId: testId
+        query: 'sessionId=' + testId
       };
   var client;
+
+  before(function() {
+    // test function to clear out lobbies collection
+    lobbies._clear = function() {
+      // clear all lobbies from lobby
+      var allLobbies = lobbies.getAllLobbies();
+      allLobbies.forEach(function(lobby) {
+        lobbies.removeLobby(lobby.id);
+      });
+    };
+  });
  
   beforeEach(function(done) {
     //start server
     server = require('../../server/server').listen(9090);
     client = io.connect('http://localhost:9090', options);
-
+    
     done();
   });
 
@@ -43,7 +57,6 @@ describe('Socket Tests', function() {
         console.log('close connections to server');
         done();
       });
-      // console.log('>>>>>>>>>>', client);
     });
   });
   // it('echoes message', function(done) {
@@ -144,12 +157,13 @@ describe('Socket Tests', function() {
 
       it('Should create a new lobby', function(done) {
         client.once('connect', function() {
+          client.emit('createRoom', null, function() {});
+
           client.once('updateLobbies', function(lobbies) {
-            expect(lobbies.length).to.equal(1);
+            expect(lobbies .length).to.equal(1);
             done();
           });
 
-          client.emit('createRoom', null, function() {});
         });
       });
 
@@ -172,38 +186,279 @@ describe('Socket Tests', function() {
         expect(false).to.be.true;
       });
     });
-    xdescribe('joinRoom', function() {
-      it('Should add a player to the selected lobby', function() {
-        expect(false).to.be.true;
+
+    describe('joinRoom', function() {
+      var lobby;
+      var lobbyId;
+      var numLobbies;
+
+      beforeEach(function() {
+        // check for empty lobby
+        if (lobbies.getAllLobbies().length > 0) {
+          throw new Error('Lobbies object is not empty before testing');
+        }
+
+        // create a lobby and add it lobbies
+        lobby = lobbies.addLobby();
+
+        lobbyId = lobby.id;
+        numLobbies = lobbies.getAllLobbies().length;
       });
-      it('Should return the lobby data to the client', function() {
-        expect(false).to.be.true;
+
+      afterEach(function() {
+        // clear lobbies after each test
+        lobbies._clear();
+      });
+
+      it ('should update client\'s lobbies when a player joins a room', function(done) {
+        client.once('connect', function() {
+          client.emit('joinRoom', lobbyId, function() {});
+
+          client.once('updateLobbies', function(lobbies) {
+            // should not add any more lobbies
+            expect(lobbies.length).to.equal(numLobbies);
+            done();
+          });
+
+        });
+      });
+
+      it('should add a player to the selected lobby', function(done) {
+        client.once('connect', function() {
+          client.emit('joinRoom', lobbyId, function() {});
+
+          client.once('updateLobbies', function(lobbies) {
+            expect(lobby.getPlayers().length).to.equal(1);
+            done();
+          });
+        });
+      });
+
+      it('Should return the lobby data to the client', function(done) {
+        client.once('connect', function() {
+          client.emit('joinRoom', lobbyId, function(returnedLobby) {
+            expect(returnedLobby).to.be.an('object');
+            done();
+          });
+        });
+      });
+
+      it('should have updated data when lobby is returned to the client', function(done) {
+        client.once('connect', function() {
+          client.emit('joinRoom', lobbyId, function(returnedLobby) {
+            //updated length to client
+            expect(returnedLobby.players.length).to.equal(1);
+            expect(returnedLobby.id).to.equal(lobbyId);
+            done();
+          });
+        });
+      });
+
+    });
+
+
+    describe('enteredSelectionRoom', function() {
+      var lobby;
+      var randomNum;
+      var lobbyIds;
+
+      beforeEach(function() {
+        // clear lobbies after 
+        lobbies._clear();
+      });
+
+      it('Should return a list of all lobbies to the client', function(done) {
+        // setup for test
+        lobbyIds = [];
+        lobbies = require('../../server/collections/lobbies.js');
+        expect(lobbies.getAllLobbies().length).to.equal(0);
+        // random number of rooms between 50 adnd 100
+        randomNum = Math.floor(Math.random() * (100 - 50) + 50);
+        
+        for (var i=0; i< randomNum; i++) {
+          lobby = lobbies.addLobby();
+          lobbyIds.push(lobby.id);
+        }
+        expect(lobbyIds.length).to.equal(randomNum);
+
+        client.once('connect', function() {
+          client.emit('enteredSelectionRoom', null, function(returnedLobbies) {
+            expect(returnedLobbies.length).to.equal(randomNum);
+
+            for (var i=0; i<lobbyIds.length; i++) {
+              expect(lobbies.getLobby(lobbyIds[i])).to.not.be.undefined;
+            }
+            done();
+          });
+        });
+      });
+
+    });
+
+
+    describe('enteredLobby', function() {
+      var lobby;
+      var lobbyId;
+
+      beforeEach(function() {
+        // clear lobbies
+        lobbies._clear();
+        // create a lobby and add it lobbies
+        lobby = lobbies.addLobby();
+        lobbyId = lobby.id;
+      });
+
+      after(function() {
+        // clear lobbies
+        lobbies._clear();
+      });
+
+      it('Should emit "updatePlayers" to client in the lobby', function(done) {
+        client.once('connect', function() {
+          // have client join lobby
+          client.emit('joinRoom', lobbyId, function() {
+            client.emit('enteredLobby', lobbyId, function() {});
+          });
+
+          client.once('updatePlayers', function() {
+            // will timeout if updatePlayers is not received
+            done();
+          });
+        });
+      });
+
+      it('Should emit "updatePlayers" to clients in the lobby with players', function(done) {
+        client.once('connect', function() {
+          // have client join lobby
+          client.emit('joinRoom', lobbyId, function() {
+            // add some other players to the lobby
+            players['testplayer1'] = playerMaker();
+            players['testplayer2'] = playerMaker();
+            players['testplayer3'] = playerMaker();
+            lobby.addPlayer('testplayer1');
+            lobby.addPlayer('testplayer2');
+            lobby.addPlayer('testplayer3');
+
+            client.emit('enteredLobby', lobbyId, function() {});
+          });
+
+          // server emits this event on 'enteredLobby' from client
+          client.once('updatePlayers', function(players) {
+            // check if players is an array
+            expect(Array.isArray(players)).to.be.true;
+            expect(players.length).to.equal(4);
+            done();
+          });
+        });
+      });
+
+      it('should pass a list of players to the client after entering the lobby (1 player)', function(done) {
+        client.once('connect', function() {
+          // have client join lobby
+          client.emit('joinRoom', lobbyId, function() {
+            client.emit('enteredLobby', lobbyId, function(players) {
+              // check if players is an array
+              expect(Array.isArray(players)).to.be.true;
+              expect(players.length).to.equal(1);
+              done();
+            });
+          });
+        });
+      });
+
+      it('should pass a list of players to the client after entering the lobby (multiple player)', function(done) {
+        client.once('connect', function() {
+          // have client join lobby
+          client.emit('joinRoom', lobbyId, function() {
+            // add some other players to the lobby
+            players['testplayer1'] = playerMaker();
+            players['testplayer2'] = playerMaker();
+            players['testplayer3'] = playerMaker();
+            lobby.addPlayer('testplayer1');
+            lobby.addPlayer('testplayer2');
+            lobby.addPlayer('testplayer3');
+
+            client.emit('enteredLobby', lobbyId, function(players) {
+              // check if players is an array
+              expect(Array.isArray(players)).to.be.true;
+              expect(players.length).to.equal(4);
+              done();
+            });
+          });
+        });
+      });
+
+    });
+
+    describe('leaveLobby', function() {
+      beforeEach(function() {
+        lobbies._clear();
+        lobby = lobbies.addLobby();
+      });
+
+      after(function() {
+        lobbies._clear();
+      });
+
+      it('Should emit "updateLobbies"', function(done) {
+        players['testid'] = playerMaker();
+        lobby.addPlayer('testid');
+        client.once('connect', function() {
+          client.emit('leaveLobby', lobby.id);
+        });
+
+        client.once('updateLobbies', function() {
+          done();
+        });
+      });
+
+      it('Should emit "updatePlayers"', function(done) {
+        client.once('connect', function() {
+          // client joins lobby
+          client.emit('joinRoom', lobby.id, function() {
+            // player is added to lobby on 'joinRoom'
+            client.emit('leaveLobby', lobby.id);
+            // server fires 'updatePlayers' after receiving leaveLobby
+            client.once('updatePlayers', function() {
+              done();
+            });
+          });
+        });
+      });
+
+      it('Should remove the player from the lobby object', function(done) {
+        client.once('connect', function() {
+          // client joins lobby
+          client.emit('joinRoom', lobby.id, function() {
+            // player is added to lobby on 'joinRoom'
+            expect(lobby.getPlayers().length).to.equal(1);
+            client.emit('leaveLobby', lobby.id);
+            // server fires 'updateLobbies' after receiving leaveLobby
+            client.once('updateLobbies', function() {
+              expect(lobby.getPlayers().length).to.equal(0);
+              done();
+            });
+          });
+        });
+      });
+
+      it('Should remove the lobby from the list of lobbies if it is empty', function(done) {
+        expect(lobbies.getAllLobbies().length).to.equal(1);
+        client.once('connect', function() {
+          // client joins lobby
+          client.emit('joinRoom', lobby.id, function() {
+            // player is added to lobby on 'joinRoom'
+            client.emit('leaveLobby', lobby.id);
+            // server fires 'updateLobbies' after receiving leaveLobby
+            client.once('updateLobbies', function(allLobbies) {
+              expect(allLobbies.length).to.equal(0);
+              done();
+            });
+          });
+        });
       });
     });
-    xdescribe('enteredSelectionRoom', function() {
-      it('Should return a list of lobbies to the player', function() {
-        expect(false).to.be.true;
-      });
-    });
-    xdescribe('enteredLobby', function() {
-      it('Should emit "updatePlayers"', function() {
-        expect(false).to.be.true;
-      });
-    });
-    xdescribe('leaveLobby', function() {
-      it('Should remove the player from the lobby object', function() {
-        expect(false).to.be.true;
-      });
-      it('Should emit "updatePlayers"', function() {
-        expect(false).to.be.true;
-      });
-      it('Should remove the lobby from the list of lobbies if it is empty', function() {
-        expect(false).to.be.true;
-      });
-      it('Should emit "updateLobbies"', function() {
-        expect(false).to.be.true;
-      });
-    });
+
     xdescribe('disconnect', function() {
       it('Should remove the player from the lobby', function() {
         expect(false).to.be.true;
