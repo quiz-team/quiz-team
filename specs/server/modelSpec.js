@@ -395,18 +395,17 @@ describe('server/models/game.js', function() {
     });
 
     describe('loadGameData() method', function(){
-      it('should do something', function() {
+      xit('should do something', function() {
         expect(false).to.be.true;
       })
 
       describe('markQuizPlayed() function', function(){
-        it('should add quiz ID to recentlyPlayedQuizzes list on each player' , function() {
-          markQuizPlayed()
+        xit('should add quiz ID to recentlyPlayedQuizzes list on each player' , function() {
         })
       });
       
       describe('noRepeats() function', function(){
-        it('should do something', function() {
+        xit('should do something', function() {
           expect(false).to.be.true;
         })
       });
@@ -418,7 +417,7 @@ describe('server/models/game.js', function() {
       });
 
       describe('loadCorrectAnswers() function', function(){
-        it('should do something', function() {
+        xit('should do something', function() {
           expect(false).to.be.true;
         })
       });
@@ -458,30 +457,41 @@ describe('server/models/game.js', function() {
     }); // 'startTimer(timer, callback) method'
 
     describe('updateRoundScore(answerObj, socket) method', function(){
-      it('should update round score at the end of a round', function() {
+      xit('should update round score at the end of a round', function() {
         expect(false).to.be.true;
       });
     });
 
     describe('resetCurrentRound() method', function(){
-      it('should reset the current round after a round has ended', function() {
+      xit('should reset the current round after a round has ended', function() {
         expect(false).to.be.true;
       })
     });
 
     describe('getGameResults() method', function(){
+      var allPlayers, game;
 
-      game.gameData.stats.gameEndTotal = 0;
-      game.gameData.stats.allRoundResults = [1, 0, 2, 3, 1, 2];
+      beforeEach(function(){
+        allPlayers = lobby.getPlayers();
+        game = gameMaker(lobby.roomname);
+        game.gameData.stats.gameEndTotal = 0;
+        game.gameData.stats.allRoundResults = [
+          {numCorrect: 1}, 
+          {numCorrect: 0}, 
+          {numCorrect: 1},
+          {numCorrect: 4},
+          {numCorrect: 3},
+          {numCorrect: 0}
+        ];
+      });
 
       it('should return a number', function() {
         game.getGameResults();
         expect( game.gameData.stats.gameEndTotal ).to.be.a.number;
       })
 
-      it('should tally scores in "allRoundResults" array', function() {
+      it('should tally scores in "game.gameData.stats.allRoundResults" array', function() {
         game.getGameResults();
-        console.log(game);
         expect( game.gameData.stats.gameEndTotal ).to.equal( 9 );
       })
     });
