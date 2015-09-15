@@ -36,10 +36,7 @@ module.exports = function(gameId) {
   };
 
   game.loadGameData = function(numPlayers, callback) {
-    console.log("load game data");
-    console.log("PLAYERS: ", game.players);
     var filter = noRepeats(game.players);
-    console.log("FILTER: ", filter);
     QuestionBank.findRandom(filter).limit(1).exec()
     .then(function(triviaSet) {
       triviaSet = triviaSet[0];
@@ -120,8 +117,7 @@ module.exports = function(gameId) {
     players.forEach(function(player){
       player.savePlayedQuiz(triviaSet._id);
     })
-    console.log("PLAYERS", players);
-  }
+  };
 
   var noRepeats = function(players){
     var alreadyPlayed = [];
@@ -166,7 +162,7 @@ module.exports = function(gameId) {
       // create an array in roundAnswers for each round
       game.gameData.roundAnswers.push([]);
       game.gameData.roundAnswerObjects.push([]);
-      console.log
+      
       for (var playerId in players){
         // find the question for a player
         var question = players[playerId].questions[round];
@@ -179,8 +175,7 @@ module.exports = function(gameId) {
         game.gameData.roundAnswerObjects[round].push(answer);
       }
     }
-    console.log("EXITING LOADCORRECTANSWERS");
-  }
+  };
 
   game.loadPlayers = function(players) {
     players.forEach(function(player) {
@@ -227,6 +222,7 @@ module.exports = function(gameId) {
         total += current.numCorrect;
         return total;
       }, 0);
+    // We might be able to get rid of this next line
     game.gameData.stats.players = game.players;
   };
 

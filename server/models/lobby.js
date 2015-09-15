@@ -7,13 +7,14 @@ var config = require('../utils/gameConfig');
  * @constructor Lobby
  * @param  {string} roomname
  */
-module.exports = function(roomname) {
+module.exports = function(roomname, id) {
 
   var lobby = {
     roomname: roomname,
     players: [],
     full: false,
-    inGame: false
+    inGame: false,
+    id: id
   };
 
   /**
@@ -24,10 +25,11 @@ module.exports = function(roomname) {
    */
   lobby.addPlayer = function(playerId) {
     if (lobby.players.length < config.MAX_PLAYERS) {
-      console.log(' | Add player: ' + playerId + ' to lobby: ', lobby.roomname);
+      // console.log(' | Add player: ' + playerId + ' to lobby: ', lobby.roomname);
+      // Grab player from socket session
       var player = players[playerId];
       // push returns length of array
-      player.lobbyId = lobby.id; // lobby.id assigned in from lobbies
+      player.lobbyId = lobby.id;
       lobby.players.push(player);
       if (lobby.players.length === config.MAX_PLAYERS) {
         lobby.full = true;
@@ -36,7 +38,7 @@ module.exports = function(roomname) {
       // return index of pushed player
       return lobby.players.length - 1;
     } else {
-      console.log(' | Lobby full. Cannot join:', lobby.roomname);
+      // console.log(' | Lobby full. Cannot join:', lobby.roomname);
     }
     return null;
   };
@@ -61,7 +63,7 @@ module.exports = function(roomname) {
       return null;
     }
 
-    console.log(' | Remove player:', playerId, ' from lobby: ', lobby.roomname);
+    // console.log(' | Remove player:', playerId, ' from lobby: ', lobby.roomname);
     // remove player from room and players collection
     lobby.players.splice(playerIndex, 1);
     lobby.full = false;
