@@ -109,3 +109,36 @@ $logoEndSize: 15vmin;
         opacity: 1;
     }
 }
+
+/************************************************
+                   loading
+ ************************************************/
+@-moz-keyframes bouncedelay {
+  0%, 80%, 100% { 
+    -moz-transform: scale(0.5);
+    opacity: .5;
+  } 40% {
+    -moz-transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0.5);
+    opacity: .5;
+  } 40% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0.5);
+    opacity: .5;
+  } 40% { 
+    transform: scale(1.0);
+    opacity: 1;
+  }
+}
