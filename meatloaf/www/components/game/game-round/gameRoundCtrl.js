@@ -50,7 +50,7 @@ angular.module('meatloaf.game.round', [])
     $scope.timer.syncTimerStop();
     $('.timer-bar').css(removeAnimateStyle);
     socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
-    setTimeout(function(){socket.emit('enteredRoundOver')},500);
+    socket.emit('enteredRoundOver');
   });
 
   $scope.selectAnswer = function (answerId) {
