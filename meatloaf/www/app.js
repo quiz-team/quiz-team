@@ -6,13 +6,17 @@
 var app = angular.module('meatloaf', [
   'ionic',
   'ui.router',
+  'meatloaf.splash',
   'meatloaf.services',
   'meatloaf.selection',
   'meatloaf.lobby',
   'meatloaf.game.start',
   'meatloaf.game.round',
   'meatloaf.game.roundOver',
-  'meatloaf.game.over'
+  'meatloaf.game.over',
+  'meatloaf.directives',
+  'ngFx',
+  'ngAnimate'
 ]);
 
 app.run(function($ionicPlatform, $rootScope, socket) {
@@ -54,21 +58,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
   function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider
-    .state('selection', {
-      // url: '/selection',
+    .state('splash', {
       cache: false,
       url: '/',
+      controller: 'splashCtrl',
+      templateUrl: 'components/splash/splashView.html'
+    })
+
+    .state('selection', {
+      cache: false,
+      // url: '/',
       controller: 'selectionCtrl',
       templateUrl: 'components/selection/selectionView.html'
     })
 
     .state('loading', {
-      // url: '/selection',
       templateUrl: 'components/loading/loading.html'
     })
 
     .state('lobby', {
-      // url: '/lobby',
+      // url: '/',
       cache: false,
       controller: 'lobbyCtrl',
       templateUrl: 'components/lobby/lobbyView.html',
@@ -79,28 +88,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
     .state('gameStart', {
       cache: false,
-      // url: '/gameStart',
       controller: 'gameStartCtrl',
       templateUrl: 'components/game/game-start/gameStartView.html'
     })
 
     .state('gameRound', {
       cache: false,
-      // url: '/gameRound',
       controller: 'gameRoundCtrl',
       templateUrl: 'components/game/game-round/gameRoundView.html'
     })
 
     .state('gameRoundOver', {
       cache: false,
-      // url: '/gameRoundOver',
       controller: 'gameRoundOverCtrl',
       templateUrl: 'components/game/game-round-over/gameRoundOverView.html'
     })
 
     .state('gameOver', {
       cache: false,
-      // url: '/gameOver',
       controller: 'gameOverCtrl',
       templateUrl: 'components/game/game-over/gameOverView.html'
     });

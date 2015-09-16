@@ -1,0 +1,105 @@
+{
+    "categories": [],
+    "description": " Guess the American cities that have these nicknames. ",
+    "difficulty": -1,
+    "questions": [{
+        "answer": "New York City",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Big Apple"
+    }, {
+        "answer": "Chicago",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Windy City"
+    }, {
+        "answer": "Los Angeles",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The City of Angels"
+    }, {
+        "answer": "Las Vegas",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Sin City"
+    }, {
+        "answer": "Detroit",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Motor City"
+    }, {
+        "answer": "San Francisco",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The City by the Bay"
+    }, {
+        "answer": "Philadelphia",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The City of Brotherly Love"
+    }, {
+        "answer": "Denver",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Mile High City"
+    }, {
+        "answer": "New Orleans",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Big Easy"
+    }, {
+        "answer": "Boston",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Bean Town"
+    }, {
+        "answer": "Nashville",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Music City"
+    }, {
+        "answer": "Pittsburgh",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Steel City"
+    }, {
+        "answer": "St. Louis",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Gateway to the West"
+    }, {
+        "answer": "Salem",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Witch City"
+    }, {
+        "answer": "Seattle",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Emerald City"
+    }, {
+        "answer": "Honolulu",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Big Pineapple"
+    }, {
+        "answer": "Reno",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Biggest Little City in the World"
+    }, {
+        "answer": "Cleveland",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Mistake on the Lake"
+    }, {
+        "answer": "Atlanta",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The City Too Busy to Hate"
+    }, {
+        "answer": "Louisville",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Derby City"
+    }, {
+        "answer": "Tampa",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "Cigar City"
+    }, {
+        "answer": "Akron",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Rubber City"
+    }, {
+        "answer": "Key West",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The Conch Republic"
+    }, {
+        "answer": "Atlantic City",
+        "category": "U.S. City Nicknames Quiz",
+        "question": "The World's Playground"
+    }],
+    "quizLength": 24,
+    "title": "U.S. City Nicknames Quiz",
+    "url": "http://www.jetpunk.com/quizzes/city-nicknames-quiz.php"
+}

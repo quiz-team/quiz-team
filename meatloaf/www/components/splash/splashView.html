@@ -1,0 +1,29 @@
+<ion-slide-box active-slide="myActiveSlide">
+  <!-- <ion-slide-pager></ion-slide-pager> -->
+  <ion-slide class="splash splash--green">
+    <div class="container__splash animated" ng-click="goToLobby()">
+      <div class="text__splash__top">QUIZ</div>
+      <div class="text__splash__bottom">TEAM</div>
+    </div>
+
+    <div class="container__card"> 
+      <h1>This Is Quiz Team</h1>
+      <p>You and your friends are in for some good quiz times. Quiz team is great. Play quiz team all day. Play quiz team with your dad. Quiz team is a great time.</p>
+    </div>
+
+    <div class="container__swipe-text">
+      Swipe right to continue 
+    </div>
+  </ion-slide>
+  <ion-slide class="splash splash--blue">
+    <div class="container__card container__card--full"></div>
+  </ion-slide>
+  <ion-slide class="splash splash--purple">
+    <div class="container__card container__card--full"></div>
+  </ion-slide>
+  <ion-slide class="splash splash--red">
+    <div class="container__card container__card--full">
+      <div ng-click="goToLobby()">Let's Play!</div>
+    </div>
+  </ion-slide>
+</ion-slide-box>

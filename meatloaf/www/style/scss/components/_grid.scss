@@ -1,0 +1,19 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Grid Setup
+// 
+//////////////////////////////////////////////////// */
+
+.grid {
+  height: 100%;
+}
+
+.grid__item {
+  display: inline-block;
+  vertical-align: top;
+  // border: 1px solid black;
+  height: 33.33333333333%;
+  text-align: center;
+  width: 50%;
+  background-color: $purple;
+}

@@ -1,3 +1,6 @@
+// load env 
+require('dotenv').load();
+
 var fs = require('fs');
 var QuestionSet = require('./config.js');
 var _und = require('underscore');
@@ -11,10 +14,10 @@ var readFileAsync = promise.promisify(fs.readFile);
 module.exports = function() {
   var dbMgmt = {};
   dbMgmt.AddtoDb = function() {
-    readdirAsync('./quizzes/')
+    readdirAsync('./server/database/quizzes/')
       .then(function(files) {
         _und.each(files, function(file) {
-          readFileAsync('./quizzes/' + file, {encoding: 'utf-8'})
+          readFileAsync('./server/database/quizzes/' + file, {encoding: 'utf-8'})
           .then(function(data) {
             var questionSet = new QuestionSet(JSON.parse(data));
             return [

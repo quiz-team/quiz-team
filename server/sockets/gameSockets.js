@@ -1,25 +1,15 @@
 var lobbies = require('../collections/lobbies.js');
 var _und = require('underscore');
 var players = require('../collections/players.js');
-// var gameMaker = require('./game.js');
 var games = require('../collections/games.js');  // CHANGE THIS TO AN OBJECT INSTEAD OF FUNCTION UNLESS ALEX HAS INSIGHT
 var timer = require('../utils/timerController.js');
-
-// Constants
-var ROUND_TIMER = 12000;
-var ROUND_OVER_TIMER = 5000;
-var PRE_GAME_TIMER = 5000;
-
-// testing timers
-// var ROUND_TIMER = 2000;
-// var ROUND_OVER_TIMER = 1000;
-// var PRE_GAME_TIMER = 4000;
+var config = require('../utils/gameConfig');
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.playerId);
   // return true if all expected players are in the view
-  return _und.every(game.players, function(playerId) {
-    return (game.playersInView.indexOf(playerId) !== -1);
+  return _und.every(game.players, function(player) {
+    return (game.playersInView.indexOf(player.id) !== -1);
   }.bind(this));
 };
 
@@ -30,7 +20,7 @@ module.exports = function(socket, io) {
     if (everyoneInView(game, socket)) {
       console.log("everyone in view, GAME.ID: ", game.id);
       // start game timer
-      var timerData = timer.setTimer(PRE_GAME_TIMER);
+      var timerData = timer.setTimer(config.PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
@@ -45,7 +35,7 @@ module.exports = function(socket, io) {
       
       game.resetCurrentRound();
       var roundData = {};
-      roundData.timerData = timer.setTimer(ROUND_TIMER);
+      roundData.timerData = timer.setTimer(config.ROUND_TIMER);
       roundData.roundNum = game.roundNum;
 
       io.to(game.id).emit('startRound', roundData);
@@ -60,7 +50,6 @@ module.exports = function(socket, io) {
 
   // SET UP FOR LATER
   socket.on('submitAnswer', function(answerObj){
-    // console.log("PLAYER SUBMITTED AN ANSWER");
     var game = games.findGame(socket);
     game.updateRoundScore(answerObj, socket);
   });
@@ -70,7 +59,7 @@ module.exports = function(socket, io) {
 
       game.roundNum++;
 
-      var timerData = timer.setTimer(ROUND_OVER_TIMER);
+      var timerData = timer.setTimer(config.ROUND_OVER_TIMER);
       game.currentRoundResults.timerData = timerData;
       console.log("EMITTING ROUND RESULTS")
       io.to(game.id).emit('roundResults', game.currentRoundResults);
@@ -127,7 +116,12 @@ module.exports = function(socket, io) {
     console.log(' | Player disconnected: ', socket.playerId);
     if (game) {
       console.log(' | Game of disconnected player found')
-      var playerIndex = game.players.indexOf(socket.playerId);
+      var playerIndex = -1;
+      game.players.forEach(function(player, index){
+        if (player.id === socket.playerId){
+          playerIndex = index;
+        }
+      })
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
         console.log(' | Player removed from game: ', game.players);

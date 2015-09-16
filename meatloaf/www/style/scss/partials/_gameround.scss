@@ -1,0 +1,202 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Question
+// 
+//////////////////////////////////////////////////// */
+
+.container__question {
+  position: relative;
+  width: 100%;
+  height: 18%;
+  background-color: gray;
+}
+
+.container__question__text {
+  text-align: center;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.container__question__text--sm {
+  font-size: 26px;
+  line-height: 26px;
+}
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Timer
+// 
+//////////////////////////////////////////////////// */
+
+.container__timer-bar {
+  height: 7%;
+  position: relative;
+  background: #555;
+}
+
+.meter { 
+  height: 100%;  /* Can be anything */
+  position: relative;
+  background: #555;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+}
+
+@-webkit-keyframes colorChange {  
+  0% { background-color: rgb(43,194,83); }
+  45% { background-color: rgb(43,194,83); }
+  70% { background-color: #f1a165; }
+  100% { background-color: red; }
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43,194,83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43,194,83) 37%,
+    rgb(84,240,84) 69%
+  );
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-color-change {
+  -webkit-animation-name: colorChange;
+  -moz-animation-name: colorChange;
+  animation-name: colorChange;
+  -webkit-animation-duration: 10s;
+  -moz-animation-duration: 10s;
+  animation-duration: 10s;
+}
+
+.meter > span:after, .animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-image: linear-gradient(
+    -45deg, 
+    rgba(255, 255, 255, .2) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, .2) 50%, 
+    rgba(255, 255, 255, .2) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+  -moz-animation: move 2s linear infinite;
+  animation: move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+
+@keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
+@-webkit-keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
+@-moz-keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
+
+
+.meter > span:after, .animate > span > span {
+  -webkit-animation: move 2s linear infinite;
+  -moz-animation: move 2s linear infinite;
+  animation: move 2s linear infinite;
+}
+
+
+@-webkit-keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
+@-moz-keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
+@keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Answers
+// 
+//////////////////////////////////////////////////// */
+
+.container__answers {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: $red;
+}
+
+.answer-grid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: $red;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5px 10px;
+}
+
+.answer-button__container {
+  flex: 0 0 50%;
+  height: 33.3333%;
+  padding: 5px 0;
+}
+
+.answer-button__container:nth-child(2n - 1) {
+  padding-right: 5px;
+}
+
+.answer-button__container:nth-child(2n) {
+  padding-left: 5px;
+}
+
+.answer-button {
+  height: 100%;
+  background-color: #fff;
+  box-shadow: $drop-shadow-2;
+  transition: .1s;
+}
+
+.answer-button--pressed {
+  -webkit-transform: translate(0, 2px);
+  box-shadow: $drop-shadow-1;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ed89), color-stop(100%,#6bba70)); /* Chrome,Safari4+ */
+}
+
+.answer-text {
+  display: block;
+  position: relative;
+  top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+  font-size: 24px;
+  line-height: 30px;
+  font-family: "raleway", sans-serif;
+  font-weight: 500;
+}
+
+.answer--sm {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.answer--locked {
+  background-color: $green;
+}

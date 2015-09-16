@@ -1,0 +1,56 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Selection View
+// 
+//////////////////////////////////////////////////// */
+
+.full {
+  color: gray;
+}
+
+.selection__list {
+  display: block;
+  min-height: 80%;
+  width: 100%;
+}
+
+.selection__button {
+  display: block;
+  height: 15vh;
+  font-family: $font--default;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.button__circle {
+  position: absolute;
+  bottom: 4%;
+  right: 5%;
+  height: 12vh;
+  width: 12vh;
+  font-size: 6vh;
+  padding: 3vh;
+  text-align: center;
+  border-radius: 100px;
+  background-color: $red;
+  color: #fff;
+  box-shadow: $drop-shadow-2;
+}
+
+.container__card--selection {
+  border-radius: 1px;
+  box-shadow: $drop-shadow-1;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: $font--default;
+  font-size: 4vh;
+  font-weight: 400;
+  padding: 20px;
+}
+
+.background--yellow {
+  background-color: $green;
+}
+

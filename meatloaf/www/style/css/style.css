@@ -1,0 +1,870 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Overall Setup
+// 
+//////////////////////////////////////////////////// */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Buttons
+// 
+//////////////////////////////////////////////////// */
+.btn {
+  border: 0;
+  outline: none;
+  color: #666666;
+  font-size: 20px;
+  padding: 20px 20px 20px 20px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 1px;
+  width: 85%; }
+
+.btn:hover {
+  text-decoration: none; }
+
+.btn--green {
+  background-color: #CFD8DC; }
+
+.button__circle {
+  position: absolute;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  bottom: 2%;
+  right: 5%; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Grid Setup
+// 
+//////////////////////////////////////////////////// */
+.grid {
+  height: 100%; }
+
+.grid__item {
+  display: inline-block;
+  vertical-align: top;
+  height: 33.33333333333%;
+  text-align: center;
+  width: 50%;
+  background-color: #9648BC; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Selection View
+// 
+//////////////////////////////////////////////////// */
+.full {
+  color: gray; }
+
+.selection__list {
+  display: block;
+  min-height: 80%;
+  width: 100%; }
+
+.selection__button {
+  display: block;
+  height: 15vh;
+  font-family: "raleway", sans-serif;
+  font-weight: 600;
+  margin: 0 auto; }
+
+.button__circle {
+  position: absolute;
+  bottom: 4%;
+  right: 5%;
+  height: 12vh;
+  width: 12vh;
+  font-size: 6vh;
+  padding: 3vh;
+  text-align: center;
+  border-radius: 100px;
+  background-color: #BC5E44;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+.container__card--selection {
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: "raleway", sans-serif;
+  font-size: 4vh;
+  font-weight: 400;
+  padding: 20px; }
+
+.background--yellow {
+  background-color: #4CAF50; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Lobby View
+// 
+//////////////////////////////////////////////////// */
+.lobby__container {
+  background-color: #B0BEC5; }
+
+.lobby__list {
+  height: 66%;
+  width: 100%; }
+
+.lobby__header {
+  height: 8vh;
+  font-family: "raleway", sans-serif;
+  padding-top: 1.5vh;
+  text-align: center; }
+  .lobby__header .lobby__button--back {
+    position: absolute;
+    z-index: 10;
+    left: 4vw;
+    font-size: 4vh;
+    line-height: 5vh;
+    font-weight: 600;
+    color: #666666; }
+  .lobby__header h1 {
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: #666666; }
+
+.lobby__players {
+  position: absolute;
+  height: 40vh;
+  width: 80vw;
+  top: 20vh;
+  left: 10vw; }
+  .lobby__players .lobby__player--1 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #FFEBEE;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--1.ready {
+    background-color: #BC5E44; }
+  .lobby__players .lobby__player--2 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #FFFDE7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--2.ready {
+    background-color: #FFC107; }
+  .lobby__players .lobby__player--3 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #E3F2FD;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--3.ready {
+    background-color: #4C98C6; }
+  .lobby__players .lobby__player--4 {
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    line-height: 18vh;
+    font-size: 13.33333vh;
+    margin: 1vh 2vw;
+    height: 18vh;
+    width: 36vw;
+    background-color: #EDE7F6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.2s; }
+  .lobby__players .lobby__player--4.ready {
+    background-color: #9648BC; }
+
+.button__container {
+  position: fixed;
+  bottom: 0;
+  display: block;
+  height: 20vh;
+  width: 100vw; }
+
+.lobby__instruction {
+  font-size: 4vw;
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
+  text-align: center; }
+
+.lobby__button {
+  color: #FFF;
+  position: absolute;
+  left: 10vw;
+  width: 80vw;
+  height: 10vh;
+  font-family: "raleway", sans-serif;
+  font-weight: 600;
+  font-size: 6vh;
+  line-height: 10vh;
+  text-align: center;
+  background-color: #BC5E44;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+.button__leave {
+  font-weight: 400; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Pre-Game View
+// 
+//////////////////////////////////////////////////// */
+.trivia__description {
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  text-align: center;
+  font-size: 20px;
+  font-family: "raleway", sans-serif;
+  font-weight: 400; }
+
+.trivia__title {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 30px;
+  font-family: "raleway", sans-serif;
+  font-weight: 600; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Question
+// 
+//////////////////////////////////////////////////// */
+.container__question {
+  position: relative;
+  width: 100%;
+  height: 18%;
+  background-color: gray; }
+
+.container__question__text {
+  text-align: center;
+  font-family: raleway;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 10px;
+  padding-top: 20px; }
+
+.container__question__text--sm {
+  font-size: 26px;
+  line-height: 26px; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Timer
+// 
+//////////////////////////////////////////////////// */
+.container__timer-bar {
+  height: 7%;
+  position: relative;
+  background: #555; }
+
+.meter {
+  height: 100%;
+  /* Can be anything */
+  position: relative;
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); }
+
+@-webkit-keyframes colorChange {
+  0% {
+    background-color: #2bc253; }
+  45% {
+    background-color: #2bc253; }
+  70% {
+    background-color: #f1a165; }
+  100% {
+    background-color: red; } }
+
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #2bc253;
+  background-image: -webkit-linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
+  background-image: linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden; }
+
+.timer-color-change {
+  -webkit-animation-name: colorChange;
+  animation-name: colorChange;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s; }
+
+.meter > span:after, .animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  z-index: 1;
+  background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+  animation: move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden; }
+
+@keyframes move {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -50px -50px; } }
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -50px -50px; } }
+
+.meter > span:after, .animate > span > span {
+  -webkit-animation: move 2s linear infinite;
+  animation: move 2s linear infinite; }
+
+@-webkit-keyframes expandWidth {
+  0% {
+    width: 0; }
+  100% {
+    width: auto; } }
+
+@keyframes expandWidth {
+  0% {
+    width: 0; }
+  100% {
+    width: auto; } }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Round View - Answers
+// 
+//////////////////////////////////////////////////// */
+.container__answers {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: #BC5E44; }
+
+.answer-grid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  background-color: #BC5E44;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 5px 10px; }
+
+.answer-button__container {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  height: 33.3333%;
+  padding: 5px 0; }
+
+.answer-button__container:nth-child(2n - 1) {
+  padding-right: 5px; }
+
+.answer-button__container:nth-child(2n) {
+  padding-left: 5px; }
+
+.answer-button {
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: .1s;
+          transition: .1s; }
+
+.answer-button--pressed {
+  -webkit-transform: translate(0, 2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a2ed89), color-stop(100%, #6bba70));
+  /* Chrome,Safari4+ */ }
+
+.answer-text {
+  display: block;
+  position: relative;
+  top: 50%;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 24px;
+  font-family: "raleway", sans-serif;
+  font-weight: 500; }
+
+.answer--sm {
+  font-size: 20px;
+  line-height: 24px; }
+
+.answer--locked {
+  background-color: #4CAF50; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Modal Body
+// 
+//////////////////////////////////////////////////// */
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.6; }
+
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index: 10000;
+  position: absolute;
+  width: 50%;
+  /* Default */
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000; }
+
+.ng-modal-dialog-content {
+  padding: 10px;
+  text-align: left; }
+
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif'; }
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fade-in {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: .2s;
+  animation-duration: .2s; }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.fade-out {
+  opacity: 1;
+  /* make things invisible upon start */
+  -webkit-animation: fadeOut ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  animation: fadeOut ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: .35s;
+  animation-duration: .35s; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Modal Content
+// 
+//////////////////////////////////////////////////// */
+.round-over__team-score {
+  margin-top: .4vh;
+  text-align: center;
+  padding: 2vh;
+  padding-bottom: .5vh;
+  font-size: 4.5vh;
+  font-family: "raleway", sans-serif;
+  font-weight: 400; }
+
+.round-over__user-results {
+  text-align: center;
+  padding: 2.8vh;
+  font-size: 4.5vh;
+  font-family: "raleway", sans-serif;
+  font-weight: 400; }
+
+.round-over__status {
+  display: block;
+  font-color: white;
+  margin: 0 auto;
+  width: 19.7vh;
+  height: 19.7vh;
+  text-align: center; }
+
+.round-over__status--correct {
+  background-color: #4CAF50; }
+
+.round-over__status--incorrect {
+  background-color: #F44336; }
+
+.icon-status {
+  font-size: 19.1vh;
+  color: white; }
+
+.round-over__label {
+  text-align: center;
+  padding: 1.7vh;
+  font-size: 3vh;
+  font-family: "raleway";
+  font-weight: 400;
+  color: gray; }
+
+.round-over__question {
+  text-align: center;
+  padding-right: 2.8vh;
+  padding-left: 2.8vh;
+  padding-bottom: 3vh;
+  font-size: 3.4vh;
+  line-height: 3.4vh;
+  font-family: "raleway";
+  font-weight: 400; }
+
+.round-over__answer {
+  text-align: center;
+  padding-right: 2.8vh;
+  padding-left: 2.8vh;
+  font-size: 3.4vh;
+  line-height: 3.4vh;
+  font-family: "raleway";
+  font-weight: 400; }
+
+.round-over__total {
+  text-align: center;
+  padding: 2.8vh;
+  padding-bottom: 1vh;
+  font-size: 6vh;
+  font-family: "raleway";
+  font-weight: 600; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Game Over View
+// 
+//////////////////////////////////////////////////// */
+.game-over__header {
+  text-align: center;
+  padding: 30px;
+  font-size: 36px;
+  font-family: "raleway", sans-serif;
+  font-weight: 400; }
+
+.game-over__score {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 40px;
+  font-family: "raleway", sans-serif;
+  font-weight: 600; }
+
+.game-over__score-table td {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle; }
+
+.chart-incorrect {
+  font-size: 30px;
+  color: #F44336; }
+
+.chart-correct {
+  font-size: 30px;
+  color: #4CAF50; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Splash View
+// 
+//////////////////////////////////////////////////// */
+.splash {
+  position: relative; }
+
+.splash--green {
+  background-color: #4CAF50; }
+
+.splash--blue {
+  background-color: #4C98C6; }
+
+.splash--purple {
+  background-color: #9648BC; }
+
+.splash--red {
+  background-color: #BC5E44; }
+
+.splash--yellow {
+  background-color: #FFC107; }
+
+.container__splash {
+  position: relative;
+  top: 10%;
+  width: 90%;
+  margin: 0 auto;
+  -moz-animation-name: liftLogo;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-delay: 0.5s;
+  -webkit-animation-name: liftLogo;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.2s;
+  -webkit-animation-delay: 0.5s;
+  -webkit-animation-name: liftLogo;
+          animation-name: liftLogo;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s; }
+
+@-webkit-keyframes liftLogo {
+  0% {
+    -webkit-transform: translateY(30%);
+    font-size: 30vmin;
+    line-height: 30vmin; }
+  100% {
+    -webkit-transform: translateY(-20%);
+    font-size: 24vmin;
+    line-height: 24vmin; } }
+
+@keyframes liftLogo {
+  0% {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+    font-size: 30vmin;
+    line-height: 30vmin; }
+  100% {
+    -webkit-transform: translateY(-20%);
+            transform: translateY(-20%);
+    font-size: 24vmin;
+    line-height: 24vmin; } }
+
+@-webkit-keyframes fadeInCard {
+  0% {
+    -webkit-transform: translateX(5%);
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeInCard {
+  0% {
+    -webkit-transform: translateX(5%);
+            transform: translateX(5%);
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeInText {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(5%); }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(5%);
+            transform: translateX(5%); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1; } }
+
+.text__splash,
+.text__splash__top,
+.text__splash__bottom {
+  display: block;
+  text-align: center;
+  /*line-height: 30vmin;*/
+  /*font-size: 30vmin;*/
+  color: #E8F5E9;
+  font-family: "raleway", sans-serif;
+  font-weight: 200;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+
+.text__splash__top {
+  /*text-align: left;*/ }
+
+.text__splash__bottom {
+  /*text-align: right;*/
+  font-weight: 400; }
+
+.slider-pager-page.active {
+  color: white; }
+
+.slider-pager .slider-pager-page {
+  color: white; }
+
+.container__card {
+  position: absolute;
+  padding: 20px;
+  background-color: #E8F5E9;
+  top: 38vh;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  opacity: 0;
+  -moz-animation-name: fadeInCard;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: .8s;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-name: fadeInCard;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: .8s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-name: fadeInCard;
+          animation-name: fadeInCard;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+          animation-duration: .1s;
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+  .container__card h1 {
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: #616161;
+    font-size: 8vmin;
+    line-height: 8vmin; }
+  .container__card p {
+    margin-top: 3vh;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: #666666;
+    font-size: 5vmin;
+    line-height: 6vmin; }
+
+.container__card--full {
+  /* position: absolute */
+  height: 85%;
+  top: 5%; }
+
+.container__swipe-text {
+  position: absolute;
+  margin: 0 auto;
+  font-family: 'raleway', sans-serif;
+  font-weight: 600;
+  font-size: 8vmin;
+  text-align: center;
+  color: #E8F5E9;
+  top: 85vh;
+  width: 100vw;
+  opacity: 0;
+  -moz-animation-name: fadeInText;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: 1s;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-name: fadeInText;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-name: fadeInText;
+          animation-name: fadeInText;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+          animation-duration: .1s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }

@@ -3,7 +3,6 @@ var players = require('../collections/players.js');
 var roundMaker = require('./round.js');
 var timer = require('../utils/timerController.js');
 var _und = require('underscore');
-// var questionBank = require('../trivia.js').trivia;
 var QuestionBank = require('../database/config.js');
 
 module.exports = function(gameId) {
@@ -25,10 +24,8 @@ module.exports = function(gameId) {
         allRoundResults: [],
         gameEndTotal: 0
       },
-      answerQuestionObjectsMap: {}
+      answerMap: {}
     },
-    questionAnswerMap: {},
-    questionAnswerObjectsMap: {},
     allRoundResults: [],
     currentRoundResults: {}
   };
@@ -40,9 +37,16 @@ module.exports = function(gameId) {
 
   game.loadGameData = function(numPlayers, callback) {
     console.log("load game data");
-    QuestionBank.findRandom().limit(1).exec()
+    console.log("PLAYERS: ", game.players);
+    var filter = noRepeats(game.players);
+    console.log("FILTER: ", filter);
+    QuestionBank.findRandom(filter).limit(1).exec()
     .then(function(triviaSet) {
       triviaSet = triviaSet[0];
+
+      // mark quiz played on all players in game
+      markQuizPlayed(triviaSet, game.players);
+
       var questionSet = triviaSet.questions;
       shuffle(questionSet);
 
@@ -72,9 +76,8 @@ module.exports = function(gameId) {
         answer.text = questionAnswerPair.answer;
         answer.id = game.getId();
         //store question->association in questionAnswers
-        game.questionAnswerMap[question.id] = answer.id;
-        game.questionAnswerObjectsMap[question.id] = answer;
-        game.gameData.answerQuestionObjectsMap[answer.id] = question;
+        game.gameData.answerMap[question.id] = answer;
+        game.gameData.answerMap[answer.id] = question;
         //assign answer to a player in playerAnswers, rotating through players
         playerAnswers[index % numPlayers].push(answer);
         //assign question to roundQuestions, filling up one round at a time.
@@ -99,10 +102,10 @@ module.exports = function(gameId) {
       // Need a comment for this
       game.gameData.players = {};
       //do something with playerAnswers and playerQuestions
-      game.players.forEach(function(playerId, index) {
-        game.gameData.players[playerId] = {};
-        game.gameData.players[playerId].answers = playerAnswers[index];
-        game.gameData.players[playerId].questions = playerQuestions[index];
+      game.players.forEach(function(player, index) {
+        game.gameData.players[player.id] = {};
+        game.gameData.players[player.id].answers = playerAnswers[index];
+        game.gameData.players[player.id].questions = playerQuestions[index];
       });
 
       game.gameData.roundQuestions = roundQuestions;
@@ -112,6 +115,30 @@ module.exports = function(gameId) {
       callback();
     });
   };
+
+  var markQuizPlayed = function(triviaSet, players){
+    players.forEach(function(player){
+      player.savePlayedQuiz(triviaSet._id);
+    })
+    console.log("PLAYERS", players);
+  }
+
+  var noRepeats = function(players){
+    var alreadyPlayed = [];
+    players.forEach(function(player){
+      player.recentlyPlayedQuizzes.forEach(function(quizId){
+        if (alreadyPlayed.indexOf(quizId) === -1){
+          alreadyPlayed.push(quizId);
+        }
+      });
+    });
+    var filter = {
+      _id: {
+        $nin: alreadyPlayed
+      }
+    }
+    return filter;
+  }
 
   var shuffle = function(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -146,7 +173,7 @@ module.exports = function(gameId) {
         // find id for question
         var questionId = question.id;
         // find answerId that matches questionId using the question-answer-map object
-        var answer = game.questionAnswerObjectsMap[questionId];
+        var answer = game.gameData.answerMap[questionId];
         // push answerId to roundAnswers, at the correct round
         game.gameData.roundAnswers[round].push(answer.id);
         game.gameData.roundAnswerObjects[round].push(answer);
@@ -155,13 +182,9 @@ module.exports = function(gameId) {
     console.log("EXITING LOADCORRECTANSWERS");
   }
 
-  game.addPlayer = function(playerId) {
-    game.players.push(playerId);
-  };
-
   game.loadPlayers = function(players) {
     players.forEach(function(player) {
-      game.players.push(player.id);
+      game.players.push(player);
     });
   };
 
@@ -173,9 +196,6 @@ module.exports = function(gameId) {
 
   game.updateRoundScore = function(answerObj, socket){
     // given the current round, check if the answerId matches one of the expected answers
-
-    game.currentRoundResults.correctAnswers[socket.playerId] = game.questionAnswerMap[answerObj.question.id];
-
     if(game.gameData.roundAnswers[game.roundNum-1].indexOf(answerObj.answer.id)!== -1){
       // if yes increase the total correct in the currentRoundResults
       game.currentRoundResults.numCorrect++;
@@ -195,7 +215,6 @@ module.exports = function(gameId) {
       answersSubmitted: 0,
       numCorrect: 0,
       scoreByPlayer: {},
-      correctAnswers: {}
     };
   };
 

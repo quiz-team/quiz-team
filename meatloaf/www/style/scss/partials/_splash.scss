@@ -1,0 +1,279 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Splash View
+// 
+//////////////////////////////////////////////////// */
+
+.splash {
+  position: relative;
+}
+
+.splash--green {
+  background-color: $green;
+}
+
+.splash--blue {
+  background-color: $blue;
+}
+
+.splash--purple {
+  background-color: $purple;
+}
+
+.splash--red {
+  background-color: $red;
+}
+
+.splash--yellow {
+  background-color: $yellow;
+}
+
+.container__splash {
+  position: relative;
+  top: 10%;
+  width: 90%;
+  margin: 0 auto;
+
+  -moz-animation-name: liftLogo;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-delay: 0.5s;
+
+  -webkit-animation-name: liftLogo;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.2s;
+  -webkit-animation-delay: 0.5s;
+
+  animation-name: liftLogo;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.2s;
+  animation-delay: 0.5s;
+}
+
+@-moz-keyframes liftLogo {
+    0% {
+        -moz-transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
+    }
+    100% {
+        -moz-transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
+    }
+}
+@-webkit-keyframes liftLogo {
+    0% {
+        -webkit-transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
+    }
+    100% {
+        -webkit-transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
+    }
+}
+@keyframes liftLogo {
+    0% {
+        transform: translateY(30%);
+        font-size: 30vmin;
+        line-height: 30vmin;
+    }
+    100% {
+        transform: translateY(-20%);
+        font-size: 24vmin;
+        line-height: 24vmin;
+    }
+}
+
+@-moz-keyframes fadeInCard {
+    0% {
+       -moz-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        -moz-transform: translateY(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInCard {
+    0% {
+        -webkit-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInCard {
+    0% {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@-moz-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -moz-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.text__splash,
+.text__splash__top,
+.text__splash__bottom {
+  display: block;
+  text-align: center;
+  /*line-height: 30vmin;*/
+  /*font-size: 30vmin;*/
+  color: $green--verylight;
+  font-family: $font--default;
+  font-weight: 200;
+  color: white;
+  text-shadow: $drop-shadow-1;
+}
+
+.text__splash__top {
+  /*text-align: left;*/
+}
+
+.text__splash__bottom {
+  /*text-align: right;*/
+  font-weight: 400;
+}
+
+.slider-pager-page.active {
+  color: white;
+}
+
+.slider-pager .slider-pager-page {
+  color: white;
+}
+
+.container__card {
+  position: absolute;
+  padding: 20px;
+  background-color: $green--verylight;
+  top: 38vh;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  border-radius: 1px;
+  box-shadow: $drop-shadow-1;
+  opacity: 0;
+
+  -moz-animation-name: fadeInCard;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: .8s;
+  -moz-animation-fill-mode: forwards;
+
+  -webkit-animation-name: fadeInCard;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: .8s;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: fadeInCard;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: .1s;
+  animation-delay: .8s;
+  animation-fill-mode: forwards;
+  
+  h1 {
+    $fontSize: 8vmin;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: $text--gray;
+    font-size: $fontSize;
+    line-height: $fontSize;
+  }
+  
+  p {
+    $fontSize: 5vmin;
+    margin-top: 3vh;
+    text-align: center;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    color: $text--darkgray;
+    font-size: $fontSize;
+    line-height: $fontSize + 1vmin;
+  }
+}
+
+
+
+.container__card--full {
+  /* position: absolute */
+  height: 85%;
+  top: 5%;
+}
+
+.container__swipe-text {
+  position: absolute;
+  margin: 0 auto;
+  font-family: 'raleway', sans-serif;
+  font-weight: 600;
+  font-size: 8vmin;
+  text-align: center;
+  color: $green--verylight;
+  top: 85vh;
+  width: 100vw;
+  opacity: 0;
+
+   -moz-animation-name: fadeInText;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-out;
+  -moz-animation-duration: .1s;
+  -moz-animation-delay: 1s;
+  -moz-animation-fill-mode: forwards;
+
+  -webkit-animation-name: fadeInText;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: fadeInText;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: .1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+
+}

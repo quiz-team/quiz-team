@@ -1,11 +1,13 @@
-<ion-content scroll="true">
-<ion-list class="list">
-  <ion-item class="item" ng-repeat="lobby in lobbies | orderBy: ['full','inGame']" 
-            on-tap="lobby.full || joinLobby(lobby.id)" ng-class="{full: lobby.full}">
-            {{lobby.roomname}} {{lobby.inGame ? '- In-game' : lobby.full ? '- Full' : '' }}
-  </ion-item>
-</ion-list>
-
-<button class="button button-full button-positive" on-tap="createRoom()">Create Room</button>
-
-</ion-content>
+<!-- <ion-content scroll="true" class="selection__list"> -->
+<div class="background--yellow">
+  <ion-scroll class="selection__list">
+    <ion-list class="list">
+      <ion-item class="item container__card--selection" ng-repeat="lobby in lobbies | orderBy: ['full','inGame']" 
+                on-tap="lobby.full || joinLobby(lobby.id)" ng-class="{full: lobby.full}">
+                {{lobby.roomname}} {{lobby.inGame ? '- In-game' : lobby.full ? '- Full' : '' }}
+      </ion-item>
+    </ion-list>
+  </ion-scroll class="selection__list">
+  <!-- </ion-content> -->
+  <div class="button__circle ion-plus-round" on-tap="createRoom()"></div>
+</div>

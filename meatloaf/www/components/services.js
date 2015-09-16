@@ -6,17 +6,20 @@ angular.module('meatloaf.services', [])
   var startTime;
   // timerObj.duration;
   var timeRemaining;
+  var timerPercentage;
   var refreshDisplayTime;
 
   timerObj.syncTimerStart = function(timerData){
     // Calculate display time four times per second
     startTime = timerData.startTime;
     timerObj.duration = timerData.duration;
-    refreshDisplayTime = $interval(calculateTimeRemaining, 250);
+    refreshDisplayTime = $interval(calculateTimeRemaining, 16);
   };
 
   var calculateTimeRemaining = function(){
     timerObj.timeRemaining = (startTime + timerObj.duration - Date.now()) / 1000;
+    timerObj.timerPercentage = Math.max((timerObj.timeRemaining / (timerObj.duration/1000) * 100) , 0);;
+    // console.log("Timer Percentage: ", timerObj.timerPercentage);
     timerObj.displayTime = Math.max(0, Math.ceil(timerObj.timeRemaining));
   };
 
@@ -27,7 +30,8 @@ angular.module('meatloaf.services', [])
   
 }])
 
-.factory('socket', ['$rootScope', 'session', function ($rootScope, session) {
+.factory('socket', ['$rootScope', 'session',
+  function ($rootScope, session) {
   var playerSocket;
   return {
 
@@ -39,9 +43,7 @@ angular.module('meatloaf.services', [])
 
       var sessionId = session.getId();
       console.log('sessionId: ', sessionId);
-      // playerSocket = io.connect('http://18a200c5.ngrok.io');
-      playerSocket = io.connect('http://6a4ec773.ngrok.io', { query: 'sessionId=' + sessionId});
-      // playerSocket = io.connect('http://localhost:9090', { query: 'sessionId=' + sessionId});
+      playerSocket = io.connect({ query: 'sessionId=' + sessionId});
     },
 
     getId: function() {
@@ -49,9 +51,6 @@ angular.module('meatloaf.services', [])
     },
 
     on: function (eventName, callback) {
-      // if (!!playerSocket._callbacks[eventName]) {
-      //   return;
-      // }
       // remove listener to refresh callback
       playerSocket.removeListener(eventName);
       playerSocket.on(eventName, function () {  
@@ -74,10 +73,6 @@ angular.module('meatloaf.services', [])
     },
 
     once: function (eventName, callback) {
-      // if (!!playerSocket._callbacks[eventName]) {
-      //   return;
-      // }
-
       playerSocket.once(eventName, function () {  
         var args = arguments;
         $rootScope.$apply(function () {
@@ -136,18 +131,14 @@ angular.module('meatloaf.services', [])
         myAnswers.forEach(function(myAnswer) {
           if (myAnswer.id === roundAnswer.id) {
             questionAnswerPair.answer = myAnswer;
-            questionAnswerPair.question = triviaData.answerQuestionObjectsMap[myAnswer.id];
+            questionAnswerPair.question = triviaData.answerMap[myAnswer.id];
+
             return;
           }
         })
-        //for each question this round
-
-          //if answer matches question
-            //return answer and question
       });
       return questionAnswerPair;
     }
-
   };
 }])
 

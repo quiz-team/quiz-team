@@ -1,7 +1,7 @@
 angular.module('meatloaf.selection', [])
 
-.controller('selectionCtrl', ['$scope', '$rootScope', '$state', 'socket', '$ionicHistory', '$ionicViewSwitcher',
-            function ($scope, $rootScope, $state, socket, $ionicHistory, $ionicViewSwitcher) {
+.controller('selectionCtrl', ['$scope', '$rootScope', '$state', 'socket', '$ionicHistory', '$timeout',
+            function ($scope, $rootScope, $state, socket, $ionicHistory, $timeout) {
               
   // var socket = $rootScope.socket;
   $scope.lobbies;
@@ -18,20 +18,20 @@ angular.module('meatloaf.selection', [])
   });
   $scope.createRoom = function() {
     $state.go('loading');
-    setTimeout(function(){
+    $timeout(function(){
       socket.emit('createRoom', null, function(lobby) {
         $state.go('lobby', {lobby: lobby});
       });
-    },500)
+    },500);
   };
 
   $scope.joinLobby = function(lobbyId){
     $state.go('loading');
-    setTimeout(function(){
+    $timeout(function(){
       socket.emit('joinRoom', lobbyId, function(lobby) {
         $state.go('lobby', {lobby: lobby});
       });
-    },500)
-  }
+    },500);
+  };
 
 }]);
