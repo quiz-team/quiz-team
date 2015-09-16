@@ -80,21 +80,6 @@ angular.module('meatloaf.game.round', [])
     $('.ng-modal').removeClass('fade-out')
     $('.ng-modal').addClass('fade-in')
     $scope.toggleModal()
-    // setTimeout(function(){
-    //   $('.ng-modal').removeClass('fade-in')
-    //   $('.ng-modal').addClass('fade-out')
-    //   setTimeout(function(){
-    //     $scope.toggleModal()
-    //   },300);
-    //   if (trivia.roundNum < 6){
-    //     trivia.updateRound(trivia.roundNum + 1);
-    //     socket.emit('enteredRound');
-    //     console.log('EMITTING ENTERED ROUND');
-    //   } else {
-    //     $state.go('gameOver');
-    //   }
-    
-    // }, 3000);
   });
 
   socket.on('nextRound', function(roundNum){
@@ -115,20 +100,4 @@ angular.module('meatloaf.game.round', [])
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
   };
-
-  // $ionicModal.fromTemplateUrl('results-modal.html', {
-  //     scope: $scope,
-  //     animation: 'slide-in-up'
-  //   }).then(function(modal) {
-  //     $scope.modal = modal;
-  //   });
-  // $scope.openModal = function(){
-  //   $scope.modal.show();
-  // }
-  // $scope.closeModal = function(){
-  //   $scope.modal.hide();
-  // }
-
-
-
 }]);
