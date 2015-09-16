@@ -1,9 +1,12 @@
 // remember to use 'done' for async testing
-
-var expect = require('chai').expect;
-var should = require('chai').should();
-var io = require('socket.io-client');
-var mongoose = require('mongoose');
+var chai      = require('chai');
+var sinon     = require('sinon');
+var expect    = chai.expect;
+var should    = chai.should();
+var sinonChai = require("sinon-chai");
+var io        = require('socket.io-client');
+var mongoose  = require('mongoose');
+chai.use(sinonChai);
 
 var lobbies = require('../../server/collections/lobbies.js');
 var games = require('../../server/collections/games.js');
@@ -16,6 +19,7 @@ var http = require('http');
 describe('Socket Tests', function() {
   var testId = 'playerTestSessionId';
   var testId2 = 'playerTestSessionId2';
+  var testId3 = 'playerTestSessionId3';
   var server,
       options = {
         transports: ['websocket'],
@@ -26,9 +30,15 @@ describe('Socket Tests', function() {
         transports: ['websocket'],
         'force new connection': true,
         query: 'sessionId=' + testId2
-      }
+      };
+  var options3 = {
+        transports: ['websocket'],
+        'force new connection': true,
+        query: 'sessionId=' + testId3
+      };
   var client;
   var client2;
+  var client3;
   var ioServer;
 
   before(function() {
@@ -53,6 +63,10 @@ describe('Socket Tests', function() {
     // server = require('../../server/server').listen(9090);
     client = io.connect('http://localhost:9090', options);
     
+    // clear out players
+    for (var player in players) {
+      delete players[player];
+    }
     done();
   });
 
@@ -484,6 +498,9 @@ describe('Socket Tests', function() {
 
       afterEach(function() {
         client2.disconnect();
+        if (client3) {
+          client3.disconnect();
+        }
       });
 
       after(function() {
@@ -537,36 +554,204 @@ describe('Socket Tests', function() {
         }); // end client once connect
       });
 
-      xit('Should remove the lobby from the list of lobbies if it is empty', function(done) {
-        
+      it('Should remove the lobby from the list of lobbies if it is empty', function(done) {
+        client.once('connect', function() {
+          client.emit('joinRoom', lobby.id, function() {});
+          // connect 2nd client once 1st is connect
+          client2 = io.connect('http://localhost:9090', options2);
+
+          client2.once('connect', function() {
+            client2.emit('joinRoom', lobby.id, function() {
+              // connect 3rd client once 1st is connect
+              client3 = io.connect('http://localhost:9090', options3);
+              client3.once('connect', function() {
+                client.disconnect();
+                client2.disconnect();
+              }); // end client3 once connect
+
+              client3.once('updateLobbies', function(returnedLobbies) {
+                expect(returnedLobbies.length).to.equal(0);
+                done();
+              });
+            });
+          }); // end client2 once connect
+        }); // end client once connect
+      });
+    });
+
+    describe('readyOn', function() {
+
+      before(function() {
+        // fake some game data
+        var fakeGame = {
+          gameData: null
+        };
+        // stub game so that a game isnt actually created
+        sinon.stub(games, 'createGame', function(gameId, players, callback) {
+          callback(fakeGame);
+        });
       });
 
-      xit('Should emit "updateLobbies"', function() {
-        expect(false).to.be.true;
+      beforeEach(function(done) {
+        games.createGame.reset();
+        lobbies._clear();
+        lobby = lobbies.addLobby();
+
+        // connect two clients
+        client.once('connect', function() {
+          client2 = io.connect('http://localhost:9090', options2);
+          client2.once('connect', function() {
+            done();
+          });
+        });
+      });
+
+      afterEach(function() {
+        games.createGame.reset();
+        client2.disconnect();
+      });
+
+      after(function() {
+        // remove stub
+        games.createGame.restore();
+        lobbies._clear();
+      });
+
+      it('Should should set player\'s ready status to true', function(done) {
+        // client 1 joins room
+        client.emit('joinRoom', lobby.id, function() {
+          client2.emit('joinRoom', lobby.id, function() {
+
+            // client 2 will receive a broadcast of players
+            client2.once('updatePlayers', function(allPlayers) {
+              // lobby size should be two
+              expect(allPlayers.length).to.equal(2);
+
+              // client 1 should be 'ready', client 2 should not be
+              expect(allPlayers[0].ready).to.be.true;
+              expect(allPlayers[1].ready).to.be.false;
+              done();
+            });
+
+            // emit ready on from 1st client
+            client.emit('readyOn', lobby.id);
+          });
+        });              
+      });
+
+      it('Should emit "goToStartScreen", when all players are ready', function(done) {
+        // times out if test fails
+        var expectedCount = 0;
+        var checkDone = function() {
+          if (expectedCount === 2) {
+            done();
+          }
+        };
+        // client 1 joins room
+        client.emit('joinRoom', lobby.id, function() {
+          client2.emit('joinRoom', lobby.id, function() {
+            client.once('goToStartScreen', function(gameData) {
+              expectedCount++;
+              checkDone();
+            });
+            client2.once('goToStartScreen', function(gameData) {
+              expectedCount++;
+              checkDone();
+            });
+
+            // emit ready on from clients
+            client.emit('readyOn', lobby.id);
+            client2.emit('readyOn', lobby.id);
+          });
+        });
       });
     });
-    xdescribe('readyOn', function() {
-      it('Should should set player\'s ready status to true', function() {
-        expect(false).to.be.true;
+    describe('readyOff', function() {
+
+      before(function() {
+        // fake some game data
+        var fakeGame = {
+          gameData: null
+        };
+        // stub game so that a game isnt actually created
+        sinon.stub(games, 'createGame', function(gameId, players, callback) {
+          callback(fakeGame);
+        });
       });
-      it('Should emit "updatePlayers" whenever a player signals that they are ready', function() {
-        expect(false).to.be.true;
+
+      beforeEach(function(done) {
+        lobbies._clear();
+        lobby = lobbies.addLobby();
+
+        // connect two clients
+        client.once('connect', function() {
+          client2 = io.connect('http://localhost:9090', options2);
+          client2.once('connect', function() {
+            done();
+          });
+        });
       });
-      it('Should emit "startGame", when all players are ready', function() {
-        expect(false).to.be.true;
+
+      afterEach(function() {
+        client2.disconnect();
       });
-      it('Should create a new game when all players in a lobby have pressed "ready"', function() {
-        expect(false.to.be.true);
+
+      after(function() {
+        // remove stub
+        games.createGame.restore();
+        lobbies._clear();
       });
-    });
-    xdescribe('readyOff', function() {
-      it('Should should set player\'s ready status to false', function() {
-        expect(false).to.be.true;
+
+      it('Should should set player\'s ready status to false', function(done) {
+        /**
+         * client and client2 connect, both join same room, and client emits
+         * readyOn followed by readyOff
+         */
+        // client 1 joins room
+        client.emit('joinRoom', lobby.id, function() {
+          client2.emit('joinRoom', lobby.id, function() {
+            // client 2 will receive a broadcast of players
+            client2.once('updatePlayers', function() {
+              // after player 1 emits readyOn and everyone is updated, 
+              // player 1 should emit readyOff
+              client.emit('readyOff', lobby.id);
+              client2.once('updatePlayers', function(allPlayers) {
+                expect(allPlayers[0].ready).to.be.false;
+                expect(allPlayers[1].ready).to.be.false;
+                done();
+              });
+            });
+            // emit ready on from 1st client
+            client.emit('readyOn', lobby.id);
+          });
+        });              
       });
-      it('Should emit "updatePlayers" whenever a player stops signalling that they are ready', function() {
-        expect(false).to.be.true;
+
+      it('Should emit "updatePlayers" whenever a player stops signalling that they are ready', function(done) {
+        /**
+         * client and client2 connect, both join same room, and client emits
+         * readyOn followed by readyOff
+         */
+        // client 1 joins room
+        client.emit('joinRoom', lobby.id, function() {
+          client2.emit('joinRoom', lobby.id, function() {
+            // client 2 will receive a broadcast of players
+            client2.once('updatePlayers', function() {
+              // after player 1 emits readyOn and everyone is updated, 
+              // player 1 should emit readyOff
+              client.emit('readyOff', lobby.id);
+              client2.once('updatePlayers', function(allPlayers) {
+                expect(allPlayers[0].ready).to.be.false;
+                expect(allPlayers[1].ready).to.be.false;
+                done();
+              });
+            });
+            // emit ready on from 1st client
+            client.emit('readyOn', lobby.id);
+          });
+        });              
       });
-    });
-  });
+    }); // end describe readyOff
+  }); // 
 
 });
