@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var _ = require('underscore');
 var games = require('../../server/collections/games.js');
 var lobbies = require('../../server/collections/lobbies.js');
-var players = require('../../server/collections/lobbies.js');
+var players = require('../../server/collections/players.js');
 var player = require('../../server/models/player.js');
 
 describe("server/collections/games.js", function() {
@@ -11,6 +11,7 @@ describe("server/collections/games.js", function() {
     player1.lobbyId = 1;  
     player1.socketId = 1;
     beforeEach(function() {
+      players['1'] = player1;
       var all = games.activeGames;
       _.each(all, function(ind) {
         games.destroyGame(ind.id);

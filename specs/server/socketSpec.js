@@ -185,6 +185,9 @@ describe('Socket Tests', function() {
   describe('server/sockets/lobbySpec.js', function() {
 
     describe('createRoom', function() {
+      beforeEach(function() {
+        lobbies._clear();
+      });
 
       it('Should create a new lobby', function(done) {
         client.once('connect', function() {
@@ -224,6 +227,7 @@ describe('Socket Tests', function() {
       var numLobbies;
 
       beforeEach(function() {
+        lobbies._clear();
         // check for empty lobby
         if (lobbies.getAllLobbies().length > 0) {
           throw new Error('Lobbies object is not empty before testing');
