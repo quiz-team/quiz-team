@@ -12,32 +12,43 @@ html {
   box-sizing: inherit;
 }
 
-$green: #4CAF50;
-$green--verylight: #E8F5E9; 
-$blue: #4C98C6;
+$green: #2CA94F;
+$green--verylight: #E8F5E9;
+$blue--dark: #A23B2E;
+$blue: #3E82F7;
 $blue--light: #90CAF9;
 $blue--verylight: #E3F2FD; 
-$purple: #9648BC;
+$purple--dark: #A23B2E;
+$purple: #AB92EB;
 $purple--light: #CE93D8; 
-$purple--verylight: #EDE7F6; 
-$red: #F44336;
+$purple--verylight: #EDE7F6;
+$red--dark: #A23B2E; 
+$red: #FC6E51;
 $red--light: #EF9A9A;
 $red--verylight: #FFEBEE; 
+$yellow--dark: #A23B2E;
 $yellow: #FFC107;
 $yellow--light: #FFE082;
 $yellow--verylight: #FFFDE7;
+$gray--verylight: #EFEFEF;
+
 $text-lightgrey: #B0BEC5;
 $text--gray: #616161; 
 $text--darkgray: #666666;
+$text--white: #FFF;
 
 $font--default:  "raleway", sans-serif;
+$font--logo: 'bevan', sans-serif;
 
 $drop-shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 $drop-shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 $drop-shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+$inner-shadow: inset 0 0 3px #000000;
 
-$player-list: (1  $red $red--light $red--verylight) (2  $yellow $yellow--light $yellow--verylight) (3  $blue $blue--light $blue--verylight) (4 $purple $purple--light $purple--verylight);
+$player-list: (1  $red--dark $red $red--light $red--verylight) (2  $yellow--dark $yellow $yellow--light $yellow--verylight) (3  $blue--dark $blue $blue--light $blue--verylight) (4 $purple--dark $purple $purple--light $purple--verylight);
 
+@import 'components/mixins';
+@import 'components/keyframes';
 @import 'components/buttons';
 @import 'components/grid';
 @import 'partials/selection';

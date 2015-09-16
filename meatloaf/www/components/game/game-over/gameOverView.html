@@ -1,19 +1,24 @@
-<div class="game-over__header">Game Over</div>
-<div class="game-over__score">Score: {{ stats.gameEndTotal }}</div>
-
-<div class="game-over__score-table">
-  <table>
-    <tr><td></td>
-        <td ng-repeat="player in players" ng-style="getTableHeader($index)">{{"P" + $index}}</td>
-      </tr>
-    <tr ng-repeat="round in results track by $index">
-      <td>{{$index + 1}}</td>
-      <td ng-repeat="player in players" ng-style="getTableStyle($index, $parent.$index)">
-        <i class="icon ion-checkmark chart-correct" ng-show="round.scoreByPlayer[player.id]"></i>
-        <i class="icon ion-close chart-incorrect" ng-show="!round.scoreByPlayer[player.id]"></i>
-      </td>
-    </tr>
-  </table>
+<div class="game-over__screen">
+  <div class="game-over__header">Game Over</div>
+  <div class="game-over__score">Score: {{ score }}</div>
+  <div class="game-over__container">
+    <div class="game-over__score-table">
+      <table>
+        <tr><td></td>
+            <td ng-repeat="player in players" ng-style="getTableHeader($index)">{{"P" + $index}}</td>
+          </tr>
+        <tr ng-repeat="round in results track by $index">
+          <td>{{$index + 1}}</td>
+          <td ng-repeat="player in players" ng-style="getTableStyle($index, $parent.$index)">
+            <i class="icon ion-checkmark chart-correct" ng-show="round.scoreByPlayer[player.id]"></i>
+            <i class="icon ion-close chart-incorrect" ng-show="!round.scoreByPlayer[player.id]"></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="game-over__button__container">
+    <div class="game-over__button game-over__button__play-again" ng-click="playAgain()">Play Again</div>
+    <div class="game-over__button game-over__button__quit" ng-click="quitGame()">Quit</div>
+  </div>
 </div>
-<div class="button button-full button-balanced button__play-again" ng-click="playAgain()">Play Again</div>
-<div class="button button-full button-assertive button__quit" ng-click="quitGame()">Quit</div>

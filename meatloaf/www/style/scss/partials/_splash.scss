@@ -4,149 +4,54 @@
 // 
 //////////////////////////////////////////////////// */
 
+//variables:
+$splash1Primary: $red;
+$card1Color: $red--verylight;
+
+$splash2Primary: $blue;
+$card2Color: $blue--verylight;
+
+$splash3Primary: $yellow;
+$card3Color: $yellow--verylight;
+
+$splash4Primary: $green;
+$card4Color: $green--verylight;
+
+$splashCardTop: 33vh;
+
+
 .splash {
   position: relative;
 }
 
-.splash--green {
-  background-color: $green;
+.splash--1 {
+  background-color: $splash1Primary;
 }
 
-.splash--blue {
-  background-color: $blue;
+.splash--2 {
+  background-color: $splash2Primary;
 }
 
-.splash--purple {
-  background-color: $purple;
+.splash--3 {
+  background-color: $splash3Primary;
 }
 
-.splash--red {
-  background-color: $red;
+.splash--4 {
+  background-color: $splash4Primary;
 }
 
-.splash--yellow {
-  background-color: $yellow;
-}
 
 .container__splash {
   position: relative;
   top: 10%;
   width: 90%;
   margin: 0 auto;
-
-  -moz-animation-name: liftLogo;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: ease-out;
-  -moz-animation-duration: 0.2s;
-  -moz-animation-delay: 0.5s;
-
-  -webkit-animation-name: liftLogo;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-duration: 0.2s;
-  -webkit-animation-delay: 0.5s;
-
-  animation-name: liftLogo;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: 0.2s;
-  animation-delay: 0.5s;
-}
-
-@-moz-keyframes liftLogo {
-    0% {
-        -moz-transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        -moz-transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
-@-webkit-keyframes liftLogo {
-    0% {
-        -webkit-transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        -webkit-transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
-@keyframes liftLogo {
-    0% {
-        transform: translateY(30%);
-        font-size: 30vmin;
-        line-height: 30vmin;
-    }
-    100% {
-        transform: translateY(-20%);
-        font-size: 24vmin;
-        line-height: 24vmin;
-    }
-}
-
-@-moz-keyframes fadeInCard {
-    0% {
-       -moz-transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        -moz-transform: translateY(0);
-        opacity: 1;
-    }
-}
-@-webkit-keyframes fadeInCard {
-    0% {
-        -webkit-transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fadeInCard {
-    0% {
-        transform: translateX(5%);
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-
-@-moz-keyframes fadeInText {
-    0% {
-        opacity: 0;
-        -moz-transform: translateX(5%);
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@-webkit-keyframes fadeInText {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateX(5%);
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateX(5%);
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  //Defined in keyframes
+  font-size: $logoStartSize;
+  line-height: $logoStartSize;
+  -webkit-transform: translateY(30%);
+  
+  @include animation('liftLogo 200ms ease-out 500ms 1 forwards')
 }
 
 .text__splash,
@@ -157,14 +62,14 @@
   /*line-height: 30vmin;*/
   /*font-size: 30vmin;*/
   color: $green--verylight;
-  font-family: $font--default;
+  font-family: $font--logo;
   font-weight: 200;
   color: white;
   text-shadow: $drop-shadow-1;
 }
 
 .text__splash__top {
-  /*text-align: left;*/
+
 }
 
 .text__splash__bottom {
@@ -182,50 +87,36 @@
 
 .container__card {
   position: absolute;
-  padding: 20px;
-  background-color: $green--verylight;
-  top: 38vh;
+  padding: 7vw;
+  background-color: $card1Color;
+  top: $splashCardTop;
   left: 10%;
   width: 80%;
   height: 40%;
-  border-radius: 1px;
+  border-radius: 0px;
   box-shadow: $drop-shadow-1;
   opacity: 0;
+  text-align: center;
 
-  -moz-animation-name: fadeInCard;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: ease-out;
-  -moz-animation-duration: .1s;
-  -moz-animation-delay: .8s;
-  -moz-animation-fill-mode: forwards;
+  @include animation('fadeInCard 100ms ease-out 800ms 1 forwards');
 
-  -webkit-animation-name: fadeInCard;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-duration: .1s;
-  -webkit-animation-delay: .8s;
-  -webkit-animation-fill-mode: forwards;
-
-  animation-name: fadeInCard;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: .1s;
-  animation-delay: .8s;
-  animation-fill-mode: forwards;
-  
-  h1 {
-    $fontSize: 8vmin;
+  span {
+    $fontSize: 6vmin;
+    padding: 1vw;
     text-align: center;
     font-family: 'raleway', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     color: $text--gray;
     font-size: $fontSize;
     line-height: $fontSize;
+    border-bottom: 1.5vh;
+    border-style: solid;
+    border-color: $splash1Primary;
   }
   
   p {
     $fontSize: 5vmin;
-    margin-top: 3vh;
+    margin-top: 5vh;
     text-align: center;
     font-family: 'raleway', sans-serif;
     font-weight: 400;
@@ -243,6 +134,28 @@
   top: 5%;
 }
 
+.container__card--2 {
+  /* position: absolute */
+  height: 85%;
+  top: 5%;
+  background-color: $card2Color
+}
+
+.container__card--3 {
+  /* position: absolute */
+  height: 85%;
+  top: 5%;
+  background-color: $card3Color
+
+}
+
+.container__card--4 {
+  /* position: absolute */
+  height: 85%;
+  top: 5%;
+  background-color: $card4Color
+}
+
 .container__swipe-text {
   position: absolute;
   margin: 0 auto;
@@ -250,30 +163,11 @@
   font-weight: 600;
   font-size: 8vmin;
   text-align: center;
-  color: $green--verylight;
+  color: $card1Color;
   top: 85vh;
   width: 100vw;
   opacity: 0;
 
-   -moz-animation-name: fadeInText;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: ease-out;
-  -moz-animation-duration: .1s;
-  -moz-animation-delay: 1s;
-  -moz-animation-fill-mode: forwards;
-
-  -webkit-animation-name: fadeInText;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-duration: .1s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-fill-mode: forwards;
-
-  animation-name: fadeInText;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: .1s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
+  @include animation('fadeInText 100ms ease-out 1000ms 1 forwards')
 
 }

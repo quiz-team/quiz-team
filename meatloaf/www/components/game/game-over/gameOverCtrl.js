@@ -5,12 +5,14 @@ angular.module('meatloaf.game.over', [])
 
   $scope.results = {};
   $scope.players = [];
+  $scope.score = "";
 
   socket.emit('enteredGameOver');
 
   socket.on('gameStats', function(gameDataStats) {
     $scope.results = gameDataStats.allRoundResults;
     $scope.players = gameDataStats.players;
+    $scope.score = gameDataStats.gameEndTotal;
     console.log('GAME OVER STATS', gameDataStats);
   });
 
@@ -36,13 +38,11 @@ angular.module('meatloaf.game.over', [])
   }
 
   $scope.quitGame = function() {
-    //TODO handle quit game button press here
     socket.emit('quitGame');
     $state.go('selection');
   };
 
   $scope.playAgain = function() {
-    //TODO handle new game button press here
     socket.emit('playAgain');
   };
 }]);

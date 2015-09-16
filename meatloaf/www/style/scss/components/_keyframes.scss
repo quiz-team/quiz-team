@@ -1,0 +1,111 @@
+/************************************************
+                   liftLogo
+ ************************************************/
+
+$logoStartSize: 20vmin;
+$logoEndSize: 15vmin;
+
+@-moz-keyframes liftLogo {
+    0% {
+        -moz-transform: translateY(30%);
+        font-size: $logoStartSize;
+        line-height: $logoStartSize;
+    }
+    100% {
+        -moz-transform: translateY(-20%);
+        font-size: $logoEndSize;
+        line-height: $logoEndSize;
+    }
+}
+@-webkit-keyframes liftLogo {
+    0% {
+        -webkit-transform: translateY(30%);
+        font-size: $logoStartSize;
+        line-height: $logoStartSize;
+    }
+    100% {
+        -webkit-transform: translateY(-20%);
+        font-size: $logoEndSize;
+        line-height: $logoEndSize;
+    }
+}
+@keyframes liftLogo {
+    0% {
+        transform: translateY(30%);
+        font-size: $logoStartSize;
+        line-height: $logoStartSize;
+    }
+    100% {
+        transform: translateY(-20%);
+        font-size: $logoEndSize;
+        line-height: $logoEndSize;
+    }
+}
+
+/************************************************
+                   fadeInCard
+ ************************************************/
+
+@-moz-keyframes fadeInCard {
+    0% {
+       -moz-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        -moz-transform: translateX(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInCard {
+    0% {
+        -webkit-transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes fadeInCard {
+    0% {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/************************************************
+                   fadeInText
+ ************************************************/
+
+@-moz-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -moz-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeInText {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(5%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

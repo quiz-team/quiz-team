@@ -4,21 +4,50 @@
 // 
 //////////////////////////////////////////////////// */
 
+$preGameTitleColor: $text--white;
+$preGameTitleSize: 7vmin;
+$preGameTitleSpacing: 8vmin;
+
+$preGameDescriptionColor: $text--white;
+$preGameDescriptionSize: 4vmin;
+$preGameDescriptionSpacing: 5vmin;
+
+
+
 .trivia__description {
   padding-top: 30px;
   padding-right: 30px;
   padding-left: 30px;
   text-align: center;
-  font-size: 20px;
+  font-size: $preGameDescriptionSize;
+  line-height: $preGameDescriptionSpacing;
   font-family: $font--default;
-  font-weight: 400;
+  font-weight: 600;
+  color: $preGameDescriptionColor;
+  text-shadow: $drop-shadow-1;
+
 }
 
 .trivia__title {
   padding-top: 50px;
   text-align: center;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: $preGameTitleSize;
+  line-height: $preGameTitleSpacing;
   font-family: $font--default;
-  font-weight: 600;
+  font-weight: 400;
+  color: $preGameTitleColor;
+  text-shadow: $drop-shadow-1;
+}
+
+@each $player in $player-list {
+  $num: nth($player, 1);
+  $darkcolor: nth($player, 2);
+  $color: nth($player, 3);
+  $lightcolor: nth($player, 4);
+  $verylightcolor: nth($player, 5);
+
+  .container__gameStart--#{$num} {
+    background-color: $color;
+  }
+  
 }
