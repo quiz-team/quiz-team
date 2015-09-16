@@ -1,0 +1,84 @@
+/* ////////////////////////////////////////////////////
+// 
+//  Loading View
+// 
+//////////////////////////////////////////////////// */
+
+$loadingBackgroundColor: $gray--verylight;
+
+.loading__container {
+  background-color: $loadingBackgroundColor;
+  position: relative;
+}
+
+.loading__text {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  h1 {
+    font-family: $font--default;
+    font-size: 5vh;
+    line-height: 5vh;
+    text-align: center;
+  }
+}
+.loading__spinner > div {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-right: 10px;
+  background-color: #9ACC00;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.loading__spinner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  // margin: 100px auto 0;
+  // width: 100px;
+  text-align: center;
+
+  @each $player in $player-list {
+    $num: nth($player, 1);
+    $color: nth($player, 3);
+    .loading__bounce--#{$num} {
+      background-color: $color;
+      -webkit-animation-delay: -0.16s * (4 - $num);
+      animation-delay: -0.16s * (4 - $num);
+    }
+  }
+}
+
+
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0.5);
+    opacity: .5;
+  } 40% {
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    opacity: .5;
+  } 40% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 1;
+  }
+}

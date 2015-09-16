@@ -55,6 +55,7 @@ $player-list: (1  $red--dark $red $red--light $red--verylight) (2  $yellow--dark
 @import 'partials/selection';
 @import 'partials/lobby';
 @import 'partials/pregame';
+@import 'partials/loading';
 @import 'partials/gameround';
 @import 'partials/results-modal';
 @import 'partials/gameover';

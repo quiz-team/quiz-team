@@ -22,7 +22,7 @@ angular.module('meatloaf.selection', [])
       socket.emit('createRoom', null, function(lobby) {
         $state.go('lobby', {lobby: lobby});
       });
-    },500);
+    }, 1000);
   };
 
   $scope.joinLobby = function(lobbyId){
@@ -31,7 +31,7 @@ angular.module('meatloaf.selection', [])
       socket.emit('joinRoom', lobbyId, function(lobby) {
         $state.go('lobby', {lobby: lobby});
       });
-    },500);
+    }, 1000);
   };
 
 }]);
