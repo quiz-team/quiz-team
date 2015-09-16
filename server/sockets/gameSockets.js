@@ -7,6 +7,7 @@ var config = require('../utils/gameConfig');
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.playerId);
+  console.log('game.playersInView: ', game.playersInView);
   // return true if all expected players are in the view
   return _und.every(game.players, function(player) {
     return (game.playersInView.indexOf(player.id) !== -1);
@@ -24,6 +25,7 @@ module.exports = function(socket, io) {
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
+        console.log("RESETING PLAYERS IN VIEW")
         console.log("emitting start game with: ", game.id);
         io.to(game.id).emit('startGame');
       });
@@ -32,7 +34,7 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRound', function() {
     if (everyoneInView(game, socket)) {
-      
+      console.log("EVERYONE IN ROUND");
       game.resetCurrentRound();
       var roundData = {};
       roundData.timerData = timer.setTimer(config.ROUND_TIMER);
@@ -56,19 +58,18 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRoundOver', function() {
     if(everyoneInView(game, socket)){
-
+      console.log("EVERYONE ROUND OVER");
       game.roundNum++;
 
       var timerData = timer.setTimer(config.ROUND_OVER_TIMER);
       game.currentRoundResults.timerData = timerData;
-      console.log("EMITTING ROUND RESULTS")
       io.to(game.id).emit('roundResults', game.currentRoundResults);
 
       game.startTimer(timerData, function() {
         if (game.roundNum > game.numRounds) {
           io.to(game.id).emit('gameOver');
         } else {
-          console.log("TELLING EVERYONE TO GO TO NEXT GAME");
+          console.log("TELLING EVERYONE TO GO TO NEXT ROUND");
           io.to(game.id).emit('nextRound', game.roundNum);
         }
         game.resetPlayersInView();
