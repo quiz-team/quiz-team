@@ -576,7 +576,7 @@ html {
   -ms-transform: translate(0, 0.4vh);
       transform: translate(0, 0.4vh);
   box-shadow: inset 0 0 3px #000000;
-  background-color: #A23B2E; }
+  background-color: #885E00; }
   .answer-button--pressed--2 .answer-text {
     color: #FFFDE7; }
 
@@ -595,7 +595,7 @@ html {
   -ms-transform: translate(0, 0.4vh);
       transform: translate(0, 0.4vh);
   box-shadow: inset 0 0 3px #000000;
-  background-color: #A23B2E; }
+  background-color: #2E3C50; }
   .answer-button--pressed--3 .answer-text {
     color: #E3F2FD; }
 
@@ -614,7 +614,7 @@ html {
   -ms-transform: translate(0, 0.4vh);
       transform: translate(0, 0.4vh);
   box-shadow: inset 0 0 3px #000000;
-  background-color: #A23B2E; }
+  background-color: #3A3550; }
   .answer-button--pressed--4 .answer-text {
     color: #EDE7F6; }
 
