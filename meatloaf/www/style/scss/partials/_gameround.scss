@@ -55,16 +55,34 @@ $questionFontColor: $text--white;
   box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 }
 
-@-webkit-keyframes colorChange {  
-  0% { background-color: rgb(43,194,83); }
-  45% { background-color: rgb(43,194,83); }
-  70% { background-color: #f1a165; }
-  100% { background-color: red; }
+@-webkit-keyframes animateColor {  
+  0% {
+    background-color: rgb(43,194,83);
+  }
+  45% {
+    background-color: rgb(43,194,83);
+  }
+  70% {
+    background-color: #f1a165;
+  }
+  100% {
+    background-color: red;
+  }
 }
 
-.meter > span {
+@-webkit-keyframes barWidth {  
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.timer-bar {
   display: block;
   height: 100%;
+  width: 0%;
   background-color: rgb(43,194,83);
   background-image: linear-gradient(
     center bottom,
@@ -78,30 +96,11 @@ $questionFontColor: $text--white;
   overflow: hidden;
 }
 
-.timer-color-change {
-  -webkit-animation-name: colorChange;
-  -moz-animation-name: colorChange;
-  animation-name: colorChange;
-  -webkit-animation-duration: 10s;
-  -moz-animation-duration: 10s;
-  animation-duration: 10s;
-}
-
-@keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
-@-webkit-keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
-@-moz-keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
-
-
-.meter > span:after, .animate > span > span {
-  -webkit-animation: move 2s linear infinite;
-  -moz-animation: move 2s linear infinite;
-  animation: move 2s linear infinite;
-}
-
-
-@-webkit-keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
-@-moz-keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
-@keyframes expandWidth { 0% { width: 0; } 100% { width: auto; } }
+// .animate-timer-bar {
+//   animation: animateTimer 10s ease, barWidth 10s linear;
+//   -webkit-animation: animateTimer 10s ease, barWidth 10s linear;
+//   -moz-animation: animateTimer 10s ease, barWidth 10s linear;
+// }
 
 /* ////////////////////////////////////////////////////
 // 

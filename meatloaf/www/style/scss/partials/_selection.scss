@@ -11,10 +11,9 @@ $lobbyCardColor2: $blue;
 $lobbyCardColor3: $yellow;
 $lobbyCardColor4: $green;
 $lobbyCardFontColor: $gray--verylight;
+$inGameColor: $gray;
 
-.full {
-  color: gray; 
-}
+
 
 .selection__list {
   display: block;
@@ -79,4 +78,9 @@ $lobbyCardFontColor: $gray--verylight;
 }
 .lobby__card--4 {
   background-color: $lobbyCardColor4;
+}
+
+.full, .inGame {
+  color: $inGameColor; 
+  text-shadow: none;
 }

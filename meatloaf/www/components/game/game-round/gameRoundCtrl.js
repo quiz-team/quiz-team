@@ -15,6 +15,23 @@ angular.module('meatloaf.game.round', [])
   $scope.playerName;
   $scope.playerNum = playerNum.num;
 
+  var createAnimationStyle = function(duration){
+    var animationString = 'animateColor ' + duration +'s ease, barWidth ' + duration + 's linear';
+    console.log("ANIMATION STRING: ", animationString)
+    return {
+      'animation': animationString,
+      '-webkit-animation': animationString,
+      '-moz-animation': animationString 
+    }
+  }
+
+  var removeAnimateStyle = {  
+    'animation': '',
+    '-webkit-animation': '',
+    '-moz-animation': '' 
+  }
+
+  var animateStyle;
 
   //Constants:
   $scope.smallTextCutoff = 18;
@@ -22,7 +39,8 @@ angular.module('meatloaf.game.round', [])
   socket.on('startRound', function (roundData) {
     console.log("Round Start!");
     $scope.timer.syncTimerStart(roundData.timerData);
-    $('.timer-bar').addClass('timer-color-change');
+    animateStyle = createAnimationStyle($scope.timer.duration/1000);
+    $('.timer-bar').css(animateStyle);
     $scope.question = trivia.currentQuestion;
     $scope.lockedAnswer = {};
   });
@@ -30,9 +48,9 @@ angular.module('meatloaf.game.round', [])
   socket.on('endRound', function(){
     console.log("Round End!");
     $scope.timer.syncTimerStop();
-    $('.timer-bar').removeClass('timer-color-change');
+    $('.timer-bar').css(removeAnimateStyle);
     socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
-    setTimeout(function(){socket.emit('enteredRoundOver')},500);
+    socket.emit('enteredRoundOver');
   });
 
   $scope.selectAnswer = function (answerId) {
