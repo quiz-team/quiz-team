@@ -77,6 +77,28 @@ html {
             transform: translateY(0);
     opacity: 1; } }
 
+/************************************************
+                   loading
+ ************************************************/
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0.5);
+    opacity: .5; }
+  40% {
+    -webkit-transform: scale(1);
+    opacity: 1; } }
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: .5; }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
 /* ////////////////////////////////////////////////////
 // 
 //  Buttons
@@ -383,6 +405,67 @@ html {
 
 .container__gameStart--4 {
   background-color: #AB92EB; }
+
+/* ////////////////////////////////////////////////////
+// 
+//  Loading View
+// 
+//////////////////////////////////////////////////// */
+.loading__container {
+  background-color: #EFEFEF;
+  position: relative; }
+
+.loading__text {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
+  .loading__text h1 {
+    font-family: "raleway", sans-serif;
+    font-size: 5vh;
+    line-height: 5vh;
+    text-align: center; }
+
+.loading__spinner > div {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-right: 10px;
+  background-color: #9ACC00;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.loading__spinner {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: center; }
+  .loading__spinner .loading__bounce--1 {
+    background-color: #FC6E51;
+    -webkit-animation-delay: -0.48s;
+    animation-delay: -0.48s; }
+  .loading__spinner .loading__bounce--2 {
+    background-color: #FFC107;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s; }
+  .loading__spinner .loading__bounce--3 {
+    background-color: #3E82F7;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s; }
+  .loading__spinner .loading__bounce--4 {
+    background-color: #AB92EB;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; }
 
 /* ////////////////////////////////////////////////////
 // 
