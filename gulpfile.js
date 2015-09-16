@@ -78,7 +78,6 @@ gulp.task('test', function() {
 gulp.task('uglify', function(){
   gulp.src(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'])
   .pipe(concat('src.js'))
-  .pipe(minify())
   .pipe(gulp.dest('./meatloaf/www/dist/'));
 });
 
