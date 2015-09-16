@@ -3,12 +3,24 @@
 //  Game Over View
 // 
 //////////////////////////////////////////////////// */
+$gameOverBGColor: $blue;
+$scoreCardColor: $blue--verylight;
+$gameOverButtonColor: $blue--verylight;
+$gameOverHeaderColor: $blue--verylight;
+
+.game-over__screen {
+  background-color: $gameOverBGColor;
+
+}
+
 .game-over__header {
   text-align: center;
-  padding: 30px;
-  font-size: 36px;
+  padding: 3vh;
+  font-size: 10vh;
+  line-height: 10vh;
   font-family: $font--default;
   font-weight: 400;
+  color: $gameOverHeaderColor;
 }
 
 .game-over__score {
@@ -17,6 +29,19 @@
   font-size: 40px;
   font-family: $font--default;
   font-weight: 600;
+  color: $gameOverHeaderColor;
+}
+
+.game-over__container {
+  text-align: center;
+
+}
+
+.game-over__score-table {
+  display: inline-block;
+  padding: 2vmin;
+  box-shadow: $drop-shadow-1;
+  background-color: $scoreCardColor;
 }
 
 .game-over__score-table td {
@@ -34,4 +59,28 @@
 .chart-correct {
   font-size: 30px;
   color: #4CAF50;
+}
+
+.game-over__button__container {
+  position: fixed;
+  bottom: 0;
+  display: block;
+  height: 20vh;
+  width: 100vw;
+}
+
+.game-over__button {
+  margin: 0 auto;
+  width: 80vw;
+  height: 8vh;
+  box-shadow: $drop-shadow-1;
+  text-align: center;
+  background-color: $gameOverButtonColor;
+  font-family: $font--default;
+  font-weight: 400;
+  font-size: 4vh;
+  line-height: 6vh;
+  margin-bottom: 2vh;
+  padding: 1vh;
+  
 }

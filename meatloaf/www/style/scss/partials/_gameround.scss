@@ -4,6 +4,13 @@
 // 
 //////////////////////////////////////////////////// */
 
+$answerFontSize: 4vmin;
+$answerFontSpacing: 5vmin;
+$answerFontColor: $text--darkgray;
+$questionFontSize: 5vmin;
+$questionFontSpacing: 6vmin;
+$questionFontColor: $text--white;
+
 .container__question {
   position: relative;
   width: 100%;
@@ -13,12 +20,14 @@
 
 .container__question__text {
   text-align: center;
-  font-family: raleway;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 30px;
+  font-family: $font--default;
+  font-weight: 800;
+  font-size: $questionFontSize;
+  line-height: $questionFontSpacing;
   padding: 10px;
-  padding-top: 20px;
+  padding-top: 4vh;
+  color: $questionFontColor;
+  text-shadow: $drop-shadow-1;
 }
 
 .container__question__text--sm {
@@ -42,9 +51,6 @@
   height: 100%;  /* Can be anything */
   position: relative;
   background: #555;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  border-radius: 25px;
   padding: 10px;
   box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 }
@@ -59,19 +65,15 @@
 .meter > span {
   display: block;
   height: 100%;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
   background-color: rgb(43,194,83);
   background-image: linear-gradient(
     center bottom,
     rgb(43,194,83) 37%,
     rgb(84,240,84) 69%
   );
-  box-shadow: 
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
+  // box-shadow: 
+  //   inset 0 2px 9px  rgba(255,255,255,0.3),
+  //   inset 0 -2px 6px rgba(0,0,0,0.4);
   position: relative;
   overflow: hidden;
 }
@@ -84,33 +86,6 @@
   -moz-animation-duration: 10s;
   animation-duration: 10s;
 }
-
-.meter > span:after, .animate > span > span {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background-image: linear-gradient(
-    -45deg, 
-    rgba(255, 255, 255, .2) 25%, 
-    transparent 25%, 
-    transparent 50%, 
-    rgba(255, 255, 255, .2) 50%, 
-    rgba(255, 255, 255, .2) 75%, 
-    transparent 75%, 
-    transparent
-  );
-  z-index: 1;
-  background-size: 50px 50px;
-  -webkit-animation: move 2s linear infinite;
-  -moz-animation: move 2s linear infinite;
-  animation: move 2s linear infinite;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  overflow: hidden;
-}
-
 
 @keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
 @-webkit-keyframes move { 0% { background-position: 0 0; } 100% { background-position: -50px -50px; } }
@@ -175,10 +150,11 @@
   top: 50%;
   text-align: center;
   transform: translateY(-50%);
-  font-size: 24px;
-  line-height: 30px;
-  font-family: "raleway", sans-serif;
-  font-weight: 500;
+  font-size: $answerFontSize;
+  line-height: $answerFontSpacing;
+  color: $answerFontColor;
+  font-family: $font--default;
+  font-weight: 600;
 }
 
 .answer--sm {
@@ -193,9 +169,10 @@
 
 @each $player in $player-list {
   $num: nth($player, 1);
-  $color: nth($player, 2);
-  $lightcolor: nth($player, 3);
-  $verylightcolor: nth($player, 4);
+  $darkcolor: nth($player, 2);
+  $color: nth($player, 3);
+  $lightcolor: nth($player, 4);
+  $verylightcolor: nth($player, 5);
 
   .player-color--#{$num} {
     background-color: $color;
@@ -209,9 +186,14 @@
   }
 
   .answer-button--pressed--#{$num} {
-    -webkit-transform: translate(0, 2px);
-    box-shadow: $drop-shadow-1;
-    background-color: $lightcolor;
+    -webkit-transform: translate(0, .4vh);
+    -moz-transform: translate(0, .4vh);
+    transform: translate(0, .4vh);
+    box-shadow: $inner-shadow;
+    background-color: $darkcolor;
+    .answer-text {
+      color: $verylightcolor;
+    }
   }
 }
 

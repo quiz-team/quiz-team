@@ -4,8 +4,10 @@
 // 
 //////////////////////////////////////////////////// */
  
+$lobbyBackgroundColor: $gray--verylight;
+
 .lobby__container {
-  background-color: $text-lightgrey;
+  background-color: $lobbyBackgroundColor;
 }
 
 .lobby__list {
@@ -49,8 +51,8 @@
 
   @each $player in $player-list {
     $num: nth($player, 1);
-    $color-ready: nth($player, 2);
-    $color-light: nth($player, 4);
+    $color-ready: nth($player, 3);
+    $color-light: nth($player, 5);
     .lobby__player--#{$num} {
       color: #fff;
       display: inline-block;
