@@ -11,7 +11,8 @@ var mocha         = require('gulp-mocha');
 var bs            = require('browser-sync'); // Delete this from npm
 var sass          = require('gulp-sass');
 var reload        = bs.reload;    // Delete this from npm
-var concat        = require('gulp-concat');
+var concat     = require('gulp-concat');
+var minify        = require('gulp-minify');
 
 // the paths to our app files
 var paths = {
@@ -72,7 +73,18 @@ gulp.task('test', function() {
     .pipe(mocha({reporter: 'spec'}));
 });
 
-gulp.task('build', ['check-syntax', 'test']);
+
+
+gulp.task('uglify', function(){
+  gulp.src(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'])
+  .pipe(concat('src.js'))
+  .pipe(minify())
+  .pipe(gulp.dest('./meatloaf/www/dist/'));
+});
+
+
+gulp.task('build', ['check-syntax', 'test', 'sass']);
+gulp.task('prodBuild', ['check-syntax', 'test', 'sass', 'uglify']);
 
 // Start server using nodemon
 gulp.task('serve', function() {
