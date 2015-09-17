@@ -95,8 +95,8 @@ angular.module('meatloaf.game.round', [])
     $scope.correctAnswer = questionAnswerPair.answer.text;
     $scope.total = roundResults.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
 
-    $('.ng-modal').removeClass('fade-out')
-    $('.ng-modal').addClass('fade-in')
+    $('.ng-modal').removeClass('fade-out');
+    $('.ng-modal').addClass('fade-in');
     $scope.toggleModal()
   });
 

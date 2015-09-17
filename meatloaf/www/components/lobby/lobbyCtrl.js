@@ -53,9 +53,16 @@ angular.module('meatloaf.lobby', [])
         player.ready=true;
       }
     });
-    $scope.ready = $timeout(function() {
-      socket.emit('readyOn', $scope.lobby.id);
-    }, 200);
+
+    if($scope.players.length === 1){
+      $scope.ready = $timeout(function() {
+        showModal();
+      }, 600);
+    } else {
+      $scope.ready = $timeout(function() {
+        socket.emit('readyOn', $scope.lobby.id);
+      }, 200);
+    } 
   };
 
   // Notify server that ready button has been released by user
@@ -69,5 +76,32 @@ angular.module('meatloaf.lobby', [])
     $timeout.cancel($scope.ready);
     socket.emit('readyOff', $scope.lobby.id);
   };
+
+  //////////////////////////////////////////////////////////////////
+  // ONE PLAYER GAME MODAL
+  //////////////////////////////////////////////////////////////////
+
+  $scope.modalShown = false;
+  var showModal = function() {
+    $('.ng-modal').removeClass('fade-out');
+    $('.ng-modal').addClass('fade-in');
+    $scope.modalShown = true;
+  };
+  var hideModal = function() {
+    $('.ng-modal').removeClass('fade-in');
+    $('.ng-modal').addClass('fade-out');
+    setTimeout(function(){
+      $scope.modalShown = false;
+      $scope.$apply();
+    },300);
+  };
+
+  $scope.waitForOthers = function(){
+    hideModal();
+  }
+
+  $scope.playOnePlayer = function(){
+    socket.emit('readyOn', $scope.lobby.id);
+  }
 
 }]);
