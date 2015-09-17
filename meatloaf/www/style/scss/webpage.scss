@@ -1,0 +1,105 @@
+$container-width: 300px;
+
+// Constants (based on iPhone image)
+$phone-screen-width: 714px;
+$phone-picture-width: 812px;
+$phone-screen-height: 1217px;
+$phone-picture-height: 1629px;
+$phone-picture-top-margin: 227px;
+$circle-button-height: 92px;
+$circle-button-width: 92px;
+$phone-corner-width: 100px;
+$phone-picture-circle-left-margin: 362px; 
+$phone-picture-circle-bottom-margin: 51px;
+$phone-picture-circle-top-margin: 41px;
+
+// Page-specific variables
+$container-margin-top: 10px;
+$phone-padding: 15px;
+$border-width: 1px;
+
+// Dimension scalars
+$width-scalar: $phone-screen-width / $phone-picture-width;
+$height-scalar: $phone-screen-height / $phone-picture-height;
+$top-margin-scalar: $phone-picture-top-margin / $phone-picture-height;
+$circle-width-scalar: $circle-button-width / $phone-picture-width;
+$circle-height-scalar: $circle-button-height / $phone-picture-height;
+$circle-top-margin-scalar: $phone-picture-circle-top-margin / $phone-picture-height;
+$circle-left-margin-scalar: $phone-picture-circle-left-margin / $phone-picture-width;
+
+// Calculated height of container (based on set width)
+$container-height: $container-width / $phone-picture-width * $phone-picture-height;
+
+// Calculated width and height of app screen and circle button
+$app-width: $container-width * $width-scalar;
+$app-height: $container-height * $height-scalar; 
+$circle-width: $container-width * $circle-width-scalar;
+$circle-height: $container-height * $circle-height-scalar;
+
+// Calculated top and side margins (top margin !== bottom margin)
+$phone-margin-width: ($container-width - $app-width) / 2;
+$phone-margin-top: $container-height * $top-margin-scalar;
+$phone-margin-circle-left: $container-width * $circle-left-margin-scalar;
+$phone-margin-circle-top: $container-height * $circle-top-margin-scalar;
+
+html {
+  overflow: auto;
+}
+
+body {
+  background-color: #48B49F;
+}
+
+html,
+body,
+div,
+iframe {
+  margin: 0;
+  padding: 0;
+  height: $app-height;
+  border: none;
+}
+
+iframe {
+  position: relative;
+  margin-top: $phone-margin-top + $container-margin-top + $phone-padding + $border-width;
+  margin-left: $phone-margin-width + $phone-padding + $border-width;
+  width: $container-width * $width-scalar;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.phone {
+  position: absolute;
+  margin: 0 auto;
+  margin-top: $container-margin-top;
+  width: $container-width;
+  padding: $phone-padding;
+  border: 1px dashed white;
+  border-radius: $circle-width + $phone-padding;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  width: $container-width;
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+  -o-user-select: none; 
+}
+
+.button__circle {
+  position: absolute;
+  z-index: 100;
+  margin-left: $phone-margin-circle-left + $phone-padding + $border-width;
+  margin-top: $phone-margin-circle-top - 3px;
+  width: $circle-width;
+  height: $circle-height;
+  border-radius: 1000px;
+
+  &:hover {
+    background-color: gray;
+  }
+}

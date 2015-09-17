@@ -11,7 +11,7 @@ var mocha         = require('gulp-mocha');
 var bs            = require('browser-sync'); // Delete this from npm
 var sass          = require('gulp-sass');
 var reload        = bs.reload;    // Delete this from npm
-var concat     = require('gulp-concat');
+var concat        = require('gulp-concat');
 var minify        = require('gulp-minify');
 
 // the paths to our app files
@@ -29,7 +29,12 @@ var paths = {
   ],
   // scss files
   style: [
-    'meatloaf/www/style/scss/**/*.scss'
+    'meatloaf/www/style/scss/**/*.scss',
+    '!meatloaf/www/style/scss/webpage.scss'
+  ],
+
+  webStyle: [
+    'meatloaf/www/style/scss/webpage.scss'
   ],
   //tests
   tests: {
@@ -49,24 +54,24 @@ gulp.task('check-syntax', function() {
 
 // Precompile scss files into css
 gulp.task('sass', function(done) {
-  gulp.src('./meatloaf/www/style/scss/*.scss')
+  gulp.src(paths.gameStyle)
+    .pipe(sass({
+      errLogToConsole: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./meatloaf/www/style/css/'));
+  gulp.src(paths.webStyle)
     .pipe(sass({
       errLogToConsole: true
     }))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./meatloaf/www/style/css/'))
-    // .pipe(minifyCss({
-    //   keepSpecialComments: 0
-    // }))
-    // .pipe(rename({ extname: '.min.css' }))
-    // .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 
 // Run check-syntax when any client or server files are modified
 gulp.task('watch', function() {
   gulp.watch(paths.style, ['sass']);
-  gulp.watch(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'], ['prodBuild']);
 });
 
 gulp.task('test', function() {
@@ -74,14 +79,11 @@ gulp.task('test', function() {
     .pipe(mocha({reporter: 'spec'}));
 });
 
-
-
 gulp.task('uglify', function(){
   gulp.src(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'])
   .pipe(concat('src.js'))
   .pipe(gulp.dest('./meatloaf/www/dist/'));
 });
-
 
 gulp.task('build', ['check-syntax', 'test', 'sass']);
 gulp.task('prodBuild', ['check-syntax','test','sass', 'uglify']);
@@ -96,4 +98,4 @@ gulp.task('serve', function() {
 
 
 // This is the default gulp task (i.e. running gulp with no --options)
-gulp.task('default', ['serve','watch']);
+gulp.task('default', ['serve']);
