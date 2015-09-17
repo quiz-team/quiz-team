@@ -84,7 +84,7 @@ gulp.task('uglify', function(){
 
 
 gulp.task('build', ['check-syntax', 'test', 'sass']);
-gulp.task('prodBuild', ['check-syntax', 'test', 'sass', 'uglify']);
+gulp.task('prodBuild', ['check-syntax','test','sass', 'uglify']);
 
 // Start server using nodemon
 gulp.task('serve', function() {
