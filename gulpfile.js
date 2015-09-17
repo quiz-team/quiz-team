@@ -66,6 +66,7 @@ gulp.task('sass', function(done) {
 // Run check-syntax when any client or server files are modified
 gulp.task('watch', function() {
   gulp.watch(paths.style, ['sass']);
+  gulp.watch(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'], ['prodBuild']);
 });
 
 gulp.task('test', function() {
@@ -95,4 +96,4 @@ gulp.task('serve', function() {
 
 
 // This is the default gulp task (i.e. running gulp with no --options)
-gulp.task('default', ['serve']);
+gulp.task('default', ['serve','watch']);
