@@ -5,7 +5,7 @@
   </div>
 
   <div class="lobby__players">
-    <div class="lobby__player" ng-class="[{ready: player.ready}, 'lobby__player--' + {{$index + 1}}]" ng-repeat="player in players track by $index">{{$index + 1}}</div>
+    <div class="lobby__player" ng-class="[{ready: player.ready}, 'lobby__player--' + {{player.number}}]" ng-repeat="player in players track by player.number">{{player.number}}</div>
   </div>
 
   <div class="button__container">

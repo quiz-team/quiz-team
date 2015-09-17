@@ -6,11 +6,20 @@ angular.module('meatloaf.lobby', [])
   $scope.lobby = $state.params.lobby;
   $scope.players = [];
   $scope.isReady = false;
+  $scope.playerNum = playerNum.num;
   console.log("ENTERING LOBBY STATE");
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
   socket.emit('enteredLobby', $scope.lobby.id, function (players){
     $scope.players = players;
+    // assign player number
+    $scope.players.forEach(function(player, index){
+      if(player.id === session.getId()){
+        playerNum.num = player.number;
+        console.log(player.number);
+      }
+    });
+
   });
 
   // Updates player data on client-side
@@ -26,12 +35,12 @@ angular.module('meatloaf.lobby', [])
     console.log("RECEIVING TRIVIA DATA: ", triviaData);
     trivia.setData(triviaData);
     trivia.updateRound(1);
-    // Finalize player number
-    $scope.players.forEach(function(player, index){
-      if(player.id === session.getId()){
-        playerNum.num = index + 1;
-      }
-    });
+    // // Finalize player number
+    // $scope.players.forEach(function(player, index){
+    //   if(player.id === session.getId()){
+    //     playerNum.num = player.number;
+    //   }
+    // });
 
     $scope.readyOff();
     $state.go('gameStart');

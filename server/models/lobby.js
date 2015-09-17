@@ -17,6 +17,32 @@ module.exports = function(roomname, id) {
     id: id
   };
 
+  // make empty array that has a length of max players
+  // use this array to assign player numbers to players
+  var playerNumberAssignments = new Array(config.MAX_PLAYERS);
+
+  lobby._assignPlayerNumber = function(player) {
+    for (var i=0; i< playerNumberAssignments.length; i++) {
+      if (playerNumberAssignments[i] === undefined || playerNumberAssignments[i] === null) {
+        playerNumberAssignments[i] = i + 1;
+        player.number = i + 1;
+        break;
+      }
+    }
+    return player;
+  };
+
+  lobby._removePlayerNumber = function(player) {
+    for (var i=0; i< playerNumberAssignments.length; i++) {
+      if (playerNumberAssignments[i] === player.number) {
+        playerNumberAssignments[i] = undefined;
+        player.number = undefined;
+        break;
+      }
+    }
+    return player;
+  };
+
   /**
    * Adds a player to the lobby.
    * @memberOf Lobby
@@ -30,6 +56,9 @@ module.exports = function(roomname, id) {
       var player = players[playerId];
       // push returns length of array
       player.lobbyId = lobby.id;
+      // assign a player number to the player
+      lobby._assignPlayerNumber(player);
+      // add the player to the lobby players array
       lobby.players.push(player);
       if (lobby.players.length === config.MAX_PLAYERS) {
         lobby.full = true;
@@ -56,6 +85,7 @@ module.exports = function(roomname, id) {
       if (player.id === playerId) {
         playerIndex = index;
         player.lobbyId = null;
+        lobby._removePlayerNumber(player);
       }
     });
 
