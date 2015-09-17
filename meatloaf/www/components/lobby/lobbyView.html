@@ -12,17 +12,16 @@
 
     <div class="lobby__button" ng-class="{'lobby__button--ready': isReady}"
          on-touch="readyOn()" on-release="readyOff()">
-      <!-- {{lobby.players.length < 2 ? 'Waiting for another player...' : 'READY'}} -->
       HOLD READY
     </div>
   </div>
-  <modal-dialog class='one-player-modal' show='modalShown'width="60%">
+  <modal-dialog class='one-player-modal' show='modalShown'width="85%">
     <div class="one-player-text__container">
       <span class="one-player-text">Play a one player game?</span>
     </div>
     <div class="one-player-buttons__container">
-      <div class="wait-for-others__button">Wait for friends</div>
-      <div class="one-player-play__button">Play now</div>
+      <div class="wait-for-others__button" on-touch="waitForOthers()">Wait for friends</div>
+      <div class="one-player-play__button" on-touch="playOnePlayer()">Play now</div>
     </div>
 
   </modal-dialog>

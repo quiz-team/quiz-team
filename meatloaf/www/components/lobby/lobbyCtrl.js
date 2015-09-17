@@ -82,5 +82,16 @@ angular.module('meatloaf.lobby', [])
   var showModal = function() {
     $scope.modalShown = true;
   };
+  var hideModal = function() {
+    $scope.modalShown = false;
+  };
+
+  $scope.waitForOthers = function(){
+    hideModal();
+  }
+
+  $scope.playOnePlayer = function(){
+    socket.emit('readyOn', $scope.lobby.id);
+  }
 
 }]);
