@@ -15,6 +15,18 @@ $inGameColor: $gray;
 
 
 
+.selection__header{
+  height: 9vh;
+  font-family: $font--default;
+  padding-top: 4vh;
+  text-align: center;
+  margin-bottom: 1vh;
+  font-size: 5vh;
+  font-weight: 600;
+  color: $text--darkgray;
+  font-size: 5vh;
+}
+
 .selection__list {
   display: block;
   min-height: 80%;
@@ -57,10 +69,6 @@ $inGameColor: $gray;
   font-weight: 800;
   text-shadow: $drop-shadow-1;
   padding: 20px;
-  -webkit-transform: translateX(5%);
-  -moz-transform: translateX(5%);
-  transform: translateX(5%);
-  opacity: 0;
 }
 
 .selection__background {
