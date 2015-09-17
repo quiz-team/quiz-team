@@ -5,7 +5,7 @@
   </div>
   <ion-scroll class="selection__list">
     <ion-list class="list">
-      <ion-item class="item container__card--selection" ng-repeat="lobby in lobbies | orderBy: ['full','inGame']" 
+      <ion-item class="item container__card--selection" ng-repeat="lobby in lobbies | orderBy: ['full','inGame']"
                 on-tap="lobby.full || lobby.inGame || joinLobby(lobby.id)" 
                 ng-class="[{'full': lobby.full, 'inGame': lobby.inGame}, 'lobby__card--{{$index % 4 + 1}}']">
                 {{lobby.roomname}} {{lobby.inGame ? '- In-game' : lobby.full ? '- Full' : '' }}
@@ -13,5 +13,6 @@
     </ion-list>
   </ion-scroll class="selection__list">
   <!-- </ion-content> -->
+  <div ng-show="lobbies.length < 1" class="selection__reminder"> <img src="../../img/CreateARoom.png"></img></div>
   <div class="button__circle ion-plus-round" on-tap="createRoom()"></div>
 </div>

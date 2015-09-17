@@ -92,3 +92,13 @@ $inGameColor: $gray;
   color: $inGameColor; 
   text-shadow: none;
 }
+
+.selection__reminder {
+  position: absolute;
+  width: 60vw;
+  left: 12vw;
+  bottom: 2.5vh;   
+  img {
+    width: 100%;
+  }
+}
