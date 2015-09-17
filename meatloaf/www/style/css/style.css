@@ -218,6 +218,14 @@ html {
   color: #474747;
   text-shadow: none; }
 
+.selection__reminder {
+  position: absolute;
+  width: 60vw;
+  left: 12vw;
+  bottom: 2.5vh; }
+  .selection__reminder img {
+    width: 100%; }
+
 /* ////////////////////////////////////////////////////
 // 
 //  Lobby View
