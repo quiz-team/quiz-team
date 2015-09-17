@@ -67,19 +67,67 @@ $lobbyBackgroundColor: $gray--verylight;
       background-color: $color-light;
       box-shadow: $drop-shadow-1;
       transition: 0.2s;
-
     }
     .lobby__player--#{$num}.ready {
       background-color: $color-ready;
-      transform: translateY(-1vh);
+      // transform: translateY(-1vh);
       box-shadow: $drop-shadow-2;
     }
   }
+
+  .lobby__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
+// the grid translate percentage (111%) was chosen based off a lobby player's
+// content + margin size. Want to shift it over by 100% (entire content) plus 11% (margins)
+$grid-translate: 111%; 
+$ready-translate: -2.5%;
+// this positions and animates the grid
+.lobby__player:nth-child(1) {
+    -webkit-transform: translate3d(0%, 0%, 0);
+    -ms-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+}
+.lobby__player:nth-child(2) {
+    -webkit-transform: translate3d($grid-translate, 0%, 0);
+    -ms-transform: translate3d($grid-translate, 0%, 0);
+    transform: translate3d($grid-translate, 0%, 0);
+}
+.lobby__player:nth-child(3) {
+    -webkit-transform: translate3d(0%, $grid-translate, 0);
+    -ms-transform: translate3d(0%, $grid-translate, 0);
+    transform: translate3d(0%, $grid-translate, 0);
+}
+.lobby__player:nth-child(4) {
+    -webkit-transform: translate3d($grid-translate, $grid-translate, 0);
+    -ms-transform: translate3d($grid-translate, $grid-translate, 0);
+    transform: translate3d($grid-translate, $grid-translate, 0);
+}
 
-
-
+.ready:nth-child(1) {
+    -webkit-transform: translate3d(0%, $ready-translate, 0);
+    -ms-transform: translate3d(0%, $ready-translate, 0);
+    transform: translate3d(0%, $ready-translate, 0);
+}
+.ready:nth-child(2) {
+    -webkit-transform: translate3d($grid-translate, $ready-translate, 0);
+    -ms-transform: translate3d($grid-translate, $ready-translate, 0);
+    transform: translate3d($grid-translate, $ready-translate, 0);
+}
+.ready:nth-child(3) {
+    -webkit-transform: translate3d(0%, $grid-translate + $ready-translate, 0);
+    -ms-transform: translate3d(0%, $grid-translate + $ready-translate, 0);
+    transform: translate3d(0%, $grid-translate + $ready-translate, 0);
+}
+.ready:nth-child(4) {
+    -webkit-transform: translate3d($grid-translate, $grid-translate + $ready-translate, 0);
+    -ms-transform: translate3d($grid-translate, $grid-translate + $ready-translate, 0);
+    transform: translate3d($grid-translate, $grid-translate + $ready-translate, 0);
+}
 .button__container {
   position: fixed;
   bottom: 0;
