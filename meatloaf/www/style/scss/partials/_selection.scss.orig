@@ -13,6 +13,9 @@ $lobbyCardColor4: $green;
 $lobbyCardFontColor: $gray--verylight;
 $inGameColor: $gray;
 
+<<<<<<< HEAD
+
+
 .selection__header{
   height: 9vh;
   font-family: $font--default;
@@ -25,6 +28,8 @@ $inGameColor: $gray;
   font-size: 5vh;
 }
 
+=======
+>>>>>>> Initial modal working for one player in lobby
 .selection__list {
   display: block;
   min-height: 80%;
@@ -90,16 +95,3 @@ $inGameColor: $gray;
   color: $inGameColor; 
   text-shadow: none;
 }
-<<<<<<< HEAD
-
-.selection__reminder {
-  position: absolute;
-  width: 60vw;
-  left: 12vw;
-  bottom: 2.5vh;   
-  img {
-    width: 100%;
-  }
-}
-=======
->>>>>>> Initial modal working for one player in lobby

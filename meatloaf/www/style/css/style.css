@@ -212,7 +212,7 @@ html {
   background-color: #FFC107; }
 
 .lobby__card--4 {
-  background-color: #2CA94F; }
+  background-color: #2AC054; }
 
 .full, .inGame {
   color: #474747;
@@ -369,7 +369,7 @@ html {
   font-size: 5vh;
   line-height: 10vh;
   text-align: center;
-  background-color: #FC6E51;
+  background-color: #2AC054;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -webkit-transition: 0.2s;
           transition: 0.2s; }
@@ -383,6 +383,11 @@ html {
 .button__leave {
   font-weight: 400; }
 
+/* ////////////////////////////////////////////////////
+// 
+//  ONE PLAYER MODAL
+// 
+//////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////
 // 
 //  Pre-Game View
@@ -613,7 +618,7 @@ html {
   line-height: 24px; }
 
 .answer--locked {
-  background-color: #2CA94F; }
+  background-color: #2AC054; }
 
 .player-color--1 {
   background-color: #FC6E51; }
@@ -948,7 +953,7 @@ html {
   background-color: #FFC107; }
 
 .splash--4 {
-  background-color: #2CA94F; }
+  background-color: #2AC054; }
 
 .container__splash {
   position: relative;

@@ -107,10 +107,9 @@ $lobbyBackgroundColor: $gray--verylight;
   font-size: 5vh;
   line-height: $height;
   text-align: center;
-  background-color: $red;
+  background-color: $green;
   box-shadow: $drop-shadow-2;
   transition: 0.2s;
-  
 }
 
 .lobby__button--ready {
@@ -120,4 +119,26 @@ $lobbyBackgroundColor: $gray--verylight;
 
 .button__leave {
   font-weight: 400;
+}
+
+/* ////////////////////////////////////////////////////
+// 
+//  ONE PLAYER MODAL
+// 
+//////////////////////////////////////////////////// */
+
+.one-player-text__container{
+
+}
+
+.one-player-text {
+
+}
+
+.wait-for-others__button {
+
+}
+
+.one-player-play__button {
+  
 }

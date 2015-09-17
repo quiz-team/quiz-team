@@ -54,7 +54,11 @@ angular.module('meatloaf.lobby', [])
       }
     });
     $scope.ready = $timeout(function() {
+      if($scope.players.length === 1){
+        showModal();
+      } else {
       socket.emit('readyOn', $scope.lobby.id);
+      } 
     }, 200);
   };
 
@@ -68,6 +72,15 @@ angular.module('meatloaf.lobby', [])
     });
     $timeout.cancel($scope.ready);
     socket.emit('readyOff', $scope.lobby.id);
+  };
+
+  //////////////////////////////////////////////////////////////////
+  // ONE PLAYER GAME MODAL
+  //////////////////////////////////////////////////////////////////
+
+  $scope.modalShown = false;
+  var showModal = function() {
+    $scope.modalShown = true;
   };
 
 }]);
