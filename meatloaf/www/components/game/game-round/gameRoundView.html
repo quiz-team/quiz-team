@@ -16,7 +16,7 @@
     <div class="answer-button__container" ng-repeat="answer in answers">
       <div class="answer-button" on-touch="selectAnswer(answer.id)" 
       ng-class="[{'answer-button--pressed--{{playerNum}}' : isLockedAnswer(answer.id)}, 'answer-button--' + {{playerNum}}]" on-release="unselectAnswer(answer.id)" >
-        <div class="answer-text" ng-class="{'answer--sm' : answer.text.length > smallTextCutoff}">
+        <div class="answer-text">
            {{ answer.text }}
         </div>
       </div>

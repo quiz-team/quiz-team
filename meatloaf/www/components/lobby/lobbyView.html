@@ -10,12 +10,10 @@
 
   <div class="button__container">
 
-    <p class="lobby__instruction">Hold READY when all players have joined the lobby.</p>
-    
     <div class="lobby__button" ng-class="{'lobby__button--ready': isReady}"
          on-touch="readyOn()" on-release="readyOff()">
       <!-- {{lobby.players.length < 2 ? 'Waiting for another player...' : 'READY'}} -->
-      READY
+      HOLD READY
     </div>
   </div>
 </div>

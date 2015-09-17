@@ -32,8 +32,9 @@ $lobbyBackgroundColor: $gray--verylight;
   }
   h1 {
     margin: 0;
-    font-size: 4vh;
+    font-size: 5vh;
     font-weight: 600;
+    font-family: $font--default;
     color: $text--darkgray;
   }
   
@@ -103,7 +104,7 @@ $lobbyBackgroundColor: $gray--verylight;
   height: $height;
   font-family: $font--default;
   font-weight: 600;
-  font-size: 6vh;
+  font-size: 5vh;
   line-height: $height;
   text-align: center;
   background-color: $red;
