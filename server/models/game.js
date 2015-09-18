@@ -43,8 +43,6 @@ module.exports = function(gameId) {
       triviaSet = triviaSet[0];
       game.quizId = triviaSet._id;
 
-      console.log('TS:', triviaSet);
-      console.log('QB:', QuestionBank);
       // mark quiz played on all players in game
       markQuizPlayed(triviaSet, game.players);
 
