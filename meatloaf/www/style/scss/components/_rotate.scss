@@ -1,0 +1,17 @@
+body {
+  background-color: $blue;
+}
+
+#rotate {
+  display: none;
+  margin: 20vh auto;
+}
+
+@media screen and (min-width: 479px) {
+  #rotate {
+    display: inherit;
+  }
+  #game-pane {
+    display: none;
+  }
+}
