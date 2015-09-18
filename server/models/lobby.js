@@ -43,6 +43,31 @@ module.exports = function(roomname, id) {
     return player;
   };
 
+  var playerColorAssignments = [];
+
+  lobby._assignPlayerColor = function(player) {
+    var colorFound = false;
+    while (!colorFound){
+      // pick a random number from 1-4
+      var randomColorNum = Math.ceil(Math.random()*4);
+      // check if number is already in array
+      if (playerColorAssignments.indexOf(randomColorNum) === -1){
+        // if not, add to array, assign to player
+        colorFound = true;
+        playerColorAssignments.push(randomColorNum);
+        player.color = randomColorNum;
+      }
+    }
+    return player;
+  };
+
+  lobby._removePlayerColor = function(player) {
+    var colorNum = player.color;
+    var colorIndex = playerColorAssignments.indexOf(colorNum);
+    playerColorAssignments[colorIndex] = undefined;
+    player.color = null;
+  }
+
   /**
    * Adds a player to the lobby.
    * @memberOf Lobby
@@ -58,6 +83,8 @@ module.exports = function(roomname, id) {
       player.lobbyId = lobby.id;
       // assign a player number to the player
       lobby._assignPlayerNumber(player);
+      // assign a random color to the player
+      lobby._assignPlayerColor(player);
       // add the player to the lobby players array
       lobby.players.push(player);
       if (lobby.players.length === config.MAX_PLAYERS) {
@@ -86,6 +113,7 @@ module.exports = function(roomname, id) {
         playerIndex = index;
         player.lobbyId = null;
         lobby._removePlayerNumber(player);
+        lobby._removePlayerColor(player);
       }
     });
 

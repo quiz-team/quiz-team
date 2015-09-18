@@ -16,6 +16,7 @@ module.exports = function(sessionId){
     id: sessionId,
     socketId: null,
     number: null,
+    color: null,
     ready: false,
     lobbyId: null,
     recentlyPlayedQuizzes: []

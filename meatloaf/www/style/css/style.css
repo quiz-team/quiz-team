@@ -264,7 +264,7 @@ html {
   width: 80vw;
   top: 20vh;
   left: 10vw; }
-  .lobby__players .lobby__player--1 {
+  .lobby__players .lobby__color--1 {
     color: #fff;
     display: inline-block;
     text-align: center;
@@ -278,10 +278,10 @@ html {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -webkit-transition: 0.2s;
             transition: 0.2s; }
-  .lobby__players .lobby__player--1.ready {
+  .lobby__players .lobby__color--1.ready {
     background-color: #FC6E51;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .lobby__players .lobby__player--2 {
+  .lobby__players .lobby__color--2 {
     color: #fff;
     display: inline-block;
     text-align: center;
@@ -295,10 +295,10 @@ html {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -webkit-transition: 0.2s;
             transition: 0.2s; }
-  .lobby__players .lobby__player--2.ready {
+  .lobby__players .lobby__color--2.ready {
     background-color: #FFC107;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .lobby__players .lobby__player--3 {
+  .lobby__players .lobby__color--3 {
     color: #fff;
     display: inline-block;
     text-align: center;
@@ -312,10 +312,10 @@ html {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -webkit-transition: 0.2s;
             transition: 0.2s; }
-  .lobby__players .lobby__player--3.ready {
+  .lobby__players .lobby__color--3.ready {
     background-color: #3E82F7;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .lobby__players .lobby__player--4 {
+  .lobby__players .lobby__color--4 {
     color: #fff;
     display: inline-block;
     text-align: center;
@@ -329,7 +329,7 @@ html {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -webkit-transition: 0.2s;
             transition: 0.2s; }
-  .lobby__players .lobby__player--4.ready {
+  .lobby__players .lobby__color--4.ready {
     background-color: #AB92EB;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .lobby__players .lobby__player {

@@ -1,5 +1,5 @@
 <div class="container__round">
-  <div class="container__question" ng-class="['player-color--' + {{playerNum}}]">
+  <div class="container__question" ng-class="['player-color--' + {{playerColor}}]">
     <p class="container__question__text" ng-class="{
     'container__question__text--sm' : question.text.length > questionTextCutoff }"> 
     {{ question.text }} </p>
@@ -12,10 +12,10 @@
       <!-- <progress value="{{ timer.timeRemaining }}" max="{{timer.duration / 1000}}"></progress> -->
   </div>
 
-  <div class="answer-grid" ng-class="['player-color--' + {{playerNum}}]">
+  <div class="answer-grid" ng-class="['player-color--' + {{playerColor}}]">
     <div class="answer-button__container" ng-repeat="answer in answers">
       <div class="answer-button" on-touch="selectAnswer(answer.id)" 
-      ng-class="[{'answer-button--pressed--{{playerNum}}' : isLockedAnswer(answer.id)}, 'answer-button--' + {{playerNum}}]" on-release="unselectAnswer(answer.id)" >
+      ng-class="[{'answer-button--pressed--{{playerColor}}' : isLockedAnswer(answer.id)}, 'answer-button--' + {{playerColor}}]" on-release="unselectAnswer(answer.id)" >
         <div class="answer-text">
            {{ answer.text }}
         </div>

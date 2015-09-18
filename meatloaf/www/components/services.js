@@ -168,6 +168,6 @@ angular.module('meatloaf.services', [])
   };
 }])
 
-.factory('playerNum', [function() {
-  return {num: null};
+.factory('playerInfo', [function() {
+  return {num: null, color: undefined};
 }]);
