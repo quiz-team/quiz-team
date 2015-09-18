@@ -10,6 +10,7 @@ module.exports = function(gameId) {
   var game = {
     players: [],
     id: gameId,
+    quizId: null,
     numRounds: 6,
     roundNum: 1,
     playersInView: [],
@@ -40,6 +41,7 @@ module.exports = function(gameId) {
     QuestionBank.findRandom(filter).limit(1).exec()
     .then(function(triviaSet) {
       triviaSet = triviaSet[0];
+      game.quizId = triviaSet._id;
 
       // mark quiz played on all players in game
       markQuizPlayed(triviaSet, game.players);
@@ -109,6 +111,7 @@ module.exports = function(gameId) {
 
       // load up a matrix of correct answers for each round
       loadCorrectAnswers();
+
       callback();
     });
   };
@@ -230,6 +233,39 @@ module.exports = function(gameId) {
     this.playersInView = [];
   };
 
-  return game;
+  /**
+   * Author: Nate Meier 
+   * Writes average score and timesPlayed++ on quiz to database.
+   * @param {number} scoreToAdd - The score to be added to moving average.
+   * @param {string} quizId - The ID used to find quiz in database.
+   */
+  game.writeScoreToDatabase = function(scoreToAdd, quizId){
+    // Access quiz in database
+    QuestionBank.findOne({ '_id': quizId }).limit(1).exec()
+      .then(function(quiz){
+        // Calculate new average from averageScore and timesPlayed from quiz
+        quiz.averageScore = calculateMovingAverage(scoreToAdd, quiz.averageScore, quiz.timesPlayed);  
+        // Increment timesPlayed
+        quiz.timesPlayed = quiz.timesPlayed + 1;
+        // Store newAverage and timesPlayed in DB
+        quiz.save();
+      });
+  };
 
+  /**
+   * Author: Nate Meier 
+   * Calculates a moving average.
+   * This is used to keep track of how users are scoring on each quiz.
+   * @param {number} scoreToAdd - The score to be added to moving average.
+   * @param {number} oldAverage - The previous average score for a given quiz.
+   * @param {number} timesPlayed - Number of times the quiz has been played, excluding the current play.
+   * @returns {number} - The new average score for a quiz.
+   */
+  var calculateMovingAverage = function(scoreToAdd, oldAverage, timesPlayed) {
+    var movingAverage = (scoreToAdd + (oldAverage * timesPlayed)) / (timesPlayed + 1);
+    // Round to two decimal places (good enough) 
+    return Math.round( movingAverage * 100 ) / 100;
+  };
+
+  return game;
 };

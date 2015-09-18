@@ -26,6 +26,14 @@ var setSchema = mongoose.Schema({
   }],
   quizLength: Number,
   title: String,
+  timesPlayed: {
+    type: Number,
+    default: 0
+  },
+  averageScore: {
+    type: Number,
+    default: 0
+  },
   url: String
 });
 

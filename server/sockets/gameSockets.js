@@ -19,14 +19,14 @@ module.exports = function(socket, io) {
   socket.on('enteredGame', function() {
     game = games.findGame(socket);
     if (everyoneInView(game, socket)) {
-      console.log("everyone in view, GAME.ID: ", game.id);
+      // console.log("everyone in view, GAME.ID: ", game.id);
       // start game timer
       var timerData = timer.setTimer(config.PRE_GAME_TIMER);
       io.to(game.id).emit('startClock', timerData);
       game.startTimer(timerData, function() {
         game.resetPlayersInView();
-        console.log("RESETING PLAYERS IN VIEW")
-        console.log("emitting start game with: ", game.id);
+        // console.log("RESETING PLAYERS IN VIEW")
+        // console.log("emitting start game with: ", game.id);
         io.to(game.id).emit('startGame');
       });
     }
@@ -34,7 +34,7 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRound', function() {
     if (everyoneInView(game, socket)) {
-      console.log("EVERYONE IN ROUND");
+      // console.log("EVERYONE IN ROUND");
       game.resetCurrentRound();
       var roundData = {};
       roundData.timerData = timer.setTimer(config.ROUND_TIMER);
@@ -58,7 +58,7 @@ module.exports = function(socket, io) {
 
   socket.on('enteredRoundOver', function() {
     if(everyoneInView(game, socket)){
-      console.log("EVERYONE ROUND OVER");
+      // console.log("EVERYONE ROUND OVER");
       game.roundNum++;
 
       var timerData = timer.setTimer(config.ROUND_OVER_TIMER);
@@ -69,7 +69,7 @@ module.exports = function(socket, io) {
         if (game.roundNum > game.numRounds) {
           io.to(game.id).emit('gameOver');
         } else {
-          console.log("TELLING EVERYONE TO GO TO NEXT ROUND");
+          // console.log("TELLING EVERYONE TO GO TO NEXT ROUND");
           io.to(game.id).emit('nextRound', game.roundNum);
         }
         game.resetPlayersInView();
@@ -84,6 +84,13 @@ module.exports = function(socket, io) {
     game.getGameResults();
     // Signal to others that game is over
     lobby.inGame = false;
+
+    // Calculate score normalized to number of players 
+    var normalizedScore = game.gameData.stats.gameEndTotal / game.players.length;
+    
+    // Keep track of scores for current quiz in database 
+    game.writeScoreToDatabase(normalizedScore, game.quizId);
+
     // Update status of lobby across all lobbies
     io.emit('updateLobbies', lobbies.getAllLobbies());
     io.to(game.id).emit('gameStats', game.gameData.stats);
@@ -102,7 +109,7 @@ module.exports = function(socket, io) {
     lobby.removePlayer(socket.playerId);
     io.to(lobby.id).emit('updatePlayers', lobby.getPlayers());
     if (lobby.getPlayers().length === 0) {
-      console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
+      // console.log('LOBBY BEING REMOVED BECAUSE PLAYERS IS 0');
       lobbies.removeLobby(gameId);
     } 
     // Remove player from socket room
@@ -114,9 +121,9 @@ module.exports = function(socket, io) {
   // on disconnect, remove player from game
   socket.on('disconnect', function() {
     // check if player exists (player is created when added to lobby)
-    console.log(' | Player disconnected: ', socket.playerId);
+    // console.log(' | Player disconnected: ', socket.playerId);
     if (game) {
-      console.log(' | Game of disconnected player found')
+      // console.log(' | Game of disconnected player found')
       var playerIndex = -1;
       game.players.forEach(function(player, index){
         if (player.id === socket.playerId){
@@ -125,7 +132,7 @@ module.exports = function(socket, io) {
       })
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
-        console.log(' | Player removed from game: ', game.players);
+        // console.log(' | Player removed from game: ', game.players);
       }
     }
   });
