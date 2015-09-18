@@ -5,7 +5,7 @@ angular.module('meatloaf.game.over', [])
 
   $scope.results = {};
   $scope.players = [];
-  $scope.score = "";
+  $scope.score = '';
 
   socket.emit('enteredGameOver');
 
@@ -21,21 +21,22 @@ angular.module('meatloaf.game.over', [])
     $state.go('lobby', {lobby: lobby}, {reload: true});
   });
 
-  var playerColors = [{primary: "#03A9F4", muted: "#B3E5FC", superMuted: "#E1F5FE"}, 
-                      {primary: "#FFC107", muted: "#FFECB3", superMuted: "#FFF8E1"},
-                      {primary: "#FF5722", muted: "#FFCCBC", superMuted: "#FBE9E7"}, 
-                      {primary: "#9C27B0", muted: "#E1BEE7", superMuted: "#F3E5F5"}];
+  var playerColors = [{primary: '#03A9F4', muted: '#B3E5FC', superMuted: '#E1F5FE'}, 
+                      {primary: '#FFC107', muted: '#FFECB3', superMuted: '#FFF8E1'},
+                      {primary: '#FF5722', muted: '#FFCCBC', superMuted: '#FBE9E7'}, 
+                      {primary: '#9C27B0', muted: '#E1BEE7', superMuted: '#F3E5F5'}];
 
   $scope.getTableStyle = function(index, row) {
     if (row % 2 === 0) {
-      return {"background-color": playerColors[index].muted};
+      return {'background-color': playerColors[index].muted};
     } else {
-      return {"background-color": playerColors[index].superMuted};
+      return {'background-color': playerColors[index].superMuted};
     }
-  }
+  };
+
   $scope.getTableHeader = function(index) {
-    return {"background-color": playerColors[index].primary};
-  }
+    return {'background-color': playerColors[index].primary};
+  };
 
   $scope.quitGame = function() {
     socket.emit('quitGame');

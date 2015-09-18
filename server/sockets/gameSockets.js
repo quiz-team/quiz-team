@@ -129,7 +129,7 @@ module.exports = function(socket, io) {
         if (player.id === socket.playerId){
           playerIndex = index;
         }
-      })
+      });
       if(playerIndex !== -1){
         game.players.splice(playerIndex,1);
         // console.log(' | Player removed from game: ', game.players);

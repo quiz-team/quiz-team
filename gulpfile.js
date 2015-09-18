@@ -20,8 +20,8 @@ var paths = {
   scripts: [
     'meatloaf/www/**/*.js',
     '!meatloaf/www/lib/**/*',
+    '!meatloaf/www/dist/**/*',
     'server/**/*.js',
-    '!server/trivia.js'
   ],
   // all the html
   html: [
