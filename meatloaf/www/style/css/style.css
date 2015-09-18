@@ -1159,7 +1159,7 @@ body {
   font-size: 8vmin;
   text-align: center;
   color: #FFEBEE;
-  bottom: 8vh;
+  bottom: 10vh;
   width: 100vw;
   opacity: 0;
   -webkit-animation: fadeInText 100ms ease-out 1000ms 1 forwards;
