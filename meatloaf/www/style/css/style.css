@@ -1159,7 +1159,7 @@ body {
   font-size: 8vmin;
   text-align: center;
   color: #FFEBEE;
-  bottom: 8vh;
+  bottom: 10vh;
   width: 100vw;
   opacity: 0;
   -webkit-animation: fadeInText 100ms ease-out 1000ms 1 forwards;
@@ -1169,3 +1169,6 @@ body {
   width: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   max-height: 80%; }
+
+.slider {
+  background-color: #000; }

@@ -202,6 +202,13 @@ $splashCardTop: 33vh;
   max-height: 80%;
 }
 
+<<<<<<< HEAD
 .slider {
   background-color: #000;
 }
+=======
+.pane {
+  background-color: #000;
+}
+
+>>>>>>> Minor update to splash page
