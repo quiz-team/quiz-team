@@ -7,7 +7,7 @@ body {
   margin: 20vh auto;
 }
 
-@media screen and (min-width: 479px) {
+@media all and (orientation: landscape) {
   #rotate {
     display: inherit;
   }

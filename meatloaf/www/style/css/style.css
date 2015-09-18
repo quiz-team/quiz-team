@@ -150,7 +150,7 @@ body {
   display: none;
   margin: 20vh auto; }
 
-@media screen and (min-width: 479px) {
+@media all and (orientation: landscape) {
   #rotate {
     display: inherit; }
   #game-pane {
@@ -1081,7 +1081,6 @@ body {
   top: 33vh;
   left: 10%;
   width: 80%;
-  height: 40%;
   border-radius: 0px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   opacity: 0;
