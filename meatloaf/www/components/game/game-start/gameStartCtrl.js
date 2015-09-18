@@ -5,7 +5,7 @@ angular.module('meatloaf.game.start', [])
 
   var refreshDisplayTime; // Reference to Angular setInterval process
   socket.emit('enteredGame');
-  console.log('EMITTING ENTERED GAME');
+  // console.log('EMITTING ENTERED GAME');
   $scope.timer = Timer; // Current time displayed by timer on page 
   $scope.title = trivia.title;
   $scope.description = trivia.description;
@@ -20,7 +20,7 @@ angular.module('meatloaf.game.start', [])
 
   // Navigate to gameRound page
   socket.on('startGame', function() {
-    console.log('on: startGame');
+    // console.log('on: startGame');
     $state.go('gameRound', $state.params, {reload: true});
   });
   

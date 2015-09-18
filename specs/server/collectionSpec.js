@@ -19,11 +19,15 @@ describe("server/collections/games.js", function() {
 
     });
     it('Should create a new game if one is not already available for a specific lobby', function() {
-      games.createGame(1, [player1], function(data){console.log(data)});
+      games.createGame(1, [player1], function(data){
+        // console.log(data)
+      });
       expect(games.activeGames[1]).to.be.an.instanceof(Object);
     });
     it('Should find the specific game created for the lobby, if one has been created', function() {
-      games.createGame(1, [player1], function(data){console.log(data)});
+      games.createGame(1, [player1], function(data){
+        // console.log(data)
+      });
       var socket = {playerId: 1};
       expect(games.findGame(socket)).to.be.an.instanceof(Object);
     });
@@ -31,7 +35,9 @@ describe("server/collections/games.js", function() {
   describe('Delete an ended game', function() {
      var player1 = player(1);
     it('Should delete a game when the game is over', function() {
-      games.createGame(1, [player1], function(data){console.log(data)});
+      games.createGame(1, [player1], function(data){
+        // console.log(data)
+      });
       games.destroyGame(1);
       expect(games.activeGames[1]).to.be.undefined;
     });
@@ -86,7 +92,9 @@ describe('server/collections/players.js', function() {
   describe('players', function() {
     var player1 = player(1);
     it('Should contain player objects if any have been added', function() {
-      games.createGame(1, [player1], function(data){console.log(data)});
+      games.createGame(1, [player1], function(data){
+        // console.log(data)
+      });
       expect(games.activeGames[1]).to.be.an.instanceof(Object);
     });
   });

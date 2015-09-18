@@ -13,7 +13,7 @@ angular.module('meatloaf.game.over', [])
     $scope.results = gameDataStats.allRoundResults;
     $scope.players = gameDataStats.players;
     $scope.score = gameDataStats.gameEndTotal;
-    console.log('GAME OVER STATS', gameDataStats);
+    // console.log('GAME OVER STATS', gameDataStats);
   });
 
   socket.on('restartGame', function(lobby) {

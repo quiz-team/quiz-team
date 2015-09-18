@@ -11,8 +11,8 @@ module.exports = function(server) {
   // middleware to check session ID
   io.use(function(socket, next) {
     var sessionId = socket.request._query.sessionId;
-    console.log('======================================================');
-    console.log('sessionID: ', sessionId);
+    // console.log('======================================================');
+    // console.log('sessionID: ', sessionId);
     // create player if player does not exist
     socket.playerId = sessionId;
     if (!players.hasOwnProperty(sessionId)) {

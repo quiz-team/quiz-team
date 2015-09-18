@@ -47,7 +47,7 @@ module.exports = function(socket, io) {
     // update lobbies for all players
     if (lobby.getPlayers().length === 0) {
       lobbies.removeLobby(lobbyId);
-      console.log(' | Remove lobby:', lobby.roomname);
+      // console.log(' | Remove lobby:', lobby.roomname);
     }
     // Remove player from socket room
     socket.leave(lobby.id);
@@ -88,7 +88,7 @@ module.exports = function(socket, io) {
     });
 
     if (allReady && allPlayers.length >= config.MIN_PLAYERS) {
-      console.log('all players are ready!', allPlayers);
+      // console.log('all players are ready!', allPlayers);
 
       // create a new game with lobby Id
       games.createGame(lobbyId, allPlayers, function(game) {

@@ -7,7 +7,7 @@ angular.module('meatloaf.selection', [])
   $scope.lobbies;
   
   socket.emit('enteredSelectionRoom', null, function(lobbiesData){
-    console.log("recieved lobby data");
+    // console.log("recieved lobby data");
     $scope.lobbies = lobbiesData;
     // $scope.$apply();
   });

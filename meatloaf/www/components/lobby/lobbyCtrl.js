@@ -8,7 +8,7 @@ angular.module('meatloaf.lobby', [])
   $scope.isReady = false;
   $scope.playerNum = playerInfo.num;
   $scope.playerColor = playerInfo.color;
-  console.log("ENTERING LOBBY STATE");
+  // console.log("ENTERING LOBBY STATE");
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
   socket.emit('enteredLobby', $scope.lobby.id, function (players){
@@ -18,7 +18,7 @@ angular.module('meatloaf.lobby', [])
       if(player.id === session.getId()){
         playerInfo.num = player.number;
         playerInfo.color = player.color;
-        console.log("Player Number: ", player.number, "Player Color: ", playerInfo.color);
+        // console.log("Player Number: ", player.number, "Player Color: ", playerInfo.color);
       }
     });
 

@@ -7,7 +7,7 @@ var config = require('../utils/gameConfig');
 
 var everyoneInView = function(game, socket){
   game.playersInView.push(socket.playerId);
-  console.log('game.playersInView: ', game.playersInView);
+  // console.log('game.playersInView: ', game.playersInView);
   // return true if all expected players are in the view
   return _und.every(game.players, function(player) {
     return (game.playersInView.indexOf(player.id) !== -1);

@@ -54,7 +54,7 @@ gulp.task('check-syntax', function() {
 
 // Precompile scss files into css
 gulp.task('sass', function(done) {
-  gulp.src(paths.gameStyle)
+  gulp.src(paths.style)
     .pipe(sass({
       errLogToConsole: true
     }))

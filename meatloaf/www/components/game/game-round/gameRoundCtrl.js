@@ -6,7 +6,7 @@ angular.module('meatloaf.game.round', [])
   var selectAnswerTimeout;
 
   socket.emit('enteredRound');
-  console.log('EMITTING ENTERED ROUND');
+  // console.log('EMITTING ENTERED ROUND');
   
   $scope.timer = Timer;
   $scope.question = trivia.currentQuestion;
@@ -18,7 +18,7 @@ angular.module('meatloaf.game.round', [])
 
   var createAnimationStyle = function(duration){
     var animationString = 'animateColor ' + duration +'s ease, barWidth ' + duration + 's linear';
-    console.log("ANIMATION STRING: ", animationString)
+    // console.log("ANIMATION STRING: ", animationString)
     return {
       'animation': animationString,
       '-webkit-animation': animationString,
@@ -38,7 +38,7 @@ angular.module('meatloaf.game.round', [])
   $scope.smallTextCutoff = 18;
 
   socket.on('startRound', function (roundData) {
-    console.log("Round Start!");
+    // console.log("Round Start!");
     $scope.timer.syncTimerStart(roundData.timerData);
     animateStyle = createAnimationStyle($scope.timer.duration/1000);
     $('.timer-bar').css(animateStyle);
@@ -47,7 +47,7 @@ angular.module('meatloaf.game.round', [])
   });
 
   socket.on('endRound', function(){
-    console.log("Round End!");
+    // console.log("Round End!");
     $scope.timer.syncTimerStop();
     $('.timer-bar').css(removeAnimateStyle);
     socket.emit('submitAnswer', {answer: $scope.lockedAnswer, question: $scope.question});
@@ -86,7 +86,7 @@ angular.module('meatloaf.game.round', [])
   $scope.dummy = 50;
 
   socket.on('roundResults', function(roundResults) {
-    console.log("RECEIVED ROUND RESULTS!");
+    // console.log("RECEIVED ROUND RESULTS!");
     //do something with results
     var questionAnswerPair = trivia.getCorrectQnA();
     $scope.numCorrect = roundResults.numCorrect;

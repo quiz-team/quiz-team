@@ -42,7 +42,7 @@ angular.module('meatloaf.services', [])
       }
 
       var sessionId = session.getId();
-      console.log('sessionId: ', sessionId);
+      // console.log('sessionId: ', sessionId);
       playerSocket = io.connect({ query: 'sessionId=' + sessionId});
     },
 
@@ -114,7 +114,7 @@ angular.module('meatloaf.services', [])
       return triviaData.players[session.getId()].answers;
     },
     getAnswer: function(id) {
-      console.log("TriviaData is ", triviaData);
+      // console.log("TriviaData is ", triviaData);
       var answers = triviaData.roundAnswerObjects[this.roundNum-1];
       for (var i = 0; i < answers.length; i++) {
         if ( answers[i].id === id) {
