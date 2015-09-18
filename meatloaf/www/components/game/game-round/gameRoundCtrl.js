@@ -12,7 +12,7 @@ angular.module('meatloaf.game.round', [])
   $scope.question = trivia.currentQuestion;
   $scope.answers = trivia.getPlayerAnswers();
   $scope.lockedAnswer = {};
-  $scope.playerName = '';
+  $scope.playerName;
   $scope.playerNum = playerInfo.num;
   $scope.playerColor = playerInfo.color;
 

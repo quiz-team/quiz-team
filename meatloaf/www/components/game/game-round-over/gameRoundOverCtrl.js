@@ -4,7 +4,7 @@ angular.module('meatloaf.game.roundOver', [])
             function ($scope, $rootScope, $state, Timer, socket, trivia, session) {
 
   $scope.timer = Timer;
-  $scope.numCorrect = 0;
+  $scope.numCorrect;
   $scope.ownAnswerCorrect = '';
   $scope.question = '';
   $scope.correctAnswer = '';
