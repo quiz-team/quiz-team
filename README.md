@@ -33,8 +33,11 @@ Refer to `package.json` and `bower.json`.
 
 ### Installing Dependencies
 
-1. `npm install`
-2. `bower install`
+1. `npm install` from `quiz-team/` directory
+2. `bower install` from `quiz-team/meatloaf/` directory
+3. `cp .env.example .env` from `quiz-team/` directory
+4. `gulp prodBuild` from `quiz-team/` directory
+5. `node server/server.js`
 
 ### Setting Up Environment  
 In the root folder of the project:
