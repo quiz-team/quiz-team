@@ -7,6 +7,29 @@ var QuestionBank = require('../database/config.js');
 
 module.exports = function(gameId) {
 
+  /**
+   * Represents a game instance and holds all data associated with a
+   * given game.
+   * @type {object}
+   * @property {Array.<Player>} players - An array of player objects in this instance of the game
+   * @property {number}         id      - A unique ID number assigned to the game
+   * @property {string}         quizId  - A unique ID for a quiz (assigned by Mongo)
+   * @property {number}         numRounds - The number of rounds in a given game
+   * @property {number}         roundNum - The current round number, used to determine game logic for a given round
+   * @property {Array.<string>} playersInView - An array of player socket.ids. This is used to check if all players are in the same view
+   * @property {object}         gameData - The game data that is sent to the client
+   * @property {string}         gameData.title - Title of quiz sent to client
+   * @property {string}         gameData.description - Description of quiz sent to client
+   * @property {object}         gameData.players - Assignment of questions and answers for a given player
+   * @property {Array.<array>}  gameData.roundAnswers - Array of round answers arrays, where each round answers arrays contain the answer ids for a round
+   * @property {Array.<object>} gameData.roundAnswerObjects - Array of round answers arrays, where each round answers arrays contain the answer objects for a round
+   * @property {object}         gameData.stats - Object to hold end game stats
+   * @property {Array.<object>} gameData.stats.allRoundResults - Array of all round results, which are objects
+   * @property {number}         gameData.stats.gameEndTotal - Total score when all rounds are over
+   * @property {object}         gameData.answerMap - pairs questions with their correct answer
+   * @property {Array.<object>} allRoundResults - Array of all round results, which are objects
+   * @property {object}         currentRoundResults - Information about the current round is stored here
+   */
   var game = {
     players: [],
     id: gameId,
