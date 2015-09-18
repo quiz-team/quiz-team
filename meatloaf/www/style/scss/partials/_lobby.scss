@@ -54,7 +54,7 @@ $lobbyBackgroundColor: $gray--verylight;
     $num: nth($player, 1);
     $color-ready: nth($player, 3);
     $color-light: nth($player, 5);
-    .lobby__player--#{$num} {
+    .lobby__color--#{$num} {
       color: #fff;
       display: inline-block;
       text-align: center;
@@ -68,7 +68,7 @@ $lobbyBackgroundColor: $gray--verylight;
       box-shadow: $drop-shadow-1;
       transition: 0.2s;
     }
-    .lobby__player--#{$num}.ready {
+    .lobby__color--#{$num}.ready {
       background-color: $color-ready;
       // transform: translateY(-1vh);
       box-shadow: $drop-shadow-2;

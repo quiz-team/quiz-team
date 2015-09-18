@@ -1,7 +1,7 @@
 angular.module('meatloaf.game.round', [])
 
-.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket', 'trivia', 'session', 'playerNum',
-            function ($scope, $rootScope, $state, $timeout, Timer, socket, trivia, session, playerNum) {
+.controller('gameRoundCtrl', ['$scope', '$rootScope', '$state', '$timeout', 'Timer', 'socket', 'trivia', 'session', 'playerInfo',
+            function ($scope, $rootScope, $state, $timeout, Timer, socket, trivia, session, playerInfo) {
               
   var selectAnswerTimeout;
 
@@ -13,7 +13,8 @@ angular.module('meatloaf.game.round', [])
   $scope.answers = trivia.getPlayerAnswers();
   $scope.lockedAnswer = {};
   $scope.playerName;
-  $scope.playerNum = playerNum.num;
+  $scope.playerNum = playerInfo.num;
+  $scope.playerColor = playerInfo.color;
 
   var createAnimationStyle = function(duration){
     var animationString = 'animateColor ' + duration +'s ease, barWidth ' + duration + 's linear';

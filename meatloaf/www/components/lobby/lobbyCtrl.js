@@ -1,12 +1,13 @@
 angular.module('meatloaf.lobby', [])
 
-.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session', '$ionicViewSwitcher', '$timeout', 'playerNum',
-            function ($scope, $rootScope, $state, socket, trivia, session, $ionicViewSwitcher, $timeout, playerNum) {
+.controller('lobbyCtrl', ['$scope', '$rootScope', '$state', 'socket', 'trivia', 'session', '$ionicViewSwitcher', '$timeout', 'playerInfo',
+            function ($scope, $rootScope, $state, socket, trivia, session, $ionicViewSwitcher, $timeout, playerInfo) {
 
   $scope.lobby = $state.params.lobby;
   $scope.players = [];
   $scope.isReady = false;
-  $scope.playerNum = playerNum.num;
+  $scope.playerNum = playerInfo.num;
+  $scope.playerColor = playerInfo.color;
   console.log("ENTERING LOBBY STATE");
   // Updates player data on client-side when user enters a lobby
   //  callback is passed array of objects with player ID and button state
@@ -15,8 +16,9 @@ angular.module('meatloaf.lobby', [])
     // assign player number
     $scope.players.forEach(function(player, index){
       if(player.id === session.getId()){
-        playerNum.num = player.number;
-        console.log(player.number);
+        playerInfo.num = player.number;
+        playerInfo.color = player.color;
+        console.log("Player Number: ", player.number, "Player Color: ", playerInfo.color);
       }
     });
 
@@ -35,12 +37,12 @@ angular.module('meatloaf.lobby', [])
     console.log("RECEIVING TRIVIA DATA: ", triviaData);
     trivia.setData(triviaData);
     trivia.updateRound(1);
-    // // Finalize player number
-    // $scope.players.forEach(function(player, index){
-    //   if(player.id === session.getId()){
-    //     playerNum.num = player.number;
-    //   }
-    // });
+    // Finalize player number
+    $scope.players.forEach(function(player, index){
+      if(player.id === session.getId()){
+        playerInfo.num = player.number;
+      }
+    });
 
     $scope.readyOff();
     $state.go('gameStart');
