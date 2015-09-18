@@ -84,6 +84,16 @@ module.exports = function(socket, io) {
     game.getGameResults();
     // Signal to others that game is over
     lobby.inGame = false;
+
+    // Calculate score normalized to number of players 
+    var normalizedScore = game.gameData.stats.gameEndTotal / game.players.length;
+    
+    console.log('Normalized score:', normalizedScore);
+    console.log('Writing score to DB...');
+
+    // Keep track of scores for current quiz in database 
+    game.writeScoreToDatabase(normalizedScore, game.quizId);
+
     // Update status of lobby across all lobbies
     io.emit('updateLobbies', lobbies.getAllLobbies());
     io.to(game.id).emit('gameStats', game.gameData.stats);
