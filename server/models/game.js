@@ -94,7 +94,7 @@ module.exports = function(gameId) {
         question.text = questionAnswerPair.question;
         question.id = game.getId();
         //assign id to answer
-        var answer = {}
+        var answer = {};
         answer.text = questionAnswerPair.answer;
         answer.id = game.getId();
         //store question->association in questionAnswers
@@ -142,7 +142,7 @@ module.exports = function(gameId) {
   var markQuizPlayed = function(triviaSet, players){
     players.forEach(function(player){
       player.savePlayedQuiz(triviaSet._id);
-    })
+    });
   };
 
   var noRepeats = function(players){
@@ -158,9 +158,9 @@ module.exports = function(gameId) {
       _id: {
         $nin: alreadyPlayed
       }
-    }
+    };
     return filter;
-  }
+  };
 
   var shuffle = function(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;

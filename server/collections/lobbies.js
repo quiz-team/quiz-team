@@ -11,14 +11,14 @@ var generateLobbyName = function () {
   var adjectivesFilePath = __dirname + '/adjectives.dat';
   var nounsFilePath = __dirname + '/nouns.dat';
   // Load adjective and noun files  
-  var adjectives = fs.readFileSync(adjectivesFilePath).toString().split("\n");
-  var nouns = fs.readFileSync(nounsFilePath).toString().split("\n");
+  var adjectives = fs.readFileSync(adjectivesFilePath).toString().split('\n');
+  var nouns = fs.readFileSync(nounsFilePath).toString().split('\n');
   // Choose random adjective and noun from word banks
   var adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   var noun = nouns[Math.floor(Math.random() * nouns.length)];
   // Capitalize room name words
   adjective = adjective.charAt(0).toUpperCase() + adjective.slice(1);
-  noun = noun.charAt(0).toUpperCase() + noun.slice(1)
+  noun = noun.charAt(0).toUpperCase() + noun.slice(1);
   // Join lobby words
   var lobbyName = adjective + ' ' + noun;
   return lobbyName;

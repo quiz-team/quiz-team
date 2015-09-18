@@ -66,7 +66,7 @@ module.exports = function(roomname, id) {
     var colorIndex = playerColorAssignments.indexOf(colorNum);
     playerColorAssignments[colorIndex] = undefined;
     player.color = null;
-  }
+  };
 
   /**
    * Adds a player to the lobby.

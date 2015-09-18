@@ -23,14 +23,14 @@ angular.module('meatloaf.game.round', [])
       'animation': animationString,
       '-webkit-animation': animationString,
       '-moz-animation': animationString 
-    }
-  }
+    };
+  };
 
   var removeAnimateStyle = {  
     'animation': '',
     '-webkit-animation': '',
     '-moz-animation': '' 
-  }
+  };
 
   var animateStyle;
 
@@ -79,10 +79,10 @@ angular.module('meatloaf.game.round', [])
 
   // $scope.roundOverTimer = Timer;
   $scope.numCorrect;
-  $scope.ownAnswerCorrect = "";
-  $scope.correctQuestion = "";
-  $scope.correctAnswer = "";
-  $scope.total = "";
+  $scope.ownAnswerCorrect = '';
+  $scope.correctQuestion = '';
+  $scope.correctAnswer = '';
+  $scope.total = '';
   $scope.dummy = 50;
 
   socket.on('roundResults', function(roundResults) {
@@ -91,14 +91,14 @@ angular.module('meatloaf.game.round', [])
     var questionAnswerPair = trivia.getCorrectQnA();
     $scope.numCorrect = roundResults.numCorrect;
     // $scope.roundOverTimer.syncTimerStart(roundResults.timerData);
-    $scope.ownAnswerCorrect = roundResults.scoreByPlayer[session.getId()] ? "correct" : "incorrect";
+    $scope.ownAnswerCorrect = roundResults.scoreByPlayer[session.getId()] ? 'correct' : 'incorrect';
     $scope.correctQuestion = questionAnswerPair.question.text;
     $scope.correctAnswer = questionAnswerPair.answer.text;
-    $scope.total = roundResults.numCorrect.toString() + "/" + Object.keys(roundResults.scoreByPlayer).length;
+    $scope.total = roundResults.numCorrect.toString() + '/' + Object.keys(roundResults.scoreByPlayer).length;
 
     $('.ng-modal').removeClass('fade-out');
     $('.ng-modal').addClass('fade-in');
-    $scope.toggleModal()
+    $scope.toggleModal();
   });
 
   socket.on('nextRound', function(roundNum){
@@ -106,7 +106,7 @@ angular.module('meatloaf.game.round', [])
     $('.ng-modal').removeClass('fade-in');
     $('.ng-modal').addClass('fade-out');
     setTimeout(function(){
-      $scope.toggleModal()
+      $scope.toggleModal();
     },300);
     socket.emit('enteredRound');
   });

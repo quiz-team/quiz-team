@@ -34,7 +34,7 @@ angular.module('meatloaf.lobby', [])
 
   // Advances to the game state when a signal is received from the server.
   socket.on('goToStartScreen', function(triviaData) {
-    console.log("RECEIVING TRIVIA DATA: ", triviaData);
+    // console.log('RECEIVING TRIVIA DATA: ', triviaData);
     trivia.setData(triviaData);
     trivia.updateRound(1);
     // Finalize player number
@@ -109,10 +109,10 @@ angular.module('meatloaf.lobby', [])
 
   $scope.waitForOthers = function(){
     hideModal();
-  }
+  };
 
   $scope.playOnePlayer = function(){
     socket.emit('readyOn', $scope.lobby.id);
-  }
+  };
 
 }]);
