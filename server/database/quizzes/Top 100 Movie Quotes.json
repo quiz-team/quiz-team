@@ -18,11 +18,7 @@
         "answer": "The Wizard of Oz",
         "category": "Top 100 Movie Quotes",
         "question": "There's no place like home"
-    }, {
-        "answer": "The Wizard of Oz",
-        "category": "Top 100 Movie Quotes",
-        "question": "I'll get you, my pretty, and your little dog too!"
-    }, {
+    },  {
         "answer": "The Terminator",
         "category": "Top 100 Movie Quotes",
         "question": "I'll be back"
@@ -33,7 +29,7 @@
     }, {
         "answer": "Forrest Gump",
         "category": "Top 100 Movie Quotes",
-        "question": "Mama always said life was like a box of chocolates. You never know what you're gonna get"
+        "question": "Life is like a box of chocolates."
     }, {
         "answer": "Gone With the Wind",
         "category": "Top 100 Movie Quotes",
@@ -42,14 +38,6 @@
         "answer": "Casablanca",
         "category": "Top 100 Movie Quotes",
         "question": "Here's looking at you, kid"
-    }, {
-        "answer": "Gone With the Wind",
-        "category": "Top 100 Movie Quotes",
-        "question": "After all, tomorrow is another day!"
-    },  {
-        "answer": "Gone With the Wind",
-        "category": "Top 100 Movie Quotes",
-        "question": "As God is my witness, I'll never be hungry again"
     }, {
         "answer": "Titanic",
         "category": "Top 100 Movie Quotes",
@@ -79,17 +67,13 @@
         "category": "Top 100 Movie Quotes",
         "question": "Here's Johnny!"
     }, {
-        "answer": "The Silence of the Lambs",
-        "category": "Top 100 Movie Quotes",
-        "question": "A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti"
-    }, {
         "answer": "Jerry Maguire",
         "category": "Top 100 Movie Quotes",
         "question": "Show me the money!"
     }, {
         "answer": "Dirty Harry",
         "category": "Top 100 Movie Quotes",
-        "question": "You've got to ask yourself one question: 'Do I feel lucky?' Well, do ya, punk?"
+        "question": "Do you feel lucky? Well, do ya, punk?"
     }, {
         "answer": "The Graduate",
         "category": "Top 100 Movie Quotes",
@@ -119,17 +103,9 @@
         "category": "Top 100 Movie Quotes",
         "question": "I love the smell of napalm in the morning"
     }, {
-        "answer": "When Harry Met Sally...",
-        "category": "Top 100 Movie Quotes",
-        "question": "I'll have what she's having"
-    }, {
         "answer": "Field of Dreams",
         "category": "Top 100 Movie Quotes",
         "question": "If you build it, they will come"
-    }, {
-        "answer": "Airplane!",
-        "category": "Top 100 Movie Quotes",
-        "question": "Striker: \"Surely you can't be serious.\" Rumack: \"I am serious...and don't call me Shirley\""
     }, {
         "answer": "Planet of the Apes",
         "category": "Top 100 Movie Quotes",
@@ -151,21 +127,9 @@
         "category": "Top 100 Movie Quotes",
         "question": "Rosebud"
     }, {
-        "answer": "Wall Street",
-        "category": "Top 100 Movie Quotes",
-        "question": "Greed, for lack of a better word, is good"
-    }, {
-        "answer": "National Lampoon's Animal House",
+        "answer": "Animal House",
         "category": "Top 100 Movie Quotes",
         "question": "Toga! Toga!"
-    }, {
-        "answer": "Goldfinger",
-        "category": "Top 100 Movie Quotes",
-        "question": "A martini. Shaken, not stirred"
-    }, {
-        "answer": "Top Gun",
-        "category": "Top 100 Movie Quotes",
-        "question": "I feel the need—the need for speed!"
     }, {
         "answer": "Dr. No",
         "category": "Top 100 Movie Quotes",
@@ -174,46 +138,10 @@
         "answer": "A League of Their Own",
         "category": "Top 100 Movie Quotes",
         "question": "There's no crying in baseball!"
-    }, {
-        "answer": "King Kong",
-        "category": "Top 100 Movie Quotes",
-        "question": "Oh, no, it wasn't the airplanes. It was Beauty killed the Beast"
-    }, {
-        "answer": "A Streetcar Named Desire",
-        "category": "Top 100 Movie Quotes",
-        "question": "Stella! Hey, Stella!"
-    }, {
-        "answer": "A Streetcar Named Desire",
-        "category": "Top 100 Movie Quotes",
-        "question": "I have always depended on the kindness of strangers"
-    }, {
-        "answer": "Chinatown",
-        "category": "Top 100 Movie Quotes",
-        "question": "Forget it, Jake, it's Chinatown"
-    }, {
-        "answer": "Psycho",
-        "category": "Top 100 Movie Quotes",
-        "question": "A boy's best friend is his mother"
-    }, {
-        "answer": "Dead Poets Society",
-        "category": "Top 100 Movie Quotes",
-        "question": "Carpe diem. Seize the day, boys. Make your lives extraordinary"
-    }, {
-        "answer": "Poltergeist",
-        "category": "Top 100 Movie Quotes",
-        "question": "They're here!"
     },  {
         "answer": "Dr. Strangelove",
         "category": "Top 100 Movie Quotes",
-        "question": "Gentlemen, you can't fight in here! This is the War Room!"
-    }, {
-        "answer": "Bonnie and Clyde",
-        "category": "Top 100 Movie Quotes",
-        "question": "We rob banks"
-    }, {
-        "answer": "Network",
-        "category": "Top 100 Movie Quotes",
-        "question": "I'm as mad as hell, and I'm not going to take this anymore!"
+        "question": "You can't fight in here! This is the War Room!"
     }],
     "quizLength": 100,
     "title": "Top Movie Quotes",

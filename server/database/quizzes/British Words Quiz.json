@@ -1,6 +1,6 @@
 {
     "categories": [],
-    "description": " Translate these British words into their American equivalents. This quiz does NOT suggest that all British people use these words 100% of the time ",
+    "description": "Translate these British words into their American equivalents.",
     "difficulty": -1,
     "questions": [{
         "answer": "Soccer",
@@ -34,10 +34,6 @@
         "answer": "Cookie",
         "category": "British Words Quiz",
         "question": "Biscuit"
-    }, {
-        "answer": "Cigarette",
-        "category": "British Words Quiz",
-        "question": "Fag"
     }, {
         "answer": "Truck",
         "category": "British Words Quiz",
@@ -111,7 +107,7 @@
         "category": "British Words Quiz",
         "question": "Zebra Crossing"
     }],
-    "quizLength": 27,
+    "quizLength": 26,
     "title": "British Words Quiz",
     "url": "http://www.jetpunk.com/quizzes/british-words-quiz.php"
 }
