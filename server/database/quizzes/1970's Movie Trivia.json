@@ -1,6 +1,6 @@
 {
   "categories": [],
-  "description": " Answer these questions about the movies and movie stars of the 1970's. ",
+  "description": " Answer these questions about the movies of the 1970's. ",
   "difficulty": -1,
   "questions": [{
     "answer": "The Bee Gees",
@@ -84,19 +84,19 @@
     "question": "Whose music does the main character of \"A Clockwork Orange\" love to listen to?"
   }, {
     "answer": "Luke Skywalker",
-    "category":"1970's Movie Trivia",
+    "category": "1970's Movie Trivia",
     "question": "who was planning to go to Tosche Station to pick up some power converters",
   }, {
     "answer": "Jaws",
-    "category":"1970's Movie Trivia",
+    "category": "1970's Movie Trivia",
     "question": "The name of the shark that terrorized a New England Beach Town",
   }, {
     "answer": "Monty Python and the Holy Grail",
-    "category":"1970's Movie Trivia",
+    "category": "1970's Movie Trivia",
     "question": "The knights who say \"Ni\"",
   }, {
     "answer": "Ellen Ripley",
-    "category":"1970's Movie Trivia",
+    "category": "1970's Movie Trivia",
     "question": "What was the name of the sole survivor of Alien",
   }],
   "quizLength": 20,

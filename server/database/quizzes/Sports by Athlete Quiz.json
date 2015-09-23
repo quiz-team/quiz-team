@@ -1,6 +1,6 @@
 {
     "categories": [],
-    "description": " Name the sports that these athletes excelled at. Each sport is used only once ",
+    "description": " Name the sports that correspond to these athletes.",
     "difficulty": -1,
     "questions": [{
         "answer": "Golf",
@@ -75,10 +75,6 @@
         "category": "Sports by Athlete Quiz",
         "question": "Alexander Karelin"
     }, {
-        "answer": "Rugby Union",
-        "category": "Sports by Athlete Quiz",
-        "question": "Jonah Lomu"
-    }, {
         "answer": "Figure Skating",
         "category": "Sports by Athlete Quiz",
         "question": "Kim Yuna"
@@ -95,35 +91,15 @@
         "category": "Sports by Athlete Quiz",
         "question": "Apolo Ohno"
     }, {
-        "answer": "Table Tennis",
-        "category": "Sports by Athlete Quiz",
-        "question": "Jan-Ove Waldner"
-    }, {
-        "answer": "Snooker",
-        "category": "Sports by Athlete Quiz",
-        "question": "Ronnie O'Sullivan"
-    }, {
         "answer": "Surfing",
         "category": "Sports by Athlete Quiz",
         "question": "Duke Kahanamoku"
     }, {
-        "answer": "Curling",
-        "category": "Sports by Athlete Quiz",
-        "question": "Kevin Martin"
-    }, {
-        "answer": "Hurdling",
-        "category": "Sports by Athlete Quiz",
-        "question": "Edwin Moses"
-    }, {
         "answer": "Powerlifting",
         "category": "Sports by Athlete Quiz",
         "question": "Bill Kazmaier"
-    }, {
-        "answer": "Parkour",
-        "category": "Sports by Athlete Quiz",
-        "question": "David Belle"
     }],
-    "quizLength": 30,
+    "quizLength": 24,
     "title": "Sports by Athlete Quiz",
     "url": "http://www.jetpunk.com/quizzes/sports-by-athlete-quiz.php"
 }
