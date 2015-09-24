@@ -1,17 +1,17 @@
-body {
-  background-color: $blue;
-}
+// body {
+//   background-color: $blue;
+// }
 
-#rotate {
-  display: none;
-  margin: 20vh auto;
-}
+// #rotate {
+//   display: none;
+//   margin: 20vh auto;
+// }
 
-@media all and (orientation: landscape) {
-  #rotate {
-    display: inherit;
-  }
-  #game-pane {
-    display: none;
-  }
-}
+// @media all and (orientation: landscape) {
+//   #rotate {
+//     display: inherit;
+//   }
+//   #game-pane {
+//     display: none;
+//   }
+// }

@@ -143,19 +143,6 @@ html {
   width: 50%;
   background-color: #AB92EB; }
 
-body {
-  background-color: #3E82F7; }
-
-#rotate {
-  display: none;
-  margin: 20vh auto; }
-
-@media all and (orientation: landscape) {
-  #rotate {
-    display: inherit; }
-  #game-pane {
-    display: none; } }
-
 /* ////////////////////////////////////////////////////
 // 
 //  Selection View
