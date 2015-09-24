@@ -18,23 +18,23 @@ var minify        = require('gulp-minify');
 var paths = {
   // client-side .js files
   scripts: [
-    'meatloaf/www/**/*.js',
-    '!meatloaf/www/lib/**/*',
-    '!meatloaf/www/dist/**/*',
+    'client/app/**/*.js',
+    '!client/app/lib/**/*',
+    '!client/app/dist/**/*',
     'server/**/*.js',
   ],
   // all the html
   html: [
-    'meatloaf/www/**/*.html'
+    'client/app/**/*.html'
   ],
   // scss files
   style: [
-    'meatloaf/www/style/scss/**/*.scss',
-    '!meatloaf/www/style/scss/webpage.scss'
+    'client/app/style/scss/**/*.scss',
+    '!client/app/style/scss/webpage.scss'
   ],
 
   webStyle: [
-    'meatloaf/www/style/scss/webpage.scss'
+    'client/app/style/scss/webpage.scss'
   ],
   //tests
   tests: {
@@ -59,13 +59,13 @@ gulp.task('sass', function(done) {
       errLogToConsole: true
     }))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./meatloaf/www/style/css/'));
+    .pipe(gulp.dest('./client/app/style/css/'));
   gulp.src(paths.webStyle)
     .pipe(sass({
       errLogToConsole: true
     }))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./meatloaf/www/style/css/'))
+    .pipe(gulp.dest('./client/app/style/css/'))
     .on('end', done);
 });
 
@@ -80,9 +80,9 @@ gulp.task('test', function() {
 });
 
 gulp.task('uglify', function(){
-  gulp.src(['meatloaf/www/components/**/*.js', 'meatloaf/www/app.js'])
+  gulp.src(['client/app/components/**/*.js', 'client/app/app.js'])
   .pipe(concat('src.js'))
-  .pipe(gulp.dest('./meatloaf/www/dist/'));
+  .pipe(gulp.dest('./client/app/dist/'));
 });
 
 gulp.task('build', ['check-syntax', 'test', 'sass']);

@@ -1,23 +1,23 @@
 
 FROM node:0.10
 
-MAINTAINER Unexpected Meatload
+MAINTAINER Quiz Team
 
 
 WORKDIR /
 
-# Install Meatloaf Prerequisites
+# Install Quiz Team Prerequisites
 RUN npm install -g gulp-cli
 RUN npm install -g bower
 
-# Install Mealoaf packages
+# Install Quiz Team packages
 ADD package.json /package.json
 RUN npm install
 
 # Manually trigger bower. Why doesnt this work via npm install?
-ADD /meatloaf/.bowerrc /meatloaf/.bowerrc
-ADD /meatloaf/bower.json /meatloaf/bower.json
-WORKDIR /meatloaf
+ADD /client/.bowerrc /client/.bowerrc
+ADD /client/bower.json /client/bower.json
+WORKDIR /client
 RUN bower install --config.interactive=false --allow-root
 WORKDIR ..
 

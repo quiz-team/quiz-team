@@ -3,9 +3,8 @@
 node_modules/
 
 # ionic
-meatloaf/www/lib/
+client/app/lib/
 
 #build/dist
-meatloaf/www/dist
-meatloaf/www/style/css
-examples/
+client/app/dist
+client/app/style/css
