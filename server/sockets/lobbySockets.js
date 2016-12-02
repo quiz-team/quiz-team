@@ -58,11 +58,13 @@ module.exports = function(socket, io) {
   // on disconnect, remove player from lobby
   socket.on('disconnect', function() {
     var player = players[socket.playerId];
-    // check if player exists
+    // remove player from the lobby
     if (player && player.lobbyId) {
       var lobbyId = player.lobbyId;
       var lobby = lobbies.getLobby(lobbyId);
       lobby.removePlayer(socket.playerId);
+      // remove player from socket room
+      socket.leave(lobbyId);
       // update other players
       io.to(lobbyId).emit('updatePlayers', lobby.getPlayers());
       // remove socket from socket room
